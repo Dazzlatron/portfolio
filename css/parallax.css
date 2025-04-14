@@ -1,142 +1,32 @@
-/* General Styles */
-body {
-    margin: 0;
-    padding: 0;
-    margin: auto;
-}
 
-
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.spacer {
+    height: 0; /* Adds space for scrolling */
+   margin: 0;
+  }
+  
+  .parallax {
+    opacity: 0; /* Start fully hidden */
+    transform: translateY(150px); /* Start below */
     text-align: center;
-    padding: 20px;
-    min-height: 500px;
-}
-
-
-
-.hero-image {
-    flex: 1;
-    padding: 20px;
-}
-
-.hero img {
-    max-width: 100%;
-    height: auto;
-}
-
-main {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-.projects {
-    display: flex;
-    z-index: 99;
-    position: relative;ß
-}
+    margin: 20px auto;
+    border-radius: 10px;
+  }
+  
+  
 .project {
     padding: 20px;
     border-radius: 10px;
-    opacity: 0;
-    transform: translateY(100px);
-    transition: opacity 1s ease, transform 1s ease;
-    min-height: 500px;
+    margin-bottom: 20px;
+    position: relative;
 }
 
-.project::after {
-    content: url('../img/plus.svg');
-    position: absolute;
-    left: -34px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 9999;
-}
-
-/* Outline animation using ::before */
-.project::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 1px solid transparent;
-    box-sizing: border-box;
-    pointer-events: none;
-    z-index: 1;
-    border-radius: 10px;
-    /* Initial hidden state */
-    opacity: 0;
-}
-
-/* Hover effect */
-.project:hover::after {
-    transform: translateY(-50%) rotate(180deg);
-}
-
-.project:hover::before {
-    opacity: 1;
-    border-color: #cdcdcd; /* Outline color */
-    animation: drawOutline 0.5s linear forwards;
-}
-
-/* Keyframe animation for the drawing effect */
-@keyframes drawOutline {
-    0% {
-        clip-path: polygon(0% 50%, 0% 50%, 0% 50%, 0% 50%);
-    }
-    25% {
-        clip-path: polygon(0% 50%, 0% 0%, 100% 0%, 100% 0%);
-    }
-    50% {
-        clip-path: polygon(0% 50%, 0% 0%, 100% 0%, 100% 100%);
-    }
-    75% {
-        clip-path: polygon(0% 50%, 0% 0%, 100% 0%, 100% 100%, 0% 100%);
-    }
-    100% {
-        clip-path: polygon(0% 50%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 50%);
-    }
-}
 
 
 .column {
     flex: 1;
 }
 
-.project {
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(100px);
-    transition: opacity 1s ease, transform 1s ease;
-    min-height: 500px;
-    background: #efefef;
-    position: relative;
-}
+
 
 footer {
     background-color: #333;

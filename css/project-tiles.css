@@ -1,0 +1,242 @@
+.number-col {
+    margin-right: 10px;
+  }
+.no-two {
+    margin-top: -15px;
+}
+.no-three {
+    margin-top: -15px;
+    right: 0;
+    position: absolute;
+}
+.no-four {
+    margin-top: -15px;
+    right: 0;
+    position: absolute;
+}
+.proj-wrap.p-wrap-right-2 .image-container {
+    margin-top: 20px;
+  }
+  .proj-wrap.p-wrap-right-3 .image-container {
+    margin-top: 20px;
+  }
+.p-wrap-left-2 .image-container {
+    margin-top: 20px;
+  }
+  
+.p-wrap-right-1 {
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    margin-top: -40px;
+    margin-bottom: -50px;
+  }
+  .p-wrap-left-2 {
+    margin-top: -40px;
+    margin-bottom:-50px;
+  }
+  .p-wrap-right-3 {
+    margin-top: -40px;
+    margin-bottom:-40px;
+  }
+  .p-wrap-right-3 {
+    margin-top: -40px;
+    margin-bottom:-40px;
+  }
+.image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border: 1px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.number {
+    height: 50px;
+  }
+.static-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+  }
+.animated-gif {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+  }
+#project1 {
+    display: flex;
+  }
+  .p-wrap-right-2 {
+    margin-right: -80px;
+  }
+  .p-wrap-left-3 {
+    margin-left: -75px;
+  margin-bottom: -50px;
+  }
+  #project3 {
+   margin-top:8rem;
+  }
+
+  #project2 {
+    margin: 10rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 87%;
+  
+  }
+  #project4 {
+    margin-top: 8rem;
+    margin-left: 0;
+    width:85%;
+  }
+  #project6 {
+    margin-top: 8rem;
+    margin-left: 0;
+    width: 65%;
+  }
+  #project5 {
+    display: flex;
+    margin-top: 10rem;
+  }
+  .proj-wrap{
+    z-index: 9999;
+    position: relative;
+  }
+  .project-left{
+    padding: 30px 75px 30px 30px;
+  }
+  .project-right{
+    padding: 30px 30px 20px 75px;
+  }
+ .project-right{
+    min-height: 500px;
+   
+}
+.project-right:hover, .project-left:hover{
+    cursor: pointer;
+}
+.project-right::after {
+    content: url('../img/plus.svg');
+    position: absolute;
+    left: -31px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+}
+
+/* Outline animation using ::before */
+.project-right::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 10px;
+    /* Initial hidden state */
+    opacity: 0;
+}
+
+/* Hover effect */
+.project-right:hover::after {
+    transform: translateY(-50%) rotate(270deg);
+}
+
+.project-right:hover::before {
+    opacity: 1;
+    border-color: #cdcdcd; /* Outline color */
+    animation: drawOutline 0.4s ease-in-out forwards;
+}
+
+.project-left::after {
+    content: url('../img/plus.svg');
+    position: absolute;
+    right: -35px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+}
+
+/* Outline animation using ::before */
+.project-left::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 10px;
+    /* Initial hidden state */
+    opacity: 0;
+}
+
+/* Hover effect */
+.project-left:hover::after {
+    transform: translateY(-50%) rotate(270deg);
+}
+
+.project-left:hover::before {
+    opacity: 1;
+    border-color: #cdcdcd; /* Outline color */
+    animation: drawOutlineLeft 0.4s ease-in-out forwards;
+}
+/* Keyframe animation for the drawing effect */
+@keyframes drawOutline {
+    0% {
+        clip-path: polygon(0% 50%, 0% 50%, 0% 50%, 0% 50%);
+    }
+    25% {
+        clip-path: polygon(0% 50%, 0% 0%, 100% 0%, 100% 0%);
+    }
+    50% {
+        clip-path: polygon(0% 50%, 0% 0%, 100% 0%, 100% 100%);
+    }
+    75% {
+        clip-path: polygon(0% 50%, 0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    100% {
+        clip-path: polygon(0% 50%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 50%);
+    }
+}
+/* Keyframe animation for the drawing effect */
+@keyframes drawOutlineLeft {
+    0% {
+        clip-path: polygon(100% 50%, 100% 50%, 100% 50%, 100% 50%);
+    }
+    25% {
+        clip-path: polygon(100% 50%, 100% 0%, 0% 0%, 0% 0%);
+    }
+    50% {
+        clip-path: polygon(100% 50%, 100% 0%, 0% 0%, 0% 100%);
+    }
+    75% {
+        clip-path: polygon(100% 50%, 100% 0%, 0% 0%, 0% 100%, 100% 100%);
+    }
+    100% {
+        clip-path: polygon(100% 50%, 100% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 50%);
+    }
+}
+
+.description{
+
+}
+.p-wrap-left-1{
+    margin-left: -75px;
+    margin-bottom: -50px;
+}
