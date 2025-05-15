@@ -1,26 +1,13 @@
 @font-face {
-    font-family: 'biryanibold';
-    src: url('Biryani-Bold-webfont.eot');
-    src: url('Biryani-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('Biryani-Bold-webfont.woff2') format('woff2'),
-         url('Biryani-Bold-webfont.woff') format('woff'),
-         url('Biryani-Bold-webfont.ttf') format('truetype'),
-         url('Biryani-Bold-webfont.svg#biryanibold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
     font-family: 'biryanilight';
-    src: url('Biryani-Light-webfont.eot');
-    src: url('Biryani-Light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('Biryani-Light-webfont.woff2') format('woff2'),
-         url('Biryani-Light-webfont.woff') format('woff'),
-         url('Biryani-Light-webfont.ttf') format('truetype'),
-         url('Biryani-Light-webfont.svg#biryanilight') format('svg');
+    src: url('Biryani-Light.eot');
+    src: url('Biryani-Light.eot?#iefix') format('embedded-opentype'),
+         url('Biryani-Light.woff2') format('woff2'),
+         url('Biryani-Light.woff') format('woff'),
+         url('Biryani-Light.ttf') format('truetype'),
+         url('Biryani-Light.svg#biryanilight') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -30,9 +17,20 @@
          url('Biryani-Regular-webfont.woff2') format('woff2'),
          url('Biryani-Regular-webfont.woff') format('woff'),
          url('Biryani-Regular-webfont.ttf') format('truetype'),
-         url('Biryani-Regular-webfont.svg#biryanilight') format('svg');
+         url('Biryani-Regular-webfont.svg#biryaniregular') format('svg');
     font-weight: normal;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'biryanibold';
+    src: url('Biryani-Bold-webfont.eot');
+    src: url('Biryani-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Biryani-Bold-webfont.woff2') format('woff2'),
+         url('Biryani-Bold-webfont.woff') format('woff'),
+         url('Biryani-Bold-webfont.ttf') format('truetype'),
+         url('Biryani-Bold-webfont.svg#biryanibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 

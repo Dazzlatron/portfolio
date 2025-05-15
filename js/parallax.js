@@ -20,3 +20,18 @@ document.querySelectorAll(".parallax").forEach((element) => {
 
 // Debugging
 console.log("ScrollMagic scenes created:", controller);
+
+// Fly-in from right animation
+document.querySelectorAll(".fly-in").forEach((element) => {
+  new ScrollMagic.Scene({
+    triggerElement: element,
+    triggerHook: 0.8,
+    reverse: false // Play only once
+  })
+  .setTween(gsap.fromTo(element, 
+    { x: 100, opacity: 0 }, 
+    { x: 0, opacity: 1, duration: 1, ease: "power2.out" }
+  ))
+  .addIndicators({ name: "Fly-in from right" }) // Optional for debugging
+  .addTo(controller);
+});

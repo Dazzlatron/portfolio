@@ -1,88 +1,126 @@
- const canvas = document.getElementById("dotCanvas");
-    const ctx = canvas.getContext("2d");
-    const heroSection = document.getElementById("hero-section");
+const canvas = document.getElementById("dotCanvas");
+const ctx = canvas.getContext("2d");
+const heroSection = document.getElementById("hero-section");
 
-    let dots = [];
-    const spacing = 12; // Adjusted spacing for better aspect ratio
-    const minRadius = 1;
-    const maxRadius = 2;
-    const hoverRadius = 100;
-    let mouseX = -100, mouseY = -100;
-    let isMouseMoving = false;
+let dots = [];
+let ripples = [];
 
-    function resizeCanvas() {
-        canvas.width = heroSection.offsetWidth;
-        canvas.height = heroSection.offsetHeight;
-        generateDots();
-    }
+const spacing = 12;
+const minRadius = 1;
+const maxRadius = 1.8;
+const rippleRadius = 150;
+const rippleDuration = 400;
 
-    function generateDots() {
+// ⬇️ Smooth ease-in-out cubic
+function easeInOutCubic(t) {
+    return t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+function getBaseColor() {
+    return document.body.classList.contains('dark-mode') ? "#313131" : "#DADADA";
+}
+
+function resizeCanvas() {
+    canvas.width = heroSection.offsetWidth;
+    canvas.height = heroSection.offsetHeight;
+    generateDots();
+}
+
+function generateDots() {
     dots = [];
     for (let x = spacing; x < canvas.width; x += spacing) {
         for (let y = spacing; y < canvas.height; y += spacing) {
             dots.push({ 
                 x, 
-                y, 
-                size: minRadius, 
-                targetSize: minRadius, 
-                color: "#E4E4E4", 
-                velocity: 0 
+                y,
+                size: minRadius,
+                opacity: 1,
+                color: getBaseColor()
             });
         }
     }
 }
 
-    function animateDots() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+function animateDots(currentTime) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ripples = ripples.filter(r => currentTime - r.time < rippleDuration);
 
-        dots.forEach(dot => {
-            const distance = Math.hypot(mouseX - dot.x, mouseY - dot.y);
-            
-            if (isMouseMoving && distance < hoverRadius) {
-                let effectStrength = (hoverRadius - distance) / hoverRadius;
-                dot.targetSize = minRadius + effectStrength * (maxRadius - minRadius);
+    dots.forEach(dot => {
+        let closestRipple = null;
+        let closestDistance = Infinity;
 
-                // Color transition from #E4E4E4 to #000000
-                let shade = Math.floor(228 - (effectStrength * 190));
-                dot.color = `rgb(${shade}, ${shade}, ${shade})`;
-            } else {
-                dot.targetSize = minRadius;
-                dot.color = "#E4E4E4";
+        ripples.forEach(ripple => {
+            const dx = ripple.x - dot.x;
+            const dy = ripple.y - dot.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < rippleRadius && distance < closestDistance) {
+                closestDistance = distance;
+                closestRipple = ripple;
             }
-
-            // Smoother easing with extended transition
-            let stiffness = 0.1;   // Slower response for a gentle effect
-            let damping = 0.8;     // More gradual fade-out
-
-            let force = dot.targetSize - dot.size;
-            dot.velocity += force * stiffness;
-            dot.velocity *= damping;
-            dot.size += dot.velocity;
-
-            ctx.fillStyle = dot.color;
-            ctx.beginPath();
-            ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
-            ctx.fill();
         });
 
-        requestAnimationFrame(animateDots);
+        let size = minRadius;
+        let opacity = 1;
+        let baseShade, shade;
+const isDark = document.body.classList.contains('dark-mode');
+
+if (isDark) {
+    baseShade = 49; // darker base
+} else {
+    baseShade = 226; // lighter base
+}
+shade = baseShade;
+
+if (closestRipple) {
+    const t = 1 - closestDistance / rippleRadius;
+    const elapsed = currentTime - closestRipple.time;
+    const progress = Math.min(elapsed / rippleDuration, 1);
+    const pulse = easeInOutCubic(t * (1 - progress));
+
+    size = minRadius + pulse * (maxRadius - minRadius);
+    opacity = 0.6 + 0.4 * pulse;
+
+    if (isDark) {
+        // Lighten in dark mode, up to rgb(196, 195, 195)
+        shade = baseShade + pulse * (190 - baseShade);
+    } else {
+        // Darken slightly in light mode
+        shade = baseShade - pulse * 120;
     }
 
-    let mouseTimeout;
-    heroSection.addEventListener("mousemove", (e) => {
-        const rect = heroSection.getBoundingClientRect();
-        mouseX = e.clientX - rect.left;
-        mouseY = e.clientY - rect.top;
-        isMouseMoving = true;
-        
-        // Reset timer when mouse moves
-        clearTimeout(mouseTimeout);
-        mouseTimeout = setTimeout(() => {
-            isMouseMoving = false;
-        }, 100);
+    // Clamp between 0–255
+    shade = Math.max(0, Math.min(255, Math.round(shade)));
+}
+
+
+        dot.size = size;
+        dot.opacity = opacity;
+        dot.color = `rgb(${shade}, ${shade}, ${shade})`;
+
+        ctx.globalAlpha = dot.opacity;
+        ctx.fillStyle = dot.color;
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
     });
 
-    window.addEventListener("resize", resizeCanvas);
+    requestAnimationFrame(animateDots);
+}
 
-    resizeCanvas();
-    animateDots();
+heroSection.addEventListener("mousemove", (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    ripples.push({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+        time: performance.now()
+    });
+});
+
+// Initialize
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+requestAnimationFrame(animateDots);

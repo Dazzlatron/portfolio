@@ -1,12 +1,146 @@
-/* General Styles */
+:root {
+  --light-border: #d1d1d1;
+  --light-text: #0c0c0c
+}
+/* When the navigation is active (you'll need to add this class via JavaScript when scrolled past hero) */
+#dotCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
 
+.row-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 100px;
+}
+.ico-email, .ico-linkedin {
+  float: left;
+}
+.top-logo {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.3s ease;
+  position: absolute;
+  left: -40px;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure no transitions during page load */
+
+#top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transform: translateY(-100%); /* Start off-screen */
+  opacity: 0; /* Start invisible */
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              opacity 0.4s ease;
+  background:#fbfbfb; /* Your color */
+  overflow: hidden;
+  border-bottom: 1px solid transparent;
+  will-change: transform, opacity;
+
+}
+.nav-style {
+  max-width: 1160px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:10px;
+  position: relative; /* Needed for logo positioning */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+#top-nav.nav-visible {
+  transform: translateY(0); /* Slide down */
+  opacity: 1; /* Fade in */
+  border-bottom:none;
+}
+
+.row-2 {
+  display: grid;
+  /* Your existing grid setup */
+}
+
+.phil-col {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform; /* Hint to browser for better performance */
+  backface-visibility: hidden; /* Prevent flickering in some browsers */
+}
+
+
+.grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* space between rows */
+  max-width:1000px;
+  margin:auto;
+}
+
+/* Row 1 - two-column layout */
+.row-1 {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 20px;
+}
+
+/* Row 2 - five-column layout */
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr 60px 1fr;
+  gap: 20px;
+}
+
+/* For the columns that are fixed */
+.fixed {
+  display: flex;
+  align-items: center;    /* vertical center */
+  justify-content: center; /* horizontal center */
+  width: 60px;
+}
+
+/* Responsive stacking */
+@media (max-width: 768px) {
+  .row-1,
+  .row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.side-image {
+  width: 420px;
+  position: fixed;
+  left: 0;
+  top: 35%;
+}
+.fly-in-element {
+  opacity: 0;
+  transform: translateX(100px);
+}
 #top-nav ul{
   font-family: 'biryanilight';
   font-size:14px;
+  margin-left: auto;
 }
 
 #top-nav ul a {
-  color: #0c0c0c;
+  color: var(--light-text);
   text-decoration: none;
   position: relative;
 }
@@ -36,40 +170,33 @@
 padding:0 5px;
 border-right:1px solid #cdcdcd;
 }
-.nav-style {
-  display: flex;
-  padding:10px;
-  justify-content: inherit;
-  height: 50px;
-}
-.top-logo {
-  height: 45px;
-}
+
+
 #top-nav .container {
   border-bottom:
-1px solid #cdcdcd;
-}
-#top-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #fbfbfb;
-  color: white;
-
-  transition: transform 0.3s ease-in-out;
-  transform: translateY(-100%);
+1px solid var(--light-border);
 }
 
-#top-nav.visible {
-  transform: translateY(0);
+
+
+.phil-box .description, .phil-box .section-header {
+  text-align: center;
+}
+.phil-icon {
+ 
+  margin-top: -60px;
+  margin-left: auto;
+  margin-right: auto;
   display: block;
-  z-index:9999999;
-  padding:0;
 }
-
 .hidden {
   display: none;
+}
+.phil-box {
+  border:1px solid #b8b8b8;
+  border-radius:10px;
+  padding:20px;
+  position: relative;
 }
 p {
   font-size:17px;
@@ -99,11 +226,9 @@ body {
 .red-line {
     position: absolute;
   }
-  #reveal-elements {
-    margin-top: 4.2rem;
-  }
+
 .devider {
-    border-top: 1px solid #cdcdcd;
+    border-top: 1px solid #b8b8b8;
     margin-bottom: 15px;
     padding: 0;
     margin: 0;
@@ -115,7 +240,18 @@ nav {
     align-items: center;
     padding: 0 20px;
 }
-
+.spacer-3rem{
+  margin-top: 3rem;
+  }
+.spacer-4rem{
+margin-top: 4rem;
+}
+.spacer-6rem{
+  margin-top: 6rem;
+  }
+  .spacer-8rem{
+    margin-top: 8rem;
+    }
 .nav-links {
     list-style: none;
     display: flex;
@@ -144,20 +280,41 @@ main {
  h3.devider-heading{
     font-family: 'biryanilight';
     margin-bottom:5px;
-    font-size:21px;
+    font-size:20px;
     font-weight:lighter;
  }
+ h3.small-header{
+  font-family: 'biryanilight';
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: lighter;
+  line-height: 1;
+}
+
  .section-header {
-    font-size: 21px;
+    font-size: 20px;
     font-family: 'biryaniregular';
-    color: #0c0c0c;
+    color: var(--light-text);
     margin:10px 0 0 0;
     text-align: left;
   }
-
+  .profile-pic {
+    width: 95%;
+    margin:
+  10px auto;
+  }
+  .section-header-28 {
+    font-size: 28px;
+  font-family: 'biryaniregular';
+  color: #0c0c0c;
+  margin:
+0 0 15px;
+  text-align: left;
+  }
   .description {
     margin-top: 5px;
     text-align: left;
+    color: var(--light-text);
   }
   .gradient-button:active {
     transform: translate(0, 0);
@@ -185,15 +342,105 @@ main {
     box-shadow: -1px 1px 0px 1px #000;
     line-height: 1.5;
     margin-top:35px;
-  }
+    position: relative;
+    overflow: hidden;
+}
 
+.gradient-button::after {
+    content: "›";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
-  @media screen and (min-width: 992px) {
+.gradient-button:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(5px);
+}
+
+.gradient-button:active {
+    transform: translate(0, 0);
+    box-shadow: -1px 1px 0px 1px #000;
+}
+
+.gradient-button:hover {
+    box-shadow: -2px 2px 0px 1px #000;
+    transform: translate(2px, -2px);
+    padding-right: 30px; /* Make space for the arrow */
+}
+
+@media screen and (min-width: 992px) {
     .container{
-      max-width: 1100px;
+      max-width: 1160px;
       margin:auto;
+      position: relative;
      }
      .projects {
-      width: 1060px;
+      width: 1100px;
      }
     }
+.section-title{
+  z-index:999;
+}
+#footer-section {
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    overflow: hidden;
+    background-color: #FBFBFB;
+    margin-top: 6rem;
+    
+}
+
+#footer-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#e2e2e2 1px, transparent 1px);
+    background-size: 12px 12px;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+#footer-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(251, 251, 251, 1) 0%, rgba(251, 251, 251, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+.txt-center{
+  text-align: center;
+}
+.footer-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    text-align: center;
+    color: #0C0C0C;
+    font-family: 'biryanilight';
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+.devider-heading {
+    font-family: 'biryanilight';
+    margin-bottom: 5px;
+    font-size: 21px;
+    font-weight: lighter;
+}

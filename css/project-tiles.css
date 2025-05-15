@@ -1,3 +1,20 @@
+:root {
+  --light-border: #d1d1d1;
+  --light-text: #0c0c0c
+}
+.no-2 {
+  margin-top: -15px;
+}
+.no-3 {
+  margin-top: -15px;
+  position: absolute;
+  right: 20px;
+}
+.no-4 {
+  margin-top: -15px;
+  position: absolute;
+  right: 20px;
+}
 .number-col {
     margin-right: 10px;
   }
@@ -68,6 +85,11 @@
     height: 100%;
     
   }
+
+  #project7 {
+    display: flex;
+    margin-top:11rem
+  }
 #project1 {
     display: flex;
   }
@@ -93,12 +115,12 @@
   #project4 {
     margin-top: 8rem;
     margin-left: 0;
-    width:85%;
+    width:70%;
   }
   #project6 {
-    margin-top: 8rem;
+    margin-top: 6rem;
     margin-left: 0;
-    width: 65%;
+    width: 85%;
   }
   #project5 {
     display: flex;
@@ -124,11 +146,11 @@
 .project-right::after {
     content: url('../img/plus.svg');
     position: absolute;
-    left: -31px;
+    left: -26.5px;
     top: 50%;
     transform: translateY(-50%);
     transition: transform 0.3s ease-in-out;
-    z-index: 999;
+    z-index: 99;
 }
 
 /* Outline animation using ::before */
@@ -155,14 +177,14 @@
 
 .project-right:hover::before {
     opacity: 1;
-    border-color: #cdcdcd; /* Outline color */
+    border-color:var(--light-border); /* Outline color */
     animation: drawOutline 0.4s ease-in-out forwards;
 }
 
 .project-left::after {
     content: url('../img/plus.svg');
     position: absolute;
-    right: -35px;
+    right: -29px;
     top: 50%;
     transform: translateY(-50%);
     transition: transform 0.3s ease-in-out;
@@ -193,7 +215,7 @@
 
 .project-left:hover::before {
     opacity: 1;
-    border-color: #cdcdcd; /* Outline color */
+    border-color:var(--light-border); /* Outline color */
     animation: drawOutlineLeft 0.4s ease-in-out forwards;
 }
 /* Keyframe animation for the drawing effect */

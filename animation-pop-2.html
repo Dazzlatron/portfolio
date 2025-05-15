@@ -1,0 +1,74 @@
+<svg id="logo-wave" width="200" height="166" viewBox="0 0 200 166" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible; cursor: pointer;">
+  <style>
+    rect {
+      transform-origin: center;
+      transition: transform 0.8s ease, opacity 0.8s ease;
+    }
+
+    .break-up {
+      opacity: 0;
+    }
+  </style>
+
+  <!-- Your rects as before -->
+  <rect y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="69.1289" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="69.1289" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="103.691" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="103.691" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="172.824" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="172.824" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="69.1289" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="69.1289" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="138.258" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="34.5625" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="34.5625" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="103.691" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="103.691" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="172.824" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="172.824" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+  <rect x="34.5625" width="26.7597" height="26.7597" rx="4" fill="#FF1515"/>
+</svg>
+
+<script>
+  const svg = document.getElementById('logo-wave');
+  const rects = svg.querySelectorAll('rect');
+
+  // Wave animation
+  function playWave() {
+    rects.forEach(rect => {
+      rect.style.animation = 'none';
+      rect.offsetHeight;
+
+      const delay = Math.random() * 0.5;
+      rect.style.animation = `pop 0.5s ease-in-out ${delay}s 1`;
+
+      setTimeout(() => {
+        rect.style.animation = 'none';
+      }, (delay + 0.5) * 1000);
+    });
+  }
+
+  setInterval(playWave, 8000);
+  playWave();
+  svg.addEventListener('mouseenter', playWave);
+
+  // Scroll-triggered break apart
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 100;
+
+    rects.forEach(rect => {
+      if (scrolled) {
+        const x = (Math.random() - 0.5) * 300;
+        const y = (Math.random() - 0.5) * 300;
+        const r = (Math.random() - 0.5) * 180;
+        rect.style.transform = `translate(${x}px, ${y}px) rotate(${r}deg) scale(1)`;
+        rect.classList.add('break-up');
+      } else {
+        rect.style.transform = `translate(0, 0) rotate(0deg) scale(1)`;
+        rect.classList.remove('break-up');
+      }
+    });
+  });
+</script>

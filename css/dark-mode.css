@@ -1,0 +1,168 @@
+/* Dark Mode Styles */
+:root {
+    --dark-bg: #0f0f0f;
+    --dark-text: #f7f7f7;
+    --dark-secondary: #1e1e1e;
+    --dark-accent: #FF1515;
+    --dark-border: #616161;
+    --dark-hover: #2a2a2a;
+    --light-text: #0c0c0c
+}
+body.dark-mode .phil-box {
+    border:1px solid var(--dark-border);
+}
+body.dark-mode #footer-section::after {
+background: linear-gradient(to bottom, rgb(15, 15, 15, 1) 0%, rgba(15, 15, 15, 0) 70%);
+  }
+  body.dark-mode #footer-section::before {
+ background-image: radial-gradient(#313131 1px, transparent 1px);
+
+  }
+body.dark-mode .section-header-28{
+  color: var(--dark-text);
+}
+body.dark-mode .image-container{
+    border: 1px solid #858585;
+}
+
+body.dark-mode .project-left::after {
+    content: url('../img/plus-dark.svg');
+    position: absolute;
+    right: -35px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+    width: 68px;
+}
+
+body.dark-mode .project-left:hover::after {
+    transform: translateY(-50%) rotate(270deg);
+}
+
+body.dark-mode .project-right::after {
+    content: url('../img/plus-dark.svg');
+    position: absolute;
+    left: -31px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition:
+  transform 0.3s ease-in-out;
+    z-index: 999;
+    width:68px;
+  }
+
+  body.dark-mode .project-right:hover::after {
+    transform: translateY(-50%) rotate(270deg);
+  }
+
+body.dark-mode #hero-section::after {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 30%, #0f0f0f 100%);
+}
+
+body.dark-mode h1.my-name, body.dark-mode h2.title{
+    color: var(--dark-text);
+}
+body.dark-mode .project-left:hover::before {
+    border-color: var(--dark-border);
+}
+body.dark-mode .project-right:hover::before {
+    border-color: var(--dark-border);
+  
+  }
+body.dark-mode #top-nav .container {
+    border-bottom-color:
+    var(--dark-border);
+  }
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+body.dark-mode #top-nav {
+    background-color: var(--dark-bg);
+    
+}
+
+body.dark-mode #top-nav ul a {
+    color: var(--dark-text);
+}
+
+body.dark-mode #top-nav ul a:hover::before {
+    background-color: var(--dark-accent);
+}
+
+body.dark-mode #top-nav ul li {
+    border-right-color: var(--dark-border);
+}
+
+body.dark-mode .section-header {
+    color: var(--dark-text);
+}
+
+body.dark-mode .description {
+    color: var(--dark-text);
+}
+
+body.dark-mode .taxonomy {
+    color: #888888;
+}
+
+body.dark-mode .gradient-button {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-text);
+    box-shadow: -1px 1px 0px 1px #f7f7f7;
+}
+
+body.dark-mode .gradient-button:hover {
+    background-color: var(--dark-bg);
+    box-shadow: -2px 2px 0px 1px #f7f7f7;
+}
+
+body.dark-mode .devider {
+    border-top-color: var(--dark-border);
+}
+
+body.dark-mode #footer-section {
+    background-color: var(--dark-bg);
+}
+
+body.dark-mode .feather-arrow-down {
+    stroke: var(--dark-text);
+}
+
+/* Theme Switcher Styles */
+.theme-switch {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.theme-switch svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke:var(--light-text);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.3s ease;
+}
+
+body.dark-mode .theme-switch svg {
+    stroke: var(--dark-text);
+}
+
+/* Sun Icon for Dark Mode */
+body.dark-mode .theme-switch svg path {
+    d: path("M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z");
+}
+
+/* Logo Dots Styles */
+body.dark-mode #logo-wave rect[fill="black"] {
+    fill: var(--dark-text);
+}
+
+/* Image Source Changes for Dark Mode */

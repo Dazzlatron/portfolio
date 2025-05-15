@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Dot Background</title>
+    
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/style-old.css">
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/parallax.css">
     <link rel="stylesheet" href="css/project-tiles.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/swiper-style.css">
+    <link rel="stylesheet" href="css/footer.css">
+    
+    <script src="js/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+ <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="js/logo-animation-aa.js"></script>
     <script>
-
-        // Initialize ScrollMagic controller
+    
+    // Initialize ScrollMagic controller
 var controller = new ScrollMagic.Controller();
 
 // Debug: Check if GSAP is working
@@ -24,31 +33,96 @@ console.log("GSAP test: Setting opacity to 0.5 on load");
 
 // Select all elements with the class 'parallax'
 document.querySelectorAll(".parallax").forEach((element) => {
-  // Create a ScrollMagic scene for each element
-  new ScrollMagic.Scene({
-    triggerElement: element, // Trigger when this element enters viewport
-    triggerHook: 0.85, // Start animation when 85% of element is visible
-    reverse: false // Animation only plays once
-  })
-  .setTween(gsap.to(element, { opacity: 1, y: 0, duration: 1, ease: "power2.out" })) // GSAP animation
-  .addIndicators({ name: "Fade & Slide Up" }) // Debugging indicators (optional)
-  .addTo(controller);
+// Create a ScrollMagic scene for each element
+new ScrollMagic.Scene({
+triggerElement: element, // Trigger when this element enters viewport
+triggerHook: 0.85, // Start animation when 85% of element is visible
+reverse: false // Animation only plays once
+})
+.setTween(gsap.to(element, { opacity: 1, y: 0, duration: 1, ease: "power2.out" })) // GSAP animation
+.addIndicators({ name: "Fade & Slide Up" }) // Debugging indicators (optional)
+.addTo(controller);
 });
 
 // Debugging
 console.log("ScrollMagic scenes created:", controller);
 
+// Fly-in from right animation
+document.querySelectorAll(".fly-in").forEach((element) => {
+new ScrollMagic.Scene({
+triggerElement: element,
+triggerHook: 0.8,
+reverse: false // Play only once
+})
+.setTween(gsap.fromTo(element, 
+{ x: 100, opacity: 0 }, 
+{ x: 0, opacity: 1, duration: 1, ease: "power2.out" }
+))
+.addIndicators({ name: "Fly-in from right" }) // Optional for debugging
+.addTo(controller);
+});
+
     </script>
 
 </head>
 <body>
-
-<section id="hero-section">
+  <nav id="top-nav">
+    <div class="container nav-style">
+        <img class="top-logo" src="img/Logo-animation_rollover_05.25.gif">
+        <ul>
+            
+            <li><a href="#projects">&nbsp;Projects&nbsp;</a></li>
+            <li><a href="#about-me">&nbsp;About me&nbsp;</a></li>
+            <li><a href="#contact">&nbsp;Contact&nbsp;</a></li>
+        
+        </ul>
+        <div class="theme-switch" title="Toggle dark mode">
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          
+        </div>
+    </div>
+   
+</nav>
+<section id="hero-section" class="hero">
     <canvas id="dotCanvas"></canvas>
     <div class="hero">
     <div class="logo-header" data-speed="0.3">
         <div class="logo-box">
-            <img class="hero-logo" src="img/dh-dots.svg">
+            <svg id="logo-wave" width="200" height="166" viewBox="0 0 200 166" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible; cursor: pointer;">
+				<style>
+				  rect {
+					transform-origin: center;
+				  }
+			  
+				  @keyframes pop {
+					0%, 100% { transform: scale(1); }
+					50% { transform: scale(1.25); }
+				  }
+				</style>
+			  
+				<!-- Your rects here -->
+				<rect y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="69.1289" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="69.1289" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="103.691" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="103.691" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="172.824" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="172.824" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="69.1289" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="69.1289" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="138.258" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="34.5625" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="34.5625" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="103.691" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="103.691" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="172.824" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="172.824" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="34.5625" width="26.7597" height="26.7597" rx="4" fill="#FF1515"/>
+			  </svg>
         </div>
         <div class="hero-text">
 <h1 class="my-name">
@@ -62,43 +136,21 @@ console.log("ScrollMagic scenes created:", controller);
        
     </div>
 </section>
-<nav id="top-nav" class="hidden">
-    <div class="container nav-style">
-        <img class="top-logo" src="img/dh-dots.svg">
-        <ul>
-            
-            <li><a href="#">&nbsp;Projects&nbsp;</a></li>
-            <li><a href="#">&nbsp;About me&nbsp;</a></li>
-            <li><a href="#">&nbsp;Testimonials&nbsp;</a></li>
-            <li><a href="#">&nbsp;Contact&nbsp;</a></li>
-        
-        </ul>
-    </div>
-   
-</nav>
-<section class="scroll">
+
+<div class="scroll">
     <div class="black-arrow">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#636363" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <polyline points="19 12 12 19 5 12"></polyline>
+      <span id="projects" class="fly-in-element trigger"></span>
+      <a href="#projects">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#0c0c0c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down">
+          <g>
+            <circle cx="12" cy="12" r="10" fill="#fbfbfb" stroke="none"/>
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </g>
       </svg>
-     
-    
-  </div>
-  </section>
-
-
-
-
-<div class="spacer"></div>
-<!-- More space to allow scrolling -->
- <div class="container">
- <h3 class="devider-heading">PROJECTS</h3>
-<div class="devider"><img class="red-line" src="img/red-line.svg"/></div>
+    </a>
+    </div>
 </div>
-
-
 
 
 <section id="reveal-elements" class="projects">
@@ -108,7 +160,7 @@ console.log("ScrollMagic scenes created:", controller);
         <div class="project project-left parallax" id="project1" data-speed="0.3">
         
             <div class="flex proj-wrap p-wrap-left-1">
-                <div class="number-col"><img class="number no-one" src="img/0-1.svg"></div>
+                <div class="number-col"><img class="number no-1" src="img/0-1.svg"></div>
                 <div class="right-of-number">
                     <div class="image-container">
                 <img class="thumbnail static-image" src="img/budgie-thumbnail.png">
@@ -126,7 +178,7 @@ console.log("ScrollMagic scenes created:", controller);
         <div class="project project-left parallax" id="project3" data-speed="0.2">
            
             <div class="proj-wrap p-wrap-left-2">
-                <img class="number no-three" src="img/0-3.svg">
+                <img class="number no-3" src="img/0-3.svg">
           <br>
           <div class="image-container">
           <img class="thumbnail-left thumb static-image" src="img/Demo-form-thumbnail.png">
@@ -142,7 +194,7 @@ console.log("ScrollMagic scenes created:", controller);
           <div class="project project-left parallax" id="project5" data-speed="0.3">
         
             <div class="flex proj-wrap p-wrap-left-3">
-                <div class="number-col"><img class="number no-one" src="img/0-5.svg"></div>
+                <div class="number-col"><img class="number no-5" src="img/0-5.svg"></div>
                 <div class="right-of-number">
                     <div class="image-container">
                 <img class="thumbnail static-image" src="img/LoopNet-thumbnail.png">
@@ -150,7 +202,24 @@ console.log("ScrollMagic scenes created:", controller);
             </div>
                 <p class="taxonomy">DIGITAL DESIGN&nbsp;&nbsp;|&nbsp;&nbsp;WEB DEVELOPMENT</p>
                 <h3 class="section-header">LoopNet UK migration and build</h3>
-                <p class="biriyani-light description">Supported the UK launch of LoopNet by migrating and adapting the website for a UK audience. As well as repurposing content and localised marketing materials, ensuring a smooth and relevant introduction of the brand to the UK market.   </p>
+                <p class="biriyani-light description">Supported the UK launch of LoopNet by migrating and adapting the website for a UK audience. As well as repurposing content and localised marketing materials, ensuring a smooth and relevant introduction of the brand to the UK&nbsp;market.   </p>
+                <a href="" class="gradient-button">View case study</a>
+              </div>
+            </div>
+        </div>
+         <!--## PROJECT 7 ##-->
+         <div class="project project-left parallax" id="project7" data-speed="0.3">
+        
+            <div class="flex proj-wrap p-wrap-left-1">
+                <div class="number-col"><img class="number no-7" src="img/0-7.svg"></div>
+                <div class="right-of-number">
+                    <div class="image-container">
+                <img class="thumbnail static-image" src="img/photography-brochure.png">
+               <!-- <img src="img/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
+            </div>
+                <p class="taxonomy">GRAPHIC DESIGN</p>
+                <h3 class="section-header">CoStar Photography Brochure</h3>
+                <p class="biriyani-light description">A printed brochure showcasing CoStar's architectural photography, including the new brand identity, with a fresh look and&nbsp;feel.   </p>
                 <a href="" class="gradient-button">View case study</a>
               </div>
             </div>
@@ -162,7 +231,7 @@ console.log("ScrollMagic scenes created:", controller);
         <!--## PROJECT 2 ##-->
         <div class="project project-right parallax" id="project2" data-speed="0.35">
           <div class="proj-wrap p-wrap-right-1">
-            <img class="number no-two" src="img/0-2.svg">
+            <img class="number no-2" src="img/0-2.svg">
       <br>
       <div class="image-container">
       <img class="thumbnail-left thumb static-image" src="img/funds-thumbnail.png">
@@ -170,16 +239,16 @@ console.log("ScrollMagic scenes created:", controller);
     </div>
     <p class="taxonomy">DIGITAL DESIGN&nbsp;&nbsp;|&nbsp;&nbsp;MARKETING</p>
       <h3 class="section-header">Funds information campaign</h3>
-      <p class="biriyani-light description">Concept, design and development of a campaign promoting CoStar’s new Funds Information product  feature which became our top-performing campaign of&nbsp;2024.  </p>
+      <p class="biriyani-light description">Concept, design and development of a campaign promoting CoStar's new Funds Information product  feature which became our top-performing campaign of&nbsp;2024.  </p>
     <a href="" class="gradient-button">View case study</a>
 </div>
         </div>
        
 
         <!--## PROJECT 4 ##-->
-        <div class="project project-right parallax" id="project6" data-speed="0.35">
+        <div class="project project-right parallax" id="project4" data-speed="0.35">
             <div class="proj-wrap p-wrap-right-3">
-              <img class="number no-four" src="img/0-4.svg">
+              <img class="number no-4" src="img/0-4.svg">
         <br>
         <div class="image-container">
         <img class="thumbnail-left thumb static-image" src="img/costar-website-reskin-thumbnail.png">
@@ -187,12 +256,12 @@ console.log("ScrollMagic scenes created:", controller);
       </div>
       <p class="taxonomy">WEB DESIGN & DEVELOPMENT</p>
         <h3 class="section-header">CoStar website redesign &&nbsp;rebuild</h3>
-        <p class="biriyani-light description">Redesign and rebuild of CoStar’s website, refreshing the look and feel in line with the company’s updated brand identity. Focused on modernising the visual design and enhancing the overall user experience.  </p>
+        <p class="biriyani-light description">Redesign and rebuild of CoStar's website, refreshing the look and feel in line with the company's updated brand identity. Focused on modernising the visual design and enhancing the overall user experience.  </p>
       <a href="" class="gradient-button">View case study</a>
   </div>
           </div>
            <!--## PROJECT 6 ##-->
-        <div class="project project-right parallax" id="project4" data-speed="0.3">
+        <div class="project project-right parallax" id="project6" data-speed="0.3">
         
             <div class="flex proj-wrap p-wrap-right-2">
                 
@@ -206,28 +275,397 @@ console.log("ScrollMagic scenes created:", controller);
                 <p class="biriyani-light description">Evaluating the Impact of a 'Book a Demo' Button on Engagement and Conversions  </p>
                 <a href="" class="gradient-button">View case study</a>
               </div>
-              <div class="number-col"><img class="number no-one" src="img/0-4.svg"></div>
+              <div class="number-col"><img class="number no-6" src="img/0-6.svg"></div>
             </div>
         </div>
     </div>
     <!--right column end-->
 </section>
-<div class="spacer"></div>
+<span id="about-me" class="fly-in-element trigger"></span>
+<div class="spacer-8rem"></div>
 
-<script src="js/gsap.min.js"></script>
+
+ <div class="spacer-6rem"></div>
+<section class="about-me">
+  <div class="grid-wrapper">
+    <div class="row-1">
+      <div class="col">
+        <img class="profile-pic" src="img/profile-pic.png"/>
+       </div>
+       <div class="col">
+        <h3 class="small-header">ABOUT ME</h3>
+        <h2 class="section-header-28">Daryn Higginson</h2>
+        <p class="biriyani-light description">With over a decade of experience in digital design and web development across marketing agencies and in-house teams, I've built a strong foundation in visual design, combined with technical expertise. More recently, I transitioned into a UI/UX developer role, which allows me to combine my love for problem-solving and user-centered, interactive design. <br><br>I leverage research and data to make informed decisions that enhance user experiences and I love to collaborate and create solutions that are both functional and engaging, and I take pride in continuously learning with every project.
+      <br><br>
+          In my spare time you can find me cooking, making music, cycling, reading, watching movies, and playing video games. </p>
+       </div>  
+    </div>
+    
+    <div class="heading row">
+      <div class="spacer-4rem"></div>
+      <h3 class="small-header">MY PHILOSOPHY</h3>
+      <h2 class="section-header-28">Where Design and Function Meet</h2>
+      <div class="spacer-3rem"></div>
+    </div>
+    
+    <div class="row row-2">
+     
+      <div class="col phil-col">
+        <div class="phil-box creativity"><img class="phil-icon creativity-icon" alt="creativity" src="img/creativity-icon.svg"/>
+        <h3 class="section-header">Creativity</h3>
+        <p class="biriyani-light description"> I put creativity at the heart of everything I do. I use it to solve problems, develop intuitive experiences, and create engaging designs. Creativity made the music I listen to while I work—it drives and inspires me. What would the world be like without music, art, and&nbsp;expression?</p>
+      </div>
+    </div>
+      <div class="col fixed phil-col"><img class="red-plus" alt="plus" src="img/red-plus-28.svg"></div>
+      <div class="col phil-col">
+        <div class="phil-box technology"><img class="phil-icon technology-icon" alt="technology" src="img/technology-icon.svg"/>
+          <h3 class="section-header">Technology</h3>
+          <p class="biriyani-light description">I use technology to bring ideas to life, communicate, and interact in ways we never thought possible. With technology I can offer better solutions and create better, more fulfilling experiences. Technology gave me the headphones I listen to music on while I&nbsp;work. </p>
+        </div>
+      </div>
+      <div class="col fixed phil-col"><img class="red-equal" alt="equals" src="img/red-equal.svg"></div>
+      <div class="col phil-col">
+        <div class="phil-box magic"><img class="phil-icon magic-icon" alt="magic" src="img/magic-icon.svg"/>
+          <h3 class="section-header">Magic</h3>
+          <p class="biriyani-light description"> I believe that the combination of these two seemingly opposite forces can drive innovation, spark meaningful experiences, and solve real-world problems. This is why I keep honing my creativity and expanding my technical know-how. Curiosity is&nbsp;key.</p>
+        </div>
+      </div>
+    </div>
+    <div class="heading row">
+      <div class="spacer-4rem"></div>
+      <h3 class="small-header txt-center">TESTIMONIALS</h3>
+      <h2 class="section-header-28 txt-center">What my colleagues have to say about me</h2>
+      <div class="spacer-3rem"></div>
+      <section class="swipe-container">
+        <div class="testimonial mySwiper">
+          <div class="testi-content swiper-wrapper">
+            <div class="slide swiper-slide">
+              <img src="img/david-hamilton.jpg" alt="" class="image" />
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
+                saepe provident dolorem a quaerat quo error facere nihil deleniti
+                eligendi ipsum adipisci, fugit, architecto amet asperiores
+                doloremque deserunt eum nemo.
+              </p>
+  
+              <i class="bx bxs-quote-alt-left quote-icon"></i>
+  
+              <div class="details">
+                <span class="name">David Hamilton</span>
+                <span class="job">Marketing Director, CoStar</span>
+              </div>
+            </div>
+            <div class="slide swiper-slide">
+              <img src="img/david-hamilton.jpg" alt="" class="image" />
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
+                saepe provident dolorem a quaerat quo error facere nihil deleniti
+                eligendi ipsum adipisci, fugit, architecto amet asperiores
+                doloremque deserunt eum nemo.
+              </p>
+  
+              <i class="bx bxs-quote-alt-left quote-icon"></i>
+  
+              <div class="details">
+                <span class="name">David Hamilton</span>
+                <span class="job">Marketing Director, CoStar</span>
+              </div>
+            </div>
+            <div class="slide swiper-slide">
+              <img src="img/david-hamilton.jpg" alt="" class="image" />
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
+                saepe provident dolorem a quaerat quo error facere nihil deleniti
+                eligendi ipsum adipisci, fugit, architecto amet asperiores
+                doloremque deserunt eum nemo.
+              </p>
+  
+              <i class="bx bxs-quote-alt-left quote-icon"></i>
+  
+              <div class="details">
+                <span class="name">David Hamilton</span>
+                <span class="job">Marketing Director, CoStar</span>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next nav-btn"></div>
+          <div class="swiper-button-prev nav-btn"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+    </div>
+</div>
+</section>
+
+<!--<img class="side-image" src="img/0-1.svg"/>-->
+<span id="contact" class="fly-in-element trigger"></span>
+<footer id="footer-section">
+
+  <div class="spacer-4rem"></div>
+  <!-- More space to allow scrolling -->
+   <div class="container section-title">
+   <h3 class="devider-heading">CONTACT ME</h3>
+  <div class="devider"><img class="red-line" src="img/red-line.svg"/></div>
+  </div>
+    <div class="footer-content">
+      <div class="container">
+      <h2 class="section-header-28 ">Please feel free to get in touch</h2>
+      <div class="row row-footer">
+        <div class="col">
+          <div class="form-container">
+            <form>
+              <div class="form-row">
+                <div>
+                  
+                  <input type="text" id="first-name" name="first-name" required placeholder="Name">
+                </div>
+                <div>
+                 
+                  <input type="email" id="email" name="email" required placeholder="Email">
+                </div>
+              </div>
+        
+              <div class="form-row" style="flex-direction: column;">
+                
+                <textarea id="message" name="message" required placeholder="Message"></textarea>
+              </div>
+        
+              <div class="submit-button">
+                <input type="submit" value="Submit">
+              </div>
+            </form>
+          </div>
+        </div>     
+        <div class="col">
+          <div class="row icon-row">
+<img class="ico-email" src="img/email-icon.svg"/>
+          
+          <p class="description">dazgraphic@gmail.com</p></div>
+          <div class="row icon-row">
+          <img class="ico-linkedin" src="img/linkedin-icon.svg"/>
+          <p class="description">LinkedIn</p>
+        </div>
+          </div>
+        </div>
+        <div class="col">
+          
+        </div>
+      </div>
+    </div>
+    </div>
+</footer>
+
+<!-- Load scripts in correct order -->
+
 <script src="js/ScrollMagic.min.js"></script>
 <script src="js/animation.gsap.min.js"></script>
 <script src="js/debug.addIndicators.min.js"></script>
-<script>document.addEventListener("DOMContentLoaded", function () {
- document.addEventListener("DOMContentLoaded", function () {
-    console.log("ScrollMagic is now available:", typeof ScrollMagic); // Should log "function"
-
-    var controller = new ScrollMagic.Controller(); // If this still fails, ScrollMagic is not accessible
-});
-});</script>
 <script src="js/parallax.js"></script>
 <script src="js/dots-background.js"></script>
 <script src="js/nav-appear.js"></script>
 
+
+<script src="js/theme-switch.js"></script>x 
+<script src="js/dark-mode-images.js"></script>
+<script>
+    const svg = document.getElementById('logo-wave');
+    const rects = svg.querySelectorAll('rect');
+  
+    function playWave() {
+      rects.forEach(rect => {
+        // Remove any previous animation
+        rect.style.animation = 'none';
+        rect.offsetHeight; // force reflow
+  
+        // Random delay within 0.5s
+        const delay = Math.random() * 0.5;
+  
+        // Set the animation
+        rect.style.animation = `pop 0.5s ease-in-out ${delay}s 1`;
+  
+        // Cleanup after animation finishes (delay + 0.5s duration)
+        setTimeout(() => {
+          rect.style.animation = 'none';
+        }, (delay + 0.9) * 1000);
+      });
+    }
+  
+    // Repeat every 8 seconds
+    setInterval(playWave, 24000);
+  
+    // Trigger on page load
+    playWave();
+  
+    // Trigger on hover
+    svg.addEventListener('mouseenter', playWave);
+  </script>
+ <script>
+let isReplaying = false; // Lock so it doesn't spam replay
+
+function replayTopLogo() {
+  const logo = document.querySelector('.top-logo');
+  if (logo && !isReplaying) {
+    isReplaying = true;
+    const src = logo.getAttribute('src');
+    logo.style.opacity = 0;
+
+    setTimeout(() => {
+      logo.setAttribute('src', src.split('?')[0] + '?' + new Date().getTime());
+      logo.style.opacity = 1;
+      setTimeout(() => {
+        isReplaying = false; // Unlock after animation finishes
+      }, 1000); // Assume gif animation is under 1 second, adjust if needed
+    }, 100);
+  }
+}
+
+window.addEventListener('load', function() {
+  const logo = document.querySelector('.top-logo');
+
+  if (logo) {
+    // Play once after 0.5s
+    setTimeout(replayTopLogo, 300);
+
+    // Play every 12 seconds
+    setInterval(replayTopLogo, 8000);
+
+    // Play on hover
+    logo.addEventListener('mouseenter', replayTopLogo);
+
+    // Observe body class changes for dark-mode toggle
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          replayTopLogo();
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      attributes: true
+    });
+  }
+});
+
+
+
+ </script>
+   <!-- Swiper JS -->
+   <script src="js/swiper-bundle.min.js"></script>
+
+   <!-- JavaScript -->
+   <script src="js/swiper-script.js"></script>
+    <!-- Before </body> -->
+  <!-- Add this right before </body> -->
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const philCols = document.querySelectorAll('.row-2 .phil-col');
+  let hasAnimated = false;
+  
+  // Set initial state
+  resetAnimation();
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Animate in when scrolling down
+        if (!hasAnimated) {
+          animateColumns();
+          hasAnimated = true;
+        }
+      } else {
+        // Reset when scrolling back up
+        if (hasAnimated && entry.boundingClientRect.top > 0) {
+          resetAnimation();
+          hasAnimated = false;
+        }
+      }
+    });
+  }, {
+    rootMargin: '0px 0px -250px 0px',
+    threshold: 0.1
+  });
+
+  // Helper functions
+  function animateColumns() {
+    philCols.forEach((col, index) => {
+      setTimeout(() => {
+        col.style.opacity = '1';
+        col.style.transform = 'translateY(0)';
+      }, index * 200);
+    });
+  }
+  
+  function resetAnimation() {
+    philCols.forEach(col => {
+      col.style.opacity = '0';
+      col.style.transform = 'translateY(20px)';
+      col.style.transition = 'none'; // Disable transition for reset
+      
+      // Re-enable transition after reset
+      setTimeout(() => {
+        col.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      }, 50);
+    });
+  }
+
+  // Observe the row
+  const row = document.querySelector('.row-2');
+  if (row) observer.observe(row);
+});
+  </script>
+  <script>
+    window.addEventListener('scroll', function() {
+  const nav = document.getElementById('top-nav');
+  const hero = document.querySelector('.hero');
+  
+  if (window.scrollY > hero.offsetHeight) {
+    nav.style.transform = 'translateY(0)';
+    nav.style.opacity = '1';
+  } else {
+    nav.style.transform = 'translateY(-100%)';
+    nav.style.opacity = '0';
+  }
+});
+  </script>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.getElementById('top-nav');
+  const hero = document.querySelector('.hero');
+  
+  // If no hero exists, show nav immediately
+  if (!hero) {
+    nav.classList.add('nav-visible');
+    return;
+  }
+
+  // Create intersection observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        // Hero is out of view - show nav
+        nav.classList.add('nav-visible');
+      } else {
+        // Hero is in view - hide nav
+        nav.classList.remove('nav-visible');
+      }
+    });
+  }, {threshold: 0.1});
+
+  // Observe the hero section
+  observer.observe(hero);
+  
+  // Fallback for older browsers
+  window.addEventListener('scroll', function() {
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    if (window.scrollY > heroBottom) {
+      nav.classList.add('nav-visible');
+    } else {
+      nav.classList.remove('nav-visible');
+    }
+  });
+});
+  </script>
+  
 </body>
 </html>
