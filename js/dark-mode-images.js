@@ -48,9 +48,15 @@ function updateImagesForDarkMode(isDarkMode) {
         '.top-logo': {
             light: 'img/Logo-animation_rollover.gif',
             dark: 'img/Logo-animation_rollover-dark.gif'
+        },
+        '.plus-icon': {
+            light: 'img/red-plus-28.svg',
+            dark: 'img/red-plus-28-dark.svg'
+        },
+        '.equals-icon': {
+            light: 'img/red-equal.svg',
+            dark: 'img/red-equal-dark.svg'
         }
-       
-
     };
 
     // Update each image
@@ -58,6 +64,9 @@ function updateImagesForDarkMode(isDarkMode) {
         const element = document.querySelector(selector);
         if (element) {
             element.src = isDarkMode ? urls.dark : urls.light;
+            if (selector === '.top-logo') {
+                element.style.opacity = 1;
+            }
         }
     });
 }

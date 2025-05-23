@@ -5,7 +5,7 @@
     <style>
       .st0 {
         fill: none;
-        stroke: #121212;
+        stroke: #f7f7f7;
         stroke-linecap: round;
         stroke-width: 3px;
       }

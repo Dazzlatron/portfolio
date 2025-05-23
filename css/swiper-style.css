@@ -81,7 +81,7 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 .swiper-pagination-bullet-active {
-  background-color: #4070f4;
+  background-color: #FF1515;
 }
 @media screen and (max-width: 768px) {
   .slide p {

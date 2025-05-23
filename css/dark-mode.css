@@ -1,23 +1,44 @@
 /* Dark Mode Styles */
 :root {
-    --dark-bg: #0f0f0f;
-    --dark-text: #f7f7f7;
+    --dark-bg: #121212;
+    --dark-text: #fbfbfb;
     --dark-secondary: #1e1e1e;
     --dark-accent: #FF1515;
     --dark-border: #616161;
     --dark-hover: #2a2a2a;
-    --light-text: #0c0c0c
+    --light-text: #121212;
+    --light-dark-border: #1d1d1d;
+    --light-bg: #fbfbfb;
+    --light-border: #d1d1d1;
+    --red-accent: #FF1515;
+  }
+
+  body.dark-mode .swiper-pagination-bullet{
+    background-color: var(--red-accent);
+  }
+  body.dark-mode .details .name {
+    color: var(--dark-text);
+  }
+  body.dark-mode .details .job {
+    color: var(--dark-text);
+  }
+  body.dark-mode .slide p {
+    color: var(--dark-text);
+  }
+body.dark-mode h3.small-header {
+    color: var(--dark-text);
+}
+body.dark-mode #footer-bg::before {
+    background-image: radial-gradient(#313131 1px, transparent 1px);
+}
+body.dark-mode #footer-bg::after {
+    background: linear-gradient(to bottom, var(--dark-bg) 40%, rgba(18, 18, 18, 0)90%);
 }
 body.dark-mode .phil-box {
     border:1px solid var(--dark-border);
 }
-body.dark-mode #footer-section::after {
-background: linear-gradient(to bottom, rgb(15, 15, 15, 1) 0%, rgba(15, 15, 15, 0) 70%);
-  }
-  body.dark-mode #footer-section::before {
- background-image: radial-gradient(#313131 1px, transparent 1px);
 
-  }
+
 body.dark-mode .section-header-28{
   color: var(--dark-text);
 }
@@ -57,7 +78,7 @@ body.dark-mode .project-right::after {
   }
 
 body.dark-mode #hero-section::after {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 30%, #0f0f0f 100%);
+    background: linear-gradient(to bottom, rgba(18, 18, 18, 0) 50%, #121212 90%);
 }
 
 body.dark-mode h1.my-name, body.dark-mode h2.title{
@@ -80,8 +101,7 @@ body.dark-mode {
 }
 
 body.dark-mode #top-nav {
-    background-color: var(--dark-bg);
-    
+    border-right-color: var(--dark-border);
 }
 
 body.dark-mode #top-nav ul a {
@@ -93,7 +113,7 @@ body.dark-mode #top-nav ul a:hover::before {
 }
 
 body.dark-mode #top-nav ul li {
-    border-right-color: var(--dark-border);
+    border-bottom-color: var(--dark-border);
 }
 
 body.dark-mode .section-header {
@@ -108,16 +128,16 @@ body.dark-mode .taxonomy {
     color: #888888;
 }
 
-body.dark-mode .gradient-button {
+body.dark-mode .gradient-button, body.dark-mode .submit-button {
     background-color: var(--dark-bg);
     color: var(--dark-text);
     border-color: var(--dark-text);
-    box-shadow: -1px 1px 0px 1px #f7f7f7;
+    box-shadow: -1px 1px 0px 1px #fbfbfb;
 }
 
-body.dark-mode .gradient-button:hover {
+body.dark-mode .gradient-button:hover, body.dark-mode .submit-button:hover {
     background-color: var(--dark-bg);
-    box-shadow: -2px 2px 0px 1px #f7f7f7;
+    box-shadow: -2px 2px 0px 1px #fbfbfb;
 }
 
 body.dark-mode .devider {
@@ -136,7 +156,7 @@ body.dark-mode .feather-arrow-down {
 .theme-switch {
     display: flex;
     align-items: center;
-    margin-left: 20px;
+    margin-left: auto;
     cursor: pointer;
 }
 
@@ -166,3 +186,49 @@ body.dark-mode #logo-wave rect[fill="black"] {
 }
 
 /* Image Source Changes for Dark Mode */
+
+/* Toggle Switch Styles */
+.toggle-switch {
+  width: 43px;
+  height: 20px;
+  border-radius: 19px;
+  border: 1px solid var(--light-dark-border);
+  background: var(--light-bg);
+  position: relative;
+  transition: background 0.3s, border 0.3s;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-ball {
+  width: 12px;
+  height: 12px;
+  background: var(--light-text);
+  border-radius: 50%;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  transition: left 0.3s, background 0.3s;
+}
+
+body.dark-mode .toggle-switch {
+  border: 1px solid var(--dark-text);
+  background: var(--dark-bg);
+}
+
+body.dark-mode .toggle-ball {
+  background: var(--dark-text);
+  left: 25px;
+}
+
+body.dark-mode .side-nav {
+  background:   var(--dark-bg);
+  color: var(--dark-text);
+
+}
+
+body.dark-mode .main-content {
+  background: var(--dark-bg);
+}

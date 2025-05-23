@@ -7,7 +7,7 @@ let ripples = [];
 
 const spacing = 12;
 const minRadius = 1;
-const maxRadius = 1.8;
+const maxRadius = 1.6;
 const rippleRadius = 150;
 const rippleDuration = 400;
 
@@ -19,7 +19,7 @@ function easeInOutCubic(t) {
 }
 
 function getBaseColor() {
-    return document.body.classList.contains('dark-mode') ? "#313131" : "#DADADA";
+    return document.body.classList.contains('dark-mode') ? "#313131" : "#c5c5c5";
 }
 
 function resizeCanvas() {
@@ -68,9 +68,9 @@ function animateDots(currentTime) {
 const isDark = document.body.classList.contains('dark-mode');
 
 if (isDark) {
-    baseShade = 49; // darker base
+    baseShade = 42; // darker base for dark mode
 } else {
-    baseShade = 226; // lighter base
+    baseShade = 205; // darker base for light mode
 }
 shade = baseShade;
 
@@ -94,7 +94,6 @@ if (closestRipple) {
     // Clamp between 0–255
     shade = Math.max(0, Math.min(255, Math.round(shade)));
 }
-
 
         dot.size = size;
         dot.opacity = opacity;

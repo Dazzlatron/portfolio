@@ -1,15 +1,35 @@
-<svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="44" cy="44" r="44" fill="#FBFBFB"/>
-<path d="M43.5 23C34.3873 23 27 30.3873 27 39.5C27 47.5 31.6955 50.1351 35 55C37.9334 59.3185 34.2148 63 38.5 63H43.5H44H49C53.2852 63 49.5666 59.3185 52.5 55C55.8045 50.1351 60.5 47.5 60.5 39.5C60.5 30.3873 53.1127 23 44 23H43.5Z" stroke="#FF1515" stroke-width="2"/>
-<path d="M14 39.5H22" stroke="#FF1515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M65 39.5H73" stroke="#FF1515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M22.6406 60.3599L28.2975 54.703" stroke="#FF1515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M58.7031 24.2974L64.36 18.6405" stroke="#FF1515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M64.3594 60.3599L58.7025 54.703" stroke="#FF1515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M28.2969 24.2974L22.64 18.6405" stroke="#FF1515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M43.5 18L43.5 10" stroke="#FF1515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M37.0002 68.4982L50.0854 66.4914" stroke="#FF1515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M37.0002 72.4982L50.0854 70.4914" stroke="#FF1515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M43.5 79C45.0344 79 46.3382 78.1536 46.8107 76.9759C47.0163 76.4633 46.5523 76 46 76H41C40.4477 76 39.9837 76.4633 40.1893 76.9759C40.6618 78.1536 41.9656 79 43.5 79Z" stroke="#FF1515" stroke-width="2"/>
-<path d="M36 43.66L46.3226 28L44.7742 38.8002H52L40.129 55L42.7097 43.66H36Z" stroke="#FF1515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 88 88">
+  <!-- Generator: Adobe Illustrator 29.5.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 141)  -->
+  <defs>
+    <style>
+      .st0, .st1 {
+        fill: none;
+        stroke: #ff1515;
+        stroke-width: 2px;
+      }
+
+      .st1 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .st2 {
+        fill: #f7f7f7;
+      }
+    </style>
+  </defs>
+  <circle class="st2" cx="44" cy="44" r="44"/>
+  <path class="st0" d="M43.5,23c-9.11,0-16.5,7.39-16.5,16.5,0,8,4.7,10.64,8,15.5,2.93,4.32-.79,8,3.5,8h10.5c4.29,0,.57-3.68,3.5-8,3.3-4.86,8-7.5,8-15.5,0-9.11-7.39-16.5-16.5-16.5h-.5Z"/>
+  <path class="st1" d="M14,39.5h8"/>
+  <path class="st1" d="M65,39.5h8"/>
+  <path class="st1" d="M22.64,60.36l5.66-5.66"/>
+  <path class="st1" d="M58.7,24.3l5.66-5.66"/>
+  <path class="st1" d="M64.36,60.36l-5.66-5.66"/>
+  <path class="st1" d="M28.3,24.3l-5.66-5.66"/>
+  <path class="st1" d="M43.5,18v-8"/>
+  <path class="st1" d="M37,68.5l13.09-2.01"/>
+  <path class="st1" d="M37,72.5l13.09-2.01"/>
+  <path class="st0" d="M43.5,79c1.53,0,2.84-.85,3.31-2.02.21-.51-.26-.98-.81-.98h-5c-.55,0-1.02.46-.81.98.47,1.18,1.78,2.02,3.31,2.02Z"/>
+  <path class="st1" d="M36,43.66l10.32-15.66-1.55,10.8h7.23l-11.87,16.2,2.58-11.34h-6.71Z"/>
 </svg>
