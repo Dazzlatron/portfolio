@@ -19,7 +19,7 @@ function easeInOutCubic(t) {
 }
 
 function getBaseColor() {
-    return document.body.classList.contains('dark-mode') ? "#313131" : "#c5c5c5";
+    return document.body.classList.contains('dark-mode') ? "#313131" : "#D5D5D5";
 }
 
 function resizeCanvas() {
@@ -68,7 +68,7 @@ function animateDots(currentTime) {
 const isDark = document.body.classList.contains('dark-mode');
 
 if (isDark) {
-    baseShade = 42; // darker base for dark mode
+    baseShade = 52; // darker base for dark mode
 } else {
     baseShade = 205; // darker base for light mode
 }
@@ -85,7 +85,7 @@ if (closestRipple) {
 
     if (isDark) {
         // Lighten in dark mode, up to rgb(196, 195, 195)
-        shade = baseShade + pulse * (190 - baseShade);
+        shade = baseShade + pulse * (180 - baseShade);
     } else {
         // Darken slightly in light mode
         shade = baseShade - pulse * 120;

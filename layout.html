@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Layout</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+
+   
+
+    .center-content {
+      max-width: 1420px;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .main-layout {
+      display: grid;
+      grid-template-columns: 15% 85%;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .main-col-1 {
+      background: #f4f4f4;
+    }
+
+    .main-col-2 {
+      background: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .center-content {
+        width: 85%;
+      }
+
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .main-col-1 {
+        display: none;
+      }
+    }
+    @media (min-width: 540px) {
+        .hamburger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+    header.center-content{
+        display: none;
+    }
+    }
+    @media (max-width: 540px) {
+        .hamburger {
+        display: flex;
+      }
+      header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+    }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="center-content">
+    <div class="logo">MyLogo</div>
+    <div class="hamburger" aria-label="Open navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <div class="center-content">
+    <div class="main-layout">
+      <div class="main-col-1">
+        <aside class="side-nav">
+          <!-- Navigation goes here -->
+        </aside>
+      </div>
+      <div class="main-col-2">
+        <main class="main-content">
+          <!-- Main content goes here -->
+        </main>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
