@@ -1,7 +1,6 @@
 let isReplaying = false; // Lock so it doesn't spam replay
 
-function replayTopLogo() {
-  const logo = document.querySelector('.top-logo');
+function replayLogo(logo) {
   if (logo && !isReplaying) {
     isReplaying = true;
     const src = logo.getAttribute('src');
@@ -15,23 +14,25 @@ function replayTopLogo() {
 }
 
 window.addEventListener('load', function() {
-  const logo = document.querySelector('.top-logo');
+  const logos = document.querySelectorAll('.top-logo, .top-nav-logo');
 
-  if (logo) {
+  if (logos.length > 0) {
     // Play once after 0.5s
-    setTimeout(replayTopLogo, 300);
+    setTimeout(() => logos.forEach(replayLogo), 300);
 
     // Play every 12 seconds
-    setInterval(replayTopLogo, 8000);
+    setInterval(() => logos.forEach(replayLogo), 8000);
 
     // Play on hover
-    logo.addEventListener('mouseenter', replayTopLogo);
+    logos.forEach(logo => {
+      logo.addEventListener('mouseenter', () => replayLogo(logo));
+    });
 
     // Observe body class changes for dark-mode toggle
     const observer = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          replayTopLogo();
+          logos.forEach(replayLogo);
         }
       });
     });

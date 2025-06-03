@@ -11,6 +11,44 @@
   --light-border: #d1d1d1;
   --red-accent: #FF1515;
 }
+#contact {
+  position: absolute;
+  margin-top: -50px;
+}
+#about-me {
+  position: absolute;
+  margin-top: -70px;
+}
+/* Base header style */
+.top-nav-logo {
+  width: 50px;
+}
+.header {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+}
+
+/* Hidden state */
+.header.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.header.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+/* ----------- HERE ----------- */
+#projects {
+  position: absolute;
+  margin-top: 7rem;
+}
 .map-container {
   z-index: 99;
 }
@@ -19,6 +57,8 @@
   height: 3px;
   background: #333;
 }
+
+
 .center-content {
   max-width: 1420px;
   width: 90%;
@@ -48,15 +88,12 @@
   }
 }
 
-
-
-
-
-
 #map {
-  width: 100%;
+  width: 95%;
   border-radius: 5px;
   min-height: 450px;
+  border: 1px solid var(--light-border);
+  margin: 0 auto;
 }
 .ico-email {
   width: 35px;
@@ -160,7 +197,6 @@ z-index: 1;
   float: left;
 }
 .top-logo {
-  opacity: 0;
   width:75px;
   margin: 0 0 0 auto;
   will-change: transform, opacity;
@@ -186,7 +222,6 @@ body {
   color: #000;
   border: none;
   border-radius: 5px;
-  background: var(--red-accent);
   cursor: pointer;
   text-decoration: none;
   transition: background 0.5s ease-in-out, transform 100ms ease-in-out, box-shadow 100ms ease-in-out;
@@ -195,7 +230,7 @@ body {
   display: block;
   box-shadow: -1px 1px 0px 1px #000;
   line-height: 1.5;
-  margin-top: 35px;
+  margin-bottom: 35px;
   position: relative;
   overflow: hidden;
 }
@@ -308,7 +343,7 @@ body {
     flex-direction: column;
   }
   .side-nav, .main-content {
-    width: 100vw;
+    width: 100%;
     min-width: 0;
     max-width: none;
     border-right: none;
@@ -431,6 +466,10 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
+.spacer-1-5rem{
+  margin-top: 1.5rem;
+
+}
 .spacer-3rem{
   margin-top: 3rem;
   }
@@ -446,16 +485,7 @@ margin-top: 4rem;
     .spacer-10rem{
       margin-top: 10rem;
     }
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
 
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-}
 
 
 
@@ -548,17 +578,7 @@ main {
     will-change: transform, opacity;
 }
 
-@media screen and (min-width: 992px) {
-    .container{
-      max-width: 1160px;
-      margin:auto;
-      position: relative;
-     }
-     .projects {
-      max-width: 1100px;
-      width:100%;
-     }
-    }
+
 .section-title{
   z-index:999;
 }
@@ -674,4 +694,40 @@ align-items: center;
 padding: 1rem;
 border-bottom: 1px solid #ccc;
 }
+}
+
+.arrow-svg.arrow-down {
+  transform: rotate(0deg);
+}
+.arrow-svg.arrow-right {
+  transform: rotate(90deg);
+}
+.arrow-svg.arrow-up {
+  transform: rotate(-90deg);
+}
+
+.project-left::after,
+.project-right::after {
+  content: '';
+  position: absolute;
+  right: -27.5px; /* half the width of the SVG (55px) */
+  top: 50%;
+  width: 55px;
+  height: 55px;
+  background: url('../img/plus.svg') no-repeat center center / contain;
+  transform: translateY(-50%) rotate(0deg);
+  transform-origin: 50% 50%;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+  z-index: 999;
+  pointer-events: none;
+  display: block;
+}
+
+.project-left:hover::after,
+.project-right:hover::after {
+  animation: spin 0.6s linear;
+}
+
+@keyframes spin {
+  100% { transform: translateY(-50%) rotate(360deg); }
 }

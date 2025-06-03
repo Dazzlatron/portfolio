@@ -2,8 +2,12 @@
 function updateImagesForDarkMode(isDarkMode) {
     const images = {
         '.top-logo': {
-            light: 'img/dh-dots.svg',
-            dark: 'img/dh-dots-dark.svg'
+            light: 'img/Logo-animation_rollover.gif',
+            dark: 'img/Logo-animation_rollover-dark.gif'
+        },
+        '.top-nav-logo': {
+            light: 'img/Logo-animation_rollover.gif',
+            dark: 'img/Logo-animation_rollover-dark.gif'
         },
         '.no-1': {
             light: 'img/0-1.svg',
@@ -45,10 +49,6 @@ function updateImagesForDarkMode(isDarkMode) {
             light: 'img/magic-icon.svg',
             dark: 'img/magic-icon-dark.svg'
         },
-        '.top-logo': {
-            light: 'img/Logo-animation_rollover.gif',
-            dark: 'img/Logo-animation_rollover-dark.gif'
-        },
         '.plus-icon': {
             light: 'img/red-plus-28.svg',
             dark: 'img/red-plus-28-dark.svg'
@@ -64,7 +64,7 @@ function updateImagesForDarkMode(isDarkMode) {
         const element = document.querySelector(selector);
         if (element) {
             element.src = isDarkMode ? urls.dark : urls.light;
-            if (selector === '.top-logo') {
+            if (selector === '.top-logo' || selector === '.top-nav-logo') {
                 element.style.opacity = 1;
             }
         }

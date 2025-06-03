@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Dot Background</title>
-    
+    <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
+<link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/style-old.css">
@@ -15,14 +16,15 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/swiper-style.css">
     <link rel="stylesheet" href="css/footer.css">
-    
+    <link rel="stylesheet" href="css/device-styles.css">
     <script src="js/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="js/logo-animation-aa.js"></script>
-    <script>
+    <script src="js/sticky-scroll.js"></script>
+  <script>
      // Initialize ScrollMagic controller
 var controller = new ScrollMagic.Controller();
 
@@ -77,7 +79,29 @@ document.querySelectorAll(".fly-in").forEach((element) => {
 
 </head>
 <body>
- 
+  <header id="mobile-tablet-header" class="header hidden">
+    <div class="nav-wrapper">
+      <div class="logo">
+        <img class="top-nav-logo" src="img/Logo-animation_rollover_05.25.gif" alt="Logo">
+      </div>
+      
+      <nav class="main-nav">
+        <div class="menu-icon">&#9776;</div> <!-- Hamburger -->
+        <ul class="nav-links">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about-me">About me</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Resume</a></li>
+        </ul>
+      </nav>
+      <div class="theme-switch" title="Toggle dark mode">
+        <div class="toggle-switch">
+          <div class="toggle-ball"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
 <section id="hero-section" class="hero">
     <canvas id="dotCanvas"></canvas>
     <div class="hero">
@@ -266,7 +290,7 @@ document.querySelectorAll(".fly-in").forEach((element) => {
       
               <!--## PROJECT 4 ##-->
               <div class="project project-right parallax" id="project4" data-speed="0.35">
-                  <div class="proj-wrap p-wrap-right-3">
+                  <div class="proj-wrap p-wrap-right-2">
                     <img class="number no-4" src="img/0-4.svg" loading="lazy">
               <br>
               <div class="image-container">
@@ -301,11 +325,11 @@ document.querySelectorAll(".fly-in").forEach((element) => {
           <!--right column end-->
       </section>
       <section class="about-me">
-        <span id="about-me" class="anchor"></span>
-        <div class="spacer-8rem"></div>
         
+        <div class="spacer-8rem"></div>
+        <span id="about-me" class="anchor"></span>
       
-       <div class="spacer-6rem"></div>
+      
        
         <div class="grid-wrapper parallax">
           <div class="row-1 sequence" data-speed="0.1">
@@ -315,15 +339,17 @@ document.querySelectorAll(".fly-in").forEach((element) => {
              <div class="col col-about-2">
               <h3 class="small-header align-left">ABOUT ME</h3>
               <h2 class="section-header-28">Daryn Higginson<span class="rdot">.</span></h2>
-              <div class="row icon-row">
+              <div class="row icon-row hide-on-ipad">
                 <img class="ico-location" src="img/location-icon-1.svg" loading="lazy"/>
                 <p class="description">London, United Kingdom</p>
               </div>
-              <p class="biriyani-light description">With over a decade of experience in digital design and web development—working across marketing agencies and in-house teams—I’ve built a solid foundation in both visual design and technical know-how. Lately, I’ve stepped into a UI/UX developer role, where I get to blend creativity, problem-solving, and tech to craft applications that are thoughtful, intuitive, and backed by research and data.
-                <br><br>I love collaborating with others to come up with solutions that are not just functional, but also a joy to use. I’m also big on learning—whether it’s picking up new design trends, diving into the latest tech, or experimenting with music production.
-                <br><br>Outside of work, you’ll usually find me cooking, making music, cycling, gardening, reading, watching movies, or playing video games (sometimes all in one weekend).
+              <img class="profile-pic-wrap hide-on-desktop" src="img/profile-pic.png" loading="lazy">
+              <p class="biriyani-light description">With over a decade of experience in digital design and web development—working across marketing agencies and in-house teams—I've built a solid foundation in both visual design and technical know-how. Lately, I've stepped into a UI/UX developer role, where I get to blend creativity, problem-solving, and tech to craft applications that are thoughtful, intuitive, and backed by research and data.
+                <br><br>I love collaborating with others to come up with solutions that are not just functional, but also a joy to use. I'm also big on learning—whether it's picking up new design trends, diving into the latest tech, or experimenting with music production.
+                <br><br>Outside of work, you'll usually find me cooking, making music, cycling, gardening, reading, watching movies, or playing video games (sometimes all in one weekend).
                 
                  </p>
+                 
              </div>  
           </div>
           
@@ -339,7 +365,7 @@ document.querySelectorAll(".fly-in").forEach((element) => {
             <div class="col phil-col">
               <div class="phil-box creativity"><img class="phil-icon creativity-icon" alt="creativity" src="img/creativity-icon.svg" loading="lazy"/>
               <h3 class="section-header">Creativity</h3>
-              <p class="biriyani-light description"> Creativity is at the heart of what I do—it helps me solve problems, design, and stay inspired. It’s even behind the music I listen to while I work. Imagine a world without art or&nbsp;expression!</p>
+              <p class="biriyani-light description"> Creativity is at the heart of what I do—it helps me solve problems, design, and stay inspired. It's even behind the music I listen to while I work. Imagine a world without art or&nbsp;expression!</p>
             </div>
           </div>
             <div class="col fixed phil-col"><img class="plus-icon pne" alt="plus" src="img/red-plus-28.svg" loading="lazy"></div>
@@ -353,78 +379,81 @@ document.querySelectorAll(".fly-in").forEach((element) => {
             <div class="col phil-col">
               <div class="phil-box magic"><img class="phil-icon magic-icon" alt="magic" src="img/magic-icon.svg" loading="lazy"/>
                 <h3 class="section-header">Magic</h3>
-                <p class="biriyani-light description">By blending creativity with technology, you spark innovation and create magic. That’s why it’s important to keep learning and stay curious about&nbsp;both.</p>
+                <p class="biriyani-light description">By blending creativity with technology, you spark innovation and create magic. That's why it's important to keep learning and stay curious about&nbsp;both.</p>
               </div>
             </div>
           </div>
-          <div class="heading row parallax">
-            <div class="spacer-6rem"></div>
-            <h3 class="small-header txt-center">TESTIMONIALS</h3>
-            <h2 class="section-header-28 txt-center">What my colleagues have to say about me<span class="rdot">.</span></h2>
-            <div class="spacer-3rem"></div>
-            <section class="swipe-container">
-              <div class="testimonial mySwiper">
-                <div class="testi-content swiper-wrapper">
-                  <div class="slide swiper-slide">
-                    <img src="img/david-hamilton.jpg" alt="" class="image" loading="lazy" />
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-                      saepe provident dolorem a quaerat quo error facere nihil deleniti
-                      eligendi ipsum adipisci, fugit, architecto amet asperiores
-                      doloremque deserunt eum nemo.
-                    </p>
-        
-                    <i class="bx bxs-quote-alt-left quote-icon"></i>
-        
-                    <div class="details">
-                      <span class="name">David Hamilton</span>
-                      <span class="job">Marketing Director, CoStar</span>
-                    </div>
-                  </div>
-                  <div class="slide swiper-slide">
-                    <img src="img/david-hamilton.jpg" alt="" class="image" loading="lazy" />
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-                      saepe provident dolorem a quaerat quo error facere nihil deleniti
-                      eligendi ipsum adipisci, fugit, architecto amet asperiores
-                      doloremque deserunt eum nemo.
-                    </p>
-        
-                    <i class="bx bxs-quote-alt-left quote-icon"></i>
-        
-                    <div class="details">
-                      <span class="name">David Hamilton</span>
-                      <span class="job">Marketing Director, CoStar</span>
-                    </div>
-                  </div>
-                  <div class="slide swiper-slide">
-                    <img src="img/david-hamilton.jpg" alt="" class="image" loading="lazy" />
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-                      saepe provident dolorem a quaerat quo error facere nihil deleniti
-                      eligendi ipsum adipisci, fugit, architecto amet asperiores
-                      doloremque deserunt eum nemo.
-                    </p>
-        
-                    <i class="bx bxs-quote-alt-left quote-icon"></i>
-        
-                    <div class="details">
-                      <span class="name">David Hamilton</span>
-                      <span class="job">Marketing Director, CoStar</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-button-next nav-btn"></div>
-                <div class="swiper-button-prev nav-btn"></div>
-                <div class="swiper-pagination"></div>
-              </div>
-            </section>
-          </div>
+         
       </div>
       </section>
-      <span id="contact" class="anchor"></span>
-      <footer id="footer-section">
+      <div class="heading row parallax">
+        <div class="spacer-6rem hide-on-ipad"></div>
+        <h3 class="small-header txt-center">TESTIMONIALS</h3>
+        <h2 class="section-header-28 txt-center">What my colleagues have to say about me<span class="rdot">.</span></h2>
         
+        
+      </div>
+      <section class="swipe-container parallax">
+       
+        <div class="testimonial mySwiper">
+          <div class="testi-content swiper-wrapper">
+            <div class="slide swiper-slide">
+              <img src="img/david-hamilton.jpg" alt="" class="image" loading="lazy" />
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
+                saepe provident dolorem a quaerat quo error facere nihil deleniti
+                eligendi ipsum adipisci, fugit, architecto amet asperiores
+                doloremque deserunt eum nemo.
+              </p>
+  
+              <i class="bx bxs-quote-alt-left quote-icon"></i>
+  
+              <div class="details">
+                <span class="name">David Hamilton</span>
+                <span class="job">Marketing Director, CoStar</span>
+              </div>
+            </div>
+            <div class="slide swiper-slide">
+              <img src="img/david-hamilton.jpg" alt="" class="image" loading="lazy" />
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
+                saepe provident dolorem a quaerat quo error facere nihil deleniti
+                eligendi ipsum adipisci, fugit, architecto amet asperiores
+                doloremque deserunt eum nemo.
+              </p>
+  
+              <i class="bx bxs-quote-alt-left quote-icon"></i>
+  
+              <div class="details">
+                <span class="name">David Hamilton</span>
+                <span class="job">Marketing Director, CoStar</span>
+              </div>
+            </div>
+            <div class="slide swiper-slide">
+              <img src="img/david-hamilton.jpg" alt="" class="image" loading="lazy" />
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
+                saepe provident dolorem a quaerat quo error facere nihil deleniti
+                eligendi ipsum adipisci, fugit, architecto amet asperiores
+                doloremque deserunt eum nemo.
+              </p>
+  
+              <i class="bx bxs-quote-alt-left quote-icon"></i>
+  
+              <div class="details">
+                <span class="name">David Hamilton</span>
+                <span class="job">Marketing Director, CoStar</span>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next nav-btn"></div>
+          <div class="swiper-button-prev nav-btn"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+      
+      <footer id="footer-section">
+        <span id="contact" class="anchor"></span>
         
         <!-- More space to allow scrolling -->
         
@@ -462,6 +491,8 @@ document.querySelectorAll(".fly-in").forEach((element) => {
                 </div>
               </div>     
               <div class="col">
+                <div class="contact-info">
+                  <a href="#" class="resume-button">Download resume</a>
                 <div class="row icon-row">
       <img class="ico-email" src="img/email-icon.svg" loading="lazy"/>
                 
@@ -470,7 +501,12 @@ document.querySelectorAll(".fly-in").forEach((element) => {
                 <img class="ico-linkedin" src="img/linkedin-icon.svg" loading="lazy"/>
                 <p class="description">LinkedIn</p>
               </div>
-              <a href="#" class="resume-button">Download resume</a>
+              <div class="row icon-row">
+                <img class="ico-location" src="img/location-icon-1.svg" loading="lazy"/>
+                <p class="description">London, United Kingdom</p>
+              </div>
+             
+              </div>
                 </div>
               </div>
               </div>
@@ -602,6 +638,6 @@ document.querySelectorAll(".fly-in").forEach((element) => {
 <script async
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHH4qPPTzoAu1qKM2GRi-lSgl_CICuQh4&callback=initMap">
 </script>
-
+<script src="js/top-nav.js" defer></script>
 </body>
 </html>
