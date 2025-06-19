@@ -12,6 +12,22 @@
     --light-border: #d1d1d1;
     --red-accent: #FF1515;
   }
+  body.dark-mode .menu-btn__burger {
+    background: var(--dark-text);
+  }
+  body.dark-mode .menu-btn__burger::before,
+  body.dark-mode .menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: var(--dark-text);
+    border-radius: 5px;
+    transition: all .3s ease-in-out;
+  }
+  body.dark-mode .arrow-svg path {
+    stroke: var(--dark-text);
+  }
   body.dark-mode #map {
     border-color: var(--dark-border);
   }
@@ -20,6 +36,7 @@
   }
   body.dark-mode .nav-links a {
     color:var(--dark-text);
+    
   }
   body.dark-mode .nav-wrapper { 
     border-bottom: 1px solid var(--dark-border);
@@ -45,10 +62,10 @@ body.dark-mode #footer-bg::before {
 body.dark-mode #footer-bg::after {
     background: linear-gradient(to bottom, var(--dark-bg) 40%, rgba(18, 18, 18, 0)90%);
 }
-body.dark-mode .phil-box {
-    border:1px solid var(--dark-border);
-}
 
+body.dark-mode .row-2 > :nth-child(odd) {
+  border:1px solid var(--dark-border);
+}
 
 body.dark-mode .section-header-28{
   color: var(--dark-text);
@@ -99,15 +116,32 @@ body.dark-mode #top-nav {
 }
 
 body.dark-mode #top-nav ul a {
-    color: var(--dark-text);
+    color: #a6a6a6;
+    transition: color 0.15s ease;
+    text-decoration: none;
+    background-color: transparent;
 }
 
-body.dark-mode #top-nav ul a:hover::before {
-    background-color: var(--dark-accent);
+body.dark-mode #top-nav ul a:hover {
+    color: #fbfbfb;
+}
+
+body.dark-mode #top-nav ul a.selected,
+body.dark-mode #top-nav ul a.active {
+    color: #fbfbfb !important;
+    transition: color 0.15s ease;
+    pointer-events: none; /* Prevent hover effects when selected */
+    text-decoration: none; /* Ensure no underline affects the color */
+    background-color: transparent; /* Ensure no background affects the color */
 }
 
 body.dark-mode #top-nav ul li {
     border-bottom-color: var(--dark-border);
+}
+
+body.dark-mode #top-nav ul li.selected > a {
+  color: #fbfbfb !important;
+  transition: color 0.15s ease;
 }
 
 body.dark-mode .section-header {
@@ -214,11 +248,10 @@ body.dark-mode .toggle-switch {
 
 body.dark-mode .toggle-ball {
   background: var(--dark-text);
-  left: 25px;
+  left: 26px;
 }
 
 body.dark-mode .side-nav {
-  background:   var(--dark-bg);
   color: var(--dark-text);
 
 }
@@ -226,3 +259,4 @@ body.dark-mode .side-nav {
 body.dark-mode .main-content {
   background: var(--dark-bg);
 }
+   

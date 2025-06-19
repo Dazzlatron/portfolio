@@ -1,22 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
     const header = document.getElementById("mobile-tablet-header");
-    const menuIcon = document.querySelector(".menu-icon");
+    const menuBtn = document.getElementById("menu-btn");
     const navLinks = document.querySelector(".nav-links");
     const hero = document.getElementById("hero-section");
+    const links = document.querySelectorAll(".nav-links li");
+
+    console.log('Menu button element:', menuBtn);
 
     function updateHeaderVisibility() {
       const width = window.innerWidth;
 
+      // Always disconnect observer before re-evaluating
+      if (window.heroObserver && hero) {
+        window.heroObserver.disconnect();
+        window.heroObserver = null;
+      }
+
       if (width < 768) {
         header.classList.add("visible");
         header.classList.remove("hidden");
-        if (window.heroObserver && hero) {
-          window.heroObserver.disconnect();
-          window.heroObserver = null;
-        }
-      } else if (width >= 768 && width <= 1024) {
+      } else if (width >= 768 && width <= 1180) {
         // Use IntersectionObserver for hero
-        if (!window.heroObserver && hero) {
+        if (hero) {
           window.heroObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
               if (!entry.isIntersecting) {
@@ -33,20 +38,33 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         header.classList.remove("visible");
         header.classList.add("hidden");
-        if (window.heroObserver && hero) {
-          window.heroObserver.disconnect();
-          window.heroObserver = null;
-        }
       }
     }
 
     window.addEventListener("resize", updateHeaderVisibility);
     updateHeaderVisibility();
 
-    // Hamburger menu toggle
-    if (menuIcon && navLinks) {
-      menuIcon.addEventListener("click", function () {
+    // Toggle Menu
+    if (menuBtn) {
+      menuBtn.addEventListener("click", () => {
+        console.log('Menu button clicked');
+        console.log('Before toggle - menuBtn classes:', menuBtn.classList);
         navLinks.classList.toggle("open");
+        menuBtn.classList.toggle("open");
+        console.log('After toggle - menuBtn classes:', menuBtn.classList);
+        links.forEach(link => {
+          link.classList.toggle("fade");
+        });
       });
+    } else {
+      console.error('Menu button not found!');
     }
+
+    // Add click event to each nav link
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
 });

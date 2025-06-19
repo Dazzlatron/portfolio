@@ -1,7 +1,19 @@
 /* Google Fonts - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
-
+.copyright {
+  z-index: 99;
+  display: flex;
+  margin:25px;
+}
+.copy-text p {
+  font-size: 12px;
+  font-family: 'biriyaniregular', sans-serif;
+  margin-left: 10px;
+}
+.bottom-logo {
+  height: 30px;
+}
 .swipe-container {
   width: 100%;
   display: flex;
@@ -84,9 +96,7 @@
   background-color: #FF1515;
 }
 @media screen and (max-width: 768px) {
-  .slide p {
-    padding: 0 20px;
-  }
+  
   .nav-btn {
     display: none;
   }

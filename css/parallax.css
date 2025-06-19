@@ -6,7 +6,6 @@
   .parallax {
     opacity: 0; /* Start fully hidden */
     transform: translateY(150px); /* Start below */
-    text-align: center;
     margin: 20px auto;
     border-radius: 10px;
     will-change: transform, opacity;

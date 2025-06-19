@@ -14,8 +14,8 @@ function updateImagesForDarkMode(isDarkMode) {
             dark: 'img/0-1-dark.svg'
         },
         '.no-2': {
-            light: 'img/0-3.svg',
-            dark: 'img/0-3-dark.svg'
+            light: 'img/0-2.svg',
+            dark: 'img/0-2-dark.svg'
         },
         '.no-3': {
             light: 'img/0-3.svg',
@@ -56,6 +56,10 @@ function updateImagesForDarkMode(isDarkMode) {
         '.equals-icon': {
             light: 'img/red-equal.svg',
             dark: 'img/red-equal-dark.svg'
+        },
+        '.bottom-logo': {
+           light: 'img/Logo-animation_rollover.gif',
+            dark: 'img/Logo-animation_rollover-dark.gif'
         }
     };
 
@@ -66,6 +70,9 @@ function updateImagesForDarkMode(isDarkMode) {
             element.src = isDarkMode ? urls.dark : urls.light;
             if (selector === '.top-logo' || selector === '.top-nav-logo') {
                 element.style.opacity = 1;
+                if (typeof replayLogo === 'function') {
+                    replayLogo(element);
+                }
             }
         }
     });

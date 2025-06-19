@@ -6,14 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     { id: 'contact', navIndex: 2 }
   ];
 
-  // Click to select
-  navItems.forEach(item => {
-    item.addEventListener('click', function() {
-      navItems.forEach(i => i.classList.remove('selected'));
-      this.classList.add('selected');
-    });
-  });
-
   // Scroll to select (improved: closest anchor above viewport top)
   const anchorElements = sectionAnchors.map(a => document.getElementById(a.id));
   let ticking = false;
