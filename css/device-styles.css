@@ -14,6 +14,12 @@
  
   /* ----------- MOBILE ----------- */
   @media (max-width: 768px) {
+    .swipe-container{
+      padding-top: 20px;
+    }
+    .quote-section{
+      width:100%;
+    }
     .copy-text p {
       line-height: 0.7;
     }
@@ -597,8 +603,9 @@
       grid-template-columns: 11% 88%;
     }
 
-    .section-header {
+    .section-header{
       font-size: 18px;
+      margin:0 0 10px 0;
     }
    
   p {
@@ -642,7 +649,7 @@
     font-size:20px;
   }
   p {
-    font-size: 17px;
+    font-size: 16px;
   }
   .project-left {
     padding: 30px 75px 30px 30px;
@@ -664,7 +671,7 @@
 and (-webkit-min-device-pixel-ratio: 1) { 
   
   .section-header {
-    font-size: 18px;
+    font-size: 20px;
   }
   
   .main-layout{
