@@ -60,7 +60,19 @@ function updateImagesForDarkMode(isDarkMode) {
         '.bottom-logo': {
            light: 'img/Logo-animation_rollover.gif',
             dark: 'img/Logo-animation_rollover-dark.gif'
-        }
+        },
+        '.circle-prod-1': {
+           light: 'img/budgie-prod-one.png',
+            dark: 'img/budgie-prod-one-dark.png'
+        },
+        '.circle-prod-2': {
+           light: 'img/budgie-prod-two.png',
+            dark: 'img/budgie-prod-two-dark.png'
+        },
+        '.circle-prod-3': {
+           light: 'img/budgie-prod-three.png',
+            dark: 'img/budgie-prod-three-dark.png'
+        },
     };
 
     // Update each image
