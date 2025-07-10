@@ -22,58 +22,7 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="js/logo-animation-aa.js"></script>
-    <script>
-     // Initialize ScrollMagic controller
-var controller = new ScrollMagic.Controller();
-
-// Standard parallax animation for all parallax elements
-document.querySelectorAll(".parallax").forEach((element) => {
-  // Default settings for most elements
-  let delay = 0;
-  let trigger = element;
-  
-  // Special case for sequenced columns
-  if (element.closest('.sequence')) {
-    // Use the sequence container as trigger for all sequenced items
-    trigger = element.closest('.sequence');
-    
-    // Add extra delay specifically for the second column
-    if (element.classList.contains('col-about-2')) {
-      delay = 0.8; // 0.8 second delay for the second column
-    }
-    // Optional: add small delay for first column if needed
-    else if (element.classList.contains('col-about-1')) {
-      delay = 0; // No delay for first column
-    }
-  }
-  
-  new ScrollMagic.Scene({
-    triggerElement: trigger,
-    triggerHook: 0.85,
-    reverse: false
-  })
-  .setTween(gsap.fromTo(element, 
-    { opacity: 0, y: 50 },
-    { opacity: 1, y: 0, duration: 1, delay: delay, ease: "power2.out" }
-  ))
-  .addTo(controller);
-});
-
-// Keep your existing fly-in animation code
-document.querySelectorAll(".fly-in").forEach((element) => {
-  new ScrollMagic.Scene({
-    triggerElement: element,
-    triggerHook: 0.8,
-    reverse: false
-  })
-  .setTween(gsap.fromTo(element, 
-    { x: 100, opacity: 0 }, 
-    { x: 0, opacity: 1, duration: 1, ease: "power2.out" }
-  ))
-  .addIndicators({ name: "Fly-in from right" }) // Optional for debugging
-  .addTo(controller);
-});
-    </script>
+  </script>
 
 </head>
 <body>
@@ -505,7 +454,7 @@ document.querySelectorAll(".fly-in").forEach((element) => {
 <script src="js/ScrollMagic.min.js" defer></script>
 <script src="js/animation.gsap.min.js" defer></script>
 <script src="js/debug.addIndicators.min.js" defer></script>
-<script src="js/parallax.js" defer></script>
+<script src="js/consolidated-parallax.js" defer></script>
 <script src="js/dots-background.js" defer></script>
 <script src="js/nav-appear.js" defer></script>
 <script src="js/theme-switch.js" defer></script>
@@ -515,7 +464,6 @@ document.querySelectorAll(".fly-in").forEach((element) => {
 <!-- Swiper JS -->
 <script src="js/swiper-bundle.min.js" defer></script>
 <script src="js/swiper-script.js" defer></script>
-  <script src="js/staggered-philo-section.js" defer></script>
 
   <script>
     window.addEventListener('scroll', function() {
@@ -569,7 +517,6 @@ document.querySelectorAll(".fly-in").forEach((element) => {
   });
 });
   </script>
- <script src="js/sequence.js" defer></script>
  <script>
   function initMap() {
     const london = { lat: 51.5074, lng: -0.1278 };

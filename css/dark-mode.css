@@ -11,6 +11,7 @@
     --light-bg: #fbfbfb;
     --light-border: #d1d1d1;
     --red-accent: #FF1515;
+    --light-darker-border: #121212;
   }
   body.dark-mode .menu-btn__burger {
     background: var(--dark-text);
@@ -165,7 +166,7 @@ body.dark-mode .gradient-button, body.dark-mode .submit-button {
 
 body.dark-mode .gradient-button:hover, body.dark-mode .submit-button:hover {
     background-color: var(--dark-bg);
-    box-shadow: -2px 2px 0px 1px #fbfbfb;
+    box-shadow: -3px 3px 0px 1px #fbfbfb;
 }
 
 body.dark-mode .devider {
@@ -256,7 +257,5 @@ body.dark-mode .side-nav {
 
 }
 
-body.dark-mode .main-content {
-  background: var(--dark-bg);
-}
+
    

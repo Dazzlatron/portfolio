@@ -14,6 +14,15 @@
  
   /* ----------- MOBILE ----------- */
   @media (max-width: 768px) {
+    .no-3{
+      right:0;
+    }
+    .p-wrap-left-2 > div:nth-child(3) {
+      margin-top: 10px;
+    }
+    .read-more-btn {
+      display: inline;
+    }
     .swipe-container{
       padding-top: 20px;
     }
@@ -323,6 +332,9 @@
   }
   /* ----------- NOT MOBILE ----------- */
   @media screen and (min-width: 768px) {
+    .hide-on-desktop{
+      display: none !important;
+    }
     .copy-pipe {
       visibility: visible;
     }
