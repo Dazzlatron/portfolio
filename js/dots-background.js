@@ -12,6 +12,9 @@ const maxRadius = 1.6;
 const rippleRadius = 150;
 const rippleDuration = 400;
 
+// Check if we're on the budgie.html page
+const isBudgiePage = window.location.pathname.includes('budgie.html');
+
 // Color configuration
 const colors = {
     light: {
@@ -20,7 +23,7 @@ const colors = {
         targetShade: 85  // Darkened value for ripple in light mode
     },
     dark: {
-        base: "#313131",
+        base: "#3d3d3d",
         baseShade: 52,
         targetShade: 196  // Lightened value for ripple in dark mode
     }
@@ -146,8 +149,8 @@ observer.observe(document.body, { attributes: true, attributeFilter: ['class'] }
 resizeCanvas();
 window.addEventListener('resize', debounce(resizeCanvas, 100));
 
-// Only add ripple animation on large screens
-if (window.innerWidth >= 1200) {
+// Only add ripple animation on large screens AND not on budgie.html page
+if (window.innerWidth >= 1200 && !isBudgiePage) {
     heroSection.addEventListener("mousemove", (e) => {
         const rect = heroSection.getBoundingClientRect();
         ripples.push({

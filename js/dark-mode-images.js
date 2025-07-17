@@ -73,6 +73,10 @@ function updateImagesForDarkMode(isDarkMode) {
            light: 'img/budgie-prod-three.png',
             dark: 'img/budgie-prod-three-dark.png'
         },
+        '.affinity-map': {
+           light: 'img/affinity_map_budgie.png',
+            dark: 'img/affinity_map_budgie_dark.png'
+        }
     };
 
     // Update each image

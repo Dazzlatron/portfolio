@@ -41,4 +41,25 @@ window.addEventListener('load', function() {
       attributes: true
     });
   }
+
+  // Add click functionality to to-top icon
+  const toTopIcon = document.querySelector('.to-top-icon');
+  if (toTopIcon) {
+    toTopIcon.addEventListener('click', function() {
+      // Check if we're on the index page
+      if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
+        // Scroll to specific position for index page
+        window.scrollTo({
+          top: 650,
+          behavior: 'smooth'
+        });
+      } else {
+        // Scroll to top for other pages
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
 });

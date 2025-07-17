@@ -137,9 +137,9 @@
       
         <ul>
             
-            <li class="nav-item"><a href="#projects">&nbsp;Projects&nbsp;<span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-            <li class="nav-item"><a href="#about-me">&nbsp;About&nbsp;me&nbsp;<span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-            <li class="nav-item"><a href="#contact">&nbsp;Contact&nbsp;<span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+            <li class="nav-item"><a href="#projects"><span class="nav-text">&nbsp;Projects&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+            <li class="nav-item"><a href="#about-me"><span class="nav-text">&nbsp;About&nbsp;me&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+            <li class="nav-item"><a href="#contact"><span class="nav-text">&nbsp;Contact&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
         
         </ul>
         <div class="theme-switch" title="Toggle dark mode">
@@ -151,7 +151,7 @@
    
 </nav>
 <div class="top">
-  <img src="img/to-top.svg">
+  <img class="to-top-icon" src="img/to-top.svg">
 </div>
 </aside>
 <main data-barba="container" data-barba-namespace="index">
@@ -488,9 +488,7 @@
             
           </div>
           </div>
-          <div class="col">
-            
-          </div>
+         
         </div>
         <div class="map-container container">
           <div class="spacer-3rem"></div>
@@ -505,7 +503,7 @@
     </div>
   </footer>
   <div class="copyright">
-    <div class="copy-logo"><img class="bottom-logo" src="img/Logo-animation_rollover-dark.gif" style="opacity: 1;"></div>
+    
     <div class="copy-text"> 
       <p>Designed & Built by Daryn Higginson with 💛<span class="copy-pipe">&nbsp;&nbsp;|&nbsp;&nbsp;</span><br class="copy-break">© 2025 Daryn Higginson. All rights reserved.
         </p>
@@ -515,7 +513,7 @@
 </div>
 </main>
 
-<div class="spacer-6rem"></div>
+
 <div id="footer-bg"></div>
 
 
@@ -556,11 +554,13 @@
   <script>
    document.addEventListener('DOMContentLoaded', function() {
   const nav = document.getElementById('top-nav');
+  const topElement = document.querySelector('.top');
   const hero = document.querySelector('.hero');
   
-  // If no hero exists, show nav immediately
+  // If no hero exists, show nav and top immediately
   if (!hero) {
     nav.classList.add('nav-visible');
+    if (topElement) topElement.classList.add('top-visible');
     return;
   }
 
@@ -568,11 +568,13 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) {
-        // Hero is out of view - show nav
+        // Hero is out of view - show nav and top
         nav.classList.add('nav-visible');
+        if (topElement) topElement.classList.add('top-visible');
       } else {
-        // Hero is in view - hide nav
+        // Hero is in view - hide nav and top
         nav.classList.remove('nav-visible');
+        if (topElement) topElement.classList.remove('top-visible');
       }
     });
   }, {threshold: 0.3});
@@ -585,8 +587,10 @@
     const heroBottom = hero.offsetTop + hero.offsetHeight;
     if (window.scrollY > heroBottom) {
       nav.classList.add('nav-visible');
+      if (topElement) topElement.classList.add('top-visible');
     } else {
       nav.classList.remove('nav-visible');
+      if (topElement) topElement.classList.remove('top-visible');
     }
   });
 });

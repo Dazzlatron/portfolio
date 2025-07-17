@@ -13,6 +13,11 @@
     --red-accent: #FF1515;
     --light-darker-border: #121212;
   }
+  body.dark-mode .highlight-box {
+      
+      border-radius: 10px;
+      padding: 3rem;
+    }
   body.dark-mode .project-hero {
     border:1px solid #858585;
   }
@@ -176,9 +181,6 @@ body.dark-mode .devider {
     border-top-color: var(--dark-border);
 }
 
-body.dark-mode #footer-section {
-    background-color: var(--dark-bg);
-}
 
 body.dark-mode .feather-arrow-down {
     stroke: var(--dark-text);

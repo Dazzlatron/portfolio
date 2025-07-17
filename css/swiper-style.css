@@ -4,10 +4,10 @@
 .copyright {
   z-index: 99;
   display: flex;
-  margin:25px;
+  margin:15px 15px 0 15px;
 }
 .copy-text p {
-  font-size: 12px;
+  font-size: 11px;
   font-family: 'biriyaniregular', sans-serif;
   margin-left: 10px;
 }
