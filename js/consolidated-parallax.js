@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to determine triggerHook based on screen size
   function getTriggerHook() {
-    return window.innerWidth < 768 ? 0.9 : 0.7;
+    return window.innerWidth < 768 ? 0.9 : 0.85;
   }
 
   // ========================================

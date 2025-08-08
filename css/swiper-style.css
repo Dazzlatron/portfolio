@@ -101,3 +101,24 @@
     display: none;
   }
 }
+
+/* iPad and desktop fixes */
+@media screen and (min-width: 768px) {
+  .quote-section {
+    overflow: hidden;
+  }
+  
+  .container {
+    overflow: hidden;
+  }
+  
+  .swipe-container {
+    overflow: hidden;
+  }
+  
+  .testimonial {
+    overflow: hidden;
+  }
+}
+
+

@@ -13,6 +13,15 @@
     --red-accent: #FF1515;
     --light-darker-border: #121212;
   }
+  body.dark-mode #submenu a {
+    color:var(--dark-text);
+  }
+  body.dark-mode .t-submenu {
+    background-color: var(--dark-bg);
+    border-right: 1px solid var(--dark-border);
+    border-left: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--dark-border);
+  }
   body.dark-mode .highlight-box {
       
       border-radius: 10px;

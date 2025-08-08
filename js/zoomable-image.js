@@ -2,6 +2,54 @@ document.addEventListener("DOMContentLoaded", function () {
     const zoomableImages = document.querySelectorAll(".zoomable");
     
     zoomableImages.forEach(function(image) {
+        // Add magnify icon for mobile/tablet devices
+        if (window.innerWidth <= 1024) {
+            const magnifyIcon = document.createElement('div');
+            magnifyIcon.style.position = 'absolute';
+            magnifyIcon.style.bottom = '50%';
+            magnifyIcon.style.right = '50%';
+            magnifyIcon.style.transform = 'translate(50%, 50%)';
+            magnifyIcon.style.width = '60px';
+            magnifyIcon.style.height = '60px';
+            magnifyIcon.style.backgroundSize = 'contain';
+            magnifyIcon.style.backgroundRepeat = 'no-repeat';
+            magnifyIcon.style.backgroundPosition = 'center';
+            magnifyIcon.style.pointerEvents = 'none';
+            magnifyIcon.style.zIndex = '999';
+            magnifyIcon.style.filter = 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.07))';
+            
+            // Function to update icon based on dark mode
+            function updateMagnifyIcon() {
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                magnifyIcon.style.backgroundImage = isDarkMode 
+                    ? 'url("img/magnify-icon-dark.svg")' 
+                    : 'url("img/magnify-icon.svg")';
+            }
+            
+            // Set initial icon
+            updateMagnifyIcon();
+            
+            // Insert the icon into the image's parent container
+            if (image.parentNode) {
+                image.parentNode.style.position = 'relative';
+                image.parentNode.appendChild(magnifyIcon);
+            }
+            
+            // Listen for dark mode changes
+            const darkModeObserver = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.attributeName === 'class') {
+                        updateMagnifyIcon();
+                    }
+                });
+            });
+            
+            // Start observing the body element for class changes
+            darkModeObserver.observe(document.body, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+        }
         let isZoomed = false;
         let isDragging = false;
         let startX, startY, translateX = 0, translateY = 0;
@@ -43,9 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
         closeButton.style.background = 'rgba(255, 255, 255, 0.2)';
         closeButton.style.border = 'none';
         closeButton.style.color = 'white';
-        closeButton.style.fontSize = '30px';
-        closeButton.style.width = '50px';
-        closeButton.style.height = '50px';
+        closeButton.style.fontSize = '25px';
+        closeButton.style.width = '40px';
+        closeButton.style.height = '40px';
         closeButton.style.borderRadius = '50%';
         closeButton.style.cursor = 'pointer';
         closeButton.style.zIndex = '10000';
@@ -82,7 +130,9 @@ document.addEventListener("DOMContentLoaded", function () {
             translateY = 0;
             lastTranslateX = 0;
             lastTranslateY = 0;
-            zoomedImage.style.transform = 'scale(2) translate(0, 0)';
+            zoomedImage.style.top = '20px';
+            zoomedImage.style.left = '';
+            zoomedImage.style.transform = 'translate(-50%, -50%) scale(2)';
             zoomedImage.style.cursor = 'grab';
         }
         
@@ -92,17 +142,36 @@ document.addEventListener("DOMContentLoaded", function () {
             zoomContainer.style.display = 'block';
             document.body.style.overflow = 'hidden';
             
+            // Always try to load the dark mode variant for better visibility on dark background
+            const originalSrc = image.src;
+            const darkModeSrc = originalSrc.replace('.png', '_dark.png').replace('.jpg', '_dark.jpg').replace('.jpeg', '_dark.jpeg');
+            
+            // Try to load the dark mode variant if it exists
+            const img = new Image();
+            img.onload = function() {
+                zoomedImage.src = darkModeSrc;
+            };
+            img.onerror = function() {
+                // Dark mode variant doesn't exist, keep original
+                zoomedImage.src = originalSrc;
+            };
+            img.src = darkModeSrc;
+            
             // Center the image initially
             const containerRect = zoomContainer.getBoundingClientRect();
             const imageRect = zoomedImage.getBoundingClientRect();
             
+            // Calculate center position
             translateX = (containerRect.width - imageRect.width) / 2;
             translateY = (containerRect.height - imageRect.height) / 2;
             
             lastTranslateX = translateX;
             lastTranslateY = translateY;
             
-            zoomedImage.style.transform = `scale(2) translate(${translateX}px, ${translateY}px)`;
+            // Center the image both horizontally and vertically
+            zoomedImage.style.top = '50%';
+            zoomedImage.style.left = '50%';
+            zoomedImage.style.transform = 'translate(-50%, -50%) scale(2)';
         }
         
         // Mouse events for dragging
@@ -132,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 translateX = Math.max(minX, Math.min(maxX, translateX));
                 translateY = Math.max(minY, Math.min(maxY, translateY));
                 
-                zoomedImage.style.transform = `scale(2) translate(${translateX}px, ${translateY}px)`;
+                zoomedImage.style.transform = `translate(calc(-50% + ${translateX}px), calc(-50% + ${translateY}px)) scale(2)`;
                 lastTranslateX = translateX;
                 lastTranslateY = translateY;
             }
@@ -189,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 translateX = Math.max(minX, Math.min(maxX, translateX));
                 translateY = Math.max(minY, Math.min(maxY, translateY));
                 
-                zoomedImage.style.transform = `scale(2) translate(${translateX}px, ${translateY}px)`;
+                zoomedImage.style.transform = `translate(calc(-50% + ${translateX}px), calc(-50% + ${translateY}px)) scale(2)`;
                 lastTranslateX = translateX;
                 lastTranslateY = translateY;
                 e.preventDefault();
@@ -203,20 +272,23 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
         
-        // Update zoomed image when dark mode changes (for images that have dark mode variants)
+        // Always use dark mode variant when zoomed for better visibility on dark background
         const darkModeObserver = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'class' && isZoomed) {
-                    // Check if this image has a dark mode variant and update accordingly
-                    if (image.classList.contains('affinity-map')) {
-                        const isDarkMode = document.body.classList.contains('dark-mode');
-                        zoomedImage.src = isDarkMode ? 'img/affinity_map_budgie_dark.png' : 'img/affinity_map_budgie.png';
-                    }
-                    // Add more image types here as needed
-                    // else if (image.classList.contains('flow-chart')) {
-                    //     const isDarkMode = document.body.classList.contains('dark-mode');
-                    //     zoomedImage.src = isDarkMode ? 'img/flow-chart-dark.png' : 'img/flow-chart.png';
-                    // }
+                    const originalSrc = image.src;
+                    const darkModeSrc = originalSrc.replace('.png', '_dark.png').replace('.jpg', '_dark.jpg').replace('.jpeg', '_dark.jpeg');
+                    
+                    // Always try to load dark mode variant for better visibility
+                    const img = new Image();
+                    img.onload = function() {
+                        zoomedImage.src = darkModeSrc;
+                    };
+                    img.onerror = function() {
+                        // Dark mode variant doesn't exist, keep original
+                        zoomedImage.src = originalSrc;
+                    };
+                    img.src = darkModeSrc;
                 }
             });
         });

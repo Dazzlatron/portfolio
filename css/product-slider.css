@@ -61,9 +61,11 @@
     }
   }
   @media (max-width: 1020px) {
-    .slider-nav.left,
-    .slider-nav.right {
+    .slider-nav.left {
       left: 10px;
+      position: absolute;
+    }
+    .slider-nav.right {
       right: 10px;
       position: absolute;
     }

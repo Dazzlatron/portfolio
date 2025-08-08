@@ -461,6 +461,25 @@
 <script src="js/dark-mode-images.js" defer></script>
 <script src="js/logo-wave.js" defer></script>
 <script src="js/top-logo.js" defer></script>
+
+<!-- Mobile dropdown script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const overviewLink = document.querySelector('.overview-link');
+  const submenu = document.getElementById('submenu');
+  
+  if (overviewLink && submenu) {
+    overviewLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      overviewLink.classList.toggle('active');
+      submenu.classList.toggle('open');
+    });
+  }
+});
+</script>
+
 <!-- Swiper JS -->
 <script src="js/swiper-bundle.min.js" defer></script>
 <script src="js/swiper-script.js" defer></script>

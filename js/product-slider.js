@@ -8,6 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn = document.querySelector(".slider-nav.right");
 
   let currentIndex = 0;
+  let startX = 0;
+  let startY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let isDragging = false;
   
   if (closeBtn) {
     closeBtn.addEventListener("click", () => {
@@ -66,6 +71,48 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.style.display = "none";
       document.body.style.overflow = "";
     }
+  });
+
+  // Touch/Swipe functionality for mobile
+  modal.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+    isDragging = true;
+  });
+
+  modal.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    
+    const touch = e.touches[0];
+    currentX = touch.clientX;
+    currentY = touch.clientY;
+    
+    // Prevent default to avoid scrolling
+    e.preventDefault();
+  });
+
+  modal.addEventListener("touchend", (e) => {
+    if (!isDragging) return;
+    
+    const deltaX = startX - currentX;
+    const deltaY = startY - currentY;
+    const minSwipeDistance = 50; // Minimum distance for a swipe
+    
+    // Check if it's a horizontal swipe (not vertical)
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+      if (deltaX > 0) {
+        // Swipe left - go to next image
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      } else {
+        // Swipe right - go to previous image
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      }
+    }
+    
+    isDragging = false;
   });
 });
 

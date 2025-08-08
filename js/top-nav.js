@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log('Menu button element:', menuBtn);
 
+    // Check if we're on a project page (not index.html)
+    const isProjectPage = window.location.pathname !== '/' && 
+                         window.location.pathname !== '/index.html' && 
+                         !window.location.pathname.endsWith('index.html');
+
     function updateHeaderVisibility() {
       const width = window.innerWidth;
 
@@ -20,20 +25,26 @@ document.addEventListener("DOMContentLoaded", function () {
         header.classList.add("visible");
         header.classList.remove("hidden");
       } else if (width >= 768 && width <= 1180) {
-        // Use IntersectionObserver for hero
-        if (hero) {
-          window.heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (!entry.isIntersecting) {
-                header.classList.add("visible");
-                header.classList.remove("hidden");
-              } else {
-                header.classList.remove("visible");
-                header.classList.add("hidden");
-              }
-            });
-          }, { threshold: 0.01 });
-          window.heroObserver.observe(hero);
+        // For project pages, show header immediately on tablet
+        if (isProjectPage) {
+          header.classList.add("visible");
+          header.classList.remove("hidden");
+        } else {
+          // Use IntersectionObserver for hero on index.html
+          if (hero) {
+            window.heroObserver = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                  header.classList.add("visible");
+                  header.classList.remove("hidden");
+                } else {
+                  header.classList.remove("visible");
+                  header.classList.add("hidden");
+                }
+              });
+            }, { threshold: 0.01 });
+            window.heroObserver.observe(hero);
+          }
         }
       } else {
         header.classList.remove("visible");
@@ -62,7 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add click event to each nav link
     links.forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
+        // Don't close menu if clicking on overview link (dropdown)
+        if (link.querySelector('.overview-link')) {
+          return;
+        }
         menuBtn.classList.remove('open');
         navLinks.classList.remove('open');
       });
