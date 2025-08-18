@@ -83,29 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
         
         
         // Create close button
-        const closeButton = document.createElement('button');
+        const closeButton = document.createElement('span');
+        closeButton.className = 'close';
         closeButton.innerHTML = '×';
-        closeButton.style.position = 'absolute';
-        closeButton.style.top = '20px';
-        closeButton.style.right = '20px';
-        closeButton.style.background = 'rgba(255, 255, 255, 0.2)';
-        closeButton.style.border = 'none';
-        closeButton.style.color = 'white';
-        closeButton.style.fontSize = '25px';
-        closeButton.style.width = '40px';
-        closeButton.style.height = '40px';
-        closeButton.style.borderRadius = '50%';
-        closeButton.style.cursor = 'pointer';
-        closeButton.style.zIndex = '10000';
-        closeButton.style.transition = 'background 0.3s ease';
-        
-        closeButton.addEventListener('mouseenter', function() {
-            this.style.background = 'rgba(255, 255, 255, 0.3)';
-        });
-        
-        closeButton.addEventListener('mouseleave', function() {
-            this.style.background = 'rgba(255, 255, 255, 0.2)';
-        });
         
         // Add elements to container
         zoomContainer.appendChild(zoomedImage);

@@ -2,32 +2,79 @@
 document.addEventListener("DOMContentLoaded", function () {
   const images = document.querySelectorAll(".slider-img"); // all clickable images
   const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImage");
   const closeBtn = document.querySelector(".close");
-  const prevBtn = document.querySelector(".slider-nav.left");
-  const nextBtn = document.querySelector(".slider-nav.right");
-
-  let currentIndex = 0;
-  let startX = 0;
-  let startY = 0;
-  let currentX = 0;
-  let currentY = 0;
-  let isDragging = false;
   
+  let modalSwiper = null;
+  let currentIndex = 0;
+
+  // Check if Swiper is available
+  if (typeof Swiper === 'undefined') {
+    console.error('Swiper is not loaded. Please check if swiper-bundle.min.js is included.');
+    return;
+  }
+
+  // Initialize Swiper when modal opens
+  const initModalSwiper = () => {
+    try {
+      if (modalSwiper) {
+        modalSwiper.destroy();
+      }
+      
+      // Simple Swiper configuration
+      modalSwiper = new Swiper('.modal-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: false,
+        initialSlide: currentIndex,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        allowTouchMove: true,
+        preventClicks: false,
+        preventClicksPropagation: false,
+        touchRatio: 1,
+        grabCursor: true,
+        effect: 'slide',
+        speed: 400,
+      });
+
+      // Add slide change listener
+      modalSwiper.on('slideChange', () => {
+        currentIndex = modalSwiper.realIndex;
+      });
+      
+    } catch (error) {
+      console.error('Error initializing Swiper:', error);
+    }
+  };
+
   if (closeBtn) {
     closeBtn.addEventListener("click", () => {
       modal.style.display = "none";
       document.body.style.overflow = "";
+      // Destroy swiper when modal closes
+      if (modalSwiper) {
+        modalSwiper.destroy();
+        modalSwiper = null;
+      }
     });
   }
-  // Show modal with clicked image
+
+  // Show modal with selected image
   const showImage = (index) => {
-    const img = images[index];
-    const largeSrc = img.getAttribute("data-large") || img.src;
-    modalImg.src = largeSrc;
     currentIndex = index;
-    modal.style.display = "flex"; // Use flex to center
-    document.body.style.overflow = "hidden"; // Disable background scroll
+    
+    // Show modal
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    // Initialize Swiper
+    initModalSwiper();
   };
 
   // Event listeners for each image
@@ -37,82 +84,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Close modal with close button
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-    document.body.style.overflow = ""; // Re-enable scroll
-  });
-
   // Close modal when clicking outside image area
   modal.addEventListener("click", (e) => {
     if (!e.target.closest(".modal-inner")) {
       modal.style.display = "none";
-      document.body.style.overflow = ""; // Re-enable scroll
+      document.body.style.overflow = "";
+      // Destroy swiper when modal closes
+      if (modalSwiper) {
+        modalSwiper.destroy();
+        modalSwiper = null;
+      }
     }
   });
 
-  // Navigate left
-  prevBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // Prevent triggering modal close
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(currentIndex);
-  });
-
-  // Navigate right
-  nextBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-  });
-
-  // Optional: Close on ESC key
+  // Close on ESC key
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       modal.style.display = "none";
       document.body.style.overflow = "";
-    }
-  });
-
-  // Touch/Swipe functionality for mobile
-  modal.addEventListener("touchstart", (e) => {
-    const touch = e.touches[0];
-    startX = touch.clientX;
-    startY = touch.clientY;
-    isDragging = true;
-  });
-
-  modal.addEventListener("touchmove", (e) => {
-    if (!isDragging) return;
-    
-    const touch = e.touches[0];
-    currentX = touch.clientX;
-    currentY = touch.clientY;
-    
-    // Prevent default to avoid scrolling
-    e.preventDefault();
-  });
-
-  modal.addEventListener("touchend", (e) => {
-    if (!isDragging) return;
-    
-    const deltaX = startX - currentX;
-    const deltaY = startY - currentY;
-    const minSwipeDistance = 50; // Minimum distance for a swipe
-    
-    // Check if it's a horizontal swipe (not vertical)
-    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
-      if (deltaX > 0) {
-        // Swipe left - go to next image
-        currentIndex = (currentIndex + 1) % images.length;
-        showImage(currentIndex);
-      } else {
-        // Swipe right - go to previous image
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        showImage(currentIndex);
+      // Destroy swiper when modal closes
+      if (modalSwiper) {
+        modalSwiper.destroy();
+        modalSwiper = null;
       }
     }
-    
-    isDragging = false;
   });
+  
 });
 

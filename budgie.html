@@ -148,11 +148,24 @@
 <!-- Modal moved outside main to avoid stacking context issues -->
 <div id="imageModal" class="modal">
   <div class="modal-inner">
-    <span class="close"></span>
-    <div class="slider-wrapper">
-      <div class=" slider-nav left swiper-button-prev nav-btn" ></div>
-      <img class="modal-content" id="modalImage">
-      <div class="swiper-button-next nav-btn slider-nav right" ></div>
+    <span class="close">&times;</span>
+    <div class="swiper modal-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="img/budgie-prod-one-dark.png" class="modal-content">
+        </div>
+        <div class="swiper-slide">
+          <img src="img/budgie-prod-two-dark.png" class="modal-content">
+        </div>
+        <div class="swiper-slide">
+          <img src="img/budgie-prod-three-dark.png" class="modal-content">
+        </div>
+      </div>
+      <!-- Navigation arrows -->
+      <div class="swiper-button-next nav-btn slider-nav right"></div>
+      <div class="swiper-button-prev nav-btn slider-nav left"></div>
+      <!-- Pagination dots -->
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 </div>
@@ -389,7 +402,7 @@
 <!--SPACER-->
 <div class="spacer-4rem"></div>
 <!--SPACER-->
-<div class="cont next-prev six-six six-six-mob">
+<div class="cont next-prev six-six six-six-mob parallax" data-speed="0.3">
   <div class="col-1 left">
     <div class="previous">
       <a href="index.html">
@@ -410,7 +423,7 @@
   </div>
 </div>
 <!--SPACER-->
-<div class="spacer-6rem"></div>
+<div class="spacer-4rem"></div>
 <!--SPACER-->
 <span id="contact" class="anchor"></span>
 <section class="contact parallax" data-speed="0.3">
