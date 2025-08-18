@@ -141,13 +141,13 @@
     cursor: pointer;
 }
 .project-right::after {
-    content: url('../img/plus.svg');
-    position: absolute;
-    left: -27.5px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 99;
+    content: url('../img/plus.svg') !important;
+    position: absolute !important;
+    left: -27.5px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    transition: transform 0.3s ease-in-out !important;
+    z-index: 99 !important;
 }
 
 /* Outline animation using ::before */
@@ -169,7 +169,7 @@
 
 /* Hover effect */
 .project-right:hover::after {
-    transform: translateY(-50%) rotate(270deg);
+    transform: translateY(-50%) rotate(270deg) !important;
 }
 
 .project-right:hover::before {
@@ -179,13 +179,13 @@
 }
 
 .project-left::after {
-    content: url('../img/plus.svg');
-    position: absolute;
-    right: -27px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 999;
+    content: url('../img/plus.svg') !important;
+    position: absolute !important;
+    right: -27px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    transition: transform 0.3s ease-in-out !important;
+    z-index: 999 !important;
 }
 
 /* Outline animation using ::before */
@@ -207,7 +207,7 @@
 
 /* Hover effect */
 .project-left:hover::after {
-    transform: translateY(-50%) rotate(270deg);
+    transform: translateY(-50%) rotate(270deg) !important;
 }
 
 .project-left:hover::before {
