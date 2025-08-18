@@ -82,4 +82,59 @@ document.addEventListener("DOMContentLoaded", function () {
         navLinks.classList.remove('open');
       });
     });
+
+    // Scroll-based header hiding/showing for mobile
+    let lastScrollTop = 0;
+    let scrollThreshold = 100; // Minimum scroll distance before hiding/showing
+    let isScrolling = false;
+
+    const mobileHeader = document.getElementById('mobile-tablet-header');
+    const mobileNavLinks = document.querySelector('.nav-links');
+
+    if (mobileHeader) {
+      // Add scroll event listener
+      window.addEventListener('scroll', () => {
+        if (isScrolling) return; // Prevent multiple rapid calls
+        
+        isScrolling = true;
+        
+        setTimeout(() => {
+          const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const scrollDifference = Math.abs(currentScrollTop - lastScrollTop);
+          
+          // Only trigger if scroll distance is significant enough
+          if (scrollDifference > scrollThreshold) {
+            if (currentScrollTop > lastScrollTop && currentScrollTop > 100) {
+              // Scrolling down and not at the very top
+              mobileHeader.classList.add('header-hidden');
+              mobileHeader.classList.remove('header-visible');
+              // Also hide the mobile navigation menu
+              if (mobileNavLinks) {
+                mobileNavLinks.classList.remove('open');
+              }
+              // Reset the hamburger button state
+              if (menuBtn) {
+                menuBtn.classList.remove('open');
+              }
+            } else if (currentScrollTop < lastScrollTop) {
+              // Scrolling up
+              mobileHeader.classList.add('header-visible');
+              mobileHeader.classList.remove('header-hidden');
+            }
+            
+            lastScrollTop = currentScrollTop;
+          }
+          
+          isScrolling = false;
+        }, 50); // Small delay to prevent rapid firing
+      });
+      
+      // Show header when at the top of the page
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset <= 100) {
+          mobileHeader.classList.add('header-visible');
+          mobileHeader.classList.remove('header-hidden');
+        }
+      });
+    }
 });

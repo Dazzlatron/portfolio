@@ -86,20 +86,6 @@
         <div class="menu-btn" id="menu-btn">
           <div class="menu-btn__burger"></div>
         </div> <!-- Hamburger -->
-        <ul class="nav-links">
-          <li class="top-nav-drop"><a class="overview-link" href="#project-overview"><span class="nav-text">&nbsp;Project&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a>
-            <ul id="submenu" class="t-submenu">
-              <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#project-overview"><span class="nav-text">&nbsp;Overview&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-              <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#discovery"><span class="nav-text">&nbsp;Discovery&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-              <li class="t-nav-item sub-nav-drop "><a class="h-link" href="#definition"><span class="nav-text">&nbsp;Definition&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-              <li class="t-nav-item sub-nav-drop"><a class="h-link"href="#ideation"><span class="nav-text">&nbsp;Ideation&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-              <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#design"><span class="nav-text">&nbsp;Design&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-            </ul>
-          </li>
-          <li><a href="#" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); return false;">Contact</a></li>
-          <li><a href="index.html">Home</a></li>
-      
-        </ul>
         <div class="theme-switch" title="Toggle dark mode">
           <div class="toggle-switch">
             <div class="toggle-ball"></div>
@@ -109,6 +95,22 @@
     </div>
   </header>
   
+  <!-- Mobile navigation moved outside header to fix stacking context -->
+  <ul class="nav-links">
+    <li class="top-nav-drop"><a class="overview-link" href="#project-overview"><span class="nav-text">&nbsp;Project&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a>
+      <ul id="submenu" class="t-submenu">
+        <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#project-overview"><span class="nav-text">&nbsp;Overview&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+        <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#discovery"><span class="nav-text">&nbsp;Discovery&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+        <li class="t-nav-item sub-nav-drop "><a class="h-link" href="#definition"><span class="nav-text">&nbsp;Definition&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+        <li class="t-nav-item sub-nav-drop"><a class="h-link"href="#ideation"><span class="nav-text">&nbsp;Ideation&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-cap="round"/></svg></span></a></li>
+        <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#design"><span class="nav-text">&nbsp;Design&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+      </ul>
+    </li>
+    <li><a href="#" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); return false;">Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+
+  </ul>
+
 <aside class="side-nav">
   <nav id="top-nav">
     <div class="nav-style">
@@ -438,11 +440,11 @@
   <div class="cont contact-gap six-six">
     <div class="col-1">
       <div class="form-container">
-        <form>
+        <form action="https://formspree.io/f/dazgraphic@gmail.com" method="POST">
           <div class="form-row">
             <div>
               
-              <input type="text" id="first-name" name="first-name" required placeholder="Name">
+              <input type="text" id="first-name" name="name" required placeholder="Name">
             </div>
             <div>
              
