@@ -21,31 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
         window.heroObserver = null;
       }
 
-      if (width < 768) {
+      if (width < 1180) {
+        // For mobile and tablet (below 1180px), always show header
         header.classList.add("visible");
         header.classList.remove("hidden");
-      } else if (width >= 768 && width <= 1180) {
-        // For project pages, show header immediately on tablet
-        if (isProjectPage) {
-          header.classList.add("visible");
-          header.classList.remove("hidden");
-        } else {
-          // Use IntersectionObserver for hero on index.html
-          if (hero) {
-            window.heroObserver = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                  header.classList.add("visible");
-                  header.classList.remove("hidden");
-                } else {
-                  header.classList.remove("visible");
-                  header.classList.add("hidden");
-                }
-              });
-            }, { threshold: 0.01 });
-            window.heroObserver.observe(hero);
-          }
-        }
       } else {
         header.classList.remove("visible");
         header.classList.add("hidden");
