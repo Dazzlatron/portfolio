@@ -13,6 +13,9 @@
     --red-accent: #FF1515;
     --light-darker-border: #121212;
   }
+  body.dark-mode .sub-nav-drop .nav-text {
+    color: #a2a2a2;
+  }
   body.dark-mode .project-left::after{
     content: url('../img/plus-dark.svg') !important;
   }

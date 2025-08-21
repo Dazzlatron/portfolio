@@ -73,17 +73,19 @@
   </audio>
   
 
-  <header id="mobile-tablet-header" class="header">
+  <header id="mobile-tablet-header" class="header hidden">
     <div class="nav-wrapper">
       <div class="logo">
-        <a href="index.html"> 
         <img class="top-nav-logo" src="img/Logo-animation_rollover_05.25.gif" alt="Logo">
-      </a>
       </div>
       
-      <!-- Tablet Navigation - Only visible on tablet viewports -->
+      
+     
+      
+      <!-- Horizontal navigation for tablet (768-1180px) -->
       <ul class="nav-links-tablet">
-        <li class="top-nav-drop"><a class="overview-link" href="#project-overview"><span class="nav-text">&nbsp;Project&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a>
+        <li class="top-nav-drop">
+          <a class="overview-link" href="#project-overview"><span class="nav-text">&nbsp;Project&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a>
           <ul class="t-submenu">
             <li class="t-nav-item"><a href="#project-overview">Overview</a></li>
             <li class="t-nav-item"><a href="#problem">Problem</a></li>
@@ -92,9 +94,9 @@
             <li class="t-nav-item"><a href="#outcome">Outcome</a></li>
           </ul>
         </li>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        
       </ul>
       
       <nav class="main-nav">
@@ -113,7 +115,7 @@
   <!-- Mobile navigation moved outside header to fix stacking context -->
   <ul class="nav-links">
     <li class="top-nav-drop"><a class="overview-link" href="#project-overview"><span class="nav-text">&nbsp;Project&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a>
-      <ul id="submenu" class="t-submenu">
+      <ul id="mobile-submenu" class="t-submenu">
         <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#project-overview"><span class="nav-text">&nbsp;Overview&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
         <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#discovery"><span class="nav-text">&nbsp;Discovery&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
         <li class="t-nav-item sub-nav-drop "><a class="h-link" href="#definition"><span class="nav-text">&nbsp;Definition&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
@@ -546,7 +548,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const overviewLink = document.querySelector('.overview-link');
-  const submenu = document.querySelector('.t-submenu');
+  const submenu = document.getElementById('mobile-submenu');
   
   // Function to close submenu
   function closeSubmenu() {

@@ -61,6 +61,20 @@
       </div>
       
       
+      <!-- Horizontal navigation for tablet (768-1180px) -->
+      <ul class="nav-links-tablet">
+        <li class="top-nav-drop">
+          <a class="overview-link" href="#projects">
+            <span class="nav-text">Projects</span>
+          
+          </a>
+          
+        </li>
+        <li><a href="#about-me">About me</a></li>
+        <li><a href="#" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); return false;">Contact</a></li>
+        <li><a href="#">Resume</a></li>
+      </ul>
+      
       <nav class="main-nav">
         <div class="menu-btn" id="menu-btn">
           <div class="menu-btn__burger"></div>
@@ -71,14 +85,6 @@
           </div>
         </div>
       </nav>
-      
-      <!-- Horizontal navigation for tablet (768-1180px) -->
-      <ul class="nav-links-tablet">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#about-me">About me</a></li>
-        <li><a href="#" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); return false;">Contact</a></li>
-        <li><a href="#">Resume</a></li>
-      </ul>
     </div>
   </header>
   
@@ -318,9 +324,10 @@
   <section class="about-me">
     
     <div class="spacer-8rem"></div>
+    
     <span id="about-me" class="anchor"></span>
-  
     <div class="heading row parallax">
+      
       <div class="spacer-6rem"></div>
       <h3 class="small-header left-align">ABOUT ME</h3>
       <h2 class="section-header-28">Daryn Higginson<span class="rdot">.</span></h2>
@@ -562,23 +569,7 @@
 <script src="js/logo-wave.js" defer></script>
 <script src="js/top-logo.js" defer></script>
 
-<!-- Mobile dropdown script -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const overviewLink = document.querySelector('.overview-link');
-  const submenu = document.getElementById('submenu');
-  
-  if (overviewLink && submenu) {
-    overviewLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      overviewLink.classList.toggle('active');
-      submenu.classList.toggle('open');
-    });
-  }
-});
-</script>
+<!-- Mobile dropdown script removed - handled by top-nav.js -->
   
 
   

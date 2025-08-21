@@ -35,6 +35,9 @@
   transition: max-height 0.7s ease;
   background-color: #eee;
 }
+.sub-nav-drop .nav-text {
+  color: #8a8a8a;
+}
 #top-nav #submenu {
   margin-top: 0;
   margin-bottom: 0;
@@ -1219,6 +1222,18 @@ body.dark-mode .zoomable {
   .zoomable:hover {
     transform: none;
     box-shadow: none;
+  }
+}
+
+/* ScrollMagic trigger positioning - responsive */
+.trigger {
+  margin-top: -50px; /* Mobile: move up by 50px */
+}
+
+/* Desktop: move up by 10% */
+@media (min-width: 768px) {
+  .trigger {
+    margin-top: -10%;
   }
 }
 
