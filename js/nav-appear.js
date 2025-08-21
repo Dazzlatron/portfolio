@@ -65,6 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const mobileTabletHeader = document.querySelector('#mobile-tablet-header');
   const hero = document.querySelector('.hero');
   
+  // Variables for scroll direction detection
+  let lastScrollY = window.scrollY;
+  let isScrollingDown = false;
+  
   function toggleHeaderNav() {
     if (!hero) return;
     
@@ -81,11 +85,16 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Handle mobile-tablet-header (horizontal nav) - both mobile and tablet
       if (mobileTabletHeader) {
-        if (window.scrollY > hero.offsetHeight) {
-          // Scrolled down - hide the horizontal nav
+        // Detect scroll direction
+        const currentScrollY = window.scrollY;
+        isScrollingDown = currentScrollY > lastScrollY;
+        lastScrollY = currentScrollY;
+        
+        if (isScrollingDown) {
+          // Scrolling DOWN - hide the horizontal nav
           mobileTabletHeader.classList.add('hidden');
         } else {
-          // Scrolled up - show the horizontal nav
+          // Scrolling UP - show the horizontal nav
           mobileTabletHeader.classList.remove('hidden');
         }
       }
