@@ -26,8 +26,8 @@
   padding-top:10px
 }
 #submenu > li > a {
-  font-size: 12px !important;
-  margin-left:10px;
+  font-size: 16px !important;
+  
 }
 .submenu {
   max-height: 0;
@@ -117,21 +117,60 @@ body.dark-mode .project-showcase {
 
 .bullets li {
   list-style-type: square;
-
   padding-left: 0.5rem;
-
   padding-bottom: 8px;
-
+  break-inside: avoid;
 }
 .bullets li::marker {
   color: var(--red-accent);
 }
+.bullets-vert{
+  column-count: 1;
+  line-height: 140%;
+  padding-left: 20px;
+  margin-top:0;
+}
+.bullets-vert li{
+list-style-type: square;
+
+  padding-left: 0.5rem;
+
+  padding-bottom: 8px;
+}
+.bullets-vert li::marker {
+  color: var(--red-accent);
+}
+.bullets-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.bullets-col {
+  line-height: 140%;
+  padding-left: 20px;
+  margin-top: 0;
+  list-style: none;
+}
+
+.bullets-col li {
+  list-style-type: square;
+  padding-left: 0.5rem;
+  padding-bottom: 8px;
+}
+
+.bullets-col li::marker {
+  color: var(--red-accent);
+}
+
 .bullets {
   line-height: 140%;
   padding-left: 20px;
   margin-top:0;
-  column-count: 2;
-  column-gap: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  list-style: none;
 }
 .process-heading h2 {
   line-height: 100%;
@@ -992,20 +1031,20 @@ body.dark-mode .previous a:hover .arrow-left {
 }
 
 @media (min-width: 540px) {
-  #mobile-tablet-header {
-    width: 100%;
-    position: sticky;
-    top: 0;
-  }
   .hamburger {
 display: none;
 cursor: pointer;
 flex-direction: column;
 gap: 5px;
+  }
+  header.center-content{
+display: none;
+  }
 }
-header.center-content{
-  display: none;
-}
+
+/* Tablet range: 768px - 1180px */
+@media (min-width: 768px) and (max-width: 1180px) {
+  /* Mobile tablet header styles moved to device-styles.css to avoid conflicts */
 }
 @media (max-width: 540px) {
   

@@ -60,22 +60,46 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initial check
   updateNavSelection();
 
-  // Animate header.center-content as top nav on iPad widths
+  // Animate header.center-content as top nav on tablet widths
   const header = document.querySelector('header.center-content');
+  const mobileTabletHeader = document.querySelector('#mobile-tablet-header');
   const hero = document.querySelector('.hero');
+  
   function toggleHeaderNav() {
-    if (!header || !hero) return;
-    // Only apply on iPad widths
-    if (window.innerWidth >= 768 && window.innerWidth <= 1024) {
-      if (window.scrollY > hero.offsetHeight) {
-        header.classList.add('nav-visible');
-      } else {
-        header.classList.remove('nav-visible');
+    if (!hero) return;
+    
+    // Apply on tablet widths (768px - 1180px) and mobile (below 768px)
+    if (window.innerWidth <= 1180) {
+      // Handle header.center-content (tablet only)
+      if (header && window.innerWidth >= 768) {
+        if (window.scrollY > hero.offsetHeight) {
+          header.classList.add('nav-visible');
+        } else {
+          header.classList.remove('nav-visible');
+        }
+      }
+      
+      // Handle mobile-tablet-header (horizontal nav) - both mobile and tablet
+      if (mobileTabletHeader) {
+        if (window.scrollY > hero.offsetHeight) {
+          // Scrolled down - hide the horizontal nav
+          mobileTabletHeader.classList.add('hidden');
+        } else {
+          // Scrolled up - show the horizontal nav
+          mobileTabletHeader.classList.remove('hidden');
+        }
       }
     } else {
-      header.classList.remove('nav-visible');
+      // Outside tablet range - reset states
+      if (header) {
+        header.classList.remove('nav-visible');
+      }
+      if (mobileTabletHeader) {
+        mobileTabletHeader.classList.remove('hidden');
+      }
     }
   }
+  
   window.addEventListener('scroll', toggleHeaderNav);
   window.addEventListener('resize', toggleHeaderNav);
   toggleHeaderNav(); // Initial check

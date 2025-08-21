@@ -21,14 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
         window.heroObserver = null;
       }
 
-      if (width < 1180) {
-        // For mobile and tablet (below 1180px), always show header
-        header.classList.add("visible");
-        header.classList.remove("hidden");
-      } else {
-        header.classList.remove("visible");
-        header.classList.add("hidden");
-      }
+           if (width < 1180) {
+       // For mobile and tablet (below 1180px), always show header
+       header.classList.remove("hidden");
+     } else {
+       header.classList.add("hidden");
+     }
     }
 
     window.addEventListener("resize", updateHeaderVisibility);
@@ -62,57 +60,54 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Scroll-based header hiding/showing for mobile
-    let lastScrollTop = 0;
-    let scrollThreshold = 100; // Minimum scroll distance before hiding/showing
-    let isScrolling = false;
+    // Handle mobile submenu dropdowns
+    const overviewLinks = document.querySelectorAll('.overview-link');
+    overviewLinks.forEach(overviewLink => {
+      overviewLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Toggle the active class on the overview link
+        overviewLink.classList.toggle('active');
+        
+        // Find the associated submenu
+        const submenu = overviewLink.closest('li').querySelector('.t-submenu');
+        if (submenu) {
+          // Toggle the open class on the submenu
+          submenu.classList.toggle('open');
+        }
+        
+        // Close other open submenus
+        overviewLinks.forEach(otherLink => {
+          if (otherLink !== overviewLink) {
+            otherLink.classList.remove('active');
+            const otherSubmenu = otherLink.closest('li').querySelector('.t-submenu');
+            if (otherSubmenu) {
+              otherSubmenu.classList.remove('open');
+            }
+          }
+        });
+      });
+    });
 
+        // Mobile header behavior - same as tablet (768-1180)
+    // No complex scroll logic needed, just show/hide based on viewport
     const mobileHeader = document.getElementById('mobile-tablet-header');
     const mobileNavLinks = document.querySelector('.nav-links');
 
     if (mobileHeader) {
-      // Add scroll event listener
-      window.addEventListener('scroll', () => {
-        if (isScrolling) return; // Prevent multiple rapid calls
-        
-        isScrolling = true;
-        
-        setTimeout(() => {
-          const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          const scrollDifference = Math.abs(currentScrollTop - lastScrollTop);
-          
-          // Only trigger if scroll distance is significant enough
-          if (scrollDifference > scrollThreshold) {
-            if (currentScrollTop > lastScrollTop && currentScrollTop > 100) {
-              // Scrolling down and not at the very top
-              mobileHeader.classList.add('header-hidden');
-              mobileHeader.classList.remove('header-visible');
-              // Also hide the mobile navigation menu
-              if (mobileNavLinks) {
-                mobileNavLinks.classList.remove('open');
-              }
-              // Reset the hamburger button state
-              if (menuBtn) {
-                menuBtn.classList.remove('open');
-              }
-            } else if (currentScrollTop < lastScrollTop) {
-              // Scrolling up
-              mobileHeader.classList.add('header-visible');
-              mobileHeader.classList.remove('header-hidden');
-            }
-            
-            lastScrollTop = currentScrollTop;
-          }
-          
-          isScrolling = false;
-        }, 50); // Small delay to prevent rapid firing
-      });
+      // Mobile header behaves exactly like tablet - always visible below 1180px
+      // The updateHeaderVisibility() function already handles this
       
-      // Show header when at the top of the page
+      // Only handle mobile navigation menu closing on scroll
       window.addEventListener('scroll', () => {
-        if (window.pageYOffset <= 100) {
-          mobileHeader.classList.add('header-visible');
-          mobileHeader.classList.remove('header-hidden');
+        // Close mobile navigation menu when scrolling
+        if (mobileNavLinks && mobileNavLinks.classList.contains('open')) {
+          mobileNavLinks.classList.remove('open');
+        }
+        // Reset hamburger button state
+        if (menuBtn && menuBtn.classList.contains('open')) {
+          menuBtn.classList.remove('open');
         }
       });
     }
