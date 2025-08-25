@@ -1,6 +1,8 @@
 class ContactSection extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
+   
+
      <section class="contact parallax" data-speed="0.3">
   <div class="cont twelve">
     <div class="col-1 process-heading section-header-row">
@@ -8,7 +10,7 @@ class ContactSection extends HTMLElement {
  </div>
   </div>
   <!--SPACER-->
-<div class="spacer-4rem"></div>
+<div class="spacer-4rem mobile-0-8-rem"></div>
 <!--SPACER-->
   <div class="cont contact-gap six-six">
     <div class="col-1">
@@ -37,22 +39,22 @@ class ContactSection extends HTMLElement {
       </div>
     </div>
     <div class="col-2">
-      <div class="contact-info">
-        <div class="row icon-row">
-          <div class="icon"><img class="ico-location" src="img/resume-icon-2.svg" loading="lazy"/></div>
-          <div class="icon-text"><p class="description">Download my resume</p></div>
-          
-        </div>
-        
-      <div class="row icon-row">
-        <div class="icon"><img class="ico-email" src="img/email-icon-2.svg" loading="lazy"/></div>
-        <div class="icon-text"><p class="description">dazgraphic@gmail.com</p></div>
-      </div>
-      <div class="row icon-row">
-        <div class="icon"><img class="ico-linkedin" src="img/linkedin-icon-2.svg" loading="lazy"/></div>
-        <div class="icon-text"><p class="description">LinkedIn</p></div>
-      </div>
-    </div>
+       <div class="contact-info">
+              <div class="row icon-row">
+                <div class="icon"><img class="ico-location" src="img/resume-icon-2.svg" loading="lazy"/></div>
+                <div class="icon-text"><a class="description" href="img/Daryn-Higginson-Resume.pdf" target="_blank">Download my resume</a></div>
+                
+              </div>
+              
+            <div class="row icon-row">
+              <div class="icon"><img class="ico-email" src="img/email-icon-2.svg" loading="lazy"/></div>
+              <div class="icon-text"><a class="description" href="mailto:dazgraphic@gmail.com">dazgraphic@gmail.com</a></div>
+            </div>
+            <div class="row icon-row">
+              <div class="icon"><img class="ico-linkedin" src="img/linkedin-icon-2.svg" loading="lazy"/></div>
+              <div class="icon-text"><a class="description" href="https://www.linkedin.com/in/darynhigginson?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BUmNU5IfNRbexSo5yPa5PMQ%3D%3D" target="_blank">LinkedIn</a></div>
+            </div>
+          </div>
     </div>
     </div>
 </section>

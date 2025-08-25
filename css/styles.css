@@ -12,6 +12,18 @@
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
+.cont a.description {
+  font-size: 14px;
+}
+#submenu > li > a > span.nav-text {
+  font-size: 14px;
+}
+.nav-links-tablet .arrow-svg path {
+  stroke: #C81414 !important;
+}
+.about-me {
+  position: relative;
+}
 .tool-icon {
   width: 100%;
 }
@@ -103,7 +115,7 @@ padding:0;
   cursor:zoom-in
 }
 .project-showcase {
-  aspect-ratio: 2.47;
+  aspect-ratio: 2.17;
   width: 100%;
   height: auto;
 
@@ -268,12 +280,12 @@ list-style-type: square;
   text-align: center !important;
 }
 #contact {
-  position: relative;
-  margin-top: -50px;
+  position: absolute;
+  margin-top: -70px;
 }
 #about-me {
   position: absolute;
-  margin-top: -70px;
+  margin-top: -90px;
 }
 /* Base header style */
 .top-nav-logo {
@@ -417,7 +429,7 @@ z-index: 1;
   justify-content: end;
   transform: translateY(-100%); /* Start off-screen to the top */
   opacity: 0;
-  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), 
+  transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), 
               opacity 0.4s ease;
   will-change: transform, opacity;
 }
@@ -475,7 +487,11 @@ z-index: 1;
   grid-template-columns: 1fr 1fr;
   column-gap: 100px;
 }
-.ico-email, .ico-linkedin, .ico-location {
+.ico-location {
+  width:22px;
+  float: left;
+}
+.ico-email, .ico-linkedin  {
   float: left;
   width:25px
 }
@@ -527,7 +543,7 @@ body {
   z-index: 9;
   transform: translateY(-100%); /* Start off-screen to the top */
   opacity: 0;
-  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), 
+  transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), 
               opacity 0.4s ease;
   overflow: hidden;
   will-change: transform, opacity;
