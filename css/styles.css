@@ -12,6 +12,27 @@
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
+/* Hide ScrollMagic debug indicators */
+.scrollmagic-indicator,
+.scrollmagic-indicators,
+.scrollmagic-start,
+.scrollmagic-end,
+[style*="z-index: 9999"],
+[style*="position: fixed"][style*="z-index: 9999"],
+[style*="position: absolute"][style*="z-index: 9999"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide any elements with high z-index that might be debug indicators */
+*[style*="z-index: 9999"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
 .cont a.description {
   font-size: 14px;
 }
@@ -825,7 +846,7 @@ main {
     font-size: 20px;
     font-family: 'biryaniregular';
     color: var(--light-text);
-    line-height: 20px;
+    line-height:1.4;
     text-align: left;
   }
   .section-header-24 {
@@ -1251,5 +1272,56 @@ body.dark-mode .zoomable {
   .trigger {
     margin-top: -10%;
   }
+}
+
+/* ======================================== */
+/* ScrollMagic Debug Indicators - Hidden */
+/* ======================================== */
+
+/* Hide all ScrollMagic debug indicators */
+[style*="z-index: 9999"] {
+    display: none !important;
+}
+
+/* Hide specific debug indicator elements */
+div[style*="position: fixed"][style*="z-index: 9999"],
+div[style*="position: absolute"][style*="z-index: 9999"] {
+    display: none !important;
+}
+
+/* Hide trigger, start, and end indicators */
+div:contains("trigger"),
+div:contains("start"),
+div:contains("end") {
+    display: none !important;
+}
+
+/* Alternative approach - hide by z-index */
+*[style*="z-index: 9999"] {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Additional rules to catch any remaining indicators */
+div[style*="z-index: 9999"],
+span[style*="z-index: 9999"],
+p[style*="z-index: 9999"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Hide any elements with specific ScrollMagic classes */
+.scrollmagic-indicator,
+.scrollmagic-indicators,
+.scrollmagic-start,
+.scrollmagic-end,
+.scrollmagic-trigger {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 

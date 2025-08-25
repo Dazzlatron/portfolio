@@ -28,10 +28,28 @@
     <script src="js/sticky-scroll.js"></script>
   </script>
 <style>
-  @media (max-width: 768px) {
+   @media only screen 
+   and (min-width: 768px) 
+   and (max-width: 1180px) {
+    .slide p{
+      padding: 0 90px;
+    }
+    .phil-row {
+  margin: 0 -2rem;
+}
     #hero-section {
       top:40px;
-
+      height:40vh;
+      min-height: unset;
+    }
+   }
+  @media (max-width: 768px) {
+    #mobile-tablet-header {
+  padding: 0 10px;
+}
+    #hero-section {
+      top:40px;
+      
     }
   }
   #hero-section {
@@ -92,8 +110,7 @@
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#about-me">About me</a></li>
-    <li><a href="#" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); return false;">Contact</a></li>
-    <li><a href="#">Resume</a></li>
+    <li><a href="#contact" >Contact</a></li>
   </ul>
 
 <section id="hero-section" class="hero">
@@ -335,10 +352,10 @@
     </div>
    
     <div class="grid-wrapper parallax">
-      <div class="row-1 sequence" data-speed="0.1">
+      <div class="row-1 sequence about-me-row" data-speed="0.1">
        
         <div class="col col-about-1">
-          <img class="profile-pic hide-on-mobile" src="img/profile-pic.png" loading="lazy"/>
+          <img class="profile-pic hide-on-mobile-and-tablet" src="img/profile-pic.png" loading="lazy"/>
          </div>
          <div class="col col-about-2">
       
@@ -359,7 +376,7 @@
         <div class="spacer-6rem"></div>
       </div>
       
-      <div class="row row-2 ">
+      <div class="row row-2 phil-row">
        
         <div class="col phil-col">
           <div class="phil-box creativity"><img class="phil-icon creativity-icon" alt="creativity" src="img/creativity-icon.svg" loading="lazy"/>
@@ -559,7 +576,7 @@
 
 <script src="js/ScrollMagic.min.js" defer></script>
 <script src="js/animation.gsap.min.js" defer></script>
-<script src="js/debug.addIndicators.min.js" defer></script>
+    <!-- <script src="js/debug.addIndicators.min.js" defer></script> -->
 <script src="js/consolidated-parallax.js" defer></script>
 <script src="js/dots-background.js" defer></script>
 <script src="js/nav-appear.js" defer></script>

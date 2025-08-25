@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
       reverse: true // Animation only plays once
     })
     .setTween(gsap.to(element, { opacity: 1, y: '-20px', duration: 1, ease: "sine.inOut" })) // GSAP animation
-    .addIndicators({ name: "Fade & Slide Up" }) // Debugging indicators (optional)
+    // .addIndicators({ name: "Fade & Slide Up" }) // Debugging indicators (optional)
     .addTo(controller);
   });
 
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { x: 100, opacity: 0 }, 
       { x: 0, opacity: 1, duration: 1, ease: "power2.out" }
     ))
-    .addIndicators({ name: "Fly-in from right" }) // Optional for debugging
+    // .addIndicators({ name: "Fly-in from right" }) // Optional for debugging
     .addTo(controller);
   });
 
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         reverse: true
       })
       .setTween(tl)
-      .addIndicators({ name: "About Me Columns" })
+      // .addIndicators({ name: "About Me Columns" })
       .addTo(controller);
 
       // Animate .about-me-heading when it scrolls into view
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .setTween(
           gsap.to(aboutMeHeading, { x: 0, opacity: 1, duration: 0.7, ease: 'power2.out' })
         )
-        .addIndicators({ name: 'About Me Heading' })
+        // .addIndicators({ name: 'About Me Heading' })
         .addTo(controller);
       }
   }

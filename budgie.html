@@ -27,7 +27,12 @@
     <script src="js/mobile-swipe.js"></script>
   </script>
 <style>
-  
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #hero-section {
+    
+    width: 95%;
+  }
+}
   .anchor {
   position: relative;
   top: -60px;
@@ -46,6 +51,7 @@
   @media screen and (min-width:1200px) {
     .main-content {
     padding: 0 2rem;
+    margin-top: 3.2rem;
 
   }
   }
@@ -487,7 +493,7 @@
 
 <script src="js/ScrollMagic.min.js" defer></script>
 <script src="js/animation.gsap.min.js" defer></script>
-<script src="js/debug.addIndicators.min.js" defer></script>
+    <!-- <script src="js/debug.addIndicators.min.js" defer></script> -->
 <script src="js/consolidated-parallax.js" defer></script>
 <script src="js/dots-background.js" defer></script>
 <script src="js/nav-appear.js" defer></script>
