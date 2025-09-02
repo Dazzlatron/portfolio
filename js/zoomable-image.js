@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("Zoomable image script loaded");
     const zoomableImages = document.querySelectorAll(".zoomable");
+    console.log("Found zoomable images:", zoomableImages.length);
     
     zoomableImages.forEach(function(image) {
+        console.log("Setting up zoomable image:", image.src);
         // Add magnify icon for mobile/tablet devices
         if (window.innerWidth <= 1024) {
             const magnifyIcon = document.createElement('div');
@@ -65,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         zoomContainer.style.width = '100%';
         zoomContainer.style.height = '100%';
         zoomContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-        zoomContainer.style.zIndex = '9999';
+        zoomContainer.style.zIndex = '10000';
         zoomContainer.style.cursor = 'grab';
         
         
@@ -83,9 +86,10 @@ document.addEventListener("DOMContentLoaded", function () {
         
         
         // Create close button
-        const closeButton = document.createElement('span');
+        const closeButton = document.createElement('button');
         closeButton.className = 'close';
         closeButton.innerHTML = '×';
+        closeButton.setAttribute('aria-label', 'Close zoomed image');
         
         // Add elements to container
         zoomContainer.appendChild(zoomedImage);
@@ -94,8 +98,10 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Click to zoom
         image.addEventListener('click', function(e) {
+            console.log("Zoomable image clicked:", image.src);
             e.preventDefault();
             if (!isZoomed) {
+                console.log("Opening zoom for:", image.src);
                 openZoom();
             }
         });
@@ -118,9 +124,11 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Open zoom
         function openZoom() {
+            console.log("openZoom function called");
             isZoomed = true;
             zoomContainer.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            console.log("Zoom container display set to block");
             
             // Always try to load the dark mode variant for better visibility on dark background
             const originalSrc = image.src;

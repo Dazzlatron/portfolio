@@ -1250,6 +1250,37 @@ body.dark-mode .zoomable {
   -ms-user-select: none;
 }
 
+/* Close button for zoomable images */
+.zoom-container .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.zoom-container .close:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.1);
+}
+
+.zoom-container .close:active {
+  transform: scale(0.95);
+}
+
 /* Responsive zoomable images */
 @media (max-width: 768px) {
   .zoomable {
@@ -1259,6 +1290,24 @@ body.dark-mode .zoomable {
   .zoomable:hover {
     transform: none;
     box-shadow: none;
+  }
+  
+  .zoom-container .close {
+    top: 10px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zoom-container .close {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    top: 5px;
+    right: 5px;
   }
 }
 
