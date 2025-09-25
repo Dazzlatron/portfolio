@@ -143,8 +143,8 @@ padding:0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1px solid #121212;
-  border-radius: 10px;
+  border: 1px solid var(--light-border);
+  border-radius: 8px;
 }
 
 body.dark-mode .project-showcase {
