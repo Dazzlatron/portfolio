@@ -5,12 +5,10 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - "5173:5173"  # Vite default port
-      - "8080:8080"  # Your current port
+      - "8080:8080"
     volumes:
       - .:/app
       - /app/node_modules
-      
     environment:
       - NODE_ENV=development
     command: npm run dev

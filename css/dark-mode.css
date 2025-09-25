@@ -32,7 +32,7 @@
     border-bottom: 1px solid var(--dark-border);
   }
   body.dark-mode .highlight-box {
-      
+      border: 1px solid var(--dark-hover);
       border-radius: 10px;
       padding: 3rem;
     }

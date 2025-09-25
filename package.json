@@ -3,17 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "npx http-server -p 8080 -a 0.0.0.0 --cors",
+    "start": "npx http-server -p 8080 -a 0.0.0.0 --cors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-
-    "gulp": "^5.0.0",
-    "vite": "^7.1.3"
+    "gulp": "^5.0.0"
   },
   "dependencies": {
     "ansi-regex": "^5.0.1",
@@ -110,7 +107,6 @@
     "path-root": "^0.1.1",
     "path-root-regex": "^0.1.2",
     "picomatch": "^2.3.1",
-
     "readable-stream": "^3.6.2",
     "readdirp": "^3.6.0",
     "rechoir": "^0.8.0",
