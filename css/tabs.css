@@ -1,5 +1,18 @@
+.tabs-icon path {
+ fill: var(--light-text);
+}
+.tab.active .tabs-icon path {
+  fill: var(--light-text);
+}
+.tab.active p {
+  color: var(--light-text);
+}
 .tab img {
   height: 15px;
+}
+.tabs-icon {
+  height: 15px;
+  margin-right:8px;
 }
 .tab p {
   margin: 0;
@@ -9,12 +22,13 @@
 .tab-container {
     position: relative;
     display: flex;
-    background: #eee;
+    border: 1px solid var(--light-border);
     border-radius: 50px;
     padding: 5px;
     width: fit-content;
     margin-bottom: 30px;
     width: 100%;
+    background: #fbfbfb;
   }
 
   .tab {
@@ -49,19 +63,17 @@
     bottom: 5px;
     left: 5px;
     width: calc((100% - 10px) / 3); /* adjust for 3 tabs */
-    background: #fff;
+    background: #f0f0f0;
+    background: linear-gradient(47deg,rgb(240, 240, 240) 0%, rgb(243, 243, 243) 100%);
     border-radius: 50px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    
     transition: transform 0.3s ease;
   }
 
   /* Tab content */
   .tab-content {
-    max-width: 600px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+ 
+    
     display: none;
     animation: fadeIn 0.3s ease;
   }

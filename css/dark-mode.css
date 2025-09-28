@@ -13,6 +13,25 @@
     --red-accent: #FF1515;
     --light-darker-border: #121212;
   }
+  body.dark-mode .tab-container {
+    background: var(--dark-bg);
+  }
+  body.dark-mode .highlight {
+    background: #e3e3e3;
+    background: linear-gradient(47deg,rgba(227, 227, 227, 1) 0%, rgba(243, 243, 243, 1) 100%);
+  } 
+   body.dark-mode .tabs-icon path {
+    fill: var(--dark-text);
+  }
+  body.dark-mode .tab.active .tabs-icon path {
+    fill: var(--light-text);
+  }
+  body.dark-mode .tab.active p {
+    color: var(--light-text);
+  }
+  body.dark-mode .tab p {
+    color: var(--dark-text);
+  } 
   body.dark-mode .sub-nav-drop .nav-text {
     color: #a2a2a2;
   }

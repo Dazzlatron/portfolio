@@ -12,7 +12,12 @@
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
-
+.desktop-screenshot {
+  width: 95%;
+}
+.mobile-screenshot {
+  width: 95%;
+}
 /* Hide ScrollMagic debug indicators */
 .scrollmagic-indicator,
 .scrollmagic-indicators,
@@ -26,7 +31,17 @@
   opacity: 0 !important;
   pointer-events: none !important;
 }
-
+.left-icon-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
 /* Hide any elements with high z-index that might be debug indicators */
 *[style*="z-index: 9999"] {
   display: none !important;
@@ -239,38 +254,7 @@ list-style-type: square;
   border-radius:10px;
   border:1px solid var(--light-darker-border);
 }
-.cont {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 20px;
-}
-.six-six .col-1 {
-  grid-column:span 6;
-}
-.six-six .col-2 {
-  grid-column:span 6;
-}
-.four-four-four .col-1{
-  grid-column: span 4;
-}
-.four-four-four .col-2{
-  grid-column: span 4;
-}
-.four-four-four .col-3{
-  grid-column: span 4;
-}
-.four-eight .col-1 {
-  grid-column: span 4;
-}
-.four-eight .col-2 {
-  grid-column: span 8;
-}
-.twelve .col-1 {
-  grid-column: span 12;
-}
-.twelve {
-  grid-column: span 12;
-}
+
  .full-paragraph {
   height: 0;
   overflow: hidden;
@@ -741,8 +725,8 @@ body {
   
 }
 p {
-  font-size:17px;
-  line-height: 140%;
+  font-size:16px;
+  line-height: 150%;
  }
 .flex{
   display: flex;

@@ -1,0 +1,38 @@
+.cont {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+.six-six > .col-1 {
+  grid-column:span 6;
+}
+.six-six > .col-2 {
+  grid-column:span 6;
+}
+.four-four-four > .col-1{
+  grid-column: span 4;
+}
+.four-four-four > .col-2{
+  grid-column: span 4;
+}
+.four-four-four > .col-3{
+  grid-column: span 4;
+}
+.four-eight > .col-1 {
+  grid-column: span 4;
+}
+.four-eight > .col-2 {
+  grid-column: span 8;
+}
+.eight-four > .col-1 {
+  grid-column: span 8;
+}
+.eight-four > .col-2 {
+  grid-column: span 4;
+}
+.twelve > .col-1 {
+  grid-column: span 12;
+}
+.twelve {
+  grid-column: span 12;
+}
