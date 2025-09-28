@@ -322,7 +322,11 @@ body.dark-mode .toggle-ball {
 
 body.dark-mode .side-nav {
   color: var(--dark-text);
+}
 
+/* Dark mode styling for to-top-icon */
+body.dark-mode .to-top-icon {
+  filter: brightness(0) invert(1); /* Makes the icon white in dark mode */
 }
 
 

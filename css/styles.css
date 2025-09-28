@@ -12,6 +12,22 @@
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
+#submenu .nav-item .arrow-svg {
+  width: 8px;
+  height: 8px;
+}
+#top-nav .arrow-svg {
+  width: 12px;
+  height: 12px;
+}
+.arrow-svg {
+  width:18px;
+  height:18px;
+}
+.arrow-svg-nav {
+  width:16px;
+  height:16px;
+}
 .desktop-screenshot {
   width: 95%;
 }
@@ -442,7 +458,7 @@ z-index: 1;
 }
 
 .to-top-icon {
-  filter: brightness(0) invert(1); /* Makes the icon white */
+  filter: brightness(0) saturate(100%) invert(7%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%); /* Makes the icon dark text color in light mode */
   transition: filter 0.3s ease;
   cursor: pointer;
   width:28px;
