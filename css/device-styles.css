@@ -296,17 +296,11 @@
     .footer-content {
       
       padding: 0 0 30px;}
-    .number-col {
-      margin-right: 0;
-    }
     .p-wrap-left-2 .image-container {
       margin-top: 10px;
     }
     .proj-wrap.p-wrap-right-2 .image-container {
       margin-top: 10px;
-    }
-    .number {
-      height: 40px;
     }
     #hero-section{
       width:unset;
@@ -724,11 +718,7 @@
    }
   /* ----------- NOT MOBILE ----------- */
   @media screen and (min-width: 768px) {
-    .project-showcase {
-      aspect-ratio: 2.1;
-      background-size: cover;
-      background-image: url(../img/budgie-project-hero.png);
-    }
+    
     .switch-mobile{
       display: none;
      }
@@ -1077,12 +1067,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
       color: var(--red-accent);
     }
  
-  .project-showcase {
-    aspect-ratio: 1.6;
-    background-size: cover;
-    background-image: url(../img/budgie-project-hero-mobile.png);
-    border-radius:8px;
-  }
+ 
   .circle-third {
     width: 100%;
   }
@@ -1099,9 +1084,6 @@ and (-webkit-min-device-pixel-ratio: 1) {
   .gradient-button, .submit-button {
     margin-top:20px;
     font-size:14px;
-  }
-  .number {
-    height: 40px;
   }
   .image-container {
     border-radius:5px;
