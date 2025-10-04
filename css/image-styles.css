@@ -332,6 +332,7 @@ body.dark-mode .zoomable {
   display: inline-block;
   overflow: hidden;
   border-radius: 5px;
+  border: 1px solid var(--dark-border);
 }
 
 .p-wrap-left-2 .image-container {
@@ -439,13 +440,16 @@ body.dark-mode .project-right::after {
 }
 
 body.dark-mode .image-container {
-  border: 1px solid #858585;
+  border: 1px solid var(--lighter-dark-border);
 }
 
 /* ========================================
    RESPONSIVE STYLES
    ======================================== */
 @media (max-width: 768px) {
+  .problem-icon {
+    height:30px;
+  }
   .zoomable {
     cursor: pointer;
   }

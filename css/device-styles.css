@@ -1016,6 +1016,12 @@ and (-webkit-min-device-pixel-ratio: 1) {
     
     /* Override tablet styles for mobile */
     @media (max-width: 767px) {
+      div.image-container:nth-child(2) {
+        left: -5px;
+      }
+      main {
+        padding: 20px 30px 0 30px;
+      }
       .nav-links .t-submenu {
         position: static !important;
         top: auto !important;
@@ -1083,7 +1089,8 @@ and (-webkit-min-device-pixel-ratio: 1) {
   }
   .gradient-button, .submit-button {
     margin-top:20px;
-    font-size:14px;
+    font-size:16px;
+    padding: 12px 10px 10px;
   }
   .image-container {
     border-radius:5px;
@@ -1091,11 +1098,11 @@ and (-webkit-min-device-pixel-ratio: 1) {
   .section-header{
     line-height: 1.4;
     margin-bottom: 0.6rem;
-    font-size: 18px;
-    margin-top: 8px;
+    font-size: 20px;
+    margin-top: 5px;
   }
   .taxonomy{
-    font-size: 12px;
+    font-size: 14px;
   }
   p{
     font-size:16px;

@@ -1,0 +1,30 @@
+.read-more-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .read-more-text {
+    max-height: none;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  /* Mobile only (adjust breakpoint as needed) */
+  @media (max-width: 768px) {
+    .read-more-text {
+      max-height: 1.5em; /* ~3 lines before "Read more" appears */
+      position: relative;
+    }
+    
+    /* Add ellipsis when collapsed */
+    
+    
+    .read-more-wrapper .toggle-btn {
+      display: inline-block;
+      margin-top: 5px;
+      color: blue;
+      cursor: pointer;
+      font-size: 0.9em;
+      text-decoration: underline;
+    }
+  }

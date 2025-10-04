@@ -7,12 +7,19 @@
   --dark-hover: #2a2a2a;
   --light-text: #121212;
   --light-dark-border: #1d1d1d;
+  --lighter-dark-border: #969696;
   --light-bg: #fbfbfb;
   --light-border: #d1d1d1;
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
-
+.p-wrap-right-1 > div:nth-child(3){
+  left:-5px;
+}
+.description-cont {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 /* Hide ScrollMagic debug indicators */
 .scrollmagic-indicator,
 .scrollmagic-indicators,
@@ -680,7 +687,7 @@ p {
   color:#bababa;
   font-family: 'biryanilight';
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   font-weight: lighter;
 }
 .red-line {
@@ -777,6 +784,7 @@ main {
     color: var(--light-text);
     line-height:1.4;
     text-align: left;
+    margin-top:0;
   }
   .section-header-24 {
     font-size: 24px;
@@ -818,7 +826,7 @@ main {
   
   .gradient-button, .submit-button {
     text-align: center;
-    font-family: 'biryanibold';
+    font-family: 'biryaniregular';
     padding: 10px 10px 6px;
     font-size: 18px;
     color: #000;

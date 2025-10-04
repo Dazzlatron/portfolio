@@ -6,6 +6,18 @@
 .six-six > .col-1 {
   grid-column:span 6;
 }
+.four-column > .col-1{
+  grid-column: span 3;
+}
+.four-column > .col-2{
+  grid-column: span 3;
+}
+.four-column > .col-3{
+  grid-column: span 3;
+}
+.four-column > .col-4{
+  grid-column: span 3;
+}
 .six-six > .col-2 {
   grid-column:span 6;
 }
@@ -35,4 +47,24 @@
 }
 .twelve {
   grid-column: span 12;
+}
+@media screen and (max-width: 767px) {
+  .four-eight > .col-1 {
+    grid-column: span 12;
+  }
+  .four-eight > .col-2 {
+    grid-column: span 12;
+  }
+  .six-six > .col-1 {
+    grid-column: span 12;
+  }
+  .six-six > .col-2 {
+    grid-column: span 12;
+  }
+  .col-1.left.mobile-6-col {
+    grid-column: span 6;
+  }
+  .col-2.right.mobile-6-col {
+    grid-column: span 6;
+  }
 }

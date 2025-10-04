@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/device-styles.css">
     <link rel="stylesheet" href="css/grid-column-layout.css">
     <link rel="stylesheet" href="css/image-styles.css">
+    
     <script src="js/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -225,13 +226,14 @@
                   <img class="thumbnail static-image" src="img/budgie-thumbnail.png" loading="lazy">
                  <!-- <img src="img/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
               </div>
+              <div class="description-cont">
                   <p class="taxonomy">UX DESIGN</p>
                   <h3 class="section-header">Budgie. Your budget buddy</h3>
-                  <div class="read-more-wrapper">
-                  <p class="read-more-btn">Read more</p>
-                  <p class="biriyani-light description">Budgie helps users create smart shopping lists, find the best prices for specific items, and discover budget-friendly recipe ideas—all in one&nbsp;place.  </p>
-                </div>
+
+                  <p class="biriyani-light description ">Budgie helps users create smart shopping lists, find the best prices for specific items, and discover budget-friendly recipe ideas—all in one&nbsp;place.  </p>
+   
                   <a href="budgie.html" class="gradient-button">View case study</a>
+                </div>
                 </div>
               </div>
           </div>
@@ -246,10 +248,14 @@
             <img class="thumbnail-left thumb static-image" src="img/Demo-form-thumbnail.png" loading="lazy">
             <!-- <img src="img/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
           </div>
+          <div class="description-cont">
           <p class="taxonomy">UX / UI</p>
             <h3 class="section-header">Sales Capture Forms Optimisation</h3>
-            <p class="biriyani-light description">An addition of a comprehensive country selection list paired with an autocomplete feature to streamline the form filling process, improving quality of leads and location data captured.  </p>
-          <a href="" class="gradient-button">View case study</a>
+
+              <p class="biriyani-light description ">An addition of a comprehensive country selection list paired with an autocomplete feature to streamline the form filling process, improving quality of leads and location data captured.  </p>
+  
+              <a href="" class="gradient-button">View case study</a>
+              </div>
       </div>
           </div>
             <!--## PROJECT 5 ##-->
@@ -262,10 +268,12 @@
                   <img class="thumbnail static-image" src="img/LoopNet-thumbnail.png" loading="lazy">
                  <!-- <img src="img/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
               </div>
+              <div class="description-cont">
                   <p class="taxonomy">DIGITAL DESIGN&nbsp;&nbsp;|&nbsp;&nbsp;WEB DEVELOPMENT</p>
                   <h3 class="section-header">LoopNet UK migration and build</h3>
                   <p class="biriyani-light description">Supported the UK launch of LoopNet by migrating and adapting the website for a UK audience. As well as repurposing content and localised marketing materials, ensuring a smooth and relevant introduction of the brand to the UK&nbsp;market.   </p>
                   <a href="" class="gradient-button">View case study</a>
+                  </div>
                 </div>
               </div>
           </div>
@@ -279,10 +287,12 @@
                   <img class="thumbnail static-image" src="img/photography-brochure.png" loading="lazy">
                  <!-- <img src="img/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
               </div>
+              <div class="description-cont">
                   <p class="taxonomy">GRAPHIC DESIGN</p>
                   <h3 class="section-header">CoStar Photography Brochure</h3>
                   <p class="biriyani-light description">A printed brochure showcasing CoStar's architectural photography, including the new brand identity, with a fresh look and&nbsp;feel.   </p>
                   <a href="" class="gradient-button">View case study</a>
+                  </div>
                 </div>
               </div>
           </div>
@@ -299,10 +309,12 @@
         <img class="thumbnail-left thumb static-image" src="img/funds-thumbnail.png" loading="lazy">
         <!-- <img src="img/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
       </div>
+      <div class="description-cont">
       <p class="taxonomy">DIGITAL DESIGN&nbsp;&nbsp;|&nbsp;&nbsp;MARKETING</p>
         <h3 class="section-header">Funds information campaign</h3>
         <p class="biriyani-light description">Concept, design and development of a campaign promoting CoStar's new Funds Information product  feature which became our top-performing campaign of&nbsp;2024.  </p>
       <a href="" class="gradient-button">View case study</a>
+      </div>
   </div>
           </div>
          
@@ -316,10 +328,12 @@
           <img class="thumbnail-left thumb static-image" src="img/costar-website-reskin-thumbnail.png" loading="lazy">
           <!-- <img src="img/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
         </div>
+        <div class="description-cont">
         <p class="taxonomy">WEB DESIGN & DEVELOPMENT</p>
           <h3 class="section-header">CoStar website redesign &&nbsp;rebuild</h3>
           <p class="biriyani-light description" >Redesign and rebuild of CoStar's website, refreshing the look and feel in line with the company's updated brand identity. Focused on modernising the visual design and enhancing the overall user experience.  </p>
         <a href="" class="gradient-button">View case study</a>
+        </div>
     </div>
             </div>
              <!--## PROJECT 6 ##-->
@@ -332,10 +346,12 @@
                   <img class="thumbnail static-image" src="img/persistent-demo-thumbanil.png" loading="lazy">
                  <!-- <img src="img/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
               </div>
+              <div class="description-cont">
                   <p class="taxonomy">UX / UI</p>
                   <h3 class="section-header" >Persistent demo button case study</h3>
                   <p class="biriyani-light description">Evaluating the Impact of a 'Book a Demo' Button on Engagement and Conversions  </p>
                   <a href="" class="gradient-button">View case study</a>
+                  </div>
                 </div>
                 <div class="number-col"><img class="number no-6" src="img/0-6.svg" loading="lazy"></div>
               </div>
@@ -603,7 +619,7 @@
   const nav = document.getElementById('top-nav');
   const hero = document.querySelector('.hero');
   
-  if (window.scrollY > hero.offsetHeight) {
+  if (window.scrollY > hero.offsetHeight * 0.3) {
     nav.style.transform = 'translateY(0)';
     nav.style.opacity = '1';
   } else {
@@ -638,7 +654,7 @@
         if (topElement) topElement.classList.remove('top-visible');
       }
     });
-  }, {threshold: 0.3});
+  }, {threshold: 0.15});
 
   // Observe the hero section
   observer.observe(hero);
@@ -714,34 +730,7 @@
   window.addEventListener('scroll', playScrollSound);
 </script>
 <!--READ MORE JS -->
-<script>
- document.querySelectorAll('.read-more-wrapper').forEach(function(wrapper) {
-  const button = wrapper.querySelector('.read-more-btn');
-  const paragraph = wrapper.querySelector('.full-paragraph');
 
-  // Expand paragraph
-  button.addEventListener('click', function () {
-    paragraph.classList.add('expanded');
-    paragraph.style.height = paragraph.scrollHeight + 'px';
-    button.style.display = 'none';
-  });
-
-  // Collapse paragraph
-  paragraph.addEventListener('click', function () {
-    paragraph.style.height = '0px';
-    paragraph.classList.remove('expanded');
-    button.style.display = 'inline';
-  });
-
-  // Optional: clear inline style after transition ends (cleaner for re-opening)
-  paragraph.addEventListener('transitionend', function () {
-    if (!paragraph.classList.contains('expanded')) {
-      paragraph.style.height = '';
-    }
-  });
-});
-
-</script>
 <script src="js/links.js" defer></script>
 </body>
 </html>

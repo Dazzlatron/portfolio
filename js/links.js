@@ -1,4 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
+  // Check if device is mobile (screen width less than 768px)
+  function isMobile() {
+    return window.innerWidth < 768;
+  }
+
+  // Skip all functionality on mobile
+  if (isMobile()) {
+    console.log('links.js: Mobile device detected - click handlers disabled');
+    return;
+  }
+
   const project1 = document.getElementById("project1");
 
   // make cursor a pointer
