@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/product-slider.css">
     <link rel="stylesheet" href="css/grid-column-layout.css">
     <link rel="stylesheet" href="css/image-styles.css">
+    <link rel="stylesheet" href="css/cursor-effects.css">
     
     <script src="js/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
@@ -71,7 +72,7 @@
 
 </style>
 </head>
-<body>
+<body style="cursor: none !important;">
   <audio id="hoverSound" preload="auto">
     <source src="sounds/notification-1-269296.mp3" type="audio/mpeg">
   </audio>
@@ -486,7 +487,10 @@
 
 
 <div id="footer-bg"></div>
-
+<div class="cursor">
+  <div class="cursor-core"></div>
+  <div class="cursor-ring"></div>
+</div>
 
 <!--<img class="side-image" src="img/0-1.svg"/>-->
 
@@ -689,6 +693,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script src="js/product-slider.js" defer></script>
 <script src="js/contact.js" defer></script>
-
+<script src="js/cursor-effects.js"> </script>
 </body>
 </html>

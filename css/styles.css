@@ -13,6 +13,20 @@
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
+.cursor.darkmode .cursor-core {
+  background: radial-gradient(circle, #ffffff 0%, #e0e0e0 100%) !important;
+  
+}
+
+.cursor.darkmode .cursor-ring {
+  border-color: rgba(255, 255, 255, 1) !important;
+}
+
+.cursor.darkmode.hover-expand .cursor-ring {
+  border-color: rgba(255, 255, 255, 1) !important;
+}
+@import url(cursor-effects.css);
+
 .p-wrap-right-1 > div:nth-child(3){
   left:-5px;
 }
@@ -823,7 +837,9 @@ main {
     box-shadow: -3px 3px 0px 1px #000;
     transform: translate(2px, -2px);
   }
-  
+  a, button {
+    cursor: auto !important;
+}
   .gradient-button, .submit-button {
     text-align: center;
     font-family: 'biryaniregular';
@@ -833,7 +849,7 @@ main {
     border: none;
     border-radius: 5px;
     background:var(--light-bg);
-    cursor: pointer;
+    cursor: none;
     text-decoration: none;
     transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.12s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -842,7 +858,7 @@ main {
     display: block;
     box-shadow: -1px 1px 0px 1px #000;
     line-height: 1.5;
-    margin-top:35px;
+    margin-top:30px;
     position: relative;
     overflow: hidden;
     will-change: transform, opacity;

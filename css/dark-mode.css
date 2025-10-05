@@ -254,7 +254,7 @@ body.dark-mode .feather-arrow-down {
     display: flex;
     align-items: center;
     margin-left: auto;
-    cursor: pointer;
+   cursor: none !important;
 }
 
 .theme-switch svg {
@@ -294,7 +294,6 @@ body.dark-mode #logo-wave rect[fill="black"] {
   position: relative;
   transition: background 0.3s, border 0.3s;
   box-sizing: border-box;
-  cursor: pointer;
   display: flex;
   align-items: center;
 }
@@ -327,6 +326,11 @@ body.dark-mode .side-nav {
 /* Dark mode styling for to-top-icon */
 body.dark-mode .to-top-icon {
   filter: brightness(0) invert(1); /* Makes the icon white in dark mode */
+}
+
+/* Dark mode hover effect for to-top-icon */
+body.dark-mode .to-top-icon:hover {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%); /* Makes the icon red (#FF1515) */
 }
 
 

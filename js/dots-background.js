@@ -1,6 +1,15 @@
-const canvas = document.getElementById("dotCanvas");
-const ctx = canvas.getContext("2d");
-const heroSection = document.getElementById("hero-section");
+// Wait for DOM to be ready
+document.addEventListener("DOMContentLoaded", function() {
+    const canvas = document.getElementById("dotCanvas");
+    const heroSection = document.getElementById("hero-section");
+    
+    // Check if elements exist
+    if (!canvas || !heroSection) {
+        console.log('Dots background: Canvas or hero section not found');
+        return;
+    }
+    
+    const ctx = canvas.getContext("2d");
 
 let dots = [];
 let ripples = [];
@@ -139,28 +148,29 @@ function animateDots(currentTime) {
     }
 }
 
-// Handle color scheme changes
-const observer = new MutationObserver(() => {
-    generateDots();
-});
-observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-// Initialize
-resizeCanvas();
-window.addEventListener('resize', debounce(resizeCanvas, 100));
-
-// Only add ripple animation on large screens AND not on budgie.html page
-if (window.innerWidth >= 1200 && !isBudgiePage) {
-    heroSection.addEventListener("mousemove", (e) => {
-        const rect = heroSection.getBoundingClientRect();
-        ripples.push({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-            time: performance.now()
-        });
-        if (!animating) {
-            animating = true;
-            requestAnimationFrame(animateDots);
-        }
+    // Handle color scheme changes
+    const observer = new MutationObserver(() => {
+        generateDots();
     });
-}
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    // Initialize
+    resizeCanvas();
+    window.addEventListener('resize', debounce(resizeCanvas, 100));
+
+    // Only add ripple animation on large screens AND not on budgie.html page
+    if (window.innerWidth >= 1200 && !isBudgiePage) {
+        heroSection.addEventListener("mousemove", (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            ripples.push({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+                time: performance.now()
+            });
+            if (!animating) {
+                animating = true;
+                requestAnimationFrame(animateDots);
+            }
+        });
+    }
+});
