@@ -1,24 +1,17 @@
 version: '3.8'
 services:
-  portfolio-dev:
+  web:
     build: 
       context: .
-      dockerfile: config/Dockerfile.dev
+      dockerfile: Dockerfile.dev
     ports:
-      - "8080:3000"  # Map host port 8080 to container port 3000
+      - "8080:8080"
     volumes:
       - .:/app
       - /app/node_modules
-      - /app/dist  # Exclude dist from volume mount for better performance
     environment:
       - NODE_ENV=development
-    command: npm run dev -- --host 0.0.0.0 --port 3000
+    command: npm run dev
     restart: unless-stopped
     stdin_open: true
     tty: true
-    networks:
-      - portfolio-network
-
-networks:
-  portfolio-network:
-    driver: bridge

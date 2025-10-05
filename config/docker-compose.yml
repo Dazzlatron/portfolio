@@ -1,15 +1,10 @@
 version: '3.8'
 services:
-  portfolio:
-    build: 
-      context: .
-      dockerfile: config/Dockerfile
+  web:
+    image: python:3.11-alpine
     ports:
-      - "8080:80"  # Map host port 8080 to container port 80
-    restart: unless-stopped
-    networks:
-      - portfolio-network
-
-networks:
-  portfolio-network:
-    driver: bridge
+      - "8080:8080"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: python -m http.server 8080 --bind 0.0.0.0

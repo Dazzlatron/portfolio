@@ -41,17 +41,17 @@ class ContactSection extends HTMLElement {
     <div class="col-2">
        <div class="contact-info">
               <div class="row icon-row">
-                <div class="icon"><img class="ico-location" src="../images/resume-icon-2.svg" loading="lazy"/></div>
-                <div class="icon-text"><a class="description" href="../images/Daryn-Higginson-Resume.pdf" target="_blank">Download my resume</a></div>
+                <div class="icon"><img class="ico-location" src="../assets/images/resume-icon-2.svg" loading="lazy"/></div>
+                <div class="icon-text"><a class="description" href="../assets/images/Daryn-Higginson-Resume.pdf" target="_blank">Download my resume</a></div>
                 
               </div>
               
             <div class="row icon-row">
-              <div class="icon"><img class="ico-email" src="../images/email-icon-2.svg" loading="lazy"/></div>
+              <div class="icon"><img class="ico-email" src="../assets/images/Email-icon-2.svg" loading="lazy"/></div>
               <div class="icon-text"><a class="description" href="mailto:dazgraphic@gmail.com">dazgraphic@gmail.com</a></div>
             </div>
             <div class="row icon-row">
-              <div class="icon"><img class="ico-linkedin" src="../images/linkedin-icon-2.svg" loading="lazy"/></div>
+              <div class="icon"><img class="ico-linkedin" src="../assets/images/linkedin-icon-2.svg" loading="lazy"/></div>
               <div class="icon-text"><a class="description" href="https://www.linkedin.com/in/darynhigginson?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BUmNU5IfNRbexSo5yPa5PMQ%3D%3D" target="_blank">LinkedIn</a></div>
             </div>
           </div>

@@ -1,32 +1,8 @@
-# Production Dockerfile with Vite build
-FROM node:18-alpine AS builder
-
-# Set working directory
-WORKDIR /app
-
-# Copy package files
-COPY package*.json ./
-
-# Install dependencies
-RUN npm ci --only=production
-
-# Copy source code
-COPY . .
-
-# Build the application
-RUN npm run build
-
-# Production stage with nginx
+# Use the official nginx image
 FROM nginx:alpine
 
-# Copy built files from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy custom nginx configuration if needed
-COPY config/nginx.conf /etc/nginx/nginx.conf
+# Copy all files from the current directory to nginx's html directory
+COPY . /usr/share/nginx/html
 
 # Expose port 80
-EXPOSE 80
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 80 

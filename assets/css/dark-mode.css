@@ -13,6 +13,9 @@
     --red-accent: #FF1515;
     --light-darker-border: #121212;
   }
+  body.dark-mode .project-icon > path {
+    fill: var(--dark-text);
+  }
   body.dark-mode .tab-container {
     background: var(--dark-bg);
   }

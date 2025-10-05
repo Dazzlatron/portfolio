@@ -13,6 +13,7 @@
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
+
 .cursor.darkmode .cursor-core {
   background: radial-gradient(circle, #ffffff 0%, #e0e0e0 100%) !important;
   
@@ -486,7 +487,7 @@ body {
   font-family: 'biriyaniregular', sans-serif;
   background-color: var(--light-bg);
   color: var(--light-text);
-  
+  cursor: none !important;"
 }
     
    
