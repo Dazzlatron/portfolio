@@ -1,0 +1,99 @@
+/* ===== CSS IMPORTS ===== */
+/* Base Styles */
+@import '../assets/css/fonts.css';
+@import '../assets/css/styles.css';
+
+/* Component Styles */
+@import '../assets/css/nav.css';
+@import '../assets/css/hero.css';
+@import '../assets/css/project-tiles.css';
+@import '../assets/css/product-slider.css';
+@import '../assets/css/testimonial-slider.css';
+@import '../assets/css/footer.css';
+
+/* Layout Styles */
+@import '../assets/css/grid-column-layout.css';
+@import '../assets/css/device-styles.css';
+@import '../assets/css/image-styles.css';
+
+/* Interactive Styles */
+@import '../assets/css/parallax.css';
+@import '../assets/css/cursor-effects.css';
+@import '../assets/css/read-more-toggle.css';
+@import '../assets/css/tabs.css';
+
+/* Third-party Styles */
+@import '../assets/css/swiper-bundle.min.css';
+@import '../assets/css/swiper-style.css';
+
+/* Theme Styles */
+@import '../assets/css/dark-mode.css';
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  /* Colors */
+  --primary-color: #FF1515;
+  --secondary-color: #333;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #e0e0e0;
+  
+  /* Typography */
+  --font-primary: 'Biryani', sans-serif;
+  --font-secondary: 'BioRhyme', serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  
+  /* Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ===== DARK MODE VARIABLES ===== */
+body.dark-mode {
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+  --border-color: #333333;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.d-flex { display: flex; }
+.d-block { display: block; }
+.d-none { display: none; }
+
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mb-3 { margin-bottom: var(--spacing-lg); }
+
+.p-0 { padding: 0; }
+.p-1 { padding: var(--spacing-sm); }
+.p-2 { padding: var(--spacing-md); }
+.p-3 { padding: var(--spacing-lg); }

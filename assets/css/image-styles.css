@@ -1,0 +1,575 @@
+/* ========================================
+   IMAGE STYLES - COMPILED FROM ALL CSS FILES
+   ======================================== */
+   .top-logo {
+    width:75px;
+    margin: 0 0 0 auto;
+    will-change: transform, opacity;
+  }
+  .to-top-icon {
+    filter: brightness(0) saturate(100%) invert(7%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%); /* Makes the icon dark text color in light mode */
+    transition: filter 0.3s ease;
+    cursor:none;
+    width:28px;
+  }
+  
+  .to-top-icon:hover {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%); /* Makes the icon red (#FF1515) */
+  }
+/* ========================================
+   SCREENSHOT STYLES
+   ======================================== */
+.desktop-screenshot {
+  width: 95%;
+}
+
+.mobile-screenshot {
+  width: 95%;
+}
+
+/* ========================================
+   SLIDER IMAGE STYLES
+   ======================================== */
+.slider-img {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.slider-img:hover {
+  transform: scale(1.12);
+}
+
+/* ========================================
+   ZOOMABLE IMAGE STYLES
+   ======================================== */
+.zoomable {
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.zoomable:hover {
+  transform: scale(1.02);
+}
+
+.zoomable:active {
+  transform: scale(0.98);
+}
+
+/* Dark mode styles for zoomable images */
+body.dark-mode .zoomable {
+  /* Currently empty - can be customized */
+}
+
+/* ========================================
+   ZOOM CONTAINER & MODAL STYLES
+   ======================================== */
+.zoom-container {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.zoom-container img {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+/* Close button for zoomable images */
+.zoom-container .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.zoom-container .close:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.1);
+}
+
+.zoom-container .close:active {
+  transform: scale(0.95);
+}
+
+/* ========================================
+   ARROW SVG STYLES
+   ======================================== */
+#submenu .nav-item .arrow-svg {
+  width: 8px;
+  height: 8px;
+}
+
+#top-nav .arrow-svg {
+  width: 12px;
+  height: 12px;
+}
+#mobile-tablet-header .arrow-svg {
+  width: 12px;
+  height: 12px;
+}
+.arrow-svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.12s;
+  transform: rotate(0deg);
+}
+
+.arrow-svg-nav {
+  width: 16px;
+  height: 16px;
+}
+
+.arrow-svg path {
+  stroke: var(--light-text);
+  transition: stroke 0.3s;
+}
+
+.nav-item.selected .arrow-svg {
+  transform: rotate(-45deg);
+}
+
+.nav-item.selected .arrow-svg path {
+  stroke: #e53935;
+}
+
+.nav-links-tablet .arrow-svg path {
+  stroke: #C81414 !important;
+}
+
+/* Arrow direction styles */
+.arrow-svg.arrow-down {
+  transform: rotate(0deg);
+}
+
+.arrow-svg.arrow-right {
+  transform: rotate(90deg);
+}
+
+.arrow-svg.arrow-up {
+  transform: rotate(-90deg);
+}
+
+/* ========================================
+   STATIC IMAGE STYLES
+   ======================================== */
+.static-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.image-container:hover .static-image {
+  transform: scale(1.05);
+}
+
+/* ========================================
+   NUMBER STYLES
+   ======================================== */
+.number {
+  height: 50px;
+}
+
+.number-3 {
+  width: 55px;
+}
+
+.number-col {
+  margin-right: 10px;
+}
+
+/* ========================================
+   NUMBER POSITIONING STYLES
+   ======================================== */
+.no-2 {
+  margin-top: -15px;
+}
+
+.no-3 {
+  margin-top: -15px;
+  position: absolute;
+  right: 70px;
+}
+
+.no-4 {
+  margin-top: -15px;
+  position: absolute;
+  right: 20px;
+}
+
+.no-two {
+  margin-top: -15px;
+}
+
+.no-three {
+  margin-top: -15px;
+  right: 0;
+  position: absolute;
+}
+
+.no-four {
+  margin-top: -15px;
+  right: 0;
+  position: absolute;
+}
+
+/* ========================================
+   PROJECT ARROW STYLES (::after pseudo-elements)
+   ======================================== */
+.project-left::after,
+.project-right::after {
+  content: '';
+  position: absolute;
+  right: -27.5px; /* half the width of the SVG (55px) */
+  top: 50%;
+  width: 55px;
+  height: 55px;
+  background: url('../images/plus.svg') no-repeat center center / contain;
+  transform: translateY(-50%) rotate(0deg);
+  transform-origin: 50% 50%;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.project-right::after {
+  content: url('../images/plus.svg') !important;
+  position: absolute !important;
+  left: -27.5px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.project-left::after {
+  content: url('../images/plus.svg') !important;
+  position: absolute !important;
+  right: -27px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+/* ========================================
+   PROFILE PICTURE STYLES
+   ======================================== */
+.profile-pic {
+  width: 300px;
+}
+
+.profile-pic-wrap {
+  width: 40%;
+  margin-bottom: 10px;
+  float: left;
+  margin-right: 15px;
+}
+
+/* ========================================
+   PHILOSOPHY ICON STYLES
+   ======================================== */
+.phil-icon {
+  margin-top: -60px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 80px;
+}
+
+/* ========================================
+   TESTIMONIAL IMAGE STYLES
+   ======================================== */
+.testimonial .image {
+  height: 170px;
+  width: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ========================================
+   QUOTE ICON STYLES
+   ======================================== */
+.slide .quote-icon {
+  font-size: 30px;
+  color: #4070f4;
+}
+
+/* ========================================
+   CONTACT ICON STYLES
+   ======================================== */
+.ico-location {
+  width: 22px;
+  float: left;
+}
+
+.ico-email {
+  width: 35px;
+  float: left;
+  width: 25px;
+}
+
+.ico-linkedin {
+  width: 32px;
+  float: left;
+  width: 25px;
+}
+
+/* ========================================
+   IMAGE CONTAINER STYLES
+   ======================================== */
+.image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 5px;
+  border: 1px solid var(--dark-border);
+}
+
+.p-wrap-left-2 .image-container {
+  margin-top: 20px;
+}
+
+.proj-wrap.p-wrap-right-2 .image-container {
+  margin-top: 20px;
+}
+
+.proj-wrap.p-wrap-right-3 .image-container {
+  margin-top: 20px;
+}
+
+/* ========================================
+   PROJECT SHOWCASE
+   ======================================== */
+  
+   .budgie-project-showcase {
+    background-image: url(../images/budgie-project-hero-desktop.png);
+  }
+  .funds-project-showcase {
+    background-image: url(../images/funds-showcase-img.png);
+  }
+  .project-showcase-2 {
+    border-radius:8px;
+    aspect-ratio: 938 / 300; 
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    border: 1px solid var(--light-border);
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+    cursor: none;
+  }
+
+  .project-showcase-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+    transform: scale(1);
+  }
+
+  .project-showcase-2:hover::before {
+    transform: scale(1.1);
+  }
+.project-showcase {
+  border-radius:8px;
+  aspect-ratio: 2.7;
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  border: 1px solid var(--light-border);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media (max-width: 768px) {
+  .budgie-project-showcase {
+    background-image: url(../images/budgie-project-hero-mobile.png);
+  }
+}
+/* ========================================
+   BACKGROUND IMAGES
+   ======================================== */
+/* Dots background pattern */
+.dots-background {
+  background-image: radial-gradient(#d6d6d6 1px, transparent 1px);
+  background-size: 12px 12px;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+/* Plus icon background */
+
+
+/* ========================================
+   DARK MODE STYLES
+   ======================================== */
+body.dark-mode .arrow-svg path {
+  stroke: var(--dark-text);
+}
+
+body.dark-mode .project-left::after {
+  content: url('../images/plus-dark.svg') !important;
+}
+
+body.dark-mode .project-right::after {
+  content: url('../images/plus-dark.svg') !important;
+}
+
+body.dark-mode .project-left::after,
+body.dark-mode .project-right::after {
+  content: '';
+  background: url('../images/red-plus-28-dark.svg') no-repeat center center / contain !important;
+}
+
+body.dark-mode .image-container {
+  border: 1px solid var(--lighter-dark-border);
+}
+
+/* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+@media (max-width: 768px) {
+  .problem-icon {
+    height:30px;
+  }
+  .zoomable {
+    cursor: pointer;
+  }
+  
+  .zoomable:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .project-showcase-2:hover::before {
+    transform: scale(1);
+  }
+  
+  .zoom-container .close {
+    top: 10px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+    font-size: 30px;
+  }
+
+  .profile-pic-wrap {
+    width: 40%;
+    margin-bottom: 10px;
+    float: left;
+    margin-right: 15px;
+  }
+
+  .number {
+    height: 40px;
+  }
+
+  .p-wrap-left-2 .image-container {
+    margin-top: 10px;
+  }
+
+  .proj-wrap.p-wrap-right-2 .image-container {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zoom-container .close {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    top: 5px;
+    right: 5px;
+  }
+
+  .profile-pic-wrap {
+    width: 23%;
+    margin-bottom: 10px;
+    float: left;
+    margin-right: 15px;
+  }
+
+  .number {
+    height: 40px;
+  }
+
+  .image-container {
+    border-radius: 5px;
+  }
+
+  .proj-wrap.p-wrap-right-3 .image-container {
+    margin-top: 0;
+  }
+
+  #project4 .image-container {
+    width: 65%;
+    display: block;
+  }
+
+  .project-left::before, .project-left::after {
+    content: none;
+    background: none;
+    display: none;
+  }
+
+  .project-right::before, .project-right::after {
+    content: none;
+    background: none;
+    display: none;
+  }
+
+  body.dark-mode .project-left::after, 
+  body.dark-mode .project-right::after {
+    display: none;
+  }
+
+  .project-left::after, 
+  .project-right::after {
+    display: none;
+  }
+}
+
+/* ========================================
+   MOBILE SPECIFIC STYLES
+   ======================================== */
+@media (max-width: 600px) {
+  .number-col {
+    margin-right: 0;
+  }
+
+  .no-two {
+    margin-top: -15px;
+  }
+
+  .no-3 {
+    right: 0;
+  }
+
+  .no-2 {
+    margin-top: unset;
+  }
+
+  .no-4 {
+    left: 0;
+    margin-top: unset;
+    position: relative;
+  }
+}

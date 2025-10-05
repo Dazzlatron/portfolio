@@ -1,0 +1,337 @@
+/* Dark Mode Styles */
+:root {
+    --dark-bg: #121212;
+    --dark-text: #fbfbfb;
+    --dark-secondary: #1e1e1e;
+    --dark-accent: #FF1515;
+    --dark-border: #616161;
+    --dark-hover: #2a2a2a;
+    --light-text: #121212;
+    --light-dark-border: #424242;
+    --light-bg: #fbfbfb;
+    --light-border: #d1d1d1;
+    --red-accent: #FF1515;
+    --light-darker-border: #121212;
+  }
+  body.dark-mode .tab-container {
+    background: var(--dark-bg);
+  }
+  body.dark-mode .highlight {
+    background: #e3e3e3;
+    background: linear-gradient(47deg,rgba(227, 227, 227, 1) 0%, rgba(243, 243, 243, 1) 100%);
+  } 
+   body.dark-mode .tabs-icon path {
+    fill: var(--dark-text);
+  }
+  body.dark-mode .tab.active .tabs-icon path {
+    fill: var(--light-text);
+  }
+  body.dark-mode .tab.active p {
+    color: var(--light-text);
+  }
+  body.dark-mode .tab p {
+    color: var(--dark-text);
+  } 
+  body.dark-mode .sub-nav-drop .nav-text {
+    color: #a2a2a2;
+  }
+  body.dark-mode .project-left::after{
+    content: url('../images/plus-dark.svg') !important;
+  }
+  body.dark-mode .project-right::after{
+    content: url('../images/plus-dark.svg') !important;
+  }
+  body.dark-mode #submenu a {
+    color:var(--dark-text);
+  }
+  body.dark-mode .t-submenu {
+    background-color: var(--dark-bg);
+    border-right: 1px solid var(--dark-border);
+    border-left: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--dark-border);
+  }
+  body.dark-mode .highlight-box {
+      border: 1px solid var(--dark-hover);
+      border-radius: 10px;
+      padding: 3rem;
+    }
+  body.dark-mode .project-hero {
+    border:1px solid #858585;
+  }
+  body.dark-mode .menu-btn__burger {
+    background: var(--dark-text);
+  }
+  body.dark-mode .menu-btn__burger::before,
+  body.dark-mode .menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: var(--dark-text);
+    border-radius: 5px;
+    transition: all .3s ease-in-out;
+  }
+  body.dark-mode .arrow-svg path {
+    stroke: var(--dark-text);
+  }
+  body.dark-mode #map {
+    border-color: var(--dark-border);
+  }
+     body.dark-mode #mobile-tablet-header {
+     background: var(--dark-bg);
+     transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.5s ease;
+   }
+   
+   body.dark-mode #mobile-tablet-header.hidden {
+     transform: translateY(-100%);
+     opacity: 0;
+     pointer-events: none;
+   }
+  
+  /* Tablet range dark mode overrides */
+  @media (min-width: 768px) and (max-width: 1180px) {
+    body.dark-mode #mobile-tablet-header {
+      background: var(--dark-bg);
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+      transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.5s ease;
+    }
+    
+    body.dark-mode #mobile-tablet-header.hidden {
+      display: block;
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+  body.dark-mode .nav-links a {
+    color:var(--dark-text);
+    
+  }
+  body.dark-mode .nav-wrapper { 
+    border-bottom: 1px solid var(--dark-border);
+  }
+  body.dark-mode .swiper-pagination-bullet{
+    background-color: var(--red-accent);
+  }
+  body.dark-mode .details .name {
+    color: var(--dark-text);
+  }
+  body.dark-mode .details .job {
+    color: var(--dark-text);
+  }
+  body.dark-mode .slide p {
+    color: var(--dark-text);
+  }
+body.dark-mode h3.small-header {
+    color: var(--dark-text);
+}
+body.dark-mode #footer-bg::before {
+    background-image: radial-gradient(#313131 1px, transparent 1px);
+}
+body.dark-mode #footer-bg::after {
+    background: linear-gradient(to bottom, var(--dark-bg) 40%, rgba(18, 18, 18, 0)90%);
+}
+
+body.dark-mode .row-2 > :nth-child(odd) {
+  border:1px solid var(--dark-border);
+}
+
+body.dark-mode .section-header-28{
+  color: var(--dark-text);
+}
+body.dark-mode .image-container{
+    border: 1px solid #858585;
+}
+
+body.dark-mode .project-left::after,
+body.dark-mode .project-right::after {
+  content: '';
+  background: url('../images/red-plus-28-dark.svg') no-repeat center center / contain !important;
+}
+
+body.dark-mode .project-left:hover::after {
+    transform: translateY(-50%) rotate(270deg);
+}
+
+body.dark-mode .project-right:hover::after {
+    transform: translateY(-50%) rotate(270deg);
+  }
+
+body.dark-mode #hero-section::after {
+    background: linear-gradient(to bottom, rgba(18, 18, 18, 0) 50%, #121212 90%);
+}
+
+body.dark-mode h1.my-name, body.dark-mode h2.title{
+    color: var(--dark-text);
+}
+body.dark-mode .project-left:hover::before {
+    border-color: var(--dark-border);
+}
+body.dark-mode .project-right:hover::before {
+    border-color: var(--dark-border);
+  
+  }
+body.dark-mode #top-nav .container {
+    border-bottom-color:
+    var(--dark-border);
+  }
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+body.dark-mode #top-nav {
+    border-right-color: var(--dark-border);
+}
+
+body.dark-mode #top-nav ul a {
+    color: #a6a6a6;
+    transition: color 0.15s ease;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+body.dark-mode #top-nav ul a:hover {
+    color: #fbfbfb;
+}
+
+body.dark-mode #top-nav ul a.selected,
+body.dark-mode #top-nav ul a.active {
+    color: #fbfbfb !important;
+    transition: color 0.15s ease;
+    pointer-events: none; /* Prevent hover effects when selected */
+    text-decoration: none; /* Ensure no underline affects the color */
+    background-color: transparent; /* Ensure no background affects the color */
+}
+
+body.dark-mode #top-nav ul li {
+    border-bottom-color: var(--dark-border);
+}
+
+body.dark-mode #top-nav ul li.selected > a {
+  color: #fbfbfb !important;
+  transition: color 0.15s ease;
+}
+
+body.dark-mode .section-header {
+    color: var(--dark-text);
+}
+
+body.dark-mode .description {
+    color: var(--dark-text);
+}
+
+body.dark-mode .taxonomy {
+    color: #888888;
+}
+
+body.dark-mode .gradient-button, body.dark-mode .submit-button {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-text);
+    box-shadow: -1px 1px 0px 1px #fbfbfb;
+}
+
+body.dark-mode .gradient-button:hover, body.dark-mode .submit-button:hover {
+    background-color: var(--dark-bg);
+    box-shadow: -3px 3px 0px 1px #fbfbfb;
+}
+
+body.dark-mode .devider {
+    border-top-color: var(--dark-border);
+}
+
+
+body.dark-mode .feather-arrow-down {
+    stroke: var(--dark-text);
+}
+
+/* Theme Switcher Styles */
+.theme-switch {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+   cursor: none !important;
+}
+
+.theme-switch svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke:var(--light-text);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.3s ease;
+}
+
+body.dark-mode .theme-switch svg {
+    stroke: var(--dark-text);
+}
+
+/* Sun Icon for Dark Mode */
+body.dark-mode .theme-switch svg path {
+    d: path("M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z");
+}
+
+/* Logo Dots Styles */
+body.dark-mode #logo-wave rect[fill="black"] {
+    fill: var(--dark-text);
+}
+
+/* Image Source Changes for Dark Mode */
+
+/* Toggle Switch Styles */
+.toggle-switch {
+  width: 43px;
+  height: 20px;
+  border-radius: 19px;
+  border: 1px solid var(--light-dark-border);
+  background: var(--light-bg);
+  position: relative;
+  transition: background 0.3s, border 0.3s;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-ball {
+  width: 12px;
+  height: 12px;
+  background: var(--light-text);
+  border-radius: 50%;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  transition: left 0.3s, background 0.3s;
+}
+
+body.dark-mode .toggle-switch {
+  border: 1px solid var(--dark-text);
+  background: var(--dark-bg);
+}
+
+body.dark-mode .toggle-ball {
+  background: var(--dark-text);
+  left: 26px;
+}
+
+body.dark-mode .side-nav {
+  color: var(--dark-text);
+}
+
+/* Dark mode styling for to-top-icon */
+body.dark-mode .to-top-icon {
+  filter: brightness(0) invert(1); /* Makes the icon white in dark mode */
+}
+
+/* Dark mode hover effect for to-top-icon */
+body.dark-mode .to-top-icon:hover {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%); /* Makes the icon red (#FF1515) */
+}
+
+
+   
