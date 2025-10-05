@@ -33,13 +33,13 @@ observer.observe(document.body, { attributes: true, attributeFilter: ['class'] }
 function animate() {
     const dx = mouseX - cursorX;
     const dy = mouseY - cursorY;
-    
+   
     cursorX += dx * 0.2;
     cursorY += dy * 0.2;
-    
+   
     cursor.style.left = cursorX + 'px';
     cursor.style.top = cursorY + 'px';
-    
+   
     requestAnimationFrame(animate);
 }
 
@@ -52,22 +52,35 @@ document.addEventListener('mousemove', (e) => {
 const processedElements = new Set();
 
 function updateInteractiveElements() {
-    const interactiveElements = document.querySelectorAll('a, button, [role="button"], input[type="button"], input[type="submit"], .clickable');
+    const interactiveElements = document.querySelectorAll('a, button, [role="button"], [role="tab"], .tab, .theme-switch, .to-top-icon, input[type="button"], input[type="submit"], .clickable, [onclick]');
     interactiveElements.forEach(el => {
         // Only add listeners if not already processed
         if (!processedElements.has(el)) {
             processedElements.add(el);
-            
+           
             el.addEventListener('mouseenter', () => {
                 cursor.classList.add('hover-expand');
             });
-            
+           
             el.addEventListener('mouseleave', () => {
                 cursor.classList.remove('hover-expand');
             });
         }
     });
 }
+
+// Also check what's under the cursor in real-time (catches nested elements)
+document.addEventListener('mouseover', (e) => {
+    const target = e.target;
+    // Check if the element or any parent is interactive
+    const isInteractive = target.closest('a, button, [role="button"], [role="tab"], .tab, .theme-switch, .to-top-icon, input[type="button"], input[type="submit"], .clickable, [onclick]');
+    
+    if (isInteractive) {
+        cursor.classList.add('hover-expand');
+    } else {
+        cursor.classList.remove('hover-expand');
+    }
+});
 
 // Initial setup
 updateInteractiveElements();

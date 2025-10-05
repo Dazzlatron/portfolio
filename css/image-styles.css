@@ -366,9 +366,9 @@ body.dark-mode .zoomable {
     border: 1px solid var(--light-border);
     background-repeat: no-repeat;
     background-position: center;
-    cursor: pointer;
     overflow: hidden;
     position: relative;
+    cursor: none;
   }
 
   .project-showcase-2::before {
