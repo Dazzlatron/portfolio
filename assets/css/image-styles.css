@@ -164,6 +164,11 @@ body.dark-mode .zoomable {
   transform: rotate(-90deg);
 }
 
+/* Force backward arrow for first menu item */
+.menu > li:nth-child(1) .arrow-svg {
+  transform: rotate(-225deg) !important;
+}
+
 /* ========================================
    STATIC IMAGE STYLES
    ======================================== */
