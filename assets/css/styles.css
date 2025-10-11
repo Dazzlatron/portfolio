@@ -799,7 +799,7 @@ main {
     color: var(--light-text);
     line-height:1.4;
     text-align: left;
-    margin-top:0;
+    margin-top:10px;
   }
   .section-header-24 {
     font-size: 24px;
