@@ -704,6 +704,8 @@ p {
   text-align: left;
   margin-bottom: 6px;
   font-weight: lighter;
+  line-height: 1.3;
+  margin-top:12px;
 }
 .red-line {
     position: absolute;
@@ -799,7 +801,8 @@ main {
     color: var(--light-text);
     line-height:1.4;
     text-align: left;
-    margin-top:10px;
+    margin-top:8px;
+    margin-bottom: 8px;
   }
   .section-header-24 {
     font-size: 24px;
@@ -844,8 +847,8 @@ main {
   .gradient-button, .submit-button {
     text-align: center;
     font-family: 'biryaniregular';
-    padding: 10px 10px 6px;
-    font-size: 18px;
+    padding: 10px 10px 8px;
+    font-size: 16px;
     color: #000;
     border: none;
     border-radius: 5px;
