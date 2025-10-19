@@ -20,8 +20,8 @@ window.addEventListener('load', function() {
     // Play once after 0.5s
     setTimeout(() => logos.forEach(replayLogo), 300);
 
-    // Play every 12 seconds
-    setInterval(() => logos.forEach(replayLogo), 8000);
+    // Play every 6 seconds
+    setInterval(() => logos.forEach(replayLogo), 6000);
 
     // Play on hover
     logos.forEach(logo => {

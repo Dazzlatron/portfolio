@@ -447,12 +447,12 @@
   <span id="contact" class="anchor"></span>
   <div class="col-1 left mobile-6-col">
     <div class="previous">
-      <a href="index.html">
+      <a href="#" id="backButton">
       <svg  width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2.00029 8.5H17.5566" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         <path d="M8.36455 14.864L2.00059 8.5L8.36455 2.13604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      Home
+      Previous
     </a></div>
   </div>
   <div class="col-2 right mobile-6-col">
@@ -690,6 +690,12 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+</script>
+<script>
+document.getElementById('backButton').addEventListener('click', function(e) {
+  e.preventDefault();
+  history.back();
+});
 </script>
 <script src="../assets/js/product-slider.js" defer></script>
 <script src="../assets/js/contact.js" defer></script>

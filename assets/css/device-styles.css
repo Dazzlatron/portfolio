@@ -116,13 +116,35 @@
     .read-more-btn {
       display: inline;
     }
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+    }
+    
+    main {
+      overflow-x: hidden !important;
+      max-width: 100% !important;
+    }
+    
     .swipe-container{
       padding-top: 20px;
     }
     .quote-section{
-      width:100%;
-      overflow: hidden;
-      position: relative;
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      overflow-y: visible !important;
+      position: relative !important;
+      box-sizing: border-box !important;
+    }
+    .quote-section .container {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: static !important;
+      overflow-x: hidden !important;
+      box-sizing: border-box !important;
     }
     .copy-text p {
       line-height: 1.5;
@@ -209,7 +231,7 @@
     .row-footer {
       display: grid;
       grid-template-columns: 1fr;
-      row-gap: 3.5rem;
+      row-gap: 2rem;
     }
     #footer-section {
       margin-top:1rem;
@@ -304,6 +326,9 @@
   
   /* ----------- Show top nav below 1180px----------- */
   @media screen and (min-width: 1180px) and (max-width: 1450px) {
+    .slide p{
+      padding: 0 20px;
+    }
     .center-content{
       max-width: 850px;
     }
@@ -332,6 +357,15 @@
      @media only screen 
    and (min-width: 768px) 
    and (max-width: 1180px) {
+    #project6 {
+      width:100%;
+    }
+    #project4 {
+      width:84%;
+    }
+    #project2 {
+      width:100%;
+    }
     .cursor {
       display: none !important;
     }

@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="assets/css/image-styles.css">
     <link rel="stylesheet" href="assets/css/cursor-effects.css">
     <link rel="stylesheet" href="assets/css/skills-section.css">
+    <link rel="stylesheet" href="assets/css/testimonial-slider.css">
     
     <script src="assets/js/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
@@ -39,9 +40,7 @@
    @media only screen 
    and (min-width: 768px) 
    and (max-width: 1180px) {
-    .slide p{
-      padding: 0 90px;
-    }
+    
     .phil-row {
   margin: 0 -2rem;
 }
@@ -427,9 +426,9 @@
       </div>
       <div class=" parallax">
         <div class="heading row ">
-          <div class="spacer-3rem"></div>
-          <h3 class="small-header center-txt">SKILLS & TOOLS</h3>
+          <div class="spacer-1-5rem"></div>
           
+          <h2 class="section-header-28 center-txt">Skills & tools I use<span class="rdot">.</span></h2>
           <div class="spacer-1-5rem"></div>
         </div>
         <div class="cont twelve">
@@ -448,7 +447,9 @@
                   <div class="skill-card">Motion Graphics</div>
                 </div>
                 <div class="spacer-3rem"></div>
-                <p class="section-header center-txt">Tools & Technologies</p>
+                
+                <h3 class="small-header center-txt">TOOLS & TECHNOLOGIES</h3>
+                <div class="spacer-1-5rem"></div>
                 <div class="skills-grid">
                   <div class="skill-card">HTML5</div>
                   <div class="skill-card">CSS3</div>
@@ -457,13 +458,18 @@
                   <div class="skill-card">Adobe Creative Suite</div>
                   <div class="skill-card">Miro</div>
                   <div class="skill-card">Maze</div>
+                  <div class="skill-card">AB Tasty</div>
                   <div class="skill-card">Docker</div>
                   <div class="skill-card">Git</div>
+                  <div class="skill-card">Vite</div>
+                  <div class="skill-card">Drupal/Site Studio</div>
                 </div>
               <div class="spacer-3rem"></div>
-                <p class="section-header center-txt">Frameworks & Libraries</p>
+               
+                <h3 class="small-header center-txt">FRAMEWORKS & LIBRARIES</h3>
+                <div class="spacer-1-5rem"></div>
                 <div class="skills-grid">
-                  <div class="skill-card learning">Tailwind CSS <span class="badge">Learning</span></div>
+                  <div class="skill-card learning">Tailwind CSS <span class="badge">Familiar</span></div>
                   <div class="skill-card learning">GSAP <span class="badge">Exploring</span></div>
                 </div>
                 </div>
@@ -475,19 +481,21 @@
   </section>
   <section class="quote-section">
   <div class="heading row">
-    <div class="spacer-4rem hide-on-ipad hide-on-mobile"></div>
+    <div class="spacer-3rem hide-on-ipad hide-on-mobile"></div>
     <h3 class="small-header txt-center">TESTIMONIALS</h3>
     <h2 class="section-header-28 txt-center">What my colleagues have to say about me<span class="rdot">.</span></h2>
-    
-    
   </div>
-  <div class="container">
+  <div class="spacer-3rem"></div>
+ 
     <div class="swipe-container">
      
       <div class="testimonial mySwiper">
       <div class="testi-content swiper-wrapper">
         <div class="slide swiper-slide">
-          <img src="assets/images/david-hamilton.jpg" alt="" class="image" loading="lazy" />
+
+          <div class="quote-outline">
+          <img src="assets/images/quotation-2.svg" alt="quote" class="quote-icon" loading="lazy">
+          
           <p>
             Working with Daryn over the last six years has been a&nbsp;joy.
 <br><br>
@@ -498,44 +506,67 @@
             I highly recommend Daryn for any business looking for a reliable web development&nbsp;partner.
             
           </p>
-
-          <img src="assets/images/quotation-2.svg" alt="quote" class="quote-icon" loading="lazy">
-
-          <div class="details">
-            <span class="name">David Hamilton</span>
-            <span class="job">Marketing Director, CoStar</span>
+          <div class="quotee-container">
+            <div class="photo">
+            <img src="assets/images/david-hamilton.jpg" alt="" class="image" loading="lazy" />
+          </div>
+            <div class="details">
+              <span class="name">David Hamilton</span>
+              <span class="title">Marketing Director, CoStar</span>
+            </div>
+          </div>
           </div>
         </div>
         <div class="slide swiper-slide">
-          <img src="assets/images/david-hamilton.jpg" alt="" class="image" loading="lazy" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-            saepe provident dolorem a quaerat quo error facere nihil deleniti
-            eligendi ipsum adipisci, fugit, architecto amet asperiores
-            doloremque deserunt eum nemo.
-          </p>
 
+          <div class="quote-outline">
           <img src="assets/images/quotation-2.svg" alt="quote" class="quote-icon" loading="lazy">
-
-          <div class="details">
-            <span class="name">David Hamilton</span>
-            <span class="job">Marketing Director, CoStar</span>
+          
+          <p>
+            Working with Daryn over the last six years has been a&nbsp;joy.
+<br><br>
+            His expert insights help shape smarter, more effective solutions, and his collaborative approach ensures that processes are always smooth and&nbsp;efficient.
+            <br><br>
+            Thanks to Daryn's dedication and skill, we continue delivering high-quality, high-performing campaigns, against aggressive targets for performance and speed to&nbsp;market.
+            <br><br>
+            I highly recommend Daryn for any business looking for a reliable web development&nbsp;partner.
+            
+          </p>
+          <div class="quotee-container">
+            <div class="photo">
+            <img src="assets/images/david-hamilton.jpg" alt="" class="image" loading="lazy" />
+          </div>
+            <div class="details">
+              <span class="name">David Hamilton</span>
+              <span class="title">Marketing Director, CoStar</span>
+            </div>
+          </div>
           </div>
         </div>
         <div class="slide swiper-slide">
-          <img src="assets/images/david-hamilton.jpg" alt="" class="image" loading="lazy" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-            saepe provident dolorem a quaerat quo error facere nihil deleniti
-            eligendi ipsum adipisci, fugit, architecto amet asperiores
-            doloremque deserunt eum nemo.
-          </p>
 
+          <div class="quote-outline">
           <img src="assets/images/quotation-2.svg" alt="quote" class="quote-icon" loading="lazy">
-
-          <div class="details">
-            <span class="name">David Hamilton</span>
-            <span class="job">Marketing Director, CoStar</span>
+          
+          <p>
+            Working with Daryn over the last six years has been a&nbsp;joy.
+<br><br>
+            His expert insights help shape smarter, more effective solutions, and his collaborative approach ensures that processes are always smooth and&nbsp;efficient.
+            <br><br>
+            Thanks to Daryn's dedication and skill, we continue delivering high-quality, high-performing campaigns, against aggressive targets for performance and speed to&nbsp;market.
+            <br><br>
+            I highly recommend Daryn for any business looking for a reliable web development&nbsp;partner.
+            
+          </p>
+          <div class="quotee-container">
+            <div class="photo">
+            <img src="assets/images/david-hamilton.jpg" alt="" class="image" loading="lazy" />
+          </div>
+            <div class="details">
+              <span class="name">David Hamilton</span>
+              <span class="title">Marketing Director, CoStar</span>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -544,7 +575,7 @@
       <div class="swiper-pagination"></div>
     </div>
   </div>
-  </div>
+  
 </section>
 
   <div class="spacer-4rem"></div>

@@ -80,21 +80,27 @@ function updateImagesForDarkMode(isDarkMode) {
         '.affinity-map': {
            light: basePath + 'affinity_map_budgie.png',
             dark: basePath + 'affinity_map_budgie_dark.png'
-        }
+        },
+        '.quote-icon': {
+            light: basePath + 'quotation-2.svg',
+             dark: basePath + 'quotation-2-dark.svg'
+         }
     };
 
     // Update each image
     Object.entries(images).forEach(([selector, urls]) => {
-        const element = document.querySelector(selector);
-        if (element) {
-            element.src = isDarkMode ? urls.dark : urls.light;
-            if (selector === '.top-logo' || selector === '.top-nav-logo') {
-                element.style.opacity = 1;
-                if (typeof replayLogo === 'function') {
-                    replayLogo(element);
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            if (element) {
+                element.src = isDarkMode ? urls.dark : urls.light;
+                if (selector === '.top-logo' || selector === '.top-nav-logo') {
+                    element.style.opacity = 1;
+                    if (typeof replayLogo === 'function') {
+                        replayLogo(element);
+                    }
                 }
             }
-        }
+        });
     });
 }
 

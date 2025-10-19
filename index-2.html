@@ -1,774 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
-<script>
-
-</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Portfolio | Daryn Higginson</title>
+    <title>Filterable Projects</title>
     <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
-    <link rel="stylesheet" href="assets/fonts/fonts.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/style-old.css">
-    <link rel="stylesheet" href="assets/css/hero.css">
-    <link rel="stylesheet" href="assets/css/parallax.css">
-    <link rel="stylesheet" href="assets/css/project-tiles.css">
-    <link rel="stylesheet" href="assets/css/dark-mode.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/swiper-style.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/device-styles.css">
-    <link rel="stylesheet" href="assets/css/grid-column-layout.css">
-    <link rel="stylesheet" href="assets/css/image-styles.css">
-    <link rel="stylesheet" href="assets/css/cursor-effects.css">
-    <link rel="stylesheet" href="assets/css/skills-section.css">
-    
-    <script src="assets/js/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-    <script src="assets/js/logo-animation-aa.js"></script>
-    <script src="assets/js/sticky-scroll.js"></script>
-  </script>
-<style>
-   @media only screen 
-   and (min-width: 768px) 
-   and (max-width: 1180px) {
-    .slide p{
-      padding: 0 90px;
-    }
-    .phil-row {
-  margin: 0 -2rem;
-}
-    #hero-section {
-      top:40px;
-      height:40vh;
-      min-height: unset;
-    }
-   }
-  @media (max-width: 768px) {
-    #mobile-tablet-header {
-  padding: 0 10px;
-}
-    #hero-section {
-      top:40px;
-      
-    }
-  }
-  #hero-section {
-    position: relative !important;
+    <link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
+        <link rel="stylesheet" href="assets/fonts/fonts.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/style-old.css">
+        <link rel="stylesheet" href="assets/css/hero.css">
+        <link rel="stylesheet" href="assets/css/parallax.css">
+        <link rel="stylesheet" href="assets/css/project-tiles.css">
+        <link rel="stylesheet" href="assets/css/dark-mode.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/swiper-style.css">
+        <link rel="stylesheet" href="assets/css/footer.css">
+        <link rel="stylesheet" href="assets/css/device-styles.css">
+        <link rel="stylesheet" href="assets/css/grid-column-layout.css">
+        <link rel="stylesheet" href="assets/css/image-styles.css">
+        <link rel="stylesheet" href="assets/css/cursor-effects.css">
+        <link rel="stylesheet" href="assets/css/skills-section.css">
+        
+        <script src="assets/js/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+        <script src="assets/js/logo-animation-aa.js"></script>
+        <script src="assets/js/sticky-scroll.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  }
-  .center-content{
-    margin-top:0;
-  }
-</style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 1rem;
+            flex-wrap: wrap;
+            background: #f9fafb;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .filter-btn:hover {
+            background: #d1d5db;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .projects {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1rem 4rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem 3rem;
+            }
+        }
+
+        .project {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+        }
+
+        .project.hidden {
+            display: none;
+        }
+
+        .proj-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .flex.proj-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .number-col {
+            order: -1;
+        }
+
+        .number {
+            width: 60px;
+            height: 60px;
+            display: block;
+        }
+
+        .image-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: #f3f4f6;
+        }
+
+        .thumbnail,
+        .thumbnail-left {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .description-cont {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .taxonomy {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+
+        .section-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #111827;
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+
+        .gradient-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            width: fit-content;
+        }
+
+        .gradient-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 767px) {
+            .filter-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .section-header {
+                font-size: 1.25rem;
+            }
+
+            .description {
+                font-size: 0.95rem;
+            }
+
+            .number {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project.fade-in {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+    </style>
 </head>
-<body style="cursor: none !important;">
-  <audio id="hoverSound" preload="auto">
-    <source src="assets/sounds/notification-1-269296.mp3" type="audio/mpeg">
-  </audio>
-  
-  <!-- Scroll sound -->
-  <audio id="scrollSound" preload="auto">
-    <source src="assets/sounds/startup-sound-variation-3-315895.mp3" type="audio/mpeg">
-  </audio>
-  
+<body>
 
-  <header id="mobile-tablet-header" class="header hidden">
-    <div class="nav-wrapper">
-      <div class="logo">
-        <img class="top-nav-logo" src="assets/images/Logo-animation_rollover_05.25.gif" alt="Logo">
-      </div>
-      
-      
-      <!-- Horizontal navigation for tablet (768-1180px) -->
-      <ul class="nav-links-tablet">
-        <li class="top-nav-drop">
-          <a class="overview-link" href="#projects">
-            <span class="nav-text">Projects</span>
-          
-          </a>
-          
-        </li>
-        <li><a href="#about-me">About me</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#">Resume</a></li>
-      </ul>
-      
-      <nav class="main-nav">
-        <div class="menu-btn" id="menu-btn">
-          <div class="menu-btn__burger"></div>
-        </div> <!-- Hamburger -->
-        <div class="theme-switch" title="Toggle dark mode">
-          <div class="toggle-switch">
-            <div class="toggle-ball"></div>
-          </div>
-        </div>
-      </nav>
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="ux">UX / UI</button>
+        <button class="filter-btn" data-filter="design">Web Design</button>
     </div>
-  </header>
-  
-  <!-- Mobile navigation moved outside header to fix stacking context -->
-  <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#about-me">About me</a></li>
-    <li><a href="#contact" >Contact</a></li>
-  </ul>
 
-<section id="hero-section" class="hero">
-    <canvas id="dotCanvas"></canvas>
-    <div class="hero">
-    <div class="logo-header" data-speed="0.3">
-        <div id="hoverTarget" class="logo-box hover-target">
-            <svg id="logo-wave" width="200" height="166" viewBox="0 0 200 166" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible; cursor: pointer;">
-				<style>
-				  rect {
-					transform-origin: center;
-				  }
-			  
-				  @keyframes pop {
-					0%, 100% { transform: scale(1); }
-					50% { transform: scale(1.25); }
-				  }
-				</style>
-			  
-				<!-- Your rects here -->
-				<rect y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="69.1289" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="69.1289" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="103.691" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="103.691" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="172.824" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="172.824" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="69.1289" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="69.1289" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="138.258" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="34.5625" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="34.5625" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="103.691" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="103.691" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="172.824" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="172.824" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
-				<rect x="34.5625" width="26.7597" height="26.7597" rx="4" fill="#FF1515"/>
-			  </svg>
-        </div>
-        <div class="hero-text">
-<h1 class="my-name">
-    Hi, my name is Daryn :)
-</h1>
-<h2 class="title">
-    UX/UI Designer & Front End Developer
-</h2>
-        </div>
-    </div>
-       
-    </div>
-</section>
-
-<div class="scroll">
-    <div class="black-arrow">
-      <span id="projects" class="fly-in-element trigger"></span>
-      <a href="#projects">
-      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#0c0c0c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down">
-          <g>
-            
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <polyline points="19 12 12 19 5 12"></polyline>
-          </g>
-      </svg>
-    </a>
-    </div>
-</div>
-<aside class="side-nav">
-  <nav id="top-nav">
-    <div class="nav-style">
-      
-        <img class="top-logo visible" src="assets/images/Logo-animation_rollover_05.25.gif">
-      
-        <ul>
-            
-            <li class="nav-item"><a href="#projects"><span class="nav-text">&nbsp;Projects&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-            <li class="nav-item"><a href="#about-me"><span class="nav-text">&nbsp;About&nbsp;me&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-            <li class="nav-item"><a href="#contact" ><span class="nav-text">&nbsp;Contact&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-        
-        </ul>
-        <div class="theme-switch" title="Toggle dark mode">
-          <div class="toggle-switch">
-            <div class="toggle-ball"></div>
-          </div>
-        </div>
-    </div>
-   
-</nav>
-<div class="top">
-  <img class="to-top-icon" src="assets/images/to-top.svg">
-</div>
-</aside>
-<main data-barba="container" data-barba-namespace="index">
-<div class="center-content">
-  <main class="main-content">
     <section id="reveal-elements" class="projects">
-      <!--left column start-->
-      <span id="projects" class="anchor"></span>
-      <div class="column">
-           <!--## PROJECT 1 ##-->
-          <div class="project project-left parallax" id="project1" data-speed="0.3">
-          
-              <div class="flex proj-wrap p-wrap-left-1">
-                  <div class="number-col"><img class="number no-1" src="assets/images/0-1.svg" loading="lazy"></div>
-                  <div class="right-of-number">
-                      <div class="image-container">
-                  <img class="thumbnail static-image" src="assets/images/budgie-thumbnail.png" loading="lazy">
-                 <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
-              </div>
-              <div class="description-cont">
-                  <p class="taxonomy">UX DESIGN</p>
-                  <h3 class="section-header">Budgie. Your budget buddy</h3>
-
-                  <p class="biriyani-light description ">Budgie helps users create smart shopping lists, find the best prices for specific items, and discover budget-friendly recipe ideas—all in one&nbsp;place.  </p>
-   
-                  <a href="budgie.html" class="gradient-button">View case study</a>
+        <span id="projects" class="anchor"></span>
+        
+        <div class="projects-grid">
+            <div class="project project-left parallax" id="project1" data-category="ux" data-speed="0.3">
+                <div class="flex proj-wrap p-wrap-left-1">
+                    <div class="number-col">
+                        <svg class="number no-1" width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+                            <text x="10" y="40" font-size="32" font-weight="bold" fill="#333">01</text>
+                        </svg>
+                    </div>
+                    <div class="right-of-number">
+                        <div class="image-container">
+                            <svg class="thumbnail static-image" width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="600" height="400" fill="#667eea"></rect>
+                                <text x="300" y="200" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">Budgie App</text>
+                            </svg>
+                        </div>
+                        <div class="description-cont">
+                            <p class="taxonomy">UX DESIGN</p>
+                            <h3 class="section-header">Budgie. Your budget buddy</h3>
+                            <p class="biriyani-light description">Budgie helps users create smart shopping lists, find the best prices for specific items, and discover budget-friendly recipe ideas—all in one place.</p>
+                            <a href="budgie.html" class="gradient-button">View case study</a>
+                        </div>
+                    </div>
                 </div>
-                </div>
-              </div>
-          </div>
-          
-          <!--## PROJECT 3 ##-->
-          <div class="project project-left parallax" id="project3" data-speed="0.2">
-             
-              <div class="proj-wrap p-wrap-left-2">
-                  <img class="number no-3" src="assets/images/0-3.svg" loading="lazy">
-            <br>
-            <div class="image-container">
-            <img class="thumbnail-left thumb static-image" src="assets/images/Demo-form-thumbnail.png" loading="lazy">
-            <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
-          </div>
-          <div class="description-cont">
-          <p class="taxonomy">UX / UI</p>
-            <h3 class="section-header">Sales Capture Forms Optimisation</h3>
-
-              <p class="biriyani-light description ">An addition of a comprehensive country selection list paired with an autocomplete feature to streamline the form filling process, improving quality of leads and location data captured.  </p>
-  
-              <a href="" class="gradient-button">View case study</a>
-              </div>
-      </div>
-          </div>
-            <!--## PROJECT 5 ##-->
-            <div class="project project-left parallax" id="project5" data-speed="0.3">
-          
-              <div class="flex proj-wrap p-wrap-left-3">
-                  <div class="number-col"><img class="number no-5" src="assets/images/0-5.svg" loading="lazy"></div>
-                  <div class="right-of-number">
-                      <div class="image-container">
-                  <img class="thumbnail static-image" src="assets/images/LoopNet-thumbnail.png" loading="lazy">
-                 <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
-              </div>
-              <div class="description-cont">
-                  <p class="taxonomy">DIGITAL DESIGN&nbsp;&nbsp;|&nbsp;&nbsp;WEB DEVELOPMENT</p>
-                  <h3 class="section-header">LoopNet UK migration and build</h3>
-                  <p class="biriyani-light description">Supported the UK launch of LoopNet by migrating and adapting the website for a UK audience. As well as repurposing content and localised marketing materials, ensuring a smooth and relevant introduction of the brand to the UK&nbsp;market.   </p>
-                  <a href="" class="gradient-button">View case study</a>
-                  </div>
-                </div>
-              </div>
-          </div>
-           <!--## PROJECT 7 ##-->
-           <div class="project project-left parallax" id="project7" data-speed="0.3">
-          
-              <div class="flex proj-wrap p-wrap-left-1">
-                  <div class="number-col"><img class="number no-7" src="assets/images/0-7.svg" loading="lazy"></div>
-                  <div class="right-of-number">
-                      <div class="image-container">
-                  <img class="thumbnail static-image" src="assets/images/photography-brochure.png" loading="lazy">
-                 <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
-              </div>
-              <div class="description-cont">
-                  <p class="taxonomy">GRAPHIC DESIGN</p>
-                  <h3 class="section-header">CoStar Photography Brochure</h3>
-                  <p class="biriyani-light description">A printed brochure showcasing CoStar's architectural photography, including the new brand identity, with a fresh look and&nbsp;feel.   </p>
-                  <a href="" class="gradient-button">View case study</a>
-                  </div>
-                </div>
-              </div>
-          </div>
-      </div>
-      <!--left column end-->
-      <!--right column start-->
-      <div class="column">
-          <!--## PROJECT 2 ##-->
-          <div class="project project-right parallax" id="project2" data-speed="0.35">
-            <div class="proj-wrap p-wrap-right-1">
-              <img class="number no-2" src="assets/images/0-2.svg" loading="lazy">
-        <br>
-        <div class="image-container">
-        <img class="thumbnail-left thumb static-image" src="assets/images/funds-thumbnail.png" loading="lazy">
-        <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
-      </div>
-      <div class="description-cont">
-      <p class="taxonomy">DIGITAL DESIGN&nbsp;&nbsp;|&nbsp;&nbsp;MARKETING</p>
-        <h3 class="section-header">Funds information campaign</h3>
-        <p class="biriyani-light description">Concept, design and development of a campaign promoting CoStar's new Funds Information product  feature which became our top-performing campaign of&nbsp;2024.  </p>
-      <a href="" class="gradient-button">View case study</a>
-      </div>
-  </div>
-          </div>
-         
-  
-          <!--## PROJECT 4 ##-->
-          <div class="project project-right parallax" id="project4" data-speed="0.35">
-              <div class="proj-wrap p-wrap-right-2">
-                <img class="number no-4" src="assets/images/0-4.svg" loading="lazy">
-          <br>
-          <div class="image-container">
-          <img class="thumbnail-left thumb static-image" src="assets/images/costar-website-reskin-thumbnail.png" loading="lazy">
-          <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
-        </div>
-        <div class="description-cont">
-        <p class="taxonomy">WEB DESIGN & DEVELOPMENT</p>
-          <h3 class="section-header">CoStar website redesign &&nbsp;rebuild</h3>
-          <p class="biriyani-light description" >Redesign and rebuild of CoStar's website, refreshing the look and feel in line with the company's updated brand identity. Focused on modernising the visual design and enhancing the overall user experience.  </p>
-        <a href="" class="gradient-button">View case study</a>
-        </div>
-    </div>
             </div>
-             <!--## PROJECT 6 ##-->
-          <div class="project project-right parallax" id="project6" data-speed="0.3">
-          
-              <div class="flex proj-wrap p-wrap-right-3">
-                  
-                  <div class="right-of-number">
-                      <div class="image-container">
-                  <img class="thumbnail static-image" src="assets/images/persistent-demo-thumbanil.png" loading="lazy">
-                 <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
-              </div>
-              <div class="description-cont">
-                  <p class="taxonomy">UX / UI</p>
-                  <h3 class="section-header" >Persistent demo button case study</h3>
-                  <p class="biriyani-light description">Evaluating the Impact of a 'Book a Demo' Button on Engagement and Conversions  </p>
-                  <a href="" class="gradient-button">View case study</a>
-                  </div>
+
+            <div class="project project-right parallax" id="project2" data-category="design" data-speed="0.35">
+                <div class="proj-wrap p-wrap-right-1">
+                    <svg class="number no-2" width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+                        <text x="10" y="40" font-size="32" font-weight="bold" fill="#333">02</text>
+                    </svg>
+                    <div class="image-container">
+                        <svg class="thumbnail-left thumb static-image" width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="600" height="400" fill="#764ba2"></rect>
+                            <text x="300" y="200" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">Funds Campaign</text>
+                        </svg>
+                    </div>
+                    <div class="description-cont">
+                        <p class="taxonomy">DIGITAL DESIGN | MARKETING</p>
+                        <h3 class="section-header">Funds information campaign</h3>
+                        <p class="biriyani-light description">Concept, design and development of a campaign promoting CoStar's new Funds Information product feature which became our top-performing campaign of 2024.</p>
+                        <a href="#" class="gradient-button">View case study</a>
+                    </div>
                 </div>
-                <div class="number-col"><img class="number no-6" src="assets/images/0-6.svg" loading="lazy"></div>
-              </div>
-          </div>
-      </div>
-      <!--right column end-->
-  </section>
-  <section class="about-me">
-    
-    <div class="spacer-8rem"></div>
-    
-    <span id="about-me" class="anchor"></span>
-    <div class="heading row parallax">
-      
-      <div class="spacer-6rem"></div>
-      
-      <h2 class="section-header-28">A little about me<span class="rdot">.</span></h2>
-      <div class="spacer-2rem"></div>
-    </div>
-   
-    <div class="grid-wrapper parallax">
-      <div class="row-1 sequence about-me-row" data-speed="0.1">
-       
-        <div class="col col-about-1">
-          <img class="profile-pic hide-on-mobile-and-tablet" src="assets/images/profile-pic.png" loading="lazy"/>
-         </div>
-         <div class="col col-about-2">
-      
-          <img class="profile-pic-wrap hide-on-desktop" src="assets/images/profile-pic.png" loading="lazy">
-          <p class="biriyani-light description">Hi, my name is Daryn. I’m a UX/UI Designer and Design Engineer, problem solver, and musician. With over a decade of experience in digital design and web development across marketing agencies and in-house teams, I’ve built a strong foundation in both visual design and technical expertise.
-<br><br>
-            I now leverage research and data to make informed design decisions that enhance user experiences, and I love collaborating to create solutions that are both functional and engaging. I also love learning, whether it’s exploring new design trends, technologies, history, or diving into music production.
-            <br><br>
-            In my spare time, you can find me cooking, making music, practicing jiu-jitsu, gardening, reading, watching movies, listening to podcasts, or playing video games.
-            
-             </p>
-             
-         </div>  
-      </div>
-      <div class=" parallax">
-      <div class="heading row ">
-        <div class="spacer-6rem"></div>
-        <h3 class="small-header center-txt">MY PHILOSOPHY</h3>
-        <h2 class="section-header-28 center-txt">Where Design and Function Meet<span class="rdot">.</span></h2>
-        <div class="spacer-6rem"></div>
-      </div>
-      
-      <div class="row row-2 phil-row">
-       
-        <div class="col phil-col">
-          <div class="phil-box creativity"><img class="phil-icon creativity-icon" alt="creativity" src="assets/images/creativity-icon.svg" loading="lazy"/>
-          <h3 class="section-header">Creativity</h3>
-          <p class="biriyani-light description"> Creativity is at the heart of what I do—it helps me solve problems, design, and stay inspired. It's even behind the music I listen to while I work. Imagine a world without art or&nbsp;expression!</p>
-        </div>
-      </div>
-        <div class="col fixed phil-col"><img class="plus-icon pne" alt="plus" src="assets/images/red-plus-28.svg" loading="lazy"></div>
-        <div class="col phil-col">
-          <div class="phil-box technology"><img class="phil-icon technology-icon" alt="technology" src="assets/images/technology-icon.svg" loading="lazy"/>
-            <h3 class="section-header">Technology</h3>
-            <p class="biriyani-light description">With technology we can turn ideas into reality, push the boundaries of communication, and solve real-world problems. We can also create intuitive and functional&nbsp;applications. </p>
-          </div>
-        </div>
-        <div class="col fixed phil-col"><img class="equals-icon pne" alt="equals" src="assets/images/red-equal.svg" loading="lazy"></div>
-        <div class="col phil-col">
-          <div class="phil-box magic"><img class="phil-icon magic-icon" alt="magic" src="assets/images/magic-icon.svg" loading="lazy"/>
-            <h3 class="section-header">Magic</h3>
-            <p class="biriyani-light description">By blending creativity with technology, you spark innovation and create magic. That's why it's important to keep learning and stay curious about&nbsp;both.</p>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class=" parallax">
-        <div class="heading row ">
-          <div class="spacer-3rem"></div>
-          <h3 class="small-header center-txt">SKILLS & TOOLS</h3>
-          
-          <div class="spacer-1-5rem"></div>
-        </div>
-        <div class="cont twelve">
-            <div class="col-1">
-               
-              
-                <div class="skills-grid">
-                  <div class="skill-card">Web Design</div>
-                  <div class="skill-card">UX Design</div>
-                  <div class="skill-card">Web Development</div>
-                  <div class="skill-card">Prototyping</div>
-                  <div class="skill-card">User Research</div>
-                  <div class="skill-card">Problem Solving</div>
-                  <div class="skill-card">Design Systems</div>
-                  <div class="skill-card">Web Animation</div>
-                  <div class="skill-card">Motion Graphics</div>
+            </div>
+
+            <div class="project project-left parallax" id="project3" data-category="ux" data-speed="0.2">
+                <div class="proj-wrap p-wrap-left-2">
+                    <svg class="number no-3" width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+                        <text x="10" y="40" font-size="32" font-weight="bold" fill="#333">03</text>
+                    </svg>
+                    <div class="image-container">
+                        <svg class="thumbnail-left thumb static-image" width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="600" height="400" fill="#667eea"></rect>
+                            <text x="300" y="200" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">Form Optimization</text>
+                        </svg>
+                    </div>
+                    <div class="description-cont">
+                        <p class="taxonomy">UX / UI</p>
+                        <h3 class="section-header">Sales Capture Forms Optimisation</h3>
+                        <p class="biriyani-light description">An addition of a comprehensive country selection list paired with an autocomplete feature to streamline the form filling process, improving quality of leads and location data captured.</p>
+                        <a href="#" class="gradient-button">View case study</a>
+                    </div>
                 </div>
-                <div class="spacer-3rem"></div>
-                <p class="section-header center-txt">Tools & Technologies</p>
-                <div class="skills-grid">
-                  <div class="skill-card">HTML5</div>
-                  <div class="skill-card">CSS3</div>
-                  <div class="skill-card">JavaScript</div>
-                  <div class="skill-card">Figma</div>
-                  <div class="skill-card">Adobe Creative Suite</div>
-                  <div class="skill-card">Miro</div>
-                  <div class="skill-card">Maze</div>
-                  <div class="skill-card">Docker</div>
-                  <div class="skill-card">Git</div>
+            </div>
+
+            <div class="project project-right parallax" id="project4" data-category="design" data-speed="0.35">
+                <div class="proj-wrap p-wrap-right-2">
+                    <svg class="number no-4" width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+                        <text x="10" y="40" font-size="32" font-weight="bold" fill="#333">04</text>
+                    </svg>
+                    <div class="image-container">
+                        <svg class="thumbnail-left thumb static-image" width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="600" height="400" fill="#764ba2"></rect>
+                            <text x="300" y="200" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">CoStar Website</text>
+                        </svg>
+                    </div>
+                    <div class="description-cont">
+                        <p class="taxonomy">WEB DESIGN &amp; DEVELOPMENT</p>
+                        <h3 class="section-header">CoStar website redesign &amp; rebuild</h3>
+                        <p class="biriyani-light description">Redesign and rebuild of CoStar's website, refreshing the look and feel in line with the company's updated brand identity. Focused on modernising the visual design and enhancing the overall user experience.</p>
+                        <a href="#" class="gradient-button">View case study</a>
+                    </div>
                 </div>
-              <div class="spacer-3rem"></div>
-                <p class="section-header center-txt">Frameworks & Libraries</p>
-                <div class="skills-grid">
-                  <div class="skill-card learning">Tailwind CSS <span class="badge">Learning</span></div>
-                  <div class="skill-card learning">GSAP <span class="badge">Exploring</span></div>
+            </div>
+
+            <div class="project project-left parallax" id="project5" data-category="design" data-speed="0.3">
+                <div class="flex proj-wrap p-wrap-left-3">
+                    <div class="number-col">
+                        <svg class="number no-5" width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+                            <text x="10" y="40" font-size="32" font-weight="bold" fill="#333">05</text>
+                        </svg>
+                    </div>
+                    <div class="right-of-number">
+                        <div class="image-container">
+                            <svg class="thumbnail static-image" width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="600" height="400" fill="#667eea"></rect>
+                                <text x="300" y="200" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">LoopNet UK</text>
+                            </svg>
+                        </div>
+                        <div class="description-cont">
+                            <p class="taxonomy">DIGITAL DESIGN | WEB DEVELOPMENT</p>
+                            <h3 class="section-header">LoopNet UK migration and build</h3>
+                            <p class="biriyani-light description">Supported the UK launch of LoopNet by migrating and adapting the website for a UK audience. As well as repurposing content and localised marketing materials, ensuring a smooth and relevant introduction of the brand to the UK market.</p>
+                            <a href="#" class="gradient-button">View case study</a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="project project-right parallax" id="project6" data-category="ux" data-speed="0.3">
+                <div class="flex proj-wrap p-wrap-right-3">
+                    <div class="right-of-number">
+                        <div class="image-container">
+                            <svg class="thumbnail static-image" width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="600" height="400" fill="#764ba2"></rect>
+                                <text x="300" y="200" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">Demo Button Study</text>
+                            </svg>
+                        </div>
+                        <div class="description-cont">
+                            <p class="taxonomy">UX / UI</p>
+                            <h3 class="section-header">Persistent demo button case study</h3>
+                            <p class="biriyani-light description">Evaluating the Impact of a 'Book a Demo' Button on Engagement and Conversions</p>
+                            <a href="#" class="gradient-button">View case study</a>
+                        </div>
+                    </div>
+                    <div class="number-col">
+                        <svg class="number no-6" width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+                            <text x="10" y="40" font-size="32" font-weight="bold" fill="#333">06</text>
+                        </svg>
+                    </div>
                 </div>
+            </div>
+
+            <div class="project project-left parallax" id="project7" data-category="design" data-speed="0.3">
+                <div class="flex proj-wrap p-wrap-left-1">
+                    <div class="number-col">
+                        <svg class="number no-7" width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+                            <text x="10" y="40" font-size="32" font-weight="bold" fill="#333">07</text>
+                        </svg>
+                    </div>
+                    <div class="right-of-number">
+                        <div class="image-container">
+                            <svg class="thumbnail static-image" width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="600" height="400" fill="#667eea"></rect>
+                                <text x="300" y="200" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">Photography Brochure</text>
+                            </svg>
+                        </div>
+                        <div class="description-cont">
+                            <p class="taxonomy">GRAPHIC DESIGN</p>
+                            <h3 class="section-header">CoStar Photography Brochure</h3>
+                            <p class="biriyani-light description">A printed brochure showcasing CoStar's architectural photography, including the new brand identity, with a fresh look and feel.</p>
+                            <a href="#" class="gradient-button">View case study</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-        
-     
-  </div>
-  </section>
-  <section class="quote-section">
-  <div class="heading row">
-    <div class="spacer-4rem hide-on-ipad hide-on-mobile"></div>
-    <h3 class="small-header txt-center">TESTIMONIALS</h3>
-    <h2 class="section-header-28 txt-center">What my colleagues have to say about me<span class="rdot">.</span></h2>
-    
-    
-  </div>
-  <div class="container">
-    <div class="swipe-container">
-     
-      <div class="testimonial mySwiper">
-      <div class="testi-content swiper-wrapper">
-        <div class="slide swiper-slide">
-          <img src="assets/images/david-hamilton.jpg" alt="" class="image" loading="lazy" />
-          <p>
-            Working with Daryn over the last six years has been a&nbsp;joy.
-<br><br>
-            His expert insights help shape smarter, more effective solutions, and his collaborative approach ensures that processes are always smooth and&nbsp;efficient.
-            <br><br>
-            Thanks to Daryn's dedication and skill, we continue delivering high-quality, high-performing campaigns, against aggressive targets for performance and speed to&nbsp;market.
-            <br><br>
-            I highly recommend Daryn for any business looking for a reliable web development&nbsp;partner.
-            
-          </p>
+    </section>
 
-          <img src="assets/images/quotation-2.svg" alt="quote" class="quote-icon" loading="lazy">
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projects = document.querySelectorAll('.project');
 
-          <div class="details">
-            <span class="name">David Hamilton</span>
-            <span class="job">Marketing Director, CoStar</span>
-          </div>
-        </div>
-        <div class="slide swiper-slide">
-          <img src="assets/images/david-hamilton.jpg" alt="" class="image" loading="lazy" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-            saepe provident dolorem a quaerat quo error facere nihil deleniti
-            eligendi ipsum adipisci, fugit, architecto amet asperiores
-            doloremque deserunt eum nemo.
-          </p>
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
 
-          <img src="assets/images/quotation-2.svg" alt="quote" class="quote-icon" loading="lazy">
+                const filterValue = button.getAttribute('data-filter');
 
-          <div class="details">
-            <span class="name">David Hamilton</span>
-            <span class="job">Marketing Director, CoStar</span>
-          </div>
-        </div>
-        <div class="slide swiper-slide">
-          <img src="assets/images/david-hamilton.jpg" alt="" class="image" loading="lazy" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-            saepe provident dolorem a quaerat quo error facere nihil deleniti
-            eligendi ipsum adipisci, fugit, architecto amet asperiores
-            doloremque deserunt eum nemo.
-          </p>
-
-          <img src="assets/images/quotation-2.svg" alt="quote" class="quote-icon" loading="lazy">
-
-          <div class="details">
-            <span class="name">David Hamilton</span>
-            <span class="job">Marketing Director, CoStar</span>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-button-next nav-btn"></div>
-      <div class="swiper-button-prev nav-btn"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </div>
-  </div>
-</section>
-
-  <div class="spacer-4rem"></div>
-  
-  <footer id="footer-section">
-    <span id="contact" class="anchor"></span>
-    <div class="parallax contact-position">
-    <!-- More space to allow scrolling -->
-    
-      <div class="footer-content">
-        
-        <div class="container">
-          <h3 class="small-header align-left">CONTACT ME</h3>
-          <h2 class="section-header-28 align-left">Please feel free to get in&nbsp;touch<span class="rdot">.</span></h2>
-          <div class="spacer-3rem"></div>
-        
-        <div class="row row-footer">
-          <div class="col">
-            <div class="form-container">
-              <form action="https://formspree.io/f/xqalvnek" method="POST">
-                <div class="form-row">
-                  <div>
+                let visibleIndex = 0;
+                projects.forEach((project) => {
+                    const category = project.getAttribute('data-category');
                     
-                    <input type="text" id="first-name" name="name" required placeholder="Name">
-                  </div>
-                  <div>
-                   
-                    <input type="email" id="email" name="email" required placeholder="Email">
-                  </div>
-                </div>
-          
-                <div class="form-row" style="flex-direction: column;">
-                  
-                  <textarea id="message" name="message" required placeholder="Message"></textarea>
-                </div>
-          
-                <div class="submit-button-box">
-                  <input class="submit-button" type="submit" value="Submit">
-                </div>
-              </form>
-            </div>
-          </div>     
-          <div class="col">
-            <div class="contact-info">
-              <div class="row icon-row">
-                <div class="icon"><img class="ico-location" src="assets/images/resume-icon-2.svg" loading="lazy"/></div>
-                <div class="icon-text"><a class="description" href="img/Daryn-Higginson-Resume.pdf" target="_blank">Download my resume</a></div>
-                
-              </div>
-              
-            <div class="row icon-row">
-              <div class="icon"><img class="ico-email" src="assets/images/email-icon-2.svg" loading="lazy"/></div>
-              <div class="icon-text"><a class="description" href="mailto:dazgraphic@gmail.com">dazgraphic@gmail.com</a></div>
-            </div>
-            <div class="row icon-row">
-              <div class="icon"><img class="ico-linkedin" src="assets/images/linkedin-icon-2.svg" loading="lazy"/></div>
-              <div class="icon-text"><a class="description" href="https://www.linkedin.com/in/darynhigginson?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BUmNU5IfNRbexSo5yPa5PMQ%3D%3D" target="_blank">LinkedIn</a></div>
-            </div>
-          </div>
-         
-          </div>
-            
-          </div>
-          </div>
-         
-        </div>
-        <div class="map-container container">
-          <div class="spacer-3rem"></div>
-          <div class="row icon-row">
-            <div class="icon"><img class="ico-location" src="assets/images/location-icon-2.svg" loading="lazy"/></div>
-            <div class="icon-text"><p class="description">London, United Kingdom</p></div>
-          </div>
-          <div id="map"></div>
-          
-      </div>
-      
-    </div>
-  </footer>
-  <div class="copyright">
-    
-    <div class="copy-text"> 
-      <p>Designed & Built by Daryn Higginson with 💛<span class="copy-pipe">&nbsp;&nbsp;|&nbsp;&nbsp;</span><br class="copy-break">© 2025 Daryn Higginson. All rights reserved.
-        </p>
-    </div>
-  </div>
-  </main>
-</div>
-</main>
+                    if (filterValue === 'all' || category === filterValue) {
+                        project.classList.remove('hidden');
+                        setTimeout(() => {
+                            project.classList.add('fade-in');
+                        }, visibleIndex * 100);
+                        visibleIndex++;
+                    } else {
+                        project.classList.add('hidden');
+                        project.classList.remove('fade-in');
+                    }
+                });
+            });
+        });
+    </script>
 
-
-<div id="footer-bg"></div>
-<div class="cursor">
-  <div class="cursor-core"></div>
-  <div class="cursor-ring"></div>
-</div>
-
-<!--<img class="side-image" src="assets/images/0-1.svg"/>-->
-
-
-
-<!-- Load scripts in correct order -->
-
-<script src="assets/js/ScrollMagic.min.js" defer></script>
-<script src="assets/js/animation.gsap.min.js" defer></script>
-    <!-- <script src="assets/js/debug.addIndicators.min.js" defer></script> -->
-<script src="assets/js/consolidated-parallax.js" defer></script>
-<script src="assets/js/dots-background.js" defer></script>
-<script src="assets/js/nav-appear.js" defer></script>
-<script src="assets/js/theme-switch.js" defer></script>
-<script src="assets/js/dark-mode-images.js" defer></script>
-<script src="assets/js/logo-wave.js" defer></script>
-<script src="assets/js/top-logo.js" defer></script>
-
-<!-- Mobile dropdown script removed - handled by top-nav.js -->
-  
-
-  
-  <!-- Swiper JS -->
-<script src="assets/js/swiper-bundle.min.js" defer></script>
-<script src="assets/js/swiper-script.js" defer></script>
-
-  <script>
-   document.addEventListener('DOMContentLoaded', function() {
-  const nav = document.getElementById('top-nav');
-  const topElement = document.querySelector('.top');
-  const hero = document.querySelector('.hero');
-  
-  // If no hero exists, show nav and top immediately
-  if (!hero) {
-    nav.classList.add('nav-visible');
-    if (topElement) topElement.classList.add('top-visible');
-    return;
-  }
-
-  // Create intersection observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) {
-        // Hero is out of view - show nav and top
-        nav.classList.add('nav-visible');
-        if (topElement) topElement.classList.add('top-visible');
-      } else {
-        // Hero is in view - hide nav and top
-        nav.classList.remove('nav-visible');
-        if (topElement) topElement.classList.remove('top-visible');
-      }
-    });
-  }, {threshold: 0.15});
-
-  // Observe the hero section
-  observer.observe(hero);
-  
-  // Fallback for older browsers
-  window.addEventListener('scroll', function() {
-    const heroBottom = hero.offsetTop + hero.offsetHeight;
-    if (window.scrollY > heroBottom) {
-      nav.classList.add('nav-visible');
-      if (topElement) topElement.classList.add('top-visible');
-    } else {
-      nav.classList.remove('nav-visible');
-      if (topElement) topElement.classList.remove('top-visible');
-    }
-  });
-});
-  </script>
- <script>
-  function initMap() {
-    const london = { lat: 51.5074, lng: -0.1278 };
-
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 15,
-      center: london,
-      mapTypeControl: false,
-      streetViewControl: false,
-      fullscreenControl: false,
-      styles: [
-        { featureType: "all", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
-        { featureType: "all", elementType: "labels.text.fill", stylers: [{ color: "#444444" }] },
-        { featureType: "all", elementType: "labels.text.stroke", stylers: [{ color: "#ffffff" }] },
-        { featureType: "landscape", elementType: "all", stylers: [{ color: "#f2f2f2" }] },
-        { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] },
-        { featureType: "road", elementType: "all", stylers: [{ saturation: -100 }, { lightness: 45 }] },
-        { featureType: "transit", elementType: "all", stylers: [{ visibility: "off" }] },
-        { featureType: "water", elementType: "all", stylers: [{ color: "#d3d3d3" }, { visibility: "on" }] }
-      ]
-    });
-
-    new google.maps.Marker({
-      position: london,
-      map: map,
-      title: "London"
-    });
-  }
-</script>
-
-<script async
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHH4qPPTzoAu1qKM2GRi-lSgl_CICuQh4&callback=initMap">
-</script>
-<script src="assets/js/top-nav.js" defer></script>
-<script>
-   const hoverAudio = document.getElementById('hoverSound');
-  const scrollAudio = document.getElementById('scrollSound');
-
-  // Hover sound logic
-  document.getElementById('hoverTarget').addEventListener('mouseenter', () => {
-    hoverAudio.currentTime = 0;
-    hoverAudio.play().catch(e => {
-      // silently fail if blocked
-      console.log("Hover sound blocked:", e.message);
-    });
-  });
-
-  // Scroll sound logic (play once)
-  function playScrollSound() {
-    scrollAudio.play().catch(e => {
-      console.log("Scroll sound blocked:", e.message);
-    });
-    window.removeEventListener('scroll', playScrollSound);
-  }
-
-  window.addEventListener('scroll', playScrollSound);
-</script>
-<!--READ MORE JS -->
-<script src="assets/js/cursor-effects.js"> </script>
-<script src="assets/js/links.js" defer></script>
 </body>
 </html>

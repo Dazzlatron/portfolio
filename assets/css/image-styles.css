@@ -295,8 +295,8 @@ body.dark-mode .zoomable {
    TESTIMONIAL IMAGE STYLES
    ======================================== */
 .testimonial .image {
-  height: 170px;
-  width: 170px;
+  height: 100px;
+  width: 100px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -305,8 +305,13 @@ body.dark-mode .zoomable {
    QUOTE ICON STYLES
    ======================================== */
 .slide .quote-icon {
-  font-size: 30px;
-  color: #4070f4;
+  position: absolute;
+  display: block;
+  height: 80px;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
 /* ========================================
