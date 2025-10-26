@@ -80,6 +80,7 @@
 }
 .tool-icon {
   width: 100%;
+  max-width: 55px;
 }
 .contact-gap .col-2 {
   display: flex;

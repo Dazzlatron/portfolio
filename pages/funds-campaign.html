@@ -6,7 +6,7 @@
     <title>Funds Campaign | Daryn Higginson</title>
     <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
 <link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
-    <link rel="stylesheet" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="../assets/fonts/fonts.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/style-old.css">
     <link rel="stylesheet" href="../assets/css/hero.css">
@@ -193,7 +193,7 @@
           <div class="twelve col-1">  
           <h1 class="section-header-34 ">
             Funds Information | Digital Campaign<span class="rdot">.</span>        </h1>
-  <p class="center-txt">I led a multi-channel campaign to launch CoStar’s new Funds Information feature, which links commercial real estate funds to their underlying assets. Using display ads, email, and responsive landing pages, we highlighted how the tool helps funds assess performance, spot risks, and uncover opportunities — taking audiences smoothly from awareness to conversion. It went on to be our top-performing campaign of 2024.</p>
+  
   <div class="spacer-2rem"></div>
   <!--PROJECT SHOWCASE LINK-->
   <a target="_blank" href="https://www.costar.com/fund-information/owners-investors" target="_blank">
@@ -203,6 +203,31 @@
   <div class="spacer-1rem hide-on-mobile"></div>
 </div>
         
+</div>
+<div class="cont four-eight flip-mobile">
+    <div class="col-1">
+       <h2 class="section-header">My Roles<span class="rdot">:</span></h2>
+       <p class="biriyani-light description margin-btm-25" >Research, Design, Prototyping</p>
+       <div class="spacer-1-3rem"></div>
+
+
+
+       <div class="spacer-1-3rem"></div>
+       <h2 class="section-header">Tools<span class="rdot">:</span></h2>
+       <div class="tools-container">
+        <img src="../assets/images/figma.svg" class="tool-icon">
+        <img src="../assets/images/photoshop-logo.svg" class="tool-icon"> 
+        <img src="../assets/images/VS-code-logo.svg" class="tool-icon">
+        
+       </div>
+    </div>
+    <div class="col-2 project-links">
+       <h2 class="section-header">Project Overview<span class="rdot">:</span></h2>
+       <p class="project-p biriyani-light description margin-btm-25" >I led a multi-channel campaign to launch CoStar’s new Funds Information feature, which links commercial real estate funds to their underlying assets. Using display ads, email, and responsive landing pages, we highlighted how the tool helps funds assess performance, spot risks, and uncover opportunities — taking audiences smoothly from awareness to conversion. It went on to be our top-performing campaign of 2024.
+<br><br>
+        <strong>For the concept</strong> we wanted a high-tech feel for the design while showing a human connection with our product.
+           </p>
+</div>
 </div>
 </section>
 
@@ -337,12 +362,12 @@
   <span id="contact" class="anchor"></span>
   <div class="col-1 left mobile-6-col">
     <div class="previous">
-      <a href="index.html">
+      <a href="#" id="backButton">
       <svg  width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2.00029 8.5H17.5566" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         <path d="M8.36455 14.864L2.00059 8.5L8.36455 2.13604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      Home
+     Previous
     </a></div>
   </div>
   <div class="col-2 right mobile-6-col">
@@ -382,7 +407,12 @@
 <!--<img class="side-image" src="../assets/images/0-1.svg"/>-->
 
 
-
+<script>
+  document.getElementById('backButton').addEventListener('click', function(e) {
+    e.preventDefault();
+    history.back();
+  });
+  </script>
 <!-- Load scripts in correct order -->
 
 <script src="../assets/js/ScrollMagic.min.js" defer></script>

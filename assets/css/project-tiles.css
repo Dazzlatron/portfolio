@@ -89,7 +89,7 @@
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  width: 90%;
+  width: 95%;
   
   }
   #project4 {
@@ -100,7 +100,7 @@
   #project6 {
     margin-top: 6rem;
     margin-left: 0;
-    width: 85%;
+    width: 90%;
   }
   #project5 {
     display: flex;
