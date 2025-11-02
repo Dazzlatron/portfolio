@@ -367,6 +367,9 @@ body.dark-mode .zoomable {
   .funds-project-showcase {
     background-image: url(../images/funds-showcase-img.png);
   }
+  .form-optimisation-project-showcase {
+    background-image: url(../images/form-optimisation-hero.png);
+  }
   .project-showcase-2 {
     border-radius:8px;
     aspect-ratio: 938 / 300; 

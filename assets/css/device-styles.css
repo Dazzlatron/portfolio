@@ -11,7 +11,11 @@
     --light-border: #d1d1d1;
     --red-accent: #FF1515;
     }
-  
+    @media screen and (min-width:1200px) {
+      .contact-wrapper {
+        padding: 0 2rem;
+      }
+    }
   /* ----------- MOBILE ----------- */
      @media (max-width: 768px) {
       .left-icon-text {

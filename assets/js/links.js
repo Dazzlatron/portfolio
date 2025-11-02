@@ -25,5 +25,14 @@ document.addEventListener("DOMContentLoaded", function() {
       window.location.href = "pages/funds-campaign.html";
     });
   }
+
+  const project3 = document.getElementById("project3");
+  if (project3) {
+    project3.style.cursor = "none";
+    project3.classList.add('clickable'); // Add this line
+    project3.addEventListener("click", function() {
+      window.location.href = "pages/form-optimisation.html";
+    });
+  }
 });
 

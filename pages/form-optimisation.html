@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funds Campaign | Daryn Higginson</title>
+    <title>Daryn Higginson | Form optimisation</title>
     <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
 <link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
@@ -56,8 +56,10 @@
     .main-content {
     padding: 0 2rem;
     margin-top: 3.2rem;
-
   }
+  .contact-wrapper {
+  padding: 0 2rem;
+}
   }
   @media screen and (min-width: 1200px) and (max-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
   .main-content {
@@ -75,11 +77,6 @@
 <body>
   <audio id="hoverSound" preload="auto">
     <source src="../assets/sounds/notification-1-269296.mp3" type="audio/mpeg">
-  </audio>
-  
-  <!-- Scroll sound -->
-  <audio id="scrollSound" preload="auto">
-    <source src="../assets/sounds/startup-sound-variation-3-315895.mp3" type="audio/mpeg">
   </audio>
   
 
@@ -168,12 +165,12 @@
         <div class="cont heading-cont">
           <div class="twelve col-1">  
           <h1 class="section-header-34 ">
-            Funds Information | Digital Campaign<span class="rdot">.</span>        </h1>
+            Sales Forms Country Selection feature<span class="rdot">.</span>        </h1>
   
   <div class="spacer-2rem"></div>
   <!--PROJECT SHOWCASE LINK-->
   <a target="_blank" href="https://www.costar.com/fund-information/owners-investors" target="_blank">
-  <div class="cont project-showcase-2 funds-project-showcase"></div>
+  <div class="cont project-showcase-2 form-optimisation-project-showcase"></div>
 </a>
   <!--PROJECT SHOWCASE LINK END-->
   <div class="spacer-1rem hide-on-mobile"></div>
@@ -191,9 +188,9 @@
        <div class="spacer-1-3rem"></div>
        <h2 class="section-header">Tools<span class="rdot">:</span></h2>
        <div class="tools-container">
-        <img src="../assets/images/figma.svg" class="tool-icon">
-        <img src="../assets/images/photoshop-logo.svg" class="tool-icon"> 
-        <img src="../assets/images/VS-code-logo.svg" class="tool-icon">
+        <img src="../assets/images/logrocket-icon.svg" class="tool-icon">
+        <img src="../assets/images/VS-code-logo.svg" class="tool-icon"> 
+        <img src="../assets/images/google-analytics-logo.svg" class="tool-icon">
         
        </div>
     </div>
@@ -204,120 +201,19 @@
 </div>
 </div>
 <div class="spacer-1rem"></div>
-<div class="cont tabs-cont">
-  <div class="twelve col-1">
-      <div class="tab-container">
-          <div class="highlight"></div>
-          <div class="tab active" data-index="0"><i><svg class="tabs-icon"  viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 2V17H28V2H4ZM30 19H2V2C2 0.895431 2.89543 4.83192e-08 4 0H28L28.2041 0.0107422C29.2128 0.113005 30 0.96435 30 2V19Z" fill="black"/>
-            <path d="M31.9902 18.3838C31.9043 19.2311 31.2311 19.9043 30.3838 19.9902L30.2002 20H1.7998C0.805847 19.9999 0.000105578 19.1942 0 18.2002C0 17.5789 0.4721 17.0674 1.07715 17.0059L1.2002 17H30.7998C31.4625 17 32 17.5375 32 18.2002L31.9902 18.3838Z" />
-            </svg></i><p>Landing pages</p></div>
-          <div class="tab" data-index="1"><i><svg class="tabs-icon"  viewBox="0 0 28 20"  xmlns="http://www.w3.org/2000/svg">
-            <path d="M26 18V20H2V18H26ZM26 2H2V20C0.96435 20 0.113005 19.2128 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H26L26.2041 0.0107422C27.2128 0.113005 28 0.96435 28 2V18L27.9893 18.2041C27.8938 19.1457 27.1457 19.8938 26.2041 19.9893L26 20V2Z" />
-            <path d="M13.5488 10.0303C13.9347 10.3769 14.5216 10.371 14.9004 10.0166L25.3164 0.269531L26.6836 1.73047L16.2676 11.4775C15.1314 12.5407 13.3706 12.5583 12.2129 11.5186L1.33203 1.74414L2.66797 0.255859L13.5488 10.0303Z" />
-            </svg></i><p>Email </p></div>
-          <div class="tab" data-index="2"><i><svg class="tabs-icon"  viewBox="0 0 27 21"  xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18V20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20V18C14.4183 18 18 14.4183 18 10Z"/>
-            <path d="M17.6405 14.4893C17.9227 14.0145 18.5359 13.8585 19.0107 14.1406L26.0107 18.3008C26.4854 18.5829 26.6414 19.1962 26.3593 19.6709C26.0771 20.1457 25.4639 20.3017 24.9892 20.0195L17.9892 15.8594C17.5144 15.5772 17.3584 14.964 17.6405 14.4893Z"/>
-            </svg></i><p>Digital ads</p></div>
-        </div>
-      <!--TAB 1 - Landing pages-->
-        <div id="content-0" class="tab-content active">
-        <div class="cont eight-four">
-          <!--Column 1--->
-          <div class="col-1">
-            <div class="left-icon-text" data-index="0"><i><svg class="project-icon"  viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 2V17H28V2H4ZM30 19H2V2C2 0.895431 2.89543 4.83192e-08 4 0H28L28.2041 0.0107422C29.2128 0.113005 30 0.96435 30 2V19Z" fill="black"/>
-              <path d="M31.9902 18.3838C31.9043 19.2311 31.2311 19.9043 30.3838 19.9902L30.2002 20H1.7998C0.805847 19.9999 0.000105578 19.1942 0 18.2002C0 17.5789 0.4721 17.0674 1.07715 17.0059L1.2002 17H30.7998C31.4625 17 32 17.5375 32 18.2002L31.9902 18.3838Z" />
-              </svg></i><p>Desktop experience</p></div>
-              <img src="../assets/images/funds-desktop-experience.png" class="desktop-screenshot">
 
-          </div>
-          <!--Column 2--->
-          <div class="col-2">
-            <div class="left-icon-text" data-index="0"><i><svg class="project-icon" viewBox="0 0 14 20"  xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 18V20H2V18H12ZM12 2H2V20L1.7959 19.9893C0.854346 19.8938 0.1062 19.1457 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H12C13.1046 0 14 0.895431 14 2V18L13.9893 18.2041C13.8938 19.1457 13.1457 19.8938 12.2041 19.9893L12 20V2Z" />
-              <path d="M8 16C8 16.5523 7.55228 17 7 17C6.44772 17 6 16.5523 6 16C6 15.4477 6.44772 15 7 15C7.55228 15 8 15.4477 8 16Z"/>
-              </svg></i><p>Mobile experience</p></div>
-            <img src="../assets/images/funds-mobile-experience.png" class="mobile-screenshot">
-          </div>
-        </div>
-        </div>
-      
-        <div id="content-1" class="tab-content">
-          <div class="cont four-column">
-            <!--Column 1--->
-            <div class="col-1 no-padding">
-              <div class="left-icon-text" data-index="0"><i><svg class="project-icon"  viewBox="0 0 28 20"  xmlns="http://www.w3.org/2000/svg">
-                <path d="M26 18V20H2V18H26ZM26 2H2V20C0.96435 20 0.113005 19.2128 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H26L26.2041 0.0107422C27.2128 0.113005 28 0.96435 28 2V18L27.9893 18.2041C27.8938 19.1457 27.1457 19.8938 26.2041 19.9893L26 20V2Z" />
-                <path d="M13.5488 10.0303C13.9347 10.3769 14.5216 10.371 14.9004 10.0166L25.3164 0.269531L26.6836 1.73047L16.2676 11.4775C15.1314 12.5407 13.3706 12.5583 12.2129 11.5186L1.33203 1.74414L2.66797 0.255859L13.5488 10.0303Z" />
-                </svg></i><p>Email one</p></div>
-                <img src="../assets/images/funds-email-1.png" class="desktop-screenshot">
-
-            </div>
-            <!--Column 2--->
-            <div class="col-2 no-padding">
-              <div class="left-icon-text" data-index="0"><i><svg class="project-icon"  viewBox="0 0 28 20"  xmlns="http://www.w3.org/2000/svg">
-                <path d="M26 18V20H2V18H26ZM26 2H2V20C0.96435 20 0.113005 19.2128 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H26L26.2041 0.0107422C27.2128 0.113005 28 0.96435 28 2V18L27.9893 18.2041C27.8938 19.1457 27.1457 19.8938 26.2041 19.9893L26 20V2Z" />
-                <path d="M13.5488 10.0303C13.9347 10.3769 14.5216 10.371 14.9004 10.0166L25.3164 0.269531L26.6836 1.73047L16.2676 11.4775C15.1314 12.5407 13.3706 12.5583 12.2129 11.5186L1.33203 1.74414L2.66797 0.255859L13.5488 10.0303Z" />
-                </svg></i><p>Email two</p></div>
-              <img src="../assets/images/funds-email-2.png" class="mobile-screenshot">
-            </div>
-<!--Column 3-->
-            <div class="col-3 no-padding">
-              <div class="left-icon-text" data-index="0"><i><svg class="project-icon"  viewBox="0 0 28 20"  xmlns="http://www.w3.org/2000/svg">
-                <path d="M26 18V20H2V18H26ZM26 2H2V20C0.96435 20 0.113005 19.2128 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H26L26.2041 0.0107422C27.2128 0.113005 28 0.96435 28 2V18L27.9893 18.2041C27.8938 19.1457 27.1457 19.8938 26.2041 19.9893L26 20V2Z" />
-                <path d="M13.5488 10.0303C13.9347 10.3769 14.5216 10.371 14.9004 10.0166L25.3164 0.269531L26.6836 1.73047L16.2676 11.4775C15.1314 12.5407 13.3706 12.5583 12.2129 11.5186L1.33203 1.74414L2.66797 0.255859L13.5488 10.0303Z" />
-                </svg></i><p>Email three</p></div>
-              <img src="../assets/images/funds-email-3.png" class="mobile-screenshot">
-            </div>
-            <div class="col-4 no-padding">
-              <div class="left-icon-text" data-index="0"><i><svg class="project-icon"  viewBox="0 0 28 20"  xmlns="http://www.w3.org/2000/svg">
-                <path d="M26 18V20H2V18H26ZM26 2H2V20C0.96435 20 0.113005 19.2128 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H26L26.2041 0.0107422C27.2128 0.113005 28 0.96435 28 2V18L27.9893 18.2041C27.8938 19.1457 27.1457 19.8938 26.2041 19.9893L26 20V2Z" />
-                <path d="M13.5488 10.0303C13.9347 10.3769 14.5216 10.371 14.9004 10.0166L25.3164 0.269531L26.6836 1.73047L16.2676 11.4775C15.1314 12.5407 13.3706 12.5583 12.2129 11.5186L1.33203 1.74414L2.66797 0.255859L13.5488 10.0303Z" />
-                </svg></i><p>Email four</p></div>
-              <img src="../assets/images/funds-email-4.png" class="mobile-screenshot">
-            </div>
-          </div>
-        </div>
-      
-        <div id="content-2" class="tab-content">
-          <div class="cont four-four-four">
-            <!--Column 1--->
-            <div class="col-1 no-padding">
-              <div class="left-icon-text" data-index="0"><i><svg class="project-icon" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M26 12.2352C26 11.0797 25.535 10.4297 24.999 10.0438C24.6861 9.81855 24.332 9.67456 24 9.58869V14.8817C24.3321 14.7958 24.6861 14.6519 24.999 14.4266C25.5351 14.0406 26 13.3907 26 12.2352ZM4.49805 23.1776L4.5 23.2069V23.2352C4.5 23.5609 4.58299 24.0472 4.7998 24.4237C4.99513 24.7627 5.27205 24.9852 5.75 24.9852C6.22795 24.9852 6.50487 24.7627 6.7002 24.4237C6.91254 24.055 6.99565 23.5811 6.99902 23.2557L6.55566 17.4852H4.06055L4.49805 23.1776ZM1.5 14.7352C1.5 15.4731 2.11464 15.9852 2.75 15.9852H8.5V6.98518H3.25C2.50317 6.98518 2.08451 7.29621 1.83496 7.60725C1.70264 7.77223 1.61277 7.9448 1.55762 8.08576C1.50801 8.21259 1.50078 8.27513 1.5 8.26643V14.7352ZM22.5 1.75178C22.4999 1.57236 22.3163 1.4516 22.1514 1.52229L9.9873 6.73518H10V16.2557L22.1445 21.8953C22.3102 21.9722 22.4998 21.8513 22.5 21.6688V1.75178ZM24 8.05549C24.5928 8.15941 25.2708 8.39127 25.876 8.82698C26.7981 9.49102 27.5 10.591 27.5 12.2352C27.5 13.8796 26.7983 14.9803 25.876 15.6444C25.2709 16.08 24.5928 16.3119 24 16.4158V8.05549ZM10 5.48518H8.5C7.67157 5.48518 7 6.15675 7 6.98518V16.9852C7 17.8136 7.67157 18.4852 8.5 18.4852H10V5.48518ZM22.5 0.235176C23.3284 0.235176 24 0.906747 24 1.73518V21.7352C24 22.5636 23.3284 23.2352 22.5 23.2352C22.3321 23.2352 22.1693 23.1809 22.037 23.0804L8.5 16.9852H8.5V5.48518H8.5L22.037 0.389806C22.1693 0.289295 22.3321 0.235176 22.5 0.235176ZM9.5 7.48518C9.5 7.20804 9.72386 6.98518 10 6.98518C10.2761 6.98518 10.5 7.20804 10.5 7.48518V15.9852C10.5 16.2623 10.2761 16.4852 10 16.4852C9.72386 16.4852 9.5 16.2623 9.5 15.9852V7.48518Z" fill="#A6A6A6"/>
-                </svg></i><p>Ad one</p></div>
-                <img src="../assets/images/funds-ad-1.png" class="desktop-screenshot">
-
-            </div>
-            <!--Column 2--->
-            <div class="col-2 no-padding">
-              <div class="left-icon-text" data-index="0"><i><svg class="project-icon" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M26 12.2352C26 11.0797 25.535 10.4297 24.999 10.0438C24.6861 9.81855 24.332 9.67456 24 9.58869V14.8817C24.3321 14.7958 24.6861 14.6519 24.999 14.4266C25.5351 14.0406 26 13.3907 26 12.2352ZM4.49805 23.1776L4.5 23.2069V23.2352C4.5 23.5609 4.58299 24.0472 4.7998 24.4237C4.99513 24.7627 5.27205 24.9852 5.75 24.9852C6.22795 24.9852 6.50487 24.7627 6.7002 24.4237C6.91254 24.055 6.99565 23.5811 6.99902 23.2557L6.55566 17.4852H4.06055L4.49805 23.1776ZM1.5 14.7352C1.5 15.4731 2.11464 15.9852 2.75 15.9852H8.5V6.98518H3.25C2.50317 6.98518 2.08451 7.29621 1.83496 7.60725C1.70264 7.77223 1.61277 7.9448 1.55762 8.08576C1.50801 8.21259 1.50078 8.27513 1.5 8.26643V14.7352ZM22.5 1.75178C22.4999 1.57236 22.3163 1.4516 22.1514 1.52229L9.9873 6.73518H10V16.2557L22.1445 21.8953C22.3102 21.9722 22.4998 21.8513 22.5 21.6688V1.75178ZM24 8.05549C24.5928 8.15941 25.2708 8.39127 25.876 8.82698C26.7981 9.49102 27.5 10.591 27.5 12.2352C27.5 13.8796 26.7983 14.9803 25.876 15.6444C25.2709 16.08 24.5928 16.3119 24 16.4158V8.05549ZM10 5.48518H8.5C7.67157 5.48518 7 6.15675 7 6.98518V16.9852C7 17.8136 7.67157 18.4852 8.5 18.4852H10V5.48518ZM22.5 0.235176C23.3284 0.235176 24 0.906747 24 1.73518V21.7352C24 22.5636 23.3284 23.2352 22.5 23.2352C22.3321 23.2352 22.1693 23.1809 22.037 23.0804L8.5 16.9852H8.5V5.48518H8.5L22.037 0.389806C22.1693 0.289295 22.3321 0.235176 22.5 0.235176ZM9.5 7.48518C9.5 7.20804 9.72386 6.98518 10 6.98518C10.2761 6.98518 10.5 7.20804 10.5 7.48518V15.9852C10.5 16.2623 10.2761 16.4852 10 16.4852C9.72386 16.4852 9.5 16.2623 9.5 15.9852V7.48518Z" fill="#A6A6A6"/>
-                </svg></i><p>Ad two</p></div>
-              <img src="../assets/images/funds-ad-2.png" class="mobile-screenshot">
-            </div>
-<!--Column 3-->
-            <div class="col-3 no-padding">
-              <div class="left-icon-text" data-index="0"><i><svg class="project-icon" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M26 12.2352C26 11.0797 25.535 10.4297 24.999 10.0438C24.6861 9.81855 24.332 9.67456 24 9.58869V14.8817C24.3321 14.7958 24.6861 14.6519 24.999 14.4266C25.5351 14.0406 26 13.3907 26 12.2352ZM4.49805 23.1776L4.5 23.2069V23.2352C4.5 23.5609 4.58299 24.0472 4.7998 24.4237C4.99513 24.7627 5.27205 24.9852 5.75 24.9852C6.22795 24.9852 6.50487 24.7627 6.7002 24.4237C6.91254 24.055 6.99565 23.5811 6.99902 23.2557L6.55566 17.4852H4.06055L4.49805 23.1776ZM1.5 14.7352C1.5 15.4731 2.11464 15.9852 2.75 15.9852H8.5V6.98518H3.25C2.50317 6.98518 2.08451 7.29621 1.83496 7.60725C1.70264 7.77223 1.61277 7.9448 1.55762 8.08576C1.50801 8.21259 1.50078 8.27513 1.5 8.26643V14.7352ZM22.5 1.75178C22.4999 1.57236 22.3163 1.4516 22.1514 1.52229L9.9873 6.73518H10V16.2557L22.1445 21.8953C22.3102 21.9722 22.4998 21.8513 22.5 21.6688V1.75178ZM24 8.05549C24.5928 8.15941 25.2708 8.39127 25.876 8.82698C26.7981 9.49102 27.5 10.591 27.5 12.2352C27.5 13.8796 26.7983 14.9803 25.876 15.6444C25.2709 16.08 24.5928 16.3119 24 16.4158V8.05549ZM10 5.48518H8.5C7.67157 5.48518 7 6.15675 7 6.98518V16.9852C7 17.8136 7.67157 18.4852 8.5 18.4852H10V5.48518ZM22.5 0.235176C23.3284 0.235176 24 0.906747 24 1.73518V21.7352C24 22.5636 23.3284 23.2352 22.5 23.2352C22.3321 23.2352 22.1693 23.1809 22.037 23.0804L8.5 16.9852H8.5V5.48518H8.5L22.037 0.389806C22.1693 0.289295 22.3321 0.235176 22.5 0.235176ZM9.5 7.48518C9.5 7.20804 9.72386 6.98518 10 6.98518C10.2761 6.98518 10.5 7.20804 10.5 7.48518V15.9852C10.5 16.2623 10.2761 16.4852 10 16.4852C9.72386 16.4852 9.5 16.2623 9.5 15.9852V7.48518Z" fill="#A6A6A6"/>
-                </svg></i><p>Ad three</p></div>
-              <img src="../assets/images/funds-ad-3.png" class="mobile-screenshot">
-            </div>
-           
-          </div>
-        </div>
-  </div>
- 
-</div>
 </section>
-
-
+<span id="discovery" class="anchor"></span>
+      <section class="discovery parallax" data-speed="0.3">
+      <div class="cont twelve">
+        <div class="col-1 process-heading section-header-row">
+      <h2 class="section-header-28">Discovery<span class="rdot">.</span></h2><span class="heading-arrow"><svg class="arrow-svg"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path></svg></span><span class="section-header-underline"></span>
+    </div>
       </div>
-      
       </section>
-      
+      <contact-section></contact-section>
+      </div>
+ 
       <!--SPACER-->
       <div class="spacer-6rem"></div>
       <!--SPACER-->
@@ -356,7 +252,7 @@
 <div class="spacer-4rem"></div>
 <!--SPACER-->
 
-<contact-section></contact-section>
+
 
     
   <!--SPACER-->
