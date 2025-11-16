@@ -26,7 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
       triggerHook: getTriggerHook(), // Use responsive triggerHook
       reverse: true // Animation only plays once
     })
-    .setTween(gsap.to(element, { opacity: 1, y: '-20px', duration: 1, ease: "sine.inOut" })) // GSAP animation
+    .setTween(gsap.fromTo(element, 
+      { opacity: 0, y: 150 }, // Start from the CSS initial state
+      { opacity: 1, y: -20, duration: 1, ease: "sine.inOut" } // Animate to visible and slightly up
+    )) // GSAP animation
     // .addIndicators({ name: "Fade & Slide Up" }) // Debugging indicators (optional)
     .addTo(controller);
   });

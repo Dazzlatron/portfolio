@@ -1,6 +1,14 @@
 /* Google Fonts - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
+.quote-section {
+ width:100%;
+}
+.copy-text {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 .copyright {
   z-index: 99;
   display: flex;
@@ -9,7 +17,8 @@
 .copy-text p {
   font-size: 11px;
   font-family: 'biriyaniregular', sans-serif;
-  margin-left: 10px;
+  line-height: 2;
+  margin:0;
 }
 .bottom-logo {
   height: 30px;
@@ -132,6 +141,7 @@
 @media screen and (min-width: 768px) {
   .quote-section {
     overflow: hidden;
+    
   }
   
   .container {

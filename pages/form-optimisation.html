@@ -31,6 +31,33 @@
     <script src="../assets/js/mobile-swipe.js"></script>
   </script>
 <style>
+   .video-container {
+            width: 435px;
+            height: 645px;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+            border:1px solid var(--dark-border);
+        }
+        
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+        
+        .info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
   @media only screen and (min-width: 768px) and (max-width: 1024px) {
   #hero-section {
     
@@ -169,9 +196,9 @@
   
   <div class="spacer-2rem"></div>
   <!--PROJECT SHOWCASE LINK-->
-  <a target="_blank" href="https://www.costar.com/fund-information/owners-investors" target="_blank">
+  
   <div class="cont project-showcase-2 form-optimisation-project-showcase"></div>
-</a>
+
   <!--PROJECT SHOWCASE LINK END-->
   <div class="spacer-1rem hide-on-mobile"></div>
 </div>
@@ -196,7 +223,7 @@
     </div>
     <div class="col-2 project-links">
        <h2 class="section-header">Project Overview<span class="rdot">:</span></h2>
-       <p class="project-p biriyani-light description margin-btm-25" >The previous lead capture process faced challenges due to incorrect or incomplete information being entered to our demo request forms. Country selection fields in these forms were limited, causing issues when applicants from different countries attempted to provide accurate location information. To address this, we added a comprehensive country selection list paired with an autocomplete feature to streamline the form filling process, improving quality of leads and location data captured.
+       <p class="project-p biriyani-light description margin-btm-25" >On CoStar’s global marketing web pages, the previous lead capture process faced challenges due to incorrect or incomplete information being entered into the sales capture forms. This was caused by a lack of proper validation and a limited number of countries to select from, even though the website served a global audience. To address this, I added a comprehensive country selection list paired with an autocomplete feature to streamline the form-filling process, along with light validation that improved the quality of leads and location data captured.
            </p>
 </div>
 </div>
@@ -210,63 +237,91 @@
       <h2 class="section-header-28">Discovery<span class="rdot">.</span></h2><span class="heading-arrow"><svg class="arrow-svg"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path></svg></span><span class="section-header-underline"></span>
     </div>
       </div>
+      <div class="spacer-3rem"></div>
+      <div class="cont six-six">
+        <div class="col-1">
+          <p class="biriyani-light description margin-btm-25">
+            I got into the data and noticed that Visitors from literally all over the world were requesting info while there were only three options to select from - America, Canada and United Kingdom. 
+<br><br>
+            For example (As seen in the data visualisation on the right) 324 demo requests from India, 296 from Nigeria, 61 from Hong Kong, 45 from Australia, 37 from South Africa, all within a month! And even though CoStar didn’t offer services in most of those countries, we still needed to somehow acknowledge these visitors, and at least make the process less frustrating. 
+      </p>
+    </div>
+        <div class="col-2"><img class="image-border location-data zoomable" src="../assets/images/Demo_page_visits_globally-1.png" alt="Form optimisation data" class="form-optimisation-data"></div>
+        
+        </div>
+      <div class="spacer-2rem"></div>
+      <div class="cont six-six flip-mobile">
+        <div class="col-1">
+          <div class="video-container">
+            <video 
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                disablePictureInPicture
+                controlsList="nodownload nofullscreen noremoteplayback"
+                poster="https://via.placeholder.com/453x645/1a1a1a/ffffff?text=Loading+Video"
+            >
+                <!-- WebM format for Firefox/Chrome (best compression) -->
+                <source src="../assets/video/country-html.webm" type="video/webm">
+                
+                <!-- MP4 format for Safari/Edge (most compatible) -->
+                <source src="../assets/video/country-html.mp4" type="video/mp4">
+                
+                <!-- OGG format for older Firefox versions -->
+                <source src="../assets/video/country-html.ogg" type="video/ogg">
+                
+                <!-- Fallback message for browsers that don't support video -->
+                <p style="color: white; padding: 20px; text-align: center;">
+                    Your browser doesn't support HTML5 video. 
+                    <a href="../assets/video/country-html.mp4" style="color: #4a9eff;">Download the video</a> instead.
+                </p>
+            </video>
+        </div>
+          </div>
+          <div class="col-2">
+            <p class="biriyani-light description margin-btm-25">After some light research I stumbled across an interesting study by Christian Holst, about the many usability issues involving massive country selector drop-downs. Some of these being: <br><br>
+              <span class="biriyani-bold">01: Lack of overview </span><br>A list of 249 countries can be quite bewildering<br><br>
+              <span class="biriyani-bold">02: Unclear sorting</span><br>Sorting logic usually shows the top 5 most popular countries at the top, and is unclear at first glance<br><br>
+              
+              <span class="biriyani-bold">03: Scrolling issues</span><br>Drop-down menus with many options cause scrolling problems that either hide the menu or result in accidental incorrect selections, depending on the browser.<br><br>
+             
+              
+              <span class="biriyani-bold">04: Inconsistent UI</span><br>Drop downs look and work differently on various browsers and devices causing inconsistencies
+              <br><br>
+              
+              <span class="biriyani-bold">05: Lack of context</span><br>Mobile screens have very limited screen real estate<br><br>
+              
+              
+              <span class="biriyani-bold">06: Breaking the flow </span><br>Using a mouse with these large lists slows progress <br><br>  
+              
+          </div>
+          </div>
       </section>
-      <contact-section></contact-section>
+      <span id="solution" class="anchor"></span>
+      <section class="discovery parallax" data-speed="0.25">
+      <div class="cont twelve">
+        <div class="col-1 process-heading section-header-row">
+      <h2 class="section-header-28">Solution<span class="rdot">.</span></h2><span class="heading-arrow"><svg class="arrow-svg"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path></svg></span><span class="section-header-underline"></span>
+    </div>
       </div>
- 
-      <!--SPACER-->
-      <div class="spacer-6rem"></div>
-      <!--SPACER-->
+      <div class="spacer-3rem"></div>
+      <div class="cont six-six">
+        <div class="col-1"><p class="biriyani-light description margin-btm-25">
+          Along with this article, there was a brilliant open-source plugin that addresses all these issues by creating an auto-complete country selection field. Instead of selecting your country from a list, you simply type it in — which also resolves potential issues with the typing function. For example, it auto-completes various spellings of the same country. You might call the Netherlands “Holland,” for instance, or type an acronym such as “U.S.A.” for the United States of America or “UK” for the United Kingdom. These all auto-complete to input our standard country codes, helping us collect accurate location data. </p></div>
+        <div class="col-2"><img class="image-border not-zoomable" src="../assets/images/auto-complete-form-field.png" alt="Form field auto complete"></div>
+        </div>
+        <div class="spacer-4rem"></div>
+        <contact-section></contact-section>
+       
+        </div>
+      </section>
 
-     
-      <!--SPACER-->
-<div class="spacer-6rem"></div>
-<!--SPACER-->
+      </div>
 
-     
-<!--SPACER-->
-<div class="spacer-4rem"></div>
-<!--SPACER-->
-<div class="cont next-prev six-six six-six-mob parallax" data-speed="0.3">
-  <span id="contact" class="anchor"></span>
-  <div class="col-1 left mobile-6-col">
-    <div class="previous">
-      <a href="#" id="backButton">
-      <svg  width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2.00029 8.5H17.5566" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M8.36455 14.864L2.00059 8.5L8.36455 2.13604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-     Previous
-    </a></div>
-  </div>
-  <div class="col-2 right mobile-6-col">
-    <div class="previous"><a href="index.html">Next
-      <svg class="arrow-right" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16.5563 8.5L1 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M10.1921 2.13604L16.556 8.5L10.1921 14.864" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </a></div>
-  </div>
-</div>
-<!--SPACER-->
-<div class="spacer-4rem"></div>
-<!--SPACER-->
-
-
-
-    
-  <!--SPACER-->
-  <div class="spacer-4rem"></div>
-  <!--SPACER-->
-  <div class="copyright">
-    
-    <div class="copy-text"> 
-      <p>Designed & Built by Daryn Higginson with 💛<span class="copy-pipe">&nbsp;&nbsp;|&nbsp;&nbsp;</span><br class="copy-break">© 2025 Daryn Higginson. All rights reserved.
-        </p>
     </div>
   </div>
-    </div>
-  </div>
+  
 </main>
 
 
@@ -297,7 +352,7 @@
 <!-- Swiper JS -->
 <script src="../assets/js/swiper-bundle.min.js" defer></script>
 <script src="../assets/js/swiper-script.js" defer></script>
-
+<script src="../assets/js/html-video.js" defer></script>
 
 
   <script>

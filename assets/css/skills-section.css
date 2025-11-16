@@ -32,7 +32,7 @@
 
 .skill-card {
   border-radius: 10px;
-  padding: 8px 15px 10px;
+  padding: 8px 12px 9px;
   font-weight: 500;
  
   transition: all 0.2s ease;
@@ -45,6 +45,7 @@ body.dark-mode .skill-card {
   transition: all 0.2s ease;
   color:var(--dark-text);
   border: 1px solid var(--dark-border);
+  font-size:14px;
 }
 body.dark-mode .skill-card:hover{
   color:var(--light-text);
@@ -68,9 +69,9 @@ body.dark-mode .skill-card:hover{
   margin-left: 0.4rem;
   background: #e0f2ff;
   color: #007acc;
-  font-size: 0.7rem;
-  padding: 0.2rem 0.5rem 0.3rem;
-  border-radius: 6px;
+  font-size: 0.6rem;
+  padding: 0.2rem 0.5rem 0.25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   line-height: 1;

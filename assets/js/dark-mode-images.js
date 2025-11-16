@@ -84,6 +84,10 @@ function updateImagesForDarkMode(isDarkMode) {
         '.quote-icon': {
             light: basePath + 'quotation-2.svg',
              dark: basePath + 'quotation-2-dark.svg'
+         },
+         '.sm-logo': {
+            light: basePath + 'small-logo-footer.png',
+             dark: basePath + 'small-logo-footer-dark.png'
          }
     };
 

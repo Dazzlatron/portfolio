@@ -13,7 +13,17 @@
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
+.sm-logo {
+  height: 18px;
+  width: auto;
+}
 
+.biriyani-bold {
+  font-family: 'biryanibold';
+}
+.biriyani-light{
+    font-family: 'biryanilight';
+}
 .cursor.darkmode .cursor-core {
   background: radial-gradient(circle, #ffffff 0%, #e0e0e0 100%) !important;
   
@@ -327,7 +337,7 @@ list-style-type: square;
 }
 .map-container {
   z-index: 99;
-  width:95%;
+  width:100%;
   margin: auto;
 }
 .hamburger span {
@@ -396,7 +406,7 @@ body, p{
   height: 500px;
   position: relative;
   overflow: hidden;
-  margin-top: -480px;
+  margin-top: -380px;
 }
 #footer-bg::before {
   content: "";
@@ -744,6 +754,9 @@ nav {
 .spacer-2rem{
   margin-top: 2rem;
 }
+.spacer-2-5rem{
+  margin-top: 2.5rem;
+}
 .spacer-3rem{
   margin-top: 3rem;
   }
@@ -889,7 +902,7 @@ main {
 .footer-content {
     position: relative;
     z-index: 2;
-    padding: 0 20px 40px;
+    padding: 0 0 40px;
     text-align: center;
     color: #0C0C0C;
     font-family: 'biryanilight';
