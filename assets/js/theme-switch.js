@@ -2,12 +2,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeSwitches = document.querySelectorAll('.theme-switch');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     
-    // Check for saved theme preference or use system preference
-    const currentTheme = localStorage.getItem('theme') || 
-                        (prefersDarkScheme.matches ? 'dark' : 'light');
+    // Check for saved theme preference, default to dark if none
+    const savedTheme = localStorage.getItem('theme');
+    const currentTheme = savedTheme || 'dark'; // Default to dark
     
-    // Apply the saved theme
-    if (currentTheme === 'dark') {
+    // Apply the theme (dark is default, only remove if explicitly light)
+    if (currentTheme === 'light') {
+        document.body.classList.remove('dark-mode');
+    } else {
         document.body.classList.add('dark-mode');
     }
     
@@ -21,14 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
     
-    // Listen for system theme changes
+    // Listen for system theme changes (only if user hasn't set a preference)
     prefersDarkScheme.addListener(function(e) {
         if (!localStorage.getItem('theme')) {
-            if (e.matches) {
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-            }
+            // Default to dark even if system prefers light
+            document.body.classList.add('dark-mode');
         }
     });
 }); 

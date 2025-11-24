@@ -1,0 +1,17 @@
+/* Budgie page CSS imports */
+@import url('../../fonts/fonts.css');
+@import url('../styles.css');
+@import url('../style-old.css');
+@import url('../hero.css');
+@import url('../parallax.css');
+@import url('../project-tiles.css');
+@import url('../dark-mode.css');
+@import url('../swiper-bundle.min.css');
+@import url('../swiper-style.css');
+@import url('../footer.css');
+@import url('../device-styles.css');
+@import url('../product-slider.css');
+@import url('../grid-column-layout.css');
+@import url('../image-styles.css');
+@import url('../cursor-effects.css');
+

@@ -3,6 +3,12 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 20px;
 }
+.seven-five > .col-1 {
+  grid-column:span 7;
+}
+.seven-five > .col-2 {
+  grid-column:span 5;
+}
 .six-six > .col-1 {
   grid-column:span 6;
 }
@@ -49,6 +55,9 @@
   grid-column: span 12;
 }
 @media screen and (max-width: 767px) {
+  .seven-five > .col-1 {
+    grid-column: span 12;
+  }
   .four-four-four > .col-1 {
     grid-column: span 12;
   }

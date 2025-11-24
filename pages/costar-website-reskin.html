@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daryn Higginson | Funds Campaign</title>
+    <!-- Critical dark mode CSS - loads first, dark by default -->
+    <style>
+      :root {
+        --dark-bg: #121212;
+        --dark-text: #fbfbfb;
+        --dark-secondary: #1e1e1e;
+        --dark-accent: #FF1515;
+        --dark-border: #616161;
+        --dark-hover: #2a2a2a;
+        --light-text: #121212;
+        --light-dark-border: #424242;
+        --light-bg: #fbfbfb;
+        --light-border: #d1d1d1;
+        --red-accent: #FF1515;
+        --light-darker-border: #121212;
+      }
+      /* Dark mode by default */
+      body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+      }
+      @media (max-width: 768px) {
+  .contact {
+    margin-top: 3rem !important;
+  }
+}
+    </style>
+    <!-- Set dark mode immediately, before DOM loads -->
+    <script>
+      (function() {
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme !== 'light') {
+          document.documentElement.classList.add('dark-mode-ready');
+          if (document.body) {
+            document.body.classList.add('dark-mode');
+          } else {
+            var observer = new MutationObserver(function(mutations) {
+              if (document.body) {
+                document.body.classList.add('dark-mode');
+                observer.disconnect();
+              }
+            });
+            observer.observe(document.documentElement, { childList: true });
+          }
+        }
+      })();
+    </script>
+    <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
+
+    <!--FAVICONS-->
+    <link rel="icon" href="assets/images/dh-logo-favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/images/dh-logo-favicon-48.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/images/dh-logo-favicon-48.png">
+    <link rel="icon" href="aasets/images/dh-favicon.ico" type="image/x-icon">
+
+<link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
+    <!-- CSS files - load synchronously to prevent FOUC -->
+    <link rel="stylesheet" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/assets/css/dark-mode.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/style-old.css">
+    <link rel="stylesheet" href="/assets/css/hero.css">
+    <link rel="stylesheet" href="/assets/css/parallax.css">
+    <link rel="stylesheet" href="/assets/css/project-tiles.css">
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets/css/swiper-style.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/device-styles.css">
+    <link rel="stylesheet" href="/assets/css/product-slider.css">
+    <link rel="stylesheet" href="/assets/css/tabs.css">
+    <link rel="stylesheet" href="/assets/css/grid-column-layout.css">
+    <link rel="stylesheet" href="/assets/css/image-styles.css">
+    <link rel="stylesheet" href="/assets/css/cursor-effects.css">
+    <!-- Show content once CSS is loaded - runs immediately -->
+    <script>
+      (function() {
+        function checkStylesheets() {
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var allLoaded = true;
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            // Check if stylesheet is loaded by trying to access its rules
+            try {
+              if (sheet.sheet && sheet.sheet.cssRules && sheet.sheet.cssRules.length > 0) {
+                // Stylesheet is loaded
+                continue;
+              } else if (sheet.sheet) {
+                // Sheet exists but might not be fully loaded yet
+                allLoaded = false;
+                break;
+              } else {
+                // Sheet not loaded yet
+                allLoaded = false;
+                break;
+              }
+            } catch(e) {
+              // Cross-origin or not loaded yet
+              allLoaded = false;
+              break;
+            }
+          }
+          
+          if (allLoaded && stylesheets.length > 0) {
+            // All stylesheets loaded, show content
+            requestAnimationFrame(function() {
+              document.documentElement.classList.add('css-loaded');
+            });
+            return true;
+          }
+          return false;
+        }
+        
+        function showContent() {
+          document.documentElement.classList.add('css-loaded');
+        }
+        
+        // Check immediately
+        if (!checkStylesheets()) {
+          // If not all loaded, check on load events
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var loadedCount = 0;
+          var totalSheets = stylesheets.length;
+          
+          function onSheetLoad() {
+            loadedCount++;
+            if (loadedCount >= totalSheets) {
+              requestAnimationFrame(function() {
+                requestAnimationFrame(showContent);
+              });
+            }
+          }
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            if (sheet.sheet && sheet.sheet.cssRules) {
+              loadedCount++;
+            } else {
+              sheet.addEventListener('load', onSheetLoad);
+              sheet.addEventListener('error', onSheetLoad);
+            }
+          }
+          
+          if (loadedCount >= totalSheets) {
+            requestAnimationFrame(function() {
+              requestAnimationFrame(showContent);
+            });
+          }
+        }
+        
+        // Fallback: show after delay
+        setTimeout(showContent, 200);
+      })();
+    </script>
+    <script src="../assets/js/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script src="../assets/js/logo-animation-aa.js"></script>
+    <script src="../assets/js/sticky-scroll.js"></script>
+    <script src="../assets/js/mobile-swipe.js"></script>
+  </script>
+<style>
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #hero-section {
+    
+    width: 95%;
+  }
+}
+  .anchor {
+  position: relative;
+  top: -60px;
+}
+  
+  /* Make Home arrow point the other way */
+  .nav-item a[href="index.html"] .arrow-svg {
+    transform: rotate(135deg);
+  }
+  
+  /* Rotate Project arrow 45 degrees when submenu is open */
+  .project-nav:hover > a .arrow-svg {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+  @media screen and (min-width:1200px) {
+    .main-content {
+    padding: 0 2rem;
+    margin-top: 3.2rem;
+
+  }
+  }
+  @media screen and (min-width: 1200px) and (max-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .main-content {
+    padding: 1rem 2rem;
+    margin-top: 20px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #hero-section {
+    height: 55vh;}
+  }
+
+</style>
+</head>
+<body>
+  <audio id="hoverSound" preload="auto">
+    <source src="../assets/sounds/notification-1-269296.mp3" type="audio/mpeg">
+  </audio>
+  
+  <!-- Scroll sound -->
+  <audio id="scrollSound" preload="auto">
+    <source src="../assets/sounds/startup-sound-variation-3-315895.mp3" type="audio/mpeg">
+  </audio>
+  
+
+  <header id="mobile-tablet-header" class="header hidden">
+    <div class="nav-wrapper">
+      <div class="logo">
+        <img class="top-nav-logo" src="../assets/images/Logo-animation_rollover_05.25.gif" alt="Logo">
+      </div>
+      
+      
+     
+      
+      <!-- Horizontal navigation for tablet (768-1180px) -->
+      <ul class="nav-links-tablet">
+        <li><span class="nav-arrow"><a href="../index.html">Home</a></li>
+          <li><span class="nav-arrow"><a href="../index.html#about-me">About me</a></li>
+        <li><a href="#contact">Contact</a></li>
+        
+        
+      </ul>
+      
+      <nav class="main-nav">
+        <div class="menu-btn" id="menu-btn">
+          <div class="menu-btn__burger"></div>
+        </div> <!-- Hamburger -->
+        <div class="theme-switch" title="Toggle dark mode">
+          <div class="toggle-switch">
+            <div class="toggle-ball"></div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Mobile navigation moved outside header to fix stacking context -->
+  <ul class="nav-links">
+    <li class="nav-item"><a href="index.html"><span class="nav-text">&nbsp;Home&nbsp;</span><span class="nav-arrow"></span></a></li>
+
+    <li><a href="#contact">Contact</a></li>
+    
+
+  </ul>
+
+<aside class="side-nav">
+  <nav id="top-nav">
+    <div class="nav-style">
+      
+        <img class="top-logo" src="../assets/images/Logo-animation_rollover_05.25.gif">
+      
+        <ul class="menu">
+          <li class="nav-item"><a href="../index.html"><span class="nav-text">&nbsp;Home&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+          <li class="nav-item"><a href="../index.html#about-me"><span class="nav-text">&nbsp;About me&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+           
+            <li class="nav-item"><a href="#contact"><span class="nav-text">&nbsp;Contact&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+            
+            
+            <li class="theme-switch padding-top-10">
+              <div class="toggle-switch">
+                <div class="toggle-ball"></div>
+              </div>
+            </li>
+          </ul>
+       
+    </div>
+   
+</nav>
+<div class="top">
+  <img class="to-top-icon" src="../assets/images/to-top.svg">
+</div>
+</aside>
+
+
+<section id="hero-section" class="hero ">
+  <canvas id="dotCanvas" width="1960" height="490"></canvas>
+  <div class="hero">
+ 
+     
+  </div>
+</section>
+<main id="funds-campaign">
+  <div class="center-content">
+    <div class="main-content">
+      <span id="project-overview" class="anchor"></span>
+      <section class="project-overview parallax" data-speed="0.3">
+      
+        <div class="cont heading-cont">
+          <div class="twelve col-1">  
+          <h1 class="section-header-34 ">
+           CoStar Website Reskin &amp;&nbsp;Rebuild<span class="rdot">.</span>        </h1>
+  
+  <div class="spacer-1rem"></div>
+  <!--PROJECT SHOWCASE LINK-->
+  <a target="_blank" href="https://www.costar.co.uk/products" target="_blank">
+  <div class="cont project-showcase costar-showcase rollover-showcase"></div>
+</a>
+  <!--PROJECT SHOWCASE LINK END-->
+  <div class="spacer-1rem hide-on-mobile"></div>
+</div>
+        
+</div>
+<div class="cont four-eight flip-mobile">
+    <div class="col-1">
+       <h2 class="section-header">My Roles<span class="rdot">:</span></h2>
+       <p class="biriyani-light description margin-btm-25" >Design & development</p>
+       <div class="spacer-1-3rem"></div>
+       
+
+
+       <div class="spacer-1-3rem"></div>
+       <h2 class="section-header">Tools<span class="rdot">:</span></h2>
+       <div class="tools-container">
+        <img src="../assets/images/figma.svg" class="tool-icon">
+        <img src="../assets/images/Asana-icon.svg" class="tool-icon">
+        <img src="../assets/images/code-icon.svg" class="tool-icon"> 
+        <img src="../assets/images/site-studio-icon.svg" class="tool-icon">
+        
+       </div>
+       <div class="spacer-3rem three-rem-mobile"></div>
+       <a href="https://www.costar.co.uk/products" class="gradient-button" target="_blank">View web site</a>
+    </div>
+    <div class="col-2 project-links">
+       <h2 class="section-header">Project Overview<span class="rdot">:</span></h2>
+       <p class="project-p biriyani-light description margin-btm-25" >
+        CoStar is the world’s leading provider of commercial real estate information, analytics, and news, with its marketing website attracting up to 15,800 visitors a day*. A few years ago, CoStar’s brand identity needed a refresh, and the website required a full redesign. At the same time, we migrated to a new Drupal-based content management system called Site Studio.
+<br><br>
+        I led the early design direction and introduced the foundational design elements that shaped the new brand identity. Working closely with the marketing team, I helped modernise layouts, improve how product content was showcased, and enhance the overall information architecture. Once the design direction was established, I built the UK-facing website, translating the new designs into a clean, responsive, and more engaging experience.
+        <br><br>
+        As part of the migration, I also helped create a marketer-friendly component library in Site Studio, enabling non-technical teams to update content easily without relying on developers.
+           </p>
+          
+</div>
+</div>
+<div class="cont twelve">
+  <div class="col-1">
+  <img src="../assets/images/CS-laptop-mobile-shadow.png" alt="CoStar Website Mobile and Desktop devices" class="ln-devices"></div>
+</div>
+
+</section>
+<contact-section></contact-section>
+
+      </div>
+      
+      </section>
+      
+    </div>
+  </div>
+</main>
+
+
+<div id="footer-bg"></div>
+
+
+<!--<img class="side-image" src="../assets/images/0-1.svg"/>-->
+
+
+<script>
+  document.getElementById('backButton').addEventListener('click', function(e) {
+    e.preventDefault();
+    history.back();
+  });
+  </script>
+<!-- Load scripts in correct order -->
+
+<script src="../assets/js/ScrollMagic.min.js" defer></script>
+<script src="../assets/js/animation.gsap.min.js" defer></script>
+    <!-- <script src="../assets/js/debug.addIndicators.min.js" defer></script> -->
+<script src="../assets/js/consolidated-parallax.js" defer></script>
+<script src="../assets/js/dots-background.js" defer></script>
+<script src="../assets/js/nav-appear.js" defer></script>
+<script src="../assets/js/theme-switch.js" defer></script>
+<script src="../assets/js/dark-mode-images.js" defer></script>
+<script src="../assets/js/logo-wave.js" defer></script>
+<script src="../assets/js/top-logo.js" defer></script>
+<!-- Swiper JS -->
+<script src="../assets/js/swiper-bundle.min.js" defer></script>
+<script src="../assets/js/swiper-script.js" defer></script>
+
+
+
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.getElementById('top-nav');
+  const topElement = document.querySelector('.top');
+  
+  // Show nav and top immediately on page load
+  nav.classList.add('nav-visible');
+  if (topElement) topElement.classList.add('top-visible');
+});
+  </script>
+ <script>
+  function initMap() {
+    const london = { lat: 51.5074, lng: -0.1278 };
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: london,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+      styles: [
+        { featureType: "all", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
+        { featureType: "all", elementType: "labels.text.fill", stylers: [{ color: "#444444" }] },
+        { featureType: "all", elementType: "labels.text.stroke", stylers: [{ color: "#ffffff" }] },
+        { featureType: "landscape", elementType: "all", stylers: [{ color: "#f2f2f2" }] },
+        { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] },
+        { featureType: "road", elementType: "all", stylers: [{ saturation: -100 }, { lightness: 45 }] },
+        { featureType: "transit", elementType: "all", stylers: [{ visibility: "off" }] },
+        { featureType: "water", elementType: "all", stylers: [{ color: "#d3d3d3" }, { visibility: "on" }] }
+      ]
+    });
+
+    new google.maps.Marker({
+      position: london,
+      map: map,
+      title: "London"
+    });
+  }
+</script>
+
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHH4qPPTzoAu1qKM2GRi-lSgl_CICuQh4&callback=initMap">
+</script>
+<script src="../assets/js/top-nav.js" defer></script>
+<script src="../assets/js/generic-nav.js" defer></script>
+
+<!-- Mobile dropdown script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const overviewLink = document.querySelector('.overview-link');
+  const submenu = document.getElementById('mobile-submenu');
+  
+  // Function to close submenu
+  function closeSubmenu() {
+    overviewLink.classList.remove('active');
+    submenu.classList.remove('open');
+    submenu.style.maxHeight = '0';
+    submenu.style.opacity = '0';
+    submenu.style.overflow = 'hidden';
+    submenu.style.padding = '0';
+    submenu.style.marginBottom = '0';
+    
+    // Reset arrow rotation
+    const arrow = overviewLink.querySelector('.nav-arrow');
+    if (arrow) {
+      arrow.style.transform = 'rotate(0deg)';
+    }
+  }
+  
+  if (overviewLink && submenu) {
+    // Toggle submenu on overview link click
+    overviewLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Toggle active state for click
+      overviewLink.classList.toggle('active');
+      submenu.classList.toggle('open');
+      
+      // Directly control the submenu visibility with JavaScript
+      if (submenu.classList.contains('open')) {
+        submenu.style.maxHeight = '1000px';
+        submenu.style.opacity = '1';
+        submenu.style.overflow = 'visible';
+        submenu.style.padding = '10px 0';
+        submenu.style.marginBottom = '10px';
+      } else {
+        submenu.style.maxHeight = '0';
+        submenu.style.opacity = '0';
+        submenu.style.overflow = 'hidden';
+        submenu.style.padding = '0';
+        submenu.style.marginBottom = '0';
+      }
+      
+      // Directly control arrow rotation with JavaScript
+      const arrow = overviewLink.querySelector('.nav-arrow');
+      if (arrow) {
+        if (submenu.classList.contains('open')) {
+          arrow.style.transform = 'rotate(45deg)';
+        } else {
+          arrow.style.transform = 'rotate(0deg)';
+        }
+      }
+    });
+    
+    // Close submenu when clicking on submenu links
+    const submenuLinks = submenu.querySelectorAll('a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        closeSubmenu();
+      });
+    });
+    
+    // Close submenu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!overviewLink.contains(e.target) && !submenu.contains(e.target)) {
+        if (submenu.classList.contains('open')) {
+          closeSubmenu();
+        }
+      }
+    });
+  }
+});
+</script>
+<script src="../assets/js/zoomable-image.js" defer></script>
+<script>
+   const hoverAudio = document.getElementById('hoverSound');
+  const scrollAudio = document.getElementById('scrollSound');
+
+  // Hover sound logic
+  document.getElementById('hoverTarget').addEventListener('mouseenter', () => {
+    hoverAudio.currentTime = 0;
+    hoverAudio.play().catch(e => {
+      // silently fail if blocked
+      console.log("Hover sound blocked:", e.message);
+    });
+  });
+
+  // Scroll sound logic (play once)
+  function playScrollSound() {
+    scrollAudio.play().catch(e => {
+      console.log("Scroll sound blocked:", e.message);
+    });
+    window.removeEventListener('scroll', playScrollSound);
+  }
+
+  window.addEventListener('scroll', playScrollSound);
+</script>
+<!--READ MORE JS -->
+<script>
+ document.querySelectorAll('.read-more-wrapper').forEach(function(wrapper) {
+  const button = wrapper.querySelector('.read-more-btn');
+  const paragraph = wrapper.querySelector('.full-paragraph');
+
+  // Expand paragraph
+  button.addEventListener('click', function () {
+    paragraph.classList.add('expanded');
+    paragraph.style.height = paragraph.scrollHeight + 'px';
+    button.style.display = 'none';
+  });
+
+  // Collapse paragraph
+  paragraph.addEventListener('click', function () {
+    paragraph.style.height = '0px';
+    paragraph.classList.remove('expanded');
+    button.style.display = 'inline';
+  });
+
+  // Optional: clear inline style after transition ends (cleaner for re-opening)
+  paragraph.addEventListener('transitionend', function () {
+    if (!paragraph.classList.contains('expanded')) {
+      paragraph.style.height = '';
+    }
+  });
+});
+
+</script>
+<script src="../assets/js/product-slider.js" defer></script>
+<script src="../assets/js/contact.js" defer></script>
+<script src="../assets/js/tabs.js" defer></script>
+<script src="../assets/js/cursor-effects.js"> </script>
+<div class="cursor">
+  <div class="cursor-core"></div>
+  <div class="cursor-ring"></div>
+</div>
+</body>
+</html>

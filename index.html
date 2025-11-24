@@ -9,7 +9,56 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Portfolio | Daryn Higginson</title>
+    <title>Daryn Higginson | Portfolio</title>
+    <!-- Critical dark mode CSS - loads first, dark by default -->
+    <style>
+      :root {
+        --dark-bg: #121212;
+        --dark-text: #fbfbfb;
+        --dark-secondary: #1e1e1e;
+        --dark-accent: #FF1515;
+        --dark-border: #616161;
+        --dark-hover: #2a2a2a;
+        --light-text: #121212;
+        --light-dark-border: #424242;
+        --light-bg: #fbfbfb;
+        --light-border: #d1d1d1;
+        --red-accent: #FF1515;
+        --light-darker-border: #121212;
+      }
+      /* Dark mode by default */
+      body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+      }
+      /* Prevent FOUC */
+      html { visibility: hidden !important; }
+      html.css-loaded { visibility: visible !important; }
+    </style>
+    <!-- Set dark mode immediately, before DOM loads -->
+    <script>
+      (function() {
+        // Check for saved preference, default to dark if none
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme !== 'light') {
+          // Apply dark mode immediately
+          document.documentElement.classList.add('dark-mode-ready');
+          // Will be applied to body once it exists
+          if (document.body) {
+            document.body.classList.add('dark-mode');
+          } else {
+            // Wait for body to exist
+            var observer = new MutationObserver(function(mutations) {
+              if (document.body) {
+                document.body.classList.add('dark-mode');
+                observer.disconnect();
+              }
+            });
+            observer.observe(document.documentElement, { childList: true });
+          }
+        }
+      })();
+    </script>
     <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
 <!--FAVICONS-->
     <link rel="icon" href="assets/images/dh-logo-favicon.svg" type="image/svg+xml">
@@ -18,22 +67,104 @@
     <link rel="icon" href="aasets/images/dh-favicon.ico" type="image/x-icon">
 
 <link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
-    <link rel="stylesheet" href="assets/fonts/fonts.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/style-old.css">
-    <link rel="stylesheet" href="assets/css/hero.css">
-    <link rel="stylesheet" href="assets/css/parallax.css">
-    <link rel="stylesheet" href="assets/css/project-tiles.css">
-    <link rel="stylesheet" href="assets/css/dark-mode.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/swiper-style.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/device-styles.css">
-    <link rel="stylesheet" href="assets/css/grid-column-layout.css">
-    <link rel="stylesheet" href="assets/css/image-styles.css">
-    <link rel="stylesheet" href="assets/css/cursor-effects.css">
-    <link rel="stylesheet" href="assets/css/skills-section.css">
-    <link rel="stylesheet" href="assets/css/testimonial-slider.css">
+    <!-- CSS files - load synchronously to prevent FOUC -->
+    <link rel="stylesheet" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/assets/css/dark-mode.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/style-old.css">
+    <link rel="stylesheet" href="/assets/css/hero.css">
+    <link rel="stylesheet" href="/assets/css/parallax.css">
+    <link rel="stylesheet" href="/assets/css/project-tiles.css">
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets/css/swiper-style.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/device-styles.css">
+    <link rel="stylesheet" href="/assets/css/grid-column-layout.css">
+    <link rel="stylesheet" href="/assets/css/image-styles.css">
+    <link rel="stylesheet" href="/assets/css/cursor-effects.css">
+    <link rel="stylesheet" href="/assets/css/skills-section.css">
+    <link rel="stylesheet" href="/assets/css/testimonial-slider.css">
+    <!-- Show content once CSS is loaded - runs immediately -->
+    <script>
+      (function() {
+        function checkStylesheets() {
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var allLoaded = true;
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            // Check if stylesheet is loaded by trying to access its rules
+            try {
+              if (sheet.sheet && sheet.sheet.cssRules && sheet.sheet.cssRules.length > 0) {
+                // Stylesheet is loaded
+                continue;
+              } else if (sheet.sheet) {
+                // Sheet exists but might not be fully loaded yet
+                allLoaded = false;
+                break;
+              } else {
+                // Sheet not loaded yet
+                allLoaded = false;
+                break;
+              }
+            } catch(e) {
+              // Cross-origin or not loaded yet
+              allLoaded = false;
+              break;
+            }
+          }
+          
+          if (allLoaded && stylesheets.length > 0) {
+            // All stylesheets loaded, show content
+            requestAnimationFrame(function() {
+              document.documentElement.classList.add('css-loaded');
+            });
+            return true;
+          }
+          return false;
+        }
+        
+        function showContent() {
+          document.documentElement.classList.add('css-loaded');
+        }
+        
+        // Check immediately
+        if (!checkStylesheets()) {
+          // If not all loaded, check on load events
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var loadedCount = 0;
+          var totalSheets = stylesheets.length;
+          
+          function onSheetLoad() {
+            loadedCount++;
+            if (loadedCount >= totalSheets) {
+              requestAnimationFrame(function() {
+                requestAnimationFrame(showContent);
+              });
+            }
+          }
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            if (sheet.sheet && sheet.sheet.cssRules) {
+              loadedCount++;
+            } else {
+              sheet.addEventListener('load', onSheetLoad);
+              sheet.addEventListener('error', onSheetLoad);
+            }
+          }
+          
+          if (loadedCount >= totalSheets) {
+            requestAnimationFrame(function() {
+              requestAnimationFrame(showContent);
+            });
+          }
+        }
+        
+        // Fallback: show after delay
+        setTimeout(showContent, 200);
+      })();
+    </script>
     
     <script src="assets/js/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
@@ -72,7 +203,20 @@
   .center-content{
     margin-top:0;
   }
+  /* Prevent FOUC - hide content until CSS loads */
+  html:not(.css-loaded) body {
+    visibility: hidden;
+  }
 </style>
+<script>
+  // Show content once CSS is loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Wait a tick to ensure CSS is applied
+    setTimeout(function() {
+      document.documentElement.classList.add('css-loaded');
+    }, 0);
+  });
+</script>
 </head>
 <body style="cursor: none !important;">
   <audio id="hoverSound" preload="auto">
@@ -257,7 +401,7 @@
 
               <p class="biriyani-light description ">An addition of a comprehensive country selection list paired with an autocomplete feature to streamline the form filling process, improving quality of leads and location data captured.  </p>
   
-              <a href="" class="gradient-button">View case study</a>
+              <a href="pages/form-optimisation.html" class="gradient-button">View case study</a>
               </div>
       </div>
           </div>
@@ -268,19 +412,19 @@
                   <div class="number-col"><img class="number no-5" src="assets/images/0-5.svg" loading="lazy"></div>
                   <div class="right-of-number">
                       <div class="image-container">
-                  <img class="thumbnail static-image" src="assets/images/LoopNet-thumbnail.png" loading="lazy">
+                  <img class="thumbnail static-image" src="assets/images/LoopNet-mockup-browser.png" loading="lazy">
                  <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
               </div>
               <div class="description-cont">
-                  <p class="taxonomy">DIGITAL DESIGN&nbsp;&nbsp;|&nbsp;&nbsp;WEB DEVELOPMENT</p>
-                  <h3 class="section-header">LoopNet UK migration and build</h3>
-                  <p class="biriyani-light description">Supported the UK launch of LoopNet by migrating and adapting the website for a UK audience. As well as repurposing content and localised marketing materials, ensuring a smooth and relevant introduction of the brand to the UK&nbsp;market.   </p>
-                  <a href="" class="gradient-button">View case study</a>
+                  <p class="taxonomy">WEB DEVELOPMENT</p>
+                  <h3 class="section-header">LoopNet Solutions Website</h3>
+                  <p class="biriyani-light description">When LoopNet launched in the UK, I built the new marketing website using Site Studio and created a drag-and-drop UI component library to make updates easy for non-technical users.</p>
+                  <a href="pages/loopnet-solutions.html" class="gradient-button">View case study</a>
                   </div>
                 </div>
               </div>
           </div>
-           <!--## PROJECT 7 ##-->
+           <!--## PROJECT 7 START##
            <div class="project project-left parallax" id="project7" data-speed="0.3">
           
               <div class="flex proj-wrap p-wrap-left-1">
@@ -288,7 +432,7 @@
                   <div class="right-of-number">
                       <div class="image-container">
                   <img class="thumbnail static-image" src="assets/images/photography-brochure.png" loading="lazy">
-                 <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
+                 <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">
               </div>
               <div class="description-cont">
                   <p class="taxonomy">GRAPHIC DESIGN</p>
@@ -299,6 +443,7 @@
                 </div>
               </div>
           </div>
+          ## PROJECT 7 END ##-->
       </div>
       <!--left column end-->
       <!--right column start-->
@@ -316,7 +461,7 @@
       <p class="taxonomy">DIGITAL DESIGN&nbsp;&nbsp;|&nbsp;&nbsp;MARKETING</p>
         <h3 class="section-header">Funds information campaign</h3>
         <p class="biriyani-light description">Concept, design and development of a campaign promoting CoStar's new Funds Information product  feature which became our top-performing campaign of&nbsp;2024.  </p>
-      <a href="" class="gradient-button">View case study</a>
+      <a href="pages/funds-campaign.html" class="gradient-button">View case study</a>
       </div>
   </div>
           </div>
@@ -328,7 +473,7 @@
                 <img class="number no-4" src="assets/images/0-4.svg" loading="lazy">
           <br>
           <div class="image-container">
-          <img class="thumbnail-left thumb static-image" src="assets/images/costar-website-reskin-thumbnail.png" loading="lazy">
+          <img class="thumbnail-left thumb static-image" src="assets/images/CoStar-mockup-browser.png" loading="lazy">
           <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
         </div>
         <div class="description-cont">
@@ -339,7 +484,7 @@
         </div>
     </div>
             </div>
-             <!--## PROJECT 6 ##-->
+             <!--## PROJECT 6 START ##
           <div class="project project-right parallax" id="project6" data-speed="0.3">
           
               <div class="flex proj-wrap p-wrap-right-3">
@@ -347,7 +492,7 @@
                   <div class="right-of-number">
                       <div class="image-container">
                   <img class="thumbnail static-image" src="assets/images/persistent-demo-thumbanil.png" loading="lazy">
-                 <!-- <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">-->
+                 <img src="assets/images/sparkle-one.gif" alt="Animated GIF" class="animated-gif">
               </div>
               <div class="description-cont">
                   <p class="taxonomy">UX / UI</p>
@@ -359,6 +504,7 @@
                 <div class="number-col"><img class="number no-6" src="assets/images/0-6.svg" loading="lazy"></div>
               </div>
           </div>
+          ## PROJECT 6 END ##-->
       </div>
       <!--right column end-->
   </section>

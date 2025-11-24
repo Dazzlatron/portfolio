@@ -18,6 +18,12 @@
     }
   /* ----------- MOBILE ----------- */
      @media (max-width: 768px) {
+      .cont a.description {
+        font-size: 16px;
+      }
+      .three-rem-mobile {
+        margin-top: 3rem !important;
+      }
       .contact {
         margin-top: 6rem;
       }

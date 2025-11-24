@@ -13,6 +13,10 @@
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
+.light-header{
+  font-family: 'biryanilight' !important;
+  font-weight: 200;
+}
 .sm-logo {
   height: 18px;
   width: auto;
@@ -90,7 +94,7 @@
 }
 .tool-icon {
   width: 100%;
-  max-width: 55px;
+  max-width: 45px;
 }
 .contact-gap .col-2 {
   display: flex;
@@ -104,7 +108,7 @@
 }
 #submenu > li > a {
   font-size: 16px !important;
-  
+  cursor: none !important;
 }
 .submenu {
   max-height: 0;
@@ -288,9 +292,10 @@ list-style-type: square;
   display: flex;
   justify-content: center;
 }
-.nav-links a{
-  font-size:14px;
-}
+  .nav-links a{
+    font-size:14px;
+    cursor: none !important;
+  }
 .map-container.container {
   position: relative;
 }
@@ -497,7 +502,7 @@ body {
   font-family: 'biriyaniregular', sans-serif;
   background-color: var(--light-bg);
   color: var(--light-text);
-  cursor: none !important;"
+  cursor: none !important;
 }
     
    
@@ -639,7 +644,7 @@ body {
   font-size: 14px;
   text-align: right;
   display: inline-flex;
-
+  cursor: none !important;
   transition: color 0.15s ease, transform 0.3s ease;
   text-decoration: none;
   background-color: transparent;
@@ -866,7 +871,7 @@ main {
     border: none;
     border-radius: 5px;
     background:var(--light-bg);
-    cursor: none;
+    cursor: none !important;
     text-decoration: none;
     transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.12s cubic-bezier(0.4, 0, 0.2, 1);
 

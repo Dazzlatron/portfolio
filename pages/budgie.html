@@ -4,23 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daryn Higginson | Budgie</title>
+    <!-- Critical dark mode CSS - loads first, dark by default -->
+    <style>
+      :root {
+        --dark-bg: #121212;
+        --dark-text: #fbfbfb;
+        --dark-secondary: #1e1e1e;
+        --dark-accent: #FF1515;
+        --dark-border: #616161;
+        --dark-hover: #2a2a2a;
+        --light-text: #121212;
+        --light-dark-border: #424242;
+        --light-bg: #fbfbfb;
+        --light-border: #d1d1d1;
+        --red-accent: #FF1515;
+        --light-darker-border: #121212;
+      }
+      /* Dark mode by default */
+      body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+      }
+     
+    </style>
+    <!-- Set dark mode immediately, before DOM loads -->
+    <script>
+      (function() {
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme !== 'light') {
+          document.documentElement.classList.add('dark-mode-ready');
+          if (document.body) {
+            document.body.classList.add('dark-mode');
+          } else {
+            var observer = new MutationObserver(function(mutations) {
+              if (document.body) {
+                document.body.classList.add('dark-mode');
+                observer.disconnect();
+              }
+            });
+            observer.observe(document.documentElement, { childList: true });
+          }
+        }
+      })();
+    </script>
     <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
 <link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
-    <link rel="stylesheet" href="../assets/fonts/fonts.css">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/style-old.css">
-    <link rel="stylesheet" href="../assets/css/hero.css">
-    <link rel="stylesheet" href="../assets/css/parallax.css">
-    <link rel="stylesheet" href="../assets/css/project-tiles.css">
-    <link rel="stylesheet" href="../assets/css/dark-mode.css">
-    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="../assets/css/swiper-style.css">
-    <link rel="stylesheet" href="../assets/css/footer.css">
-    <link rel="stylesheet" href="../assets/css/device-styles.css">
-    <link rel="stylesheet" href="../assets/css/product-slider.css">
-    <link rel="stylesheet" href="../assets/css/grid-column-layout.css">
-    <link rel="stylesheet" href="../assets/css/image-styles.css">
-    <link rel="stylesheet" href="../assets/css/cursor-effects.css">
+    <!-- CSS files - load synchronously to prevent FOUC -->
+    <link rel="stylesheet" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/assets/css/dark-mode.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/style-old.css">
+    <link rel="stylesheet" href="/assets/css/hero.css">
+    <link rel="stylesheet" href="/assets/css/parallax.css">
+    <link rel="stylesheet" href="/assets/css/project-tiles.css">
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets/css/swiper-style.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/device-styles.css">
+    <link rel="stylesheet" href="/assets/css/product-slider.css">
+    <link rel="stylesheet" href="/assets/css/grid-column-layout.css">
+    <link rel="stylesheet" href="/assets/css/image-styles.css">
+    <link rel="stylesheet" href="/assets/css/cursor-effects.css">
     
    <!--FAVICONS-->
    <link rel="icon" href="assets/images/dh-logo-favicon.svg" type="image/svg+xml">
@@ -77,6 +121,87 @@
   }
 
 </style>
+    <!-- Show content once CSS is loaded - runs immediately -->
+    <script>
+      (function() {
+        function checkStylesheets() {
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var allLoaded = true;
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            // Check if stylesheet is loaded by trying to access its rules
+            try {
+              if (sheet.sheet && sheet.sheet.cssRules && sheet.sheet.cssRules.length > 0) {
+                // Stylesheet is loaded
+                continue;
+              } else if (sheet.sheet) {
+                // Sheet exists but might not be fully loaded yet
+                allLoaded = false;
+                break;
+              } else {
+                // Sheet not loaded yet
+                allLoaded = false;
+                break;
+              }
+            } catch(e) {
+              // Cross-origin or not loaded yet
+              allLoaded = false;
+              break;
+            }
+          }
+          
+          if (allLoaded && stylesheets.length > 0) {
+            // All stylesheets loaded, show content
+            requestAnimationFrame(function() {
+              document.documentElement.classList.add('css-loaded');
+            });
+            return true;
+          }
+          return false;
+        }
+        
+        function showContent() {
+          document.documentElement.classList.add('css-loaded');
+        }
+        
+        // Check immediately
+        if (!checkStylesheets()) {
+          // If not all loaded, check on load events
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var loadedCount = 0;
+          var totalSheets = stylesheets.length;
+          
+          function onSheetLoad() {
+            loadedCount++;
+            if (loadedCount >= totalSheets) {
+              requestAnimationFrame(function() {
+                requestAnimationFrame(showContent);
+              });
+            }
+          }
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            if (sheet.sheet && sheet.sheet.cssRules) {
+              loadedCount++;
+            } else {
+              sheet.addEventListener('load', onSheetLoad);
+              sheet.addEventListener('error', onSheetLoad);
+            }
+          }
+          
+          if (loadedCount >= totalSheets) {
+            requestAnimationFrame(function() {
+              requestAnimationFrame(showContent);
+            });
+          }
+        }
+        
+        // Fallback: show after delay
+        setTimeout(showContent, 200);
+      })();
+    </script>
 </head>
 <body style="cursor: none !important;">
   <audio id="hoverSound" preload="auto">
@@ -154,7 +279,7 @@
       
         <ul class="menu">
           <li class="nav-item"><a href="../index.html"><span class="nav-text">&nbsp;Home&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-                         <li class="nav-item project-nav"><a href="#project-overview"><span class="nav-text">&nbsp;Project&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a>
+                         <li class="nav-item project-nav"><a href="#project-overview"><span class="nav-text">&nbsp;Case study&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a>
               <ul id="submenu" class="submenu">
                 <li class="nav-item"><a href="#project-overview"><span class="nav-text">&nbsp;Overview&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
                 <li class="nav-item"><a href="#discovery"><span class="nav-text">&nbsp;Discovery&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
@@ -229,7 +354,7 @@
       <div class="cont project-showcase budgie-project-showcase">
         
       </div>
-      <div class="spacer-2rem"></div>
+      <div class="spacer-1rem"></div>
       <div class="cont four-eight flip-mobile">
           <div class="col-1">
              <h2 class="section-header">My Roles<span class="rdot">:</span></h2>
