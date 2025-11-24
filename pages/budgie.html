@@ -212,100 +212,17 @@
   <audio id="scrollSound" preload="auto">
     <source src="../assets/sounds/startup-sound-variation-3-315895.mp3" type="audio/mpeg">
   </audio>
+  <!--Navigation Web component start-->
+  <navigation-component 
+  home-link="../index.html" 
+  asset-path="../assets"
+  project-label="Project"
+  case-study-label="Case study">
+</navigation-component>
+<!--Navigation Web component start-->
   
+ 
 
-  <header id="mobile-tablet-header" class="header hidden">
-    <div class="nav-wrapper">
-      <div class="logo">
-        <img class="top-nav-logo" src="../assets/images/Logo-animation_rollover_05.25.gif" alt="Logo">
-      </div>
-      
-      
-     
-      
-      <!-- Horizontal navigation for tablet (768-1180px) -->
-      <ul class="nav-links-tablet">
-        <li><span class="nav-arrow"><a href="index.html">Home</a></li>
-        <li class="top-nav-drop">
-          <a class="overview-link" href="#project-overview"><span class="nav-text">&nbsp;Project&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a>
-          <ul class="t-submenu">
-            <li class="t-nav-item"><a href="#project-overview">Overview</a></li>
-            <li class="t-nav-item"><a href="#discovery">Discovery</a></li>
-            <li class="t-nav-item"><a href="#definition">Definition</a></li>
-            <li class="t-nav-item"><a href="#ideation">Ideation</a></li>
-            <li class="t-nav-item"><a href="#design">Design</a></li>
-          </ul>
-        </li>
-        <li><a href="#contact">Contact</a></li>
-        
-        
-      </ul>
-      
-      <nav class="main-nav">
-        <div class="menu-btn" id="menu-btn">
-          <div class="menu-btn__burger"></div>
-        </div> <!-- Hamburger -->
-        <div class="theme-switch" title="Toggle dark mode">
-          <div class="toggle-switch">
-            <div class="toggle-ball"></div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-  
-  <!-- Mobile navigation moved outside header to fix stacking context -->
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li class="top-nav-drop"><a class="overview-link" href="#project-overview"><span class="nav-text">&nbsp;Project&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a>
-      <ul id="mobile-submenu" class="t-submenu">
-        <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#project-overview"><span class="nav-text">&nbsp;Overview&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-        <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#discovery"><span class="nav-text">&nbsp;Discovery&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-        <li class="t-nav-item sub-nav-drop "><a class="h-link" href="#definition"><span class="nav-text">&nbsp;Definition&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-        <li class="t-nav-item sub-nav-drop"><a class="h-link"href="#ideation"><span class="nav-text">&nbsp;Ideation&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-cap="round"/></svg></span></a></li>
-        <li class="t-nav-item sub-nav-drop"><a class="h-link" href="#design"><span class="nav-text">&nbsp;Design&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-      </ul>
-    </li>
-    <li><a href="#contact">Contact</a></li>
-    
-
-  </ul>
-
-<aside class="side-nav">
-  <nav id="top-nav">
-    <div class="nav-style">
-      
-        <img class="top-logo" src="../assets/images/Logo-animation_rollover_05.25.gif">
-      
-        <ul class="menu">
-          <li class="nav-item"><a href="../index.html"><span class="nav-text">&nbsp;Home&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-                         <li class="nav-item project-nav"><a href="#project-overview"><span class="nav-text">&nbsp;Case study&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a>
-              <ul id="submenu" class="submenu">
-                <li class="nav-item"><a href="#project-overview"><span class="nav-text">&nbsp;Overview&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-                <li class="nav-item"><a href="#discovery"><span class="nav-text">&nbsp;Discovery&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-                <li class="nav-item"><a href="#definition"><span class="nav-text">&nbsp;Definition&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-                <li class="nav-item"><a href="#ideation"><span class="nav-text">&nbsp;Ideation&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-                <li class="nav-item"><a href="#design"><span class="nav-text">&nbsp;Design&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="8" height="8" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-              </ul>
-            </li>
-           
-            <li class="nav-item"><a href="#contact"><span class="nav-text">&nbsp;Contact&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-            
-            
-            <li class="theme-switch padding-top-10">
-              <div class="toggle-switch">
-                <div class="toggle-ball"></div>
-              </div>
-            </li>
-          </ul>
-       
-    </div>
-   
-</nav>
-<div class="top">
-  <img class="to-top-icon" src="../assets/images/to-top.svg">
-</div>
-</aside>
 
 <!-- Modal moved outside main to avoid stacking context issues -->
 <div id="imageModal" class="modal">
@@ -818,7 +735,10 @@ document.getElementById('backButton').addEventListener('click', function(e) {
 });
 </script>
 <script src="../assets/js/product-slider.js" defer></script>
+<!--Web components start-->
 <script src="../assets/js/contact.js" defer></script>
+<script src="../assets/js/navigation.js"></script>
+<!--Web components end-->
 <script src="../assets/js/cursor-effects.js"> </script>
 </body>
 </html>

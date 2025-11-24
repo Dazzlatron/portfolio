@@ -113,6 +113,8 @@
     "path-root": "^0.1.1",
     "path-root-regex": "^0.1.2",
     "picomatch": "^2.3.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "readable-stream": "^3.6.2",
     "readdirp": "^3.6.0",
     "rechoir": "^0.8.0",
