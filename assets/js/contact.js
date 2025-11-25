@@ -4,6 +4,7 @@ class ContactSection extends HTMLElement {
 
 
     <section class="contact parallax" data-speed="0.3">
+    
     <div class="cont twelve">
       <div class="col-1 process-heading section-header-row">
     <h2 class="section-header-28">Get in touch<span class="rdot">.</span></h2><span class="heading-arrow"><svg class="arrow-svg" width="18" height="18" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path></svg></span><span class="section-header-underline"></span>

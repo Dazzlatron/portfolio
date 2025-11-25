@@ -13,6 +13,9 @@
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
+.position-unset{
+  position: unset !important;
+}
 .light-header{
   font-family: 'biryanilight' !important;
   font-weight: 200;

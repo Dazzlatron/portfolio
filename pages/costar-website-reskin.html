@@ -218,74 +218,13 @@
     <source src="../assets/sounds/startup-sound-variation-3-315895.mp3" type="audio/mpeg">
   </audio>
   
-
-  <header id="mobile-tablet-header" class="header hidden">
-    <div class="nav-wrapper">
-      <div class="logo">
-        <img class="top-nav-logo" src="../assets/images/Logo-animation_rollover_05.25.gif" alt="Logo">
-      </div>
-      
-      
-     
-      
-      <!-- Horizontal navigation for tablet (768-1180px) -->
-      <ul class="nav-links-tablet">
-        <li><span class="nav-arrow"><a href="../index.html">Home</a></li>
-          <li><span class="nav-arrow"><a href="../index.html#about-me">About me</a></li>
-        <li><a href="#contact">Contact</a></li>
-        
-        
-      </ul>
-      
-      <nav class="main-nav">
-        <div class="menu-btn" id="menu-btn">
-          <div class="menu-btn__burger"></div>
-        </div> <!-- Hamburger -->
-        <div class="theme-switch" title="Toggle dark mode">
-          <div class="toggle-switch">
-            <div class="toggle-ball"></div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-  
-  <!-- Mobile navigation moved outside header to fix stacking context -->
-  <ul class="nav-links">
-    <li class="nav-item"><a href="index.html"><span class="nav-text">&nbsp;Home&nbsp;</span><span class="nav-arrow"></span></a></li>
-
-    <li><a href="#contact">Contact</a></li>
-    
-
-  </ul>
-
-<aside class="side-nav">
-  <nav id="top-nav">
-    <div class="nav-style">
-      
-        <img class="top-logo" src="../assets/images/Logo-animation_rollover_05.25.gif">
-      
-        <ul class="menu">
-          <li class="nav-item"><a href="../index.html"><span class="nav-text">&nbsp;Home&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-          <li class="nav-item"><a href="../index.html#about-me"><span class="nav-text">&nbsp;About me&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-           
-            <li class="nav-item"><a href="#contact"><span class="nav-text">&nbsp;Contact&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
-            
-            
-            <li class="theme-switch padding-top-10">
-              <div class="toggle-switch">
-                <div class="toggle-ball"></div>
-              </div>
-            </li>
-          </ul>
-       
-    </div>
-   
-</nav>
-<div class="top">
-  <img class="to-top-icon" src="../assets/images/to-top.svg">
-</div>
-</aside>
+  <navigation-component 
+  home-link="../index.html#projects" 
+  asset-path="../assets"
+  project-label="Project"
+  case-study-label="Case study">
+ </navigation-component>
+ <!--Navigation Web component start-->
 
 
 <section id="hero-section" class="hero ">
@@ -354,8 +293,11 @@
 </div>
 
 </section>
-<contact-section></contact-section>
 
+<!--Contact section-->
+<span id="contact" class="anchor position-unset"></span>
+<contact-section></contact-section>
+<!--Contact section end-->  
       </div>
       
       </section>
@@ -574,6 +516,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script src="../assets/js/product-slider.js" defer></script>
 <script src="../assets/js/contact.js" defer></script>
+<script src="../assets/js/navigation.js"></script>
 <script src="../assets/js/tabs.js" defer></script>
 <script src="../assets/js/cursor-effects.js"> </script>
 <div class="cursor">

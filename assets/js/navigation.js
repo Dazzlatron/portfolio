@@ -14,7 +14,7 @@ class NavigationComponent extends HTMLElement {
     `;
 
     this.innerHTML = `
-      <header id="mobile-tablet-header" class="header hidden">
+       <header id="mobile-tablet-header" class="header hidden">
         <div class="nav-wrapper">
           <div class="logo">
             <img class="top-nav-logo" src="${assetPath}/images/Logo-animation_rollover_05.25.gif" alt="Logo">
@@ -22,7 +22,7 @@ class NavigationComponent extends HTMLElement {
           
           <!-- Horizontal navigation for tablet (768-1180px) -->
           <ul class="nav-links-tablet">
-            <li><a href="${homeLink}">Home</a></li>
+            <li><a href="${homeLink}">Projects</a></li>
             <li><a href="${aboutMeLink}">About me</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -44,10 +44,18 @@ class NavigationComponent extends HTMLElement {
       <ul class="nav-links">
         <li class="nav-item">
           <a href="${homeLink}">
-            <span class="nav-text">&nbsp;Home&nbsp;</span>
+            <span class="nav-text">&nbsp;Projects&nbsp;</span>
             <span class="nav-arrow"></span>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="${aboutMeLink}">
+            <span class="nav-text">&nbsp;About me&nbsp;</span>
+            <span class="nav-arrow"></span>
+          </a>
+        </li>
+         
+         
         <li><a href="#contact">Contact</a></li>
       </ul>
 
@@ -59,7 +67,7 @@ class NavigationComponent extends HTMLElement {
             <ul class="menu">
               <li class="nav-item">
                 <a href="${homeLink}">
-                  <span class="nav-text">&nbsp;Home&nbsp;</span>
+                  <span class="nav-text">&nbsp;Projects&nbsp;</span>
                   <span class="nav-arrow">${arrowSvg(12, 12)}</span>
                 </a>
               </li>
