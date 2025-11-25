@@ -54,8 +54,6 @@ class NavigationComponent extends HTMLElement {
             <span class="nav-arrow"></span>
           </a>
         </li>
-         
-         
         <li><a href="#contact">Contact</a></li>
       </ul>
 
