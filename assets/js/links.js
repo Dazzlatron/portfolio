@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     project1.style.cursor = "none";
     project1.classList.add('clickable'); // Add this line
     project1.addEventListener("click", function() {
-      window.location.href = "pages/budgie.html";
+      window.location.href = "pages/budgie";
     });
   }
   
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     project2.style.cursor = "none";
     project2.classList.add('clickable'); // Add this line
     project2.addEventListener("click", function() {
-      window.location.href = "pages/funds-campaign.html";
+      window.location.href = "pages/funds-campaign";
     });
   }
 
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
     project3.style.cursor = "none";
     project3.classList.add('clickable'); // Add this line
     project3.addEventListener("click", function() {
-      window.location.href = "pages/form-optimisation.html";
+      window.location.href = "pages/form-optimisation";
     });
   }
 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     project4.style.cursor = "none";
     project4.classList.add('clickable'); // Add this line
     project4.addEventListener("click", function() {
-      window.location.href = "pages/costar-website-reskin.html";
+      window.location.href = "pages/costar-reskin";
     });
   }
 
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     project5.style.cursor = "none";
     project5.classList.add('clickable'); // Add this line
     project5.addEventListener("click", function() {
-      window.location.href = "pages/loopnet-solutions.html";
+      window.location.href = "pages/loopnet-solutions";
     });
   }
   

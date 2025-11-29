@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daryn Higginson | Funds Campaign</title>
+    <title>Funds Campaign</title>
     <!-- Critical dark mode CSS - loads first, dark by default -->
     <style>
       :root {
@@ -51,10 +51,10 @@
     <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
 
     <!--FAVICONS-->
-    <link rel="icon" href="assets/images/dh-logo-favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="assets/images/dh-logo-favicon-48.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/images/dh-logo-favicon-48.png">
-    <link rel="icon" href="aasets/images/dh-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/images/dh-logo-favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/images/dh-logo-favicon-48.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/images/dh-logo-favicon-48.png">
+    <link rel="icon" href="/assets/images/dh-favicon.ico" type="image/x-icon">
 
 <link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
     <!-- CSS files - load synchronously to prevent FOUC -->
@@ -215,13 +215,12 @@
     <source src="../assets/sounds/startup-sound-variation-3-315895.mp3" type="audio/mpeg">
   </audio>
 
-  <!--Navigation web component-->
-  <navigation-component 
-  home-link="../index.html#projects" 
-  asset-path="../assets"
-  project-label="Project"
-  case-study-label="Case study">
+   <!--Navigation Web component start-->
+ <navigation-component 
+ home-link="../#projects" 
+ asset-path="../assets">
 </navigation-component>
+<!--Navigation Web component start-->
 
 <section id="hero-section" class="hero ">
   <canvas id="dotCanvas" width="1960" height="490"></canvas>
@@ -386,7 +385,35 @@
 </div>
 <span id="contact" class="anchor position-unset"></span>
 </section>
-
+<!--NEXT & PREVIOUS BUTTONS START-->
+<!--SPACER-->
+<div class="spacer-6rem"></div>
+<!--SPACER-->
+<div class="cont next-prev six-six six-six-mob parallax" data-speed="0.3">
+  <span id="contact" class="anchor"></span>
+  <div class="col-1 left mobile-6-col">
+    <div class="previous">
+      <a href="/pages/budgie" id="backButton">
+      <svg  width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.00029 8.5H17.5566" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8.36455 14.864L2.00059 8.5L8.36455 2.13604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Previous
+    </a></div>
+  </div>
+  <div class="col-2 right mobile-6-col">
+    <div class="previous"><a href="/pages/form-optimisation">Next
+      <svg class="arrow-right" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.5563 8.5L1 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10.1921 2.13604L16.556 8.5L10.1921 14.864" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </a></div>
+  </div>
+</div>
+<!--SPACER-->
+<div class="spacer-4rem"></div>
+<!--SPACER-->
+<!--NEXT & PREVIOUS BUTTONS END-->
 <contact-section></contact-section>
 
       </div>
@@ -404,12 +431,7 @@
 <!--<img class="side-image" src="../assets/images/0-1.svg"/>-->
 
 
-<script>
-  document.getElementById('backButton').addEventListener('click', function(e) {
-    e.preventDefault();
-    history.back();
-  });
-  </script>
+
 <!-- Load scripts in correct order -->
 
 <script src="../assets/js/ScrollMagic.min.js" defer></script>

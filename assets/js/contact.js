@@ -3,7 +3,7 @@ class ContactSection extends HTMLElement {
     this.innerHTML = `
 
 
-    <section class="contact parallax" data-speed="0.3">
+    <section  class="contact parallax" data-speed="0.3">
     
     <div class="cont twelve">
       <div class="col-1 process-heading section-header-row">
@@ -68,6 +68,15 @@ class ContactSection extends HTMLElement {
             </div>
       </div>
       
+      </div>
+      <div class="map-container container">
+          <div class="spacer-3rem"></div>
+          <div class="row icon-row">
+            <div class="icon"><img class="ico-location" src="../assets/images/location-icon-2.svg" loading="lazy"/></div>
+            <div class="icon-text"><p class="description">Current Location - London, United Kingdom&nbsp;&nbsp;|&nbsp;&nbsp;Available globally</p></div>
+          </div>
+          <div id="map"></div>
+          
       </div>
       <div class="spacer-4rem"></div>
       <div class="copyright">

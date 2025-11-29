@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daryn Higginson | Funds Campaign</title>
+    <title>CoStar Reskin</title>
     <!-- Critical dark mode CSS - loads first, dark by default -->
     <style>
       :root {
@@ -54,10 +54,10 @@
     <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
 
     <!--FAVICONS-->
-    <link rel="icon" href="assets/images/dh-logo-favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="assets/images/dh-logo-favicon-48.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/images/dh-logo-favicon-48.png">
-    <link rel="icon" href="aasets/images/dh-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/images/dh-logo-favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/images/dh-logo-favicon-48.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/images/dh-logo-favicon-48.png">
+    <link rel="icon" href="/assets/images/dh-favicon.ico" type="image/x-icon">
 
 <link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
     <!-- CSS files - load synchronously to prevent FOUC -->
@@ -213,18 +213,13 @@
     <source src="../assets/sounds/notification-1-269296.mp3" type="audio/mpeg">
   </audio>
   
-  <!-- Scroll sound -->
-  <audio id="scrollSound" preload="auto">
-    <source src="../assets/sounds/startup-sound-variation-3-315895.mp3" type="audio/mpeg">
-  </audio>
-  
-  <navigation-component 
-  home-link="../index.html#projects" 
-  asset-path="../assets"
-  project-label="Project"
-  case-study-label="Case study">
- </navigation-component>
+
  <!--Navigation Web component start-->
+ <navigation-component 
+ home-link="../#projects" 
+ asset-path="../assets">
+</navigation-component>
+<!--Navigation Web component start-->
 
 
 <section id="hero-section" class="hero ">
@@ -313,12 +308,7 @@
 <!--<img class="side-image" src="../assets/images/0-1.svg"/>-->
 
 
-<script>
-  document.getElementById('backButton').addEventListener('click', function(e) {
-    e.preventDefault();
-    history.back();
-  });
-  </script>
+
 <!-- Load scripts in correct order -->
 
 <script src="../assets/js/ScrollMagic.min.js" defer></script>

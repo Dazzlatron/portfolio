@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoopNet Solutions</title>
+    <title>CoStar Website Reskin</title>
     <!-- Critical dark mode CSS - loads first, dark by default -->
     <style>
       :root {
@@ -25,7 +25,11 @@
         background-color: var(--dark-bg);
         color: var(--dark-text);
       }
-      
+      @media (max-width: 768px) {
+  .contact {
+    margin-top: 3rem !important;
+  }
+}
     </style>
     <!-- Set dark mode immediately, before DOM loads -->
     <script>
@@ -47,19 +51,13 @@
         }
       })();
     </script>
-<!--FAVICONS-->
-<link rel="icon" href="/assets/images/dh-logo-favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/images/dh-logo-favicon-48.png" type="image/png">
-<link rel="apple-touch-icon" href="/assets/images/dh-logo-favicon-48.png">
-<link rel="icon" href="/assets/images/dh-favicon.ico" type="image/x-icon">
-
     <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
 
     <!--FAVICONS-->
-    <link rel="icon" href="assets/images/dh-logo-favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="assets/images/dh-logo-favicon-48.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/images/dh-logo-favicon-48.png">
-    <link rel="icon" href="aasets/images/dh-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/images/dh-logo-favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/images/dh-logo-favicon-48.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/images/dh-logo-favicon-48.png">
+    <link rel="icon" href="/assets/images/dh-favicon.ico" type="image/x-icon">
 
 <link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
     <!-- CSS files - load synchronously to prevent FOUC -->
@@ -216,13 +214,13 @@
   </audio>
   
 
-
  <!--Navigation Web component start-->
  <navigation-component 
  home-link="../#projects" 
  asset-path="../assets">
 </navigation-component>
 <!--Navigation Web component start-->
+
 
 <section id="hero-section" class="hero ">
   <canvas id="dotCanvas" width="1960" height="490"></canvas>
@@ -240,12 +238,12 @@
         <div class="cont heading-cont">
           <div class="twelve col-1">  
           <h1 class="section-header-34 ">
-            LoopNet Solutions Website<span class="rdot">.</span>        </h1>
+           CoStar Website Reskin &amp;&nbsp;Rebuild<span class="rdot">.</span>        </h1>
   
   <div class="spacer-1rem"></div>
   <!--PROJECT SHOWCASE LINK-->
-  <a target="_blank" href="https://www.loopnet.com/solutions/" target="_blank">
-  <div class="cont project-showcase loopnet-solutions-project-showcase rollover-showcase"></div>
+  <a target="_blank" href="https://www.costar.co.uk/products" target="_blank">
+  <div class="cont project-showcase costar-showcase rollover-showcase"></div>
 </a>
   <!--PROJECT SHOWCASE LINK END-->
   <div class="spacer-1rem hide-on-mobile"></div>
@@ -255,7 +253,7 @@
 <div class="cont four-eight flip-mobile">
     <div class="col-1">
        <h2 class="section-header">My Roles<span class="rdot">:</span></h2>
-       <p class="biriyani-light description margin-btm-25" >Web development</p>
+       <p class="biriyani-light description margin-btm-25" >Design & development</p>
        <div class="spacer-1-3rem"></div>
        
 
@@ -263,61 +261,66 @@
        <div class="spacer-1-3rem"></div>
        <h2 class="section-header">Tools<span class="rdot">:</span></h2>
        <div class="tools-container">
+        <img src="../assets/images/figma.svg" class="tool-icon">
         <img src="../assets/images/Asana-icon.svg" class="tool-icon">
         <img src="../assets/images/code-icon.svg" class="tool-icon"> 
         <img src="../assets/images/site-studio-icon.svg" class="tool-icon">
         
        </div>
+       <div class="spacer-3rem three-rem-mobile"></div>
+       <a href="https://www.costar.co.uk/products" class="gradient-button" target="_blank">View web site</a>
     </div>
     <div class="col-2 project-links">
        <h2 class="section-header">Project Overview<span class="rdot">:</span></h2>
        <p class="project-p biriyani-light description margin-btm-25" >
-        LoopNet is CoStar Group’s leading commercial property marketplace, used by 96% of Fortune 1000 firms. Last year, it drove over $380B in transactions—representing more than 90% of all commercial real estate deals. When LoopNet launched in the UK, I was tasked with building the marketing website for the UK market.
+        CoStar is the world’s leading provider of commercial real estate information, analytics, and news, with its marketing website attracting up to 15,800 visitors a day*. A few years ago, CoStar’s brand identity needed a refresh, and the website required a full redesign. At the same time, we migrated to a new Drupal-based content management system called Site Studio.
 <br><br>
-        This project required me to get acquainted with a Drupal-based content management tool called Site Studio, and to build a drag-and-drop UI component library to make website maintenance easier for people who don’t code.
+        I led the early design direction and introduced the foundational design elements that shaped the new brand identity. Working closely with the marketing team, I helped modernise layouts, improve how product content was showcased, and enhance the overall information architecture. Once the design direction was established, I built the UK-facing website, translating the new designs into a clean, responsive, and more engaging experience.
+        <br><br>
+        As part of the migration, I also helped create a marketer-friendly component library in Site Studio, enabling non-technical teams to update content easily without relying on developers.
            </p>
           
 </div>
 </div>
 <div class="cont twelve">
   <div class="col-1">
-  <img src="../assets/images/laptop-and-mobile.png" alt="LoopNet Solutions Mobile and Desktop devices" class="ln-devices"></div>
+  <img src="../assets/images/CS-laptop-mobile-shadow.png" alt="CoStar Website Mobile and Desktop devices" class="ln-devices"></div>
 </div>
 
 </section>
 
 <!--Contact section-->
 <span id="contact" class="anchor position-unset"></span>
- <!--NEXT & PREVIOUS BUTTONS START-->
+   <!--NEXT & PREVIOUS BUTTONS START-->
         <!--SPACER-->
-        <div class="spacer-6rem"></div>
-        <!--SPACER-->
-        <div class="cont next-prev six-six six-six-mob parallax" data-speed="0.3">
-          <span id="contact" class="anchor"></span>
-          <div class="col-1 left mobile-6-col">
-            <div class="previous">
-              <a href="/pages/costar-reskin" id="backButton">
-              <svg  width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.00029 8.5H17.5566" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M8.36455 14.864L2.00059 8.5L8.36455 2.13604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              Previous
-            </a></div>
-          </div>
-          <div class="col-2 right mobile-6-col">
-            <div class="previous"><a href="/">Home
-              <svg class="arrow-right" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16.5563 8.5L1 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M10.1921 2.13604L16.556 8.5L10.1921 14.864" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </a></div>
-          </div>
-        </div>
-        <div class="spacer-4rem"></div>
-        <!--SPACER-->
-        <!--NEXT & PREVIOUS BUTTONS END-->
+<div class="spacer-6rem"></div>
+<!--SPACER-->
+<div class="cont next-prev six-six six-six-mob parallax" data-speed="0.3">
+  <span id="contact" class="anchor"></span>
+  <div class="col-1 left mobile-6-col">
+    <div class="previous">
+      <a href="/pages/form-optimisation" id="backButton">
+      <svg  width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.00029 8.5H17.5566" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8.36455 14.864L2.00059 8.5L8.36455 2.13604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Previous
+    </a></div>
+  </div>
+  <div class="col-2 right mobile-6-col">
+    <div class="previous"><a href="/pages/loopnet-solutions">Next
+      <svg class="arrow-right" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.5563 8.5L1 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10.1921 2.13604L16.556 8.5L10.1921 14.864" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </a></div>
+  </div>
+</div>
+<div class="spacer-4rem"></div>
+<!--SPACER-->
+<!--NEXT & PREVIOUS BUTTONS END-->
 <contact-section></contact-section>
-<!--Contact section end-->
+<!--Contact section end-->  
       </div>
       
       </section>

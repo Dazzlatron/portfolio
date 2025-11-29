@@ -13,7 +13,9 @@
   --red-accent: #FF1515;
   --light-darker-border: #121212;
 }
-
+#project-nav .about-me .arrow-svg {
+  transform: rotate(90deg);
+}
 .technologies {
   width: 85%;
   margin: auto;
@@ -306,6 +308,7 @@ list-style-type: square;
   }
 .map-container.container {
   position: relative;
+  padding:0 20px;
 }
 .center-txt {
   text-align: center !important;
@@ -390,7 +393,7 @@ list-style-type: square;
 
 #map {
   border-radius: 5px;
-  min-height: 400px;
+  min-height: 340px;
   border: 1px solid var(--light-border);
   margin: 0 auto;
 }
@@ -419,7 +422,7 @@ body, p{
   height: 500px;
   position: relative;
   overflow: hidden;
-  margin-top: -500px;
+  margin-top: -480px;
 }
 #footer-bg::before {
   content: "";
@@ -1013,8 +1016,9 @@ body.dark-mode .arrow-left {
   display: flex;
   align-items: center;
   gap: 8px;
-  max-width: 85px;
+  max-width: 95px;
   font-family: 'biryanilight';
+  line-height: 1;
 }
 
 .previous a:hover {

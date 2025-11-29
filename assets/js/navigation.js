@@ -1,9 +1,9 @@
 class NavigationComponent extends HTMLElement {
   connectedCallback() {
     // Get attributes for configuration
-    const homeLink = this.getAttribute('home-link') || '../index.html';
+    const homeLink = this.getAttribute('home-link') || '../#projects';
     const assetPath = this.getAttribute('asset-path') || '../assets';
-    const aboutMeLink = this.getAttribute('about-me-link') || '../index.html#about-me';
+    const aboutMeLink = this.getAttribute('about-me-link') || '../#about-me';
     
     // Helper function to generate arrow SVG
     const arrowSvg = (width = 12, height = 12) => `
@@ -57,7 +57,7 @@ class NavigationComponent extends HTMLElement {
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <aside class="side-nav">
+      <aside id="project-nav" class="side-nav">
         <nav id="top-nav">
           <div class="nav-style">
             <img class="top-logo" src="${assetPath}/images/Logo-animation_rollover_05.25.gif" alt="Logo">
@@ -72,7 +72,7 @@ class NavigationComponent extends HTMLElement {
               <li class="nav-item">
                 <a href="${aboutMeLink}">
                   <span class="nav-text">&nbsp;About me&nbsp;</span>
-                  <span class="nav-arrow">${arrowSvg(12, 12)}</span>
+                  <span class="nav-arrow about-me">${arrowSvg(12, 12)}</span>
                 </a>
               </li>
               <li class="nav-item">
