@@ -28,12 +28,12 @@ const isBudgiePage = window.location.pathname.includes('budgie.html');
 const colors = {
     light: {
         base: "#D5D5D5",
-        baseShade: 205,
+        baseShade: 232,
         targetShade: 85  // Darkened value for ripple in light mode
     },
     dark: {
-        base: "#3d3d3d",
-        baseShade: 52,
+        base: "#333333",
+        baseShade: 45,
         targetShade: 196  // Lightened value for ripple in dark mode
     }
 };

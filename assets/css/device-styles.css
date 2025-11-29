@@ -770,8 +770,12 @@
   and (min-width: 1025px) 
   and (max-width: 1450px) 
   {
+    .fixed {
+      width:40px;
+      }
     .row-2{
       gap:10px;
+      grid-template-columns: 1fr 40px 1fr 40px 1fr;
     }
     .project-right {
       padding: 30px 30px 30px 55px;
@@ -782,10 +786,11 @@
   }
      @media (min-width: 1180px) {
      /* Hide horizontal navigation on desktop */
-     
-     .hide-on-desktop{
-      display: none;
-    }
+     .profile-pic-wrap {
+      max-width:300px;
+      margin-right: 30px !important;
+     }
+    
      .nav-links {
        display: none !important;
      }

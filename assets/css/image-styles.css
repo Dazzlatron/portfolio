@@ -320,8 +320,8 @@ body.dark-mode .zoomable {
 }
 
 .profile-pic-wrap {
-  width: 40%;
-  margin-bottom: 10px;
+  width: 30%;
+  margin-bottom: 25px;
   float: left;
   margin-right: 15px;
 }
@@ -367,7 +367,7 @@ body.dark-mode .zoomable {
   width: 22px;
   float: left;
 }
-ico-resume
+
 .ico-email {
   width: 35px;
   float: left;
