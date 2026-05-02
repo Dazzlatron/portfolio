@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DH Cube Logo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #121212;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // ── Pixel maps (5 rows × 4 cols each) ──────────────────────────────────
+    const D = [
+      [1,1,1,0],
+      [1,0,0,1],
+      [1,0,0,1],
+      [1,0,0,1],
+      [1,1,1,0],
+    ];
+    const H = [
+      [1,0,0,1],
+      [1,0,0,1],
+      [1,1,1,1],
+      [1,0,0,1],
+      [1,0,0,1],
+    ];
+
+    // ── Scene ───────────────────────────────────────────────────────────────
+    const scene    = new THREE.Scene();
+    const camera   = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.1, 100);
+    camera.position.z = 18;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(innerWidth, innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // ── Layout constants ────────────────────────────────────────────────────
+    const SZ      = 0.82;   // visual cube size
+    const STEP    = 1.0;    // grid spacing
+    const ROWS    = 5;
+    const COLS    = 9;      // 4 (D) + 1 gap + 4 (H)
+    const PLASTIC = 0x111111;
+    const RED     = 0xFF1515;
+    const WHITE   = 0xEEEEEE;
+
+    // ── Shared geometries ───────────────────────────────────────────────────
+    const cubeGeo = new THREE.BoxGeometry(SZ, SZ, SZ);
+    // Edges slightly larger to sit cleanly on top of faces
+    const edgeGeo = new THREE.EdgesGeometry(
+      new THREE.BoxGeometry(SZ * 1.003, SZ * 1.003, SZ * 1.003)
+    );
+    const edgeMat = new THREE.LineBasicMaterial({ color: 0x000000 });
+
+    // ── Material sets: Rubik's cube style ──────────────────────────────────
+    // BoxGeometry face order: +x, -x, +y, -y, +z (front/camera), -z
+    function rubikMats(faceColor) {
+      const sticker = new THREE.MeshPhongMaterial({ color: faceColor,  shininess: 90 });
+      const plastic = new THREE.MeshPhongMaterial({ color: PLASTIC,    shininess: 30 });
+      return [plastic, plastic, plastic, plastic, sticker, plastic];
+    }
+    const redMats   = rubikMats(RED);
+    const whiteMats = rubikMats(WHITE);
+
+    // ── Groups ──────────────────────────────────────────────────────────────
+    const master = new THREE.Group();
+    scene.add(master);
+
+    // One group per row so we can slide individual rows (Rubik's move)
+    const rowGroups = Array.from({ length: ROWS }, () => {
+      const g = new THREE.Group();
+      master.add(g);
+      return g;
+    });
+
+    // ── Build letter blocks ─────────────────────────────────────────────────
+    const ox = -((COLS - 1) * STEP) / 2;
+    const oy =  ((ROWS - 1) * STEP) / 2;
+
+    function addBlock(row, col, mats) {
+      const mesh  = new THREE.Mesh(cubeGeo, mats);
+      mesh.position.set(ox + col * STEP, oy - row * STEP, 0);
+      mesh.add(new THREE.LineSegments(edgeGeo, edgeMat));
+      rowGroups[row].add(mesh);
+    }
+
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < 4; c++) if (D[r][c]) addBlock(r, c,     redMats);
+      for (let c = 0; c < 4; c++) if (H[r][c]) addBlock(r, 5 + c, whiteMats);
+    }
+
+    // ── Lighting ────────────────────────────────────────────────────────────
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+    const key = new THREE.DirectionalLight(0xffffff, 0.9);
+    key.position.set(6, 8, 12);
+    scene.add(key);
+
+    const fill = new THREE.DirectionalLight(0xffffff, 0.3);
+    fill.position.set(-6, -4, 8);
+    scene.add(fill);
+
+    // Red glow near the D
+    const redGlow = new THREE.PointLight(0xFF2200, 0.7, 8);
+    redGlow.position.set(-2.5, 0, 3);
+    master.add(redGlow);
+
+    // ── Row-slide animation (mimics Rubik's cube layer move) ────────────────
+    let slideCountdown = 2.0;
+    const slide = { active: false };
+
+    function startSlide() {
+      slide.active = true;
+      slide.row    = Math.floor(Math.random() * ROWS);
+      slide.dir    = Math.random() > 0.5 ? 1 : -1;
+      slide.dist   = STEP * (1.5 + Math.random());
+      slide.phase  = 'out'; // out → pause → back
+      slide.t      = 0;
+    }
+
+    function easeInOut(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    // ── Animation loop ──────────────────────────────────────────────────────
+    const clock = new THREE.Clock();
+
+    (function animate() {
+      requestAnimationFrame(animate);
+      const dt = clock.getDelta();
+      const et = clock.getElapsedTime();
+
+      // Continuous rotation with gentle wobble
+      master.rotation.y = et * 0.42;
+      master.rotation.x = Math.sin(et * 0.21) * 0.20;
+
+      // Rubik's row-slide
+      if (!slide.active) {
+        slideCountdown -= dt;
+        if (slideCountdown <= 0) {
+          startSlide();
+          slideCountdown = 2.5 + Math.random() * 2.5;
+        }
+      } else {
+        const OUT_DUR   = 0.42;
+        const PAUSE_DUR = 0.28;
+
+        slide.t += dt;
+
+        if (slide.phase === 'out') {
+          const p = easeInOut(Math.min(slide.t / OUT_DUR, 1));
+          rowGroups[slide.row].position.x = slide.dir * slide.dist * p;
+          if (slide.t >= OUT_DUR) { slide.phase = 'pause'; slide.t = 0; }
+
+        } else if (slide.phase === 'pause') {
+          if (slide.t >= PAUSE_DUR) { slide.phase = 'back'; slide.t = 0; }
+
+        } else {
+          const p = easeInOut(Math.min(slide.t / OUT_DUR, 1));
+          rowGroups[slide.row].position.x = slide.dir * slide.dist * (1 - p);
+          if (slide.t >= OUT_DUR) {
+            rowGroups[slide.row].position.x = 0;
+            slide.active = false;
+          }
+        }
+      }
+
+      renderer.render(scene, camera);
+    })();
+
+    // ── Resize ──────────────────────────────────────────────────────────────
+    window.addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+  </script>
+</body>
+</html>

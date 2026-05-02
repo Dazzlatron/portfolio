@@ -1,0 +1,162 @@
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+.swiper-button-next, .swiper-button-prev {
+  top:42%;
+}
+.quote-section {
+ width:100%;
+}
+.copy-text {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.copyright {
+  z-index: 99;
+  display: flex;
+  margin:15px 15px 0 15px;
+}
+.copy-text p {
+  font-size: 11px;
+  font-family: 'biriyaniregular', sans-serif;
+  line-height: 2;
+  margin:0;
+}
+.bottom-logo {
+  height: 30px;
+}
+.swipe-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.testimonial {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  padding: 30px 0;
+  overflow: visible;
+}
+.testimonial .slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 20px;
+  height: 100%;
+  width: 100%;
+}
+.slide p {
+  text-align: center;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  font-family: 'biryanibold';
+  margin-top:30px;
+}
+
+/* swiper button css */
+.nav-btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  transform: translateY(30px);
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
+}
+.nav-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.nav-btn::after,
+.nav-btn::before {
+  font-size: 20px;
+  color: #fff;
+}
+.swiper-pagination-bullet {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.swiper-pagination-bullet-active {
+  background-color: #FF1515;
+}
+@media screen and (max-width: 768px) {
+  
+  .nav-btn {
+    display: none;
+  }
+  
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  .swipe-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    margin: 50px 0 !important;
+  }
+  
+  .testimonial {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .testimonial .swiper-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .testimonial .swiper-slide,
+  .testimonial .slide {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .wrapper-for-arrows {
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    margin: 0 auto !important;
+  }
+  
+  .testi-content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* iPad and desktop fixes */
+@media screen and (min-width: 768px) {
+  .quote-section {
+    overflow: hidden;
+    
+  }
+  
+  .container {
+    overflow: hidden;
+  }
+  
+  .swipe-container {
+    overflow: hidden;
+  }
+  
+  .testimonial {
+    overflow: hidden;
+  }
+}
+
+

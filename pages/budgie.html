@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daryn Higginson | Budgie</title>
+    <!-- Critical dark mode CSS - loads first, dark by default -->
+    <style>
+      :root {
+        --dark-bg: #121212;
+        --dark-text: #fbfbfb;
+        --dark-secondary: #1e1e1e;
+        --dark-accent: #FF1515;
+        --dark-border: #616161;
+        --dark-hover: #2a2a2a;
+        --light-text: #121212;
+        --light-dark-border: #424242;
+        --light-bg: #fbfbfb;
+        --light-border: #d1d1d1;
+        --red-accent: #FF1515;
+        --light-darker-border: #121212;
+      }
+      /* Dark mode by default */
+      body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+      }
+
+      /* ---- Task flow cards ---- */
+      .task-flow-grid {
+        display: grid;
+        grid-template-columns: 1fr 48px 1fr;
+        grid-template-areas:
+          "t1 r1 t2"
+          "lc lc lc"
+          "t3 r2 t4";
+      }
+
+      .task-flow-card {
+        border: 1px solid;
+        border-radius: 6px;
+        padding: 24px 28px;
+      }
+
+      body.dark-mode .task-flow-card {
+        background: var(--dark-secondary);
+        border-color: var(--dark-border);
+      }
+
+      body:not(.dark-mode) .task-flow-card {
+        background: var(--light-bg);
+        border-color: var(--light-border);
+      }
+
+      .task-flow-arrow-h {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        opacity: 0.55;
+      }
+
+      .task-flow-lc-inner {
+        margin-left: 24%;
+        margin-right: 24%;
+      }
+
+      .task-flow-lc-inner svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .standard-bullets li::marker {
+        color: #FF1515;
+      }
+
+      .task-flow-arrow-v {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 0;
+        opacity: 0.55;
+      }
+
+      @media screen and (max-width: 767px) {
+        .task-flow-grid {
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            "t1"
+            "v12"
+            "t2"
+            "v23"
+            "t3"
+            "v34"
+            "t4";
+        }
+        .task-flow-arrow-h,
+        .task-flow-lc {
+          display: none;
+        }
+        .task-flow-arrow-v {
+          display: flex;
+        }
+      }
+
+    </style>
+    <!-- Set dark mode immediately, before DOM loads -->
+    <script>
+      (function() {
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme !== 'light') {
+          document.documentElement.classList.add('dark-mode-ready');
+          if (document.body) {
+            document.body.classList.add('dark-mode');
+          } else {
+            var observer = new MutationObserver(function(mutations) {
+              if (document.body) {
+                document.body.classList.add('dark-mode');
+                observer.disconnect();
+              }
+            });
+            observer.observe(document.documentElement, { childList: true });
+          }
+        }
+      })();
+    </script>
+    <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
+<link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
+    <!-- CSS files - load synchronously to prevent FOUC -->
+    <link rel="stylesheet" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/assets/css/dark-mode.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+
+    <link rel="stylesheet" href="/assets/css/hero.css">
+    <link rel="stylesheet" href="/assets/css/parallax.css">
+    <link rel="stylesheet" href="/assets/css/project-tiles.css">
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets/css/swiper-style.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/device-styles.css">
+    <link rel="stylesheet" href="/assets/css/product-slider.css">
+    <link rel="stylesheet" href="/assets/css/grid-column-layout.css">
+    <link rel="stylesheet" href="/assets/css/image-styles.css">
+    <link rel="stylesheet" href="/assets/css/cursor-effects.css">
+    
+   <!--FAVICONS-->
+   <link rel="icon" href="assets/images/dh-logo-favicon.svg" type="image/svg+xml">
+   <link rel="icon" href="assets/images/dh-logo-favicon-48.png" type="image/png">
+   <link rel="apple-touch-icon" href="assets/images/dh-logo-favicon-48.png">
+   <link rel="icon" href="aasets/images/dh-favicon.ico" type="image/x-icon">
+
+    <script defer src="../assets/js/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    
+    
+    <script defer src="../assets/js/sticky-scroll.js"></script>
+    <script src="../assets/js/mobile-swipe.js"></script>
+  
+<style>
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #hero-section {
+    
+    width: 95%;
+  }
+}
+  .anchor {
+  position: relative;
+  top: -60px;
+}
+  
+  /* Make Home arrow point the other way */
+  .nav-item a[href="index.html"] .arrow-svg {
+    transform: rotate(135deg);
+  }
+  
+  /* Rotate Project arrow 45 degrees when submenu is open */
+  .project-nav:hover > a .arrow-svg {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+  @media screen and (min-width:1200px) {
+    .main-content {
+    padding: 0 2rem;
+    margin-top: 3.2rem;
+
+  }
+  }
+  @media screen and (min-width: 1200px) and (max-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .main-content {
+    padding: 1rem 2rem;
+    margin-top: 20px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #hero-section {
+    height: 55vh;}
+  }
+
+</style>
+    <!-- Show content once CSS is loaded - runs immediately -->
+    <script>
+      (function() {
+        function checkStylesheets() {
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var allLoaded = true;
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            // Check if stylesheet is loaded by trying to access its rules
+            try {
+              if (sheet.sheet && sheet.sheet.cssRules && sheet.sheet.cssRules.length > 0) {
+                // Stylesheet is loaded
+                continue;
+              } else if (sheet.sheet) {
+                // Sheet exists but might not be fully loaded yet
+                allLoaded = false;
+                break;
+              } else {
+                // Sheet not loaded yet
+                allLoaded = false;
+                break;
+              }
+            } catch(e) {
+              // Cross-origin or not loaded yet
+              allLoaded = false;
+              break;
+            }
+          }
+          
+          if (allLoaded && stylesheets.length > 0) {
+            // All stylesheets loaded, show content
+            requestAnimationFrame(function() {
+              document.documentElement.classList.add('css-loaded');
+            });
+            return true;
+          }
+          return false;
+        }
+        
+        function showContent() {
+          document.documentElement.classList.add('css-loaded');
+        }
+        
+        // Check immediately
+        if (!checkStylesheets()) {
+          // If not all loaded, check on load events
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var loadedCount = 0;
+          var totalSheets = stylesheets.length;
+          
+          function onSheetLoad() {
+            loadedCount++;
+            if (loadedCount >= totalSheets) {
+              requestAnimationFrame(function() {
+                requestAnimationFrame(showContent);
+              });
+            }
+          }
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            var isLoaded = false;
+            try { isLoaded = sheet.sheet && sheet.sheet.cssRules; } catch (e) { isLoaded = true; }
+            if (isLoaded) {
+              loadedCount++;
+            } else {
+              sheet.addEventListener('load', onSheetLoad);
+              sheet.addEventListener('error', onSheetLoad);
+            }
+          }
+          
+          if (loadedCount >= totalSheets) {
+            requestAnimationFrame(function() {
+              requestAnimationFrame(showContent);
+            });
+          }
+        }
+        
+        // Fallback: show after delay
+        setTimeout(showContent, 200);
+      })();
+    </script>
+</head>
+<body style="cursor: none !important;">
+  <audio id="hoverSound" preload="auto">
+    <source src="../assets/sounds/notification-1-269296.mp3" type="audio/mpeg">
+  </audio>
+  
+  <!-- Scroll sound -->
+  <audio id="scrollSound" preload="auto">
+    <source src="../assets/sounds/startup-sound-variation-3-315895.mp3" type="audio/mpeg">
+  </audio>
+
+  <!--Navigation Web component start-->
+ <navigation-component 
+ home-link="../#projects" 
+ asset-path="../assets">
+</navigation-component>
+<!--Navigation Web component start-->
+  
+ 
+
+
+<!-- Modal moved outside main to avoid stacking context issues -->
+<div id="imageModal" class="modal">
+  <div class="modal-inner">
+    <span class="close">&times;</span>
+    <div class="swiper modal-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../assets/images/budgie-prod-one-dark.png" class="modal-content">
+        </div>
+        <div class="swiper-slide">
+          <img src="../assets/images/budgie-prod-two-dark.png" class="modal-content">
+        </div>
+        <div class="swiper-slide">
+          <img src="../assets/images/budgie-prod-three-dark.png" class="modal-content">
+        </div>
+      </div>
+      <!-- Navigation arrows -->
+      <div class="swiper-button-next nav-btn slider-nav right"></div>
+      <div class="swiper-button-prev nav-btn slider-nav left"></div>
+      <!-- Pagination dots -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+<section id="hero-section" class="hero ">
+  <canvas id="dotCanvas" width="1960" height="490"></canvas>
+  <div class="hero">
+ 
+     
+  </div>
+</section>
+<main id="budgie" class="project-main">
+  <div class="center-content">
+    <div class="main-content">
+      <span id="project-overview" class="anchor"></span>
+      <section class="project-overview parallax" data-speed="0.3">
+      
+      <div class="cont six-six gap-50">
+        <div class="col-1 center-vertical">
+          <div class="hero-left-content">
+            <div class="case-study-heading">
+            <img class="budgie-logo-1" src="../assets/images/budgie-logo-dark.svg" alt="Budgie"/>
+            <h2 class="subtitle-1 section-header">Turning Grocery Price Frustration Into a Smart Shopping Experience</h3>
+            </div>
+              <div class="explanation">
+              <img class="light-bulb-icon" src="../assets/images/light-bulb-icon-dark.svg" alt="Light Bulb Icon"/>
+              <p class="sub-sub-heading biriyani-bold">How market research and UX strategy informed the design of a budget-driven shopping assistant</p>
+            </div>
+          </div>
+          </div>
+          <div class="col-2 ">
+          <div class="product-shot">
+            <img class="budgie-product-image" src="../assets/images/budgie-hero-mobile-display.png" alt="Budgie Hero Image">
+          </div>
+          </div>
+          </div>
+      
+      <!--SPACER-->
+      <div class="spacer-4rem"></div>
+      <!--SPACER-->
+      <div class="cont eight-four">
+         
+          <div class="col-1 project-links">
+             <h2 class="section-header">Project Overview<span class="rdot">:</span></h2>
+             <p class="project-p biriyani-light description margin-btm-25" >Budgie began as a personal project to simplify grocery shopping. An initial prototype tested well, but revealed a deeper problem beyond the interface.
+<br><br>
+Users struggled to budget, felt frustrated by fragmented tools, and were increasingly avoiding in-store shopping. It became clear the product needed a stronger strategic foundation.
+<br><br>
+I reframed the direction, shifting from a simple utility to a research-driven, budget-first experience. Through competitive analysis and deeper user research, I identified where meaningful value could be created, then developed a second prototype to test this new approach.
+<br><br>
+This case study explores that shift, from an unfocused concept to a strategically grounded product.
+                 </p>
+      </div>
+      
+       <div class="col-2">
+             <h2 class="section-header">Project type<span class="rdot">:</span></h2>
+             <p class="biriyani-light description margin-btm-25" >Concept product, UX Strategy, Prototype/MVP</p>
+             <div class="spacer-1-3rem"></div>
+             <h2 class="section-header">Role<span class="rdot">:</span></h2>
+             
+             <p class="biriyani-light description margin-btm-25" >Strategy, Research, Product Design, Prototype</p>
+             
+            
+             <div class="spacer-1-3rem"></div>
+             <div class="spacer-1-3rem"></div>
+             <h2 class="section-header">Tools<span class="rdot">:</span></h2>
+             <div class="tools-container">
+              <img src="../assets/images/figma.svg" class="tool-icon">
+              <img src="../assets/images/claude-logo.png" class="tool-icon"> 
+              
+              <img src="../assets/images/trello.svg" class="tool-icon"> 
+             </div>
+          </div>
+      </div>
+   
+      </section>
+      
+      <!--SPACER-->
+      <div class="spacer-3rem"></div>
+      <!--SPACER-->
+
+      <span id="discovery" class="anchor"></span>
+      <section class="discovery parallax" data-speed="0.3">
+      <div class="cont twelve">
+        <div class="col-1 process-heading section-header-row">
+      <h2 class="section-header-28">Initial Research: <span class="lighter-heading">Early Exploration to Strategic Reframing</span><span class="rdot">.</span></h2><span class="heading-arrow"><svg class="arrow-svg"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path></svg></span>
+    </div>
+      </div>
+      
+       <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-light" >Before restrategising and redesigning budgie, I conducted research into how grocery shoppers from all walks of life to understand their habits. A few clear themes emerged:</h2>
+    
+    </div>
+      </div>
+      <div class="cont one-eleven-mobile">
+        <div class="col-1">
+          
+          <h2 class="section-header red">1.</h2>
+          </div>
+          <div class="col-2">
+            <h2 class="section-header">The Budget Paradox</h2>
+          <p class="biriyani-light description margin-btm-20" >50% of respondents actively budget when grocery shopping, yet most rely on manual methods — mental math, paper lists, or even spreadsheets. Existing apps don't surface pricing until checkout, which is too late to adjust behaviour.</p>
+          </div>
+          </div>
+          
+          <div class="cont one-eleven-mobile">
+        <div class="col-1">
+          
+          <h2 class="section-header red">2.</h2>
+          </div>
+          <div class="col-2">
+            <h2 class="section-header">Fragmentation Fatigue</h2>
+          <p class="biriyani-light description margin-btm-20" >Most users juggle 3–4 separate apps for lists, recipes, deals, and delivery. Every context switch adds cognitive load with no single tool connecting the full journey.</p>
+          </div>
+          </div>
+          
+          <div class="cont one-eleven-mobile">
+        <div class="col-1">
+          
+          <h2 class="section-header red">3.</h2>
+          </div>
+          <div class="col-2">
+            <h2 class="section-header">The Delivery Dilemma</h2>
+          <p class="biriyani-light description " >30% of participants cited parking, queuing, and physical effort as their biggest shopping pain points. Yet grocery delivery apps prioritise speed over cost — making budget-conscious delivery nearly impossible.</p>
+          </div>
+          </div>
+          <!--`spacer-->
+            <div class="spacer-2rem"></div>
+            <!--spacer-->
+         <div class="cont four-four-four">
+          <div class="col-1 center-horizontal">
+            <img src="../assets/images/participants-icon-red.svg" class="big-icon"/>
+            <h2 class="section-header text-center">8 participants<br>
+2 rounds</h2>
+         </div>
+         <div class="col-2 center-horizontal">
+            <img src="../assets/images/age-icon-red.svg" class="big-icon"/>
+            <h2 class="section-header text-center">Aged between<br>
+26 - 70 years old</h2>
+         </div>
+         <div class="col-3 center-horizontal">
+            <img src="../assets/images/shoppers-icon-red.svg" class="big-icon"/>
+            <h2 class="section-header text-center">Regular grocery <br>shoppers</h2>
+         </div>
+         </div>
+         <!--`spacer-->
+            <div class="spacer-2rem"></div>
+            <!--spacer-->
+         <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <p class="biriyani-light description" >I developed and tested an initial prototype centred on list creation, budgeting, and store selection. While it was functional, the feedback was underwhelming and revealed a deeper issue beyond the interface.<br><br>
+
+    
+    </div>
+      </div>
+      <div class="cont twelve">
+        <div class="col-1 process-heading gap-20 align-items-center stacked-mobile">
+      <img class="light-bulb-icon smaller-bulb" src="../assets/images/light-bulb-icon-dark.svg" alt="Light Bulb Icon"/>
+     
+<p class="bold biriyani-bold">This is when I took a step back and revisted the problem entirely. Exploring UX strategy principles helped inform this shift, leading to more structured research, including market analysis and deeper competitor evaluation. </p>
+    
+    </div>
+      </div>
+              </section>
+          <!--SPACER-->
+      <div class="spacer-3rem"></div>
+      <!--SPACER-->
+    
+      <span id="definition" class="anchor"></span>
+      <section class="definition parallax" data-speed="0.3">
+      <div class="cont twelve">
+        <div class="col-1 process-heading section-header-row">
+      <h2 class="section-header-28">Market & Competitor Research<span class="rdot">.</span></h2><span class="heading-arrow"><svg class="arrow-svg"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path></svg></span>
+    </div>
+      </div>
+      
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <p class="biriyani-light description margin-btm-25" >With clear pain points established, I analysed 10+ apps across grocery, budgeting, and recipe categories, not to replicate what exists, but to identify a genuine gap in the market and where I could create meaningful&nbsp;impact.  </p>
+    
+    </div>
+      </div>
+      <div class="cont twelve">
+        <div class="col-1 ">
+          <img src="../assets/images/Budgie-competitor-feature-matrix.png" alt="Competitive Feature Matrix" class="feature-matrix zoomable border-light">
+        </div>
+      </div>
+<!--SPACER-->
+      <div class="spacer-3rem"></div>
+      <!--SPACER-->
+       <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-28-light">Market Gaps and Product Positioning</h2>
+    
+    </div>
+      </div>
+    <div class="cont six-six"> 
+<div class="col-1">
+  <h2 class="section-header">The Budget Paradox</h2>
+  <p class="biriyani-light description " >Apps with real-time pricing (Basket, Flipp, Pinch) don't integrate meal planning, while recipe apps (Paprika, BigOven, Mealime) ignore pricing&nbsp;entirely. </p>
+</div>
+<div class="col-2">
+  <h2 class="section-header">Missing Delivery Integration</h2>
+  <p class="biriyani-light description " >Only Whisk links to delivery services, but doesn't help users compare delivery costs vs in-store&nbsp;savings. </p>
+</div>
+    </div>
+    <div class="spacer-1-5rem"></div>
+    <div class="cont six-six"> 
+<div class="col-1">
+  <h2 class="section-header">No Behavioural Design</h2>
+  <p class="biriyani-light description " >Only Too Good To Go uses gamification — but for food waste, not personal savings. No one is applying engagement mechanics to grocery&nbsp;budgeting. </p>
+</div>
+<div class="col-2">
+  <h2 class="section-header">Store Comparison Gap</h2>
+  <p class="biriyani-light description " >Only Basket and Pinch compare stores, but they lack the context of meal planning and&nbsp;recipes. </p>
+</div>
+    </div>
+    <!--SPACER-->
+      <div class="spacer-3rem"></div>
+      <!--SPACER-->
+    <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-28-light">What Budgie Brings to the Table</h2>
+    
+    </div>
+      </div>
+       <!--SPACER-->
+      <div class="spacer-1-5rem"></div>
+      <!--SPACER-->
+    <div class="cont two-ten-mobile col-gap-0">
+      <div class="col-1 center-horizontal">
+      <img class="check" src="../assets/images/tick-check-green.svg" alt="check"/>
+      </div>
+      <div class="col-2">
+       
+        <p class="biriyani-bold description " >All in one place:</p>
+        <p class="biriyani-light description margin-btm-10" >Budgie connects meal planning, live pricing, store comparison, and delivery options into a single seamless flow — no more switching between&nbsp;apps.</p>
+      </div>
+    </div>
+     <div class="cont two-ten-mobile col-gap-0">
+      <div class="col-1 center-horizontal">
+      <img class="check" src="../assets/images/tick-check-green.svg" alt="check"/>
+      </div>
+      <div class="col-2">
+       
+        <p class="biriyani-bold description " >Budget first, always: </p>
+        <p class="biriyani-light description margin-btm-10" >Most recipe apps ignore cost, and most price-comparison apps ignore meals. Budgie treats your budget as the starting point, not an&nbsp;afterthought.</p>
+      </div>
+    </div>
+    <div class="cont two-ten-mobile col-gap-0">
+      <div class="col-1 center-horizontal">
+      <img class="check" src="../assets/images/tick-check-green.svg" alt="check"/>
+      </div>
+      <div class="col-2">
+       
+        <p class="biriyani-bold description " >Honest delivery costs:  </p>
+        <p class="biriyani-light description margin-btm-10" >Budgie shows you the real cost of delivery — fee included — so you can decide whether it's actually worth it versus going in&nbsp;store.</p>
+      </div>
+    </div>
+    <div class="cont two-ten-mobile col-gap-0">
+      <div class="col-1 center-horizontal">
+      <img class="check" src="../assets/images/tick-check-green.svg" alt="check"/>
+      </div>
+      <div class="col-2">
+       
+        <p class="biriyani-bold description " >Savings made engaging:  </p>
+        <p class="biriyani-light description margin-btm-10" >Budgie applies light gamification to help you stay motivated and build better spending habits over&nbsp;time.</p>
+      </div>
+    </div>
+     <div class="cont two-ten-mobile col-gap-0">
+      <div class="col-1 center-horizontal">
+      <img class="check" src="../assets/images/tick-check-green.svg" alt="check"/>
+      </div>
+      <div class="col-2">
+       
+        <p class="biriyani-bold description " >A weekly rhythm that sticks: </p>
+        <p class="biriyani-light description margin-btm-10" >The app is built around a simple loop — plan, optimise, shop, reflect — so it becomes a natural part of your week rather than another tool you forget&nbsp;about.</p>
+      </div>
+    </div>
+    <div class="cont two-ten-mobile col-gap-0">
+      <div class="col-1 center-horizontal">
+      <img class="check" src="../assets/images/tick-check-green.svg" alt="check"/>
+      </div>
+      <div class="col-2">
+       
+        <p class="biriyani-bold description " >Easy to get started: </p>
+        <p class="biriyani-light description margin-btm-10" >Onboarding is kept simple and frictionless so there's no barrier to getting value quickly. Longer term, affiliate partnerships and integrations offer a path to revenue without ever charging users&nbsp;directly.</p>
+      </div>
+    </div>
+    
+    </section>
+      <!--SPACER-->
+      <div class="spacer-3rem"></div>
+      <!--SPACER-->
+
+      <span id="ideation" class="anchor"></span>
+      <section class="ideation parallax" data-speed="0.3">
+      <div class="cont twelve">
+        <div class="col-1 process-heading section-header-row">
+      <h2 class="section-header-28">Design Process<span class="rdot">.</span></h2><span class="heading-arrow"><svg class="arrow-svg"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path></svg></span>
+     </div>
+      </div>
+      
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-28-light">From research to design decisions</h2>
+    
+    </div>
+      </div>
+      
+
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <p class="biriyani-light description margin-btm-20" >Each design decision maps directly back to a research finding. Rather than borrowing features arbitrarily, every element was chosen with a specific user problem in&nbsp;mind.</p>
+  
+    </div>
+      </div>
+       <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+     
+    <ul class="bullets-col biriyani-light margin-btm-25">
+                  <li><span class="biriyani-bold">Mealime's onboarding → </span>adapted to focus on budget, not just dietary preferences</li>
+                  <li><span class="biriyani-bold">Too Good To Go's gamification → </span>applied to personal savings, not surplus food</li>
+                  <li><span class="biriyani-bold">Basket's price comparison → </span>integrated into the meal planning flow</li>
+                </ul>
+                  <p class="biriyani-light description " >User flow</p>
+    </div>
+      </div>
+       <div class="cont twelve">
+        <div class="col-1 ">
+          <img src="../assets/images/budgie-user-flow.png" alt="Budgie User Flow" class="budgie-user-flow zoomable border-light">
+        </div>
+      </div>
+      <!--SPACER-->
+      <div class="spacer-3rem"></div>
+      <!--SPACER-->
+       <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-28-light">Why This Flow Works (With Wireframes)</h2>
+    
+    </div>
+      </div>
+      <!--SPACER-->
+      <div class="spacer-1-5rem"></div>
+      <!--SPACER-->
+      <div class="cont six-six">
+<div class="col-1 center-horizontal">
+  <img src="../assets/images/set-up-wireframe-1.png" alt="Budgie Set Up Wireframe" class="wireframe full-width-mobile">
+</div>
+<div class="col-2 center-vertical"> 
+  <p class="biriyani-light description margin-btm-25"><span class="biriyani-bold">Splash → Quick Setup (No Signup Required)</span><br>Signup is delayed to reduce friction and build trust first. Users only enter what directly impacts pricing. Then set your&nbsp;budget. </p>
+  
+</div>
+      </div>
+       <div class="cont seven-five flip-mobile">
+<div class="col-1 center-vertical">
+  <p class="biriyani-light description margin-btm-25"><span class="biriyani-bold">Smart List: Pricing Visible at Point of Decision</span><br>Cost is shown while users are choosing, not after. This shifts decisions earlier and avoids the usual “oh shit” moment at checkout. Recipes can also be added, automatically pulling ingredients into the&nbsp;list. </p>
+</div>
+<div class="col-2 center-horizontal"> 
+  <img src="../assets/images/smart-list-wireframe.png" alt="Smart List Wireframe" class="wireframe">
+  
+  
+</div>
+      </div>
+       <div class="cont three-nine">
+<div class="col-1 center-horizontal">
+   <img src="../assets/images/basket-opt-wireframe.png" alt="Basket Optimisation Wireframe" class="wireframe">
+ 
+</div>
+<div class="col-2  center-vertical"> 
+  <p class="biriyani-light description margin-btm-25"><span class="biriyani-bold">Basket Optimisation: Reveals Savings Before Commitment</span><br>Comparing stores side by side showing clear comparative savings. Split shopping adds a bit more effort, but gives power users a way to squeeze out the most&nbsp;savings. </p>
+
+</div>
+      </div>
+      <div class="cont nine-three flip-mobile">
+<div class="col-1 center-vertical">
+   
+ <p class="biriyani-light description margin-btm-25"><span class="biriyani-bold">Store Mode / Delivery Checkout: Useful During the Shop</span><br>The app stays useful during the actual shop, not just before it. That adds complexity on the backend, but it’s what makes the product part of someone’s routine instead of a one-off&nbsp;tool.</p>
+</div>
+<div class="col-2   center-horizontal"> 
+  <img src="../assets/images/delivery-checkout-wireframe.png" alt="Basket Optimisation Wireframe" class="wireframe ">
+
+</div>
+      </div>
+      <div class="cont three-nine">
+<div class="col-1 center-horizontal">
+   <img src="../assets/images/delivery-checkout-wireframe.png" alt="Savings Feedback Wireframe" class="wireframe ">
+ 
+</div>
+<div class="col-2  center-vertical"> 
+  <p class="biriyani-light description margin-btm-25"><span class="biriyani-bold">Savings Feedback: Reinforces Behaviour Change</span><br>Showing savings after the shop gives users a sense of reward. It’s less about the numbers and more about reinforcing the&nbsp;behaviour.  </p>
+
+</div>
+      </div>
+      </section>
+      <!--SPACER-->
+<div class="spacer-4rem"></div>
+<!--SPACER-->
+<span id="design" class="anchor"></span>
+      <section class="design parallax" data-speed="0.3">
+<div class="cont twelve">
+  <div class="col-1 process-heading section-header-row">
+<h2 class="section-header-28">Prototype<span class="rdot">.</span></h2><span class="heading-arrow"><svg class="arrow-svg"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path></svg></span>
+</div>
+</div>
+<!--SPACER-->
+<div class="spacer-1-5rem mobile-0-8-rem"></div>
+<!--SPACER-->
+<div class="cont six-six">
+<div class="col-1 center-horizontal">
+   <img src="../assets/images/budgie-stock.png" alt="Live Prototype / MVP" class="stock-image border-light border-radius-6">
+ 
+</div>
+<div class="col-2  center-vertical gap-20"> 
+  <p class="biriyani-light description">With the research informing the direction and the flow mapped out, I built an interactive prototype of the end-to-end loop using Claude Code and MCP integrations — rather than static mockups. This felt like the right call: if Budgie's value is real-time connected intelligence, a static prototype couldn't represent that honestly. The goal being to use this to validate my research assumptions with real&nbsp;users.</p>
+<a href="https://darynhigginson.com/budgie-mvp/" target="_blank" class="gradient-button">Click here to view prototype</a>
+</div>
+      </div>
+<!--SPACER-->
+      <div class="spacer-3rem"></div>
+      <!--SPACER-->
+       <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-28-light">Design System</h2>
+    
+    </div>
+      </div>
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <p class="biriyani-light description margin-btm-25">Before building the prototype, I created a design system in Figma to establish visual consistency and speed up iteration. The system defines the core tokens - colour, typography, spacing, and iconography - that carry Budgie's budget-first personality across every&nbsp;screen.  </p>
+    
+    </div>
+      </div>
+      <div class="cont twelve">
+        <div class="col-1 ">
+          <img src="../assets/images/tokens-overview.png" alt="Budgie User Flow" class="budgie-user-flow zoomable border-light">
+        </div>
+      </div>
+      <!--SPACER-->
+<div class="spacer-3rem"></div>
+<!--SPACER-->
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <p class="biriyani-light description margin-btm-25">Built with MCP integrations, tokens and components could be referenced directly during the prototype build rather than manually maintained across files — reducing inconsistency and making layout iteration&nbsp;faster.</p>
+    
+    </div>
+      </div>
+      <div class="cont twelve">
+        <div class="col-1 ">
+          <img src="../assets/images/components-overview.png" alt="Budgie User Flow" class="budgie-user-flow zoomable border-light ">
+        </div>
+      </div>
+<!--SPACER-->
+<div class="spacer-4rem"></div>
+<!--SPACER-->
+ <div class="cont twelve">
+        <div class="col-1 process-heading section-header-row">
+      <h2 class="section-header-28">User testing and research validation<span class="rdot">.</span></h2><span class="heading-arrow"><svg class="arrow-svg"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path></svg></span>
+     </div>
+      </div>
+    
+       <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <p class="biriyani-light description " >The prototype of my most viable product is built. The next step is to put it in front of real users. Rather than guessing whether the design decisions land, I've defined four test tasks that map directly back to the core research findings — each one designed to validate a specific&nbsp;assumption.</p>
+  
+    </div>
+      </div>
+      <!--SPACER -->
+      <div class="spacer-1-5rem"></div>
+      <!--SPACER -->
+        <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-28-light">Test Tasks</h2>
+    
+    </div>
+      </div>
+      <div class="cont twelve">
+        <div class="col-1">
+          <div class="task-flow-grid">
+
+            <!-- Task 1 -->
+            <div class="task-flow-card" style="grid-area: t1;">
+              <p class="biriyani-light description">
+                <span class="biriyani-Regular" style="display:block; margin-bottom:4px; font-size:0.9em;">Task 1</span>
+                <span class="biriyani-bold card-heading">Budget Setting + Real-Time Tracking</span>
+                Participants are asked to do a weekly shop for £60, add 8 items, and describe at what point they felt confident they'd stay within budget. This tests whether the running total changes shopping&nbsp;behaviour.
+              </p>
+            </div>
+
+            <!-- Arrow: Task 1 → Task 2 (desktop) -->
+            <div class="task-flow-arrow-h" style="grid-area: r1;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
+              </svg>
+            </div>
+
+            <!-- Task 2 -->
+            <div class="task-flow-card" style="grid-area: t2;">
+              <p class="biriyani-light description">
+                <span class="biriyani-Regular" style="display:block; margin-bottom:4px; font-size:0.9em;">Task 2</span>
+                <span class="biriyani-bold card-heading">Store Comparison / Split Shop</span>
+                Participants build a list and find the cheapest way to buy everything, open to shopping at more than one store. This tests comprehension of the split shop concept and whether the saving feels worth the&nbsp;effort.
+              </p>
+            </div>
+
+            <!-- L-connector: Task 2 → Task 3 (desktop only) -->
+            <div class="task-flow-lc" style="grid-area: lc;" aria-hidden="true">
+              <div class="task-flow-lc-inner">
+                <svg class="special-arrow" viewBox="0 0 414 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.77338 28C4.77338 25.7134 5.8884 24.2465 7.16401 23.3799C8.39953 22.5407 9.79851 22.25 10.5234 22.25H406.023C409.243 22.25 410.559 21.2027 411.163 20.082C411.828 18.8479 411.773 17.3202 411.773 16V0H413.273V16C413.273 17.1798 413.368 19.1521 412.483 20.793C411.538 22.5472 409.603 23.75 406.023 23.75H10.5234C10.0817 23.75 8.98046 23.9596 8.00776 24.6201C7.07522 25.2535 6.27338 26.2868 6.27338 28V38.1885L9.76557 34.6963C10.0585 34.4034 10.5342 34.4034 10.8271 34.6963C11.12 34.9892 11.12 35.4649 10.8271 35.7578L6.05365 40.5303C5.76076 40.8232 5.286 40.8232 4.99311 40.5303L0.21967 35.7578C-0.0732235 35.4649 -0.0732229 34.9892 0.21967 34.6963C0.512563 34.4034 0.9883 34.4034 1.28119 34.6963L4.77338 38.1885V28Z" fill="currentColor" opacity="0.5"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Down arrows (mobile only) -->
+            <div class="task-flow-arrow-v" style="grid-area: v12;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14"/><path d="M6 13l6 6 6-6"/>
+              </svg>
+            </div>
+            <div class="task-flow-arrow-v" style="grid-area: v23;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14"/><path d="M6 13l6 6 6-6"/>
+              </svg>
+            </div>
+            <div class="task-flow-arrow-v" style="grid-area: v34;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14"/><path d="M6 13l6 6 6-6"/>
+              </svg>
+            </div>
+
+            <!-- Task 3 -->
+            <div class="task-flow-card" style="grid-area: t3;">
+              <p class="biriyani-light description">
+                <span class="biriyani-Regular" style="display:block; margin-bottom:4px; font-size:0.9em;">Task 3</span>
+                <span class="biriyani-bold card-heading">Recipe to Shopping List</span>
+                Participants use the app to find a recipe and add its ingredients to their list. This tests friction in the handoff between recipe browsing and list building, and whether pricing is visible at the recipe&nbsp;stage.
+              </p>
+            </div>
+
+            <!-- Arrow: Task 3 → Task 4 (desktop) -->
+            <div class="task-flow-arrow-h" style="grid-area: r2;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
+              </svg>
+            </div>
+
+            <!-- Task 4 -->
+            <div class="task-flow-card" style="grid-area: t4;">
+              <p class="biriyani-light description">
+                <span class="biriyani-Regular" style="display:block; margin-bottom:4px; font-size:0.9em;">Task 4</span>
+                <span class="biriyani-bold card-heading">Delivery vs In-Store</span>
+                Participants are asked to get their list delivered without going to the shops. This tests whether they notice the true cost comparison (delivery fee included) and whether it affects their&nbsp;decision.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--SPACER -->
+      <div class="spacer-3rem"></div>
+      <!--SPACER -->
+      <div class="cont twelve">
+        <div class="col-1 process-heading section-header-row">
+      <h2 class="section-header-28">Impact & Learnings<span class="rdot">.</span></h2><span class="heading-arrow"><svg class="arrow-svg"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="1" stroke-linecap="round"></path></svg></span>
+     </div>
+      </div>
+      
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-28-light">What’s next</h2>
+    
+    </div>
+      </div>
+      
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <p class="biriyani-light description " >The research identified the problem. The strategy shaped the direction. The prototype makes it real. The next step is usability testing across these four tasks to validate whether the design decisions hold up with real users — and to iterate based on what the data&nbsp;shows.</p>
+  
+    </div>
+      </div>
+       <!--SPACER -->
+      <div class="spacer-1-5rem"></div>
+      <!--SPACER -->
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-28-light">Metrics I'd Track at Launch</h2>
+    
+    </div>
+      </div>
+      
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+     <ul class="bullets-col biriyani-light margin-btm-25">
+            
+            <li><span class="bold">Weekly active users&nbsp;&nbsp;&rarr;&nbsp;&nbsp;</span>measuring habit formation</li>
+            <li><span class="bold">Average savings per shop&nbsp;&nbsp;&rarr;&nbsp;&nbsp;</span>measuring value delivery</li>
+           <li><span class="bold">Recipe-to-shop conversion rate&nbsp;&nbsp;&rarr;&nbsp;&nbsp;</span>measuring end-to-end flow adoption</li>
+        
+        </ul>
+  
+    </div>
+      </div>
+      <!--SPACER -->
+      <div class="spacer-1-5rem"></div>
+      <!--SPACER -->
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-28-light">What worked</h2>
+    
+    </div>
+      </div>
+      
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+     <ul class="bullets-col biriyani-light margin-btm-25">
+            
+            <li>Leading with strategy before interface design created clearer, more defensible decisions</li>
+           <li>Focusing on one killer feature — real-time pricing — gave the product a distinct identity</li>
+        <li>Using secondary research and competitive analysis as strategic inputs saved time while still grounding decisions in user needs</li>
+        </ul>
+      </div>
+      </div>
+      <!--SPACER -->
+      <div class="spacer-1-5rem"></div>
+      <!--SPACER -->
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+      <h2 class="section-header-28-light">What I'd Do Differently</h2>
+    
+    </div>
+      </div>
+      
+      <div class="cont twelve">
+        <div class="col-1 process-heading">
+      
+     <ul class="bullets-col biriyani-light margin-btm-25">
+            
+            <li>Conduct price sensitivity testing earlier — does seeing £6 in savings actually change behaviour?</li>
+           <li>Validate the delivery integration with convenience-first users who rely on Deliveroo or Getir — does budget consciousness matter in that context?</li>
+
+        </ul>
+      </div>
+      </div>
+</section>
+<!--SPACER-->
+<div class="spacer-4rem"></div>
+<!--SPACER-->
+<!--NEXT & PREVIOUS BUTTONS START-->
+<div id="next-prev-buttons" class="cont next-prev six-six six-six-mob parallax" data-speed="0.3">
+  <span id="contact" class="anchor"></span>
+  <div class="col-1 left mobile-6-col">
+    <div class="previous">
+      <a href="/" id="backButton">
+      <svg  width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.00029 8.5H17.5566" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8.36455 14.864L2.00059 8.5L8.36455 2.13604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+Back    </a></div>
+  </div>
+  <div class="col-2 right mobile-6-col">
+    <div class="previous"><a href="funds-campaign.html">Next
+      <svg class="arrow-right" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.5563 8.5L1 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10.1921 2.13604L16.556 8.5L10.1921 14.864" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </a></div>
+  </div>
+</div>
+<!--NEXT & PREVIOUS BUTTONS END-->
+<!--SPACER-->
+<div class="spacer-4rem"></div>
+<!--SPACER-->
+
+<contact-section></contact-section>
+
+    </div>
+  </div>
+</main>
+
+
+<div id="footer-bg"></div>
+<div class="cursor">
+  <div class="cursor-core"></div>
+  <div class="cursor-ring"></div>
+</div>
+
+<!--<img class="side-image" src="../assets/images/0-1.svg"/>-->
+
+
+
+<!-- Load scripts in correct order -->
+
+<script src="../assets/js/ScrollMagic.min.js" defer></script>
+<script src="../assets/js/animation.gsap.min.js" defer></script>
+    <!-- <script src="../assets/js/debug.addIndicators.min.js" defer></script> -->
+<script src="../assets/js/consolidated-parallax.js" defer></script>
+<script src="../assets/js/dots-background.js" defer></script>
+<script src="../assets/js/nav-appear.js" defer></script>
+<script src="../assets/js/theme-switch.js" defer></script>
+<script src="../assets/js/dark-mode-images.js" defer></script>
+<script src="../assets/js/logo-wave.js" defer></script>
+<script src="../assets/js/top-logo.js" defer></script>
+<!-- Swiper JS -->
+<script src="../assets/js/swiper-bundle.min.js" defer></script>
+<script src="../assets/js/swiper-script.js" defer></script>
+
+
+
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.getElementById('top-nav');
+  const topElement = document.querySelector('.top');
+  
+  // Show nav and top immediately on page load
+  nav.classList.add('nav-visible');
+  if (topElement) topElement.classList.add('top-visible');
+});
+  </script>
+<script src="../assets/js/top-nav.js" defer></script>
+<script src="../assets/js/generic-nav.js" defer></script>
+
+<!-- Mobile dropdown script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const overviewLink = document.querySelector('.overview-link');
+  const submenu = document.getElementById('mobile-submenu');
+  
+  // Function to close submenu
+  function closeSubmenu() {
+    overviewLink.classList.remove('active');
+    submenu.classList.remove('open');
+    submenu.style.maxHeight = '0';
+    submenu.style.opacity = '0';
+    submenu.style.overflow = 'hidden';
+    submenu.style.padding = '0';
+    submenu.style.marginBottom = '0';
+    
+    // Reset arrow rotation
+    const arrow = overviewLink.querySelector('.nav-arrow');
+    if (arrow) {
+      arrow.style.transform = 'rotate(0deg)';
+    }
+  }
+  
+  if (overviewLink && submenu) {
+    // Toggle submenu on overview link click
+    overviewLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Toggle active state for click
+      overviewLink.classList.toggle('active');
+      submenu.classList.toggle('open');
+      
+      // Directly control the submenu visibility with JavaScript
+      if (submenu.classList.contains('open')) {
+        submenu.style.maxHeight = '1000px';
+        submenu.style.opacity = '1';
+        submenu.style.overflow = 'visible';
+        submenu.style.padding = '10px 0';
+        submenu.style.marginBottom = '10px';
+      } else {
+        submenu.style.maxHeight = '0';
+        submenu.style.opacity = '0';
+        submenu.style.overflow = 'hidden';
+        submenu.style.padding = '0';
+        submenu.style.marginBottom = '0';
+      }
+      
+      // Directly control arrow rotation with JavaScript
+      const arrow = overviewLink.querySelector('.nav-arrow');
+      if (arrow) {
+        if (submenu.classList.contains('open')) {
+          arrow.style.transform = 'rotate(45deg)';
+        } else {
+          arrow.style.transform = 'rotate(0deg)';
+        }
+      }
+    });
+    
+    // Close submenu when clicking on submenu links
+    const submenuLinks = submenu.querySelectorAll('a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        closeSubmenu();
+      });
+    });
+    
+    // Close submenu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!overviewLink.contains(e.target) && !submenu.contains(e.target)) {
+        if (submenu.classList.contains('open')) {
+          closeSubmenu();
+        }
+      }
+    });
+  }
+});
+</script>
+<script src="../assets/js/zoomable-image.js" defer></script>
+<script>
+   const hoverAudio = document.getElementById('hoverSound');
+  const scrollAudio = document.getElementById('scrollSound');
+
+  var hoverTarget = document.getElementById('hoverTarget');
+  if (hoverTarget && hoverAudio) {
+    hoverTarget.addEventListener('mouseenter', () => {
+      hoverAudio.currentTime = 0;
+      hoverAudio.play().catch(() => {});
+    });
+  }
+
+  function playScrollSound() {
+    if (scrollAudio) scrollAudio.play().catch(() => {});
+    window.removeEventListener('scroll', playScrollSound);
+  }
+
+  window.addEventListener('scroll', playScrollSound);
+</script>
+<!--READ MORE JS -->
+<script>
+ document.querySelectorAll('.read-more-wrapper').forEach(function(wrapper) {
+  const button = wrapper.querySelector('.read-more-btn');
+  const paragraph = wrapper.querySelector('.full-paragraph');
+
+  // Expand paragraph
+  button.addEventListener('click', function () {
+    paragraph.classList.add('expanded');
+    paragraph.style.height = paragraph.scrollHeight + 'px';
+    button.style.display = 'none';
+  });
+
+  // Collapse paragraph
+  paragraph.addEventListener('click', function () {
+    paragraph.style.height = '0px';
+    paragraph.classList.remove('expanded');
+    button.style.display = 'inline';
+  });
+
+  // Optional: clear inline style after transition ends (cleaner for re-opening)
+  paragraph.addEventListener('transitionend', function () {
+    if (!paragraph.classList.contains('expanded')) {
+      paragraph.style.height = '';
+    }
+  });
+});
+
+</script>
+<script>
+  function initMap() {
+    var mapDiv = document.getElementById("map");
+    if (!mapDiv) return;
+    const london = { lat: 51.46, lng: -0.04 };
+
+    const map = new google.maps.Map(mapDiv, {
+      zoom: 15,
+      center: london,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+      styles: [
+        { featureType: "all", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
+        { featureType: "all", elementType: "labels.text.fill", stylers: [{ color: "#444444" }] },
+        { featureType: "all", elementType: "labels.text.stroke", stylers: [{ color: "#ffffff" }] },
+        { featureType: "landscape", elementType: "all", stylers: [{ color: "#f2f2f2" }] },
+        { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] },
+        { featureType: "road", elementType: "all", stylers: [{ saturation: -100 }, { lightness: 45 }] },
+        { featureType: "transit", elementType: "all", stylers: [{ visibility: "off" }] },
+        { featureType: "water", elementType: "all", stylers: [{ color: "#d3d3d3" }, { visibility: "on" }] }
+      ]
+    });
+
+    new google.maps.Marker({
+      position: london,
+      map: map,
+      title: "London"
+    });
+  }
+</script>
+
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHH4qPPTzoAu1qKM2GRi-lSgl_CICuQh4&callback=initMap">
+</script>
+<script src="../assets/js/product-slider.js" defer></script>
+<!--Web components start-->
+<script src="../assets/js/contact.js" defer></script>
+<script src="../assets/js/navigation.js"></script>
+<!--Web components end-->
+
+<script src="../assets/js/cursor-effects.js"> </script>
+</body>
+</html>

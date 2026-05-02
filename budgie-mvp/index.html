@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" id="themeColor" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/app.css" />
+  <title>Budgie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Desktop: render inside a phone frame ───────────── */
+    @media (min-width: 520px) {
+      html { background: #111; min-height: 100vh; overflow: auto; }
+      body {
+        background: transparent;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 40px 20px 60px;
+        min-height: 100vh;
+        gap: 16px;
+      }
+      /* Phone shell */
+      #phone-shell {
+        width: 390px;
+        height: 844px;
+        border-radius: 52px;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+        box-shadow:
+          0 0 0 2px #333,
+          0 0 0 14px #1a1a1a,
+          0 0 0 16px #0d0d0d,
+          0 50px 120px rgba(0,0,0,.8);
+        /* Subtle side buttons */
+        outline: none;
+      }
+      /* Side button indents */
+      #phone-shell::before,
+      #phone-shell::after {
+        content: '';
+        position: absolute;
+        width: 4px;
+        background: #1a1a1a;
+        border-radius: 2px;
+        left: -18px;
+        z-index: 999;
+      }
+      #phone-shell::before { top: 120px; height: 64px; box-shadow: 0 80px 0 #1a1a1a; }
+
+      /* Override fixed → absolute so screens sit inside the frame */
+      #phone-shell .screen  { position: absolute; }
+      #phone-shell .overlay { position: absolute; }
+
+      /* Label below phone */
+      #device-label {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        font-size: 12px;
+        color: #444;
+        letter-spacing: .5px;
+        text-transform: uppercase;
+      }
+    }
+
+    /* ── Mobile: shell is invisible, screens fill viewport ── */
+    @media (max-width: 519px) {
+      #phone-shell { position: fixed; inset: 0; }
+      #device-label { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div id="phone-shell">
+
+  <!-- ═══════════════════════════════════════════════
+       S1 · SPLASH
+  ═══════════════════════════════════════════════ -->
+  <div class="screen active light" id="s1">
+    <div class="splash-body">
+      <img src="images/budgie.svg" alt="Budgie" class="splash-logo-img" />
+      <div class="splash-name"><img src="images/budgie-logo.svg" alt="Budgie" class="logo-img" /></div>
+      <p class="splash-tag">Shop smarter. Spend less.</p>
+
+      <div class="stack">
+        <button class="btn btn-lime " onclick="nav('s2')">Get started</button>
+        <button class="btn btn-frosted">Sign in</button>
+        <p class="splash-foot">No account required to start</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       S2 · QUICK SETUP
+  ═══════════════════════════════════════════════ -->
+  <div class="screen light" id="s2">
+    <div class="scroll-body pad-h pad-top">
+      <h1 class="screen-title">Quick setup</h1>
+     
+
+      <!-- Postcode -->
+      <div class="field">
+        <div class="field-label">Your postcode</div>
+        <input class="field-input" type="text" inputmode="text" autocomplete="postal-code"
+               placeholder="e.g. SW1A 1AA" value="E1 6AN" />
+        <p class="field-hint">🗺 Used to find stores and live prices near you</p>
+      </div>
+
+      <!-- Budget slider -->
+      <div class="field">
+        <div class="field-label">Weekly food budget</div>
+        <div class="budget-big" id="budgetDisplay">£60</div>
+        <input class="slider" type="range" id="budgetSlider"
+               min="20" max="200" value="60" step="5"
+               oninput="updateBudget(this.value)" />
+        <div class="slider-range"><span>£20</span><span>£200</span></div>
+      </div>
+
+      <!-- Household size -->
+      <div class="field">
+        <div class="field-label">Household size</div>
+        <div class="seg">
+          <button class="seg-opt"  onclick="selSeg(this)">1</button>
+          <button class="seg-opt on" onclick="selSeg(this)">2</button>
+          <button class="seg-opt"  onclick="selSeg(this)">3</button>
+          <button class="seg-opt"  onclick="selSeg(this)">4+</button>
+        </div>
+      </div>
+
+      <!-- Preferred stores -->
+      <div class="field">
+        <div class="field-label">Preferred stores</div>
+        <div class="chips">
+          <button class="chip on" onclick="toggleChip(this)">Tesco</button>
+          <button class="chip on" onclick="toggleChip(this)">Lidl</button>
+          <button class="chip"    onclick="toggleChip(this)">Sainsbury's</button>
+          <button class="chip on" onclick="toggleChip(this)">Aldi</button>
+          <button class="chip"    onclick="toggleChip(this)">Asda</button>
+          <button class="chip"    onclick="toggleChip(this)">Waitrose</button>
+        </div>
+      </div>
+
+      <button class="btn btn-lime top-margin-md" style="margin-top:8px" onclick="nav('s3')">Start shopping</button>
+      <button class="btn btn-ghost" style="margin-top:6px" onclick="nav('s3')">Set up later</button>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       S3 · HOME DASHBOARD
+  ═══════════════════════════════════════════════ -->
+  <div class="screen light" id="s3">
+    <div class="scroll-body pad-h pad-top">
+      <h1 class="greeting">Good morning 👋</h1>
+      <p class="week-label">This week, 31 Mar – 6 Apr</p>
+
+      <!-- Budget hero card -->
+      <div class="hero-card">
+        <p class="hero-lbl">Remaining this week</p>
+        <div class="hero-big">£60<span class="hero-pence">.00</span></div>
+        <div class="prog-track" style="background:rgba(255,255,255,.2);margin:12px 0 8px">
+          <div class="prog-fill" style="width:100%"></div>
+        </div>
+        <p class="hero-spent">£0.00 spent of £60.00</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-val">0</div><div class="stat-lbl">Items in list</div></div>
+        <div class="stat-card"><div class="stat-val">£18.40</div><div class="stat-lbl">Saved this month</div></div>
+        <div class="stat-card"><div class="stat-val">🔥 2</div><div class="stat-lbl">Week streak</div></div>
+      </div>
+
+      <div class="stack">
+        <button class="btn btn-lime" onclick="nav('s4')"><img src="images/icon-list.svg" class="btn-icon-left"> Start my list</button>
+        <button class="btn btn-outline" onclick="nav('s5')"><img src="images/icon-recipes.svg" class="btn-icon-left"> Browse recipes</button>
+      </div>
+
+      <!-- Last week -->
+      <div class="card pad-card" style="margin-top:14px">
+        <p class="card-title">Last week</p>
+        <div class="row-sb">
+          <div>
+            <p class="item-name">Lidl shop</p>
+            <p class="item-meta">Mar 24 · 23 items</p>
+          </div>
+          <div style="text-align:right">
+            <p style="font-size:16px;font-weight:800;color:var(--green)">Saved £6.30</p>
+            <p class="item-meta">£53.70 total</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="safe-bottom"></div>
+    </div>
+
+    <nav id="home-nav" class="bottom-nav">
+      <div class="nav-item active" onclick="nav('s3')"><span class="nav-icon"><img src="images/icon-home.svg" class="bottom-nav-icon home"></span><span class="nav-label">Home</span></div>
+      <div class="nav-item" onclick="nav('s4')"><span class="nav-icon"><img src="images/icon-list.svg" class="bottom-nav-icon list"></span><span class="nav-label">List</span></div>
+      <div class="nav-item" onclick="nav('s5')"><span class="nav-icon"><img src="images/icon-recipes.svg" class="bottom-nav-icon recipes"></span><span class="nav-label">Recipes</span></div>
+      <div class="nav-item"><span class="nav-icon"><img src="images/icon-history.svg" class="bottom-nav-icon history"></span><span class="nav-label">History</span></div>
+    </nav>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       S4 · SMART LIST
+  ═══════════════════════════════════════════════ -->
+  <div class="screen light" id="s4">
+    <!-- Sticky header -->
+    <div class="sticky-header pad-h pad-top">
+      <div class="row-sb" style="margin-bottom:10px">
+        <h1 class="screen-title" style="margin:0">My list</h1>
+        <span class="item-meta">8 items</span>
+      </div>
+      <!-- Search bar -->
+      <div class="search-bar">
+        <span><img src="images/icon-search.svg"></span>
+        <input class="search-input" type="text" placeholder="Add item…" />
+        <button class="voice-btn" aria-label="Voice input"><img src="images/icon-microphone.svg"></button>
+      </div>
+      <!-- Running total -->
+      <div class="total-bar amber">
+        <div>
+          <p class="tb-label">Running total</p>
+          <p class="tb-amount">£43.15</p>
+        </div>
+        <div style="text-align:right">
+          <p class="tb-status amber">Within £5 of budget</p>
+          <p class="tb-budget">of £60.00</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-body pad-h" style="padding-top:8px">
+      <p class="section-lbl">Produce</p>
+      <div class="item-row"><span class="item-emoji">🥦</span><div class="item-body"><p class="item-name">Broccoli</p><p class="item-meta">1 head</p></div><div class="item-price-col"><p class="item-price">£0.75</p><p class="item-store-tag">Lidl</p></div></div>
+      <div class="item-row"><span class="item-emoji">🍅</span><div class="item-body"><p class="item-name">Tomatoes</p><p class="item-meta">400g</p></div><div class="item-price-col"><p class="item-price">£1.20</p><p class="item-store-tag">Tesco</p></div></div>
+      <div class="item-row"><span class="item-emoji">🧅</span><div class="item-body"><p class="item-name">Red onions</p><p class="item-meta">3 pack</p></div><div class="item-price-col"><p class="item-price">£0.89</p><p class="item-store-tag">Aldi</p></div></div>
+
+      <p class="section-lbl">Dairy &amp; Eggs</p>
+      <div class="item-row"><span class="item-emoji">🥛</span><div class="item-body"><p class="item-name">Semi-skimmed milk</p><p class="item-meta">2 litres</p></div><div class="item-price-col"><p class="item-price">£1.40</p><p class="item-store-tag">Lidl</p></div></div>
+      <div class="item-row"><span class="item-emoji">🥚</span><div class="item-body"><p class="item-name">Free range eggs</p><p class="item-meta">6 pack</p></div><div class="item-price-col"><p class="item-price">£1.99</p><p class="item-store-tag">Tesco</p></div></div>
+
+      <p class="section-lbl">Meat &amp; Fish</p>
+      <div class="item-row"><span class="item-emoji">🍗</span><div class="item-body"><p class="item-name">Chicken breast</p><p class="item-meta">600g</p></div><div class="item-price-col"><p class="item-price">£4.50</p><p class="item-store-tag">Tesco</p></div></div>
+
+      <p class="section-lbl">Cupboard</p>
+      <div class="item-row"><span class="item-emoji">🍝</span><div class="item-body"><p class="item-name">Pasta (penne)</p><p class="item-meta">500g</p></div><div class="item-price-col"><p class="item-price">£0.99</p><p class="item-store-tag">Aldi</p></div></div>
+      <div class="item-row"><span class="item-emoji">🥫</span><div class="item-body"><p class="item-name">Chopped tomatoes</p><p class="item-meta">2 × 400g</p></div><div class="item-price-col"><p class="item-price">£1.30</p><p class="item-store-tag">Lidl</p></div></div>
+
+      <div style="margin-top:16px">
+        <button class="btn btn-lime" onclick="nav('s6')"><img src="images/icon-optimise.svg"> Optimise basket</button>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+
+    <button class="fab" onclick="alert('Type or speak to add an item')" aria-label="Add item">+</button>
+
+    <nav id="list-nav" class="bottom-nav">
+     <div class="nav-item" onclick="nav('s3')"><span class="nav-icon"><img src="images/icon-home.svg" class="bottom-nav-icon home"></span><span class="nav-label">Home</span></div>
+      <div class="nav-item active" onclick="nav('s4')"><span class="nav-icon"><img src="images/icon-list.svg" class="bottom-nav-icon list"></span><span class="nav-label">List</span></div>
+      <div class="nav-item" onclick="nav('s5')"><span class="nav-icon"><img src="images/icon-recipes.svg" class="bottom-nav-icon recipes"></span><span class="nav-label">Recipes</span></div>
+      <div class="nav-item"><span class="nav-icon"><img src="images/icon-history.svg" class="bottom-nav-icon history"></span><span class="nav-label">History</span></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       S5 · RECIPE BROWSER
+  ═══════════════════════════════════════════════ -->
+  <div class="screen light" id="s5">
+    <div class="sticky-header pad-h pad-top">
+      <h1 class="screen-title" style="margin-bottom:2px">Recipes</h1>
+      <p class="screen-sub" style="margin-bottom:12px">Plan meals · price your basket</p>
+      <div class="recipe-tabs">
+        <button class="recipe-tab on">Browse</button>
+        <button class="recipe-tab">Saved</button>
+        <button class="recipe-tab">My meals</button>
+      </div>
+      <!-- Filter row -->
+      <div class="filter-scroll">
+        <button class="filter-pill on">All</button>
+        <button class="filter-pill">Under £5</button>
+        <button class="filter-pill">Pasta</button>
+        <button class="filter-pill">Vegetarian</button>
+        <button class="filter-pill">Quick</button>
+      </div>
+    </div>
+
+    <div class="scroll-body" style="padding:0 20px">
+      <div class="recipe-card">
+        <div class="recipe-img bg1">🍝</div>
+        <div class="recipe-body">
+          <p class="recipe-name">Spaghetti Bolognese</p>
+          <div class="recipe-meta"><span>⏱ 30 min</span><span>👥 4 servings</span></div>
+          <div class="row-sb">
+            <div><p class="recipe-cost">£4.80</p><p class="recipe-cost-lbl">est. total cost</p></div>
+            <button class="add-recipe-btn" onclick="openSheet('recipeSheet')">Add to list</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <div class="recipe-img bg2">🍛</div>
+        <div class="recipe-body">
+          <p class="recipe-name">Chicken Tikka Masala</p>
+          <div class="recipe-meta"><span>⏱ 45 min</span><span>👥 4 servings</span></div>
+          <div class="row-sb">
+            <div><p class="recipe-cost">£6.20</p><p class="recipe-cost-lbl">est. total cost</p></div>
+            <button class="add-recipe-btn" onclick="openSheet('recipeSheet')">Add to list</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <div class="recipe-img bg3">🥗</div>
+        <div class="recipe-body">
+          <p class="recipe-name">Greek Salad with Feta</p>
+          <div class="recipe-meta"><span>⏱ 10 min</span><span>👥 2 servings</span></div>
+          <div class="row-sb">
+            <div><p class="recipe-cost">£3.10</p><p class="recipe-cost-lbl">est. total cost</p></div>
+            <button class="add-recipe-btn" onclick="openSheet('recipeSheet')">Add to list</button>
+          </div>
+        </div>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+
+    <!-- Ingredient confirmation sheet -->
+    <div class="overlay" id="recipeSheet">
+      <div class="sheet">
+        <div class="sheet-handle"></div>
+        <p class="sheet-title">Spaghetti Bolognese</p>
+        <p class="sheet-sub">7 ingredients · est. £4.80 total</p>
+        <div class="ingr-row"><div class="check-box on" onclick="toggleIngr(this)">✓</div><p class="ingr-name">Spaghetti 500g</p><p class="ingr-price">£0.85</p></div>
+        <div class="ingr-row"><div class="check-box on" onclick="toggleIngr(this)">✓</div><p class="ingr-name">Beef mince 500g</p><p class="ingr-price">£2.50</p></div>
+        <div class="ingr-row"><div class="check-box on" onclick="toggleIngr(this)">✓</div><p class="ingr-name">Chopped tomatoes 400g</p><p class="ingr-price">£0.65</p></div>
+        <div class="ingr-row"><div class="check-box on" onclick="toggleIngr(this)">✓</div><p class="ingr-name">Onion × 1</p><p class="ingr-price">£0.30</p></div>
+        <div class="ingr-row"><div class="check-box on" onclick="toggleIngr(this)">✓</div><p class="ingr-name">Garlic cloves × 3</p><p class="ingr-price">£0.25</p></div>
+        <div class="ingr-row"><div class="check-box" onclick="toggleIngr(this)"></div><p class="ingr-name muted">Tomato purée (already have)</p><p class="ingr-price muted">£0.50</p></div>
+        <div class="ingr-row"><div class="check-box on" onclick="toggleIngr(this)">✓</div><p class="ingr-name">Parmesan 30g</p><p class="ingr-price">£0.75</p></div>
+        <div class="stack" style="margin-top:20px">
+          <button class="btn btn-lime" onclick="closeSheet('recipeSheet');nav('s4')">Add 6 items to list (est. £4.30)</button>
+          <button class="btn btn-ghost" onclick="closeSheet('recipeSheet')">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+     <nav id="recipe-nav" class="bottom-nav">
+     <div class="nav-item" onclick="nav('s3')"><span class="nav-icon"><img src="images/icon-home.svg" class="bottom-nav-icon home"></span><span class="nav-label">Home</span></div>
+      <div class="nav-item" onclick="nav('s4')"><span class="nav-icon"><img src="images/icon-list.svg" class="bottom-nav-icon list"></span><span class="nav-label">List</span></div>
+      <div class="nav-item active" onclick="nav('s5')"><span class="nav-icon"><img src="images/icon-recipes.svg" class="bottom-nav-icon recipes"></span><span class="nav-label">Recipes</span></div>
+      <div class="nav-item"><span class="nav-icon"><img src="images/icon-history.svg" class="bottom-nav-icon history"></span><span class="nav-label">History</span></div>
+    </nav>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       S6 · BASKET OPTIMISATION
+  ═══════════════════════════════════════════════ -->
+  <div class="screen light" id="s6">
+    <div class="scroll-body pad-h pad-top">
+      <h1 class="screen-title">Optimise basket</h1>
+      <p class="screen-sub" style="margin-bottom:16px">8 items · comparing 3 stores</p>
+
+      <!-- Best option -->
+      <div class="best-card">
+        <span class="best-badge">⭐ Best value</span>
+        <p class="best-store">Lidl</p>
+        <p class="best-price">£43.15</p>
+        <p class="best-saving">Save <span>£6.30</span> vs shopping at Tesco</p>
+      </div>
+
+      <p class="section-lbl">All stores</p>
+      <div class="cmp-row highlight"><div><p class="cmp-store">Lidl</p><p class="cmp-tag good">Best price</p></div><p class="cmp-price">£43.15</p></div>
+      <div class="cmp-row"><div><p class="cmp-store">Aldi</p><p class="cmp-tag">1.2 miles</p></div><div style="text-align:right"><p class="cmp-price">£45.80</p><p class="cmp-diff">+£2.65</p></div></div>
+      <div class="cmp-row"><div><p class="cmp-store">Tesco</p><p class="cmp-tag">0.4 miles</p></div><div style="text-align:right"><p class="cmp-price">£49.45</p><p class="cmp-diff">+£6.30</p></div></div>
+
+      <!-- Split shop -->
+      <div class="split-card">
+        <p class="split-title">💡 Split shop tip</p>
+        <p class="split-desc">Produce from Aldi + everything else from Lidl</p>
+        <p class="split-save">Save an extra £3.20</p>
+        <p style="font-size:12px;color:var(--n400);margin-top:3px">Total: £39.95 across 2 stops</p>
+      </div>
+
+      <!-- Delivery toggle -->
+      <div class="row-sb card pad-card" style="margin-bottom:14px">
+        <div><p class="dtr-label">Show delivery options</p><p class="dtr-sub">Compare with in-store</p></div>
+        <div class="toggle" id="delivTog" onclick="toggleDelivery()"><div class="toggle-knob"></div></div>
+      </div>
+
+      <div class="stack">
+        <button class="btn btn-lime" onclick="nav('s7a')"><img src="images/icon-cart.svg"> Shop in-store at Lidl</button>
+        <button class="btn btn-outline" onclick="nav('s7b')"><img src="images/icon-delivery.svg"> Get it delivered</button>
+        <button class="btn btn-ghost" style="font-size:14px"> Choose a different store</button>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       S7a · STORE MODE
+  ═══════════════════════════════════════════════ -->
+  <div class="screen light" id="s7a">
+    <div class="sticky-header pad-h pad-top">
+      <div class="row-sb">
+        <div><h1 class="screen-title" style="margin:0">Lidl</h1><p class="screen-sub">Store mode · 8 items</p></div>
+        <span class="store-badge">🛒 In-store</span>
+      </div>
+    </div>
+
+    <div class="scroll-body pad-h" style="padding-top:8px">
+      <p class="aisle-hdr">🥦 Aisle 2 — Fresh produce</p>
+      <div class="store-item ticked" id="si1"><div class="check-box on" onclick="tickItem('si1',0.75)">✓</div><p class="si-name ticked">Broccoli</p><p class="si-price">£0.75</p></div>
+      <div class="store-item ticked" id="si2"><div class="check-box on" onclick="tickItem('si2',0.89)">✓</div><p class="si-name ticked">Red onions × 3</p><p class="si-price">£0.89</p></div>
+      <div class="store-item" id="si3"><div class="check-box" onclick="tickItem('si3',1.20)"></div><p class="si-name">Tomatoes 400g</p><p class="si-price">£1.20</p></div>
+
+      <p class="aisle-hdr">🥛 Aisle 4 — Dairy &amp; Eggs</p>
+      <div class="store-item" id="si4"><div class="check-box" onclick="tickItem('si4',1.40)"></div><p class="si-name">Semi-skimmed milk 2L</p><p class="si-price">£1.40</p></div>
+      <div class="store-item" id="si5"><div class="check-box" onclick="tickItem('si5',1.99)"></div><p class="si-name">Free range eggs × 6</p><p class="si-price">£1.99</p></div>
+
+      <p class="aisle-hdr">🍗 Aisle 6 — Meat &amp; Fish</p>
+      <div class="store-item" id="si6"><div class="check-box" onclick="tickItem('si6',4.50)"></div><p class="si-name">Chicken breast 600g</p><p class="si-price">£4.50</p></div>
+
+      <p class="aisle-hdr">🥫 Aisle 8 — Ambient &amp; Tins</p>
+      <div class="store-item" id="si7"><div class="check-box" onclick="tickItem('si7',0.99)"></div><p class="si-name">Pasta (penne) 500g</p><p class="si-price">£0.99</p></div>
+      <div class="store-item" id="si8"><div class="check-box" onclick="tickItem('si8',1.30)"></div><p class="si-name">Chopped tomatoes × 2</p><p class="si-price">£1.30</p></div>
+      <div class="safe-bottom" style="height:130px"></div>
+    </div>
+
+    <!-- Spend footer pinned above bottom -->
+    <div class="spend-bar">
+      <div class="row-sb" style="margin-bottom:12px">
+        <div><p class="spend-lbl">Spent so far</p><p class="spend-num" id="spentAmt">£1.64</p></div>
+        <div style="text-align:right"><p class="spend-lbl">Budget</p><p class="spend-bgt">£60.00</p></div>
+      </div>
+      <button class="btn btn-green" onclick="nav('s8')">✓ Done shopping</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       S7b · DELIVERY VIEW
+  ═══════════════════════════════════════════════ -->
+  <div class="screen light" id="s7b">
+    <div class="scroll-body pad-h pad-top">
+      <h1 class="screen-title">Delivery options</h1>
+      <p class="screen-sub" style="margin-bottom:16px">8 items · 3 options</p>
+
+      <!-- Best delivery -->
+      <div class="del-card best">
+        <div class="row-sb" style="margin-bottom:12px">
+          <div><p class="del-name">🛍 Lidl Plus</p><p class="del-sub">via Getir</p></div>
+          <span class="del-badge">⭐ Best value</span>
+        </div>
+        <div class="cost-trio">
+          <div class="cost-cell"><p class="cc-lbl">Basket</p><p class="cc-val">£43.15</p></div>
+          <div class="cost-cell"><p class="cc-lbl">Delivery</p><p class="cc-val">£1.99</p></div>
+          <div class="cost-cell"><p class="cc-lbl">True total</p><p class="cc-val true-total">£45.14</p></div>
+        </div>
+        <p class="del-eta">🕐 Delivered in 45–60 min</p>
+        <p class="vs-instore">⚠️ £2.00 more than collecting in-store (£43.15)</p>
+        <button class="btn btn-lime" onclick="nav('s8')">Order from Lidl Plus</button>
+      </div>
+
+      <!-- Tesco delivery -->
+      <div class="del-card">
+        <div class="row-sb" style="margin-bottom:12px">
+          <div><p class="del-name">🛒 Tesco</p><p class="del-sub">Tesco Grocery &amp; Clubcard</p></div>
+        </div>
+        <div class="cost-trio">
+          <div class="cost-cell"><p class="cc-lbl">Basket</p><p class="cc-val">£49.45</p></div>
+          <div class="cost-cell"><p class="cc-lbl">Delivery</p><p class="cc-val">£3.00</p></div>
+          <div class="cost-cell"><p class="cc-lbl">True total</p><p class="cc-val pricey">£52.45</p></div>
+        </div>
+        <p class="del-eta">🕐 Tomorrow, 8am–10am</p>
+        <p class="vs-red" style="margin-bottom:12px">£7.31 more than Lidl Plus delivery</p>
+        <button class="btn btn-outline">Order from Tesco</button>
+      </div>
+
+      <div style="text-align:center;padding:12px 0">
+        <button class="btn btn-ghost" style="font-size:14px" onclick="nav('s7a')">← Switch to in-store</button>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       S8 · SAVINGS SUMMARY
+  ═══════════════════════════════════════════════ -->
+  <div class="screen dark" id="s8">
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="scroll-body pad-h pad-top">
+      <!-- Hero -->
+      <div class="savings-hero">
+        <div class="savings-emoji">🎉</div>
+        <p class="saved-lbl">You saved</p>
+        <p class="saved-big">£6.30</p>
+        <p class="saved-vs">vs Tesco · £43.15 total</p>
+      </div>
+
+      <!-- Monthly progress -->
+      <div class="sum-card">
+        <p class="sum-card-title">Monthly savings</p>
+        <div class="row-sb" style="margin-bottom:8px">
+          <p class="monthly-big">£24.70</p>
+          <p class="monthly-goal">goal: £30.00</p>
+        </div>
+        <div class="prog-track"><div class="prog-fill" style="width:82%"></div></div>
+        <p class="prog-note">£5.30 to reach your monthly goal</p>
+      </div>
+
+      <!-- Rewards -->
+      <div class="sum-card">
+        <p class="sum-card-title">Rewards</p>
+        <div class="reward-row">
+          <div class="reward-cell"><p class="rc-big">+63</p><p class="rc-lbl">points this shop</p></div>
+          <div class="reward-cell"><p class="rc-big">847</p><p class="rc-lbl">total points</p></div>
+          <div class="reward-cell"><p class="rc-big">🔥 3</p><p class="rc-lbl">week streak</p></div>
+        </div>
+      </div>
+
+      <!-- Breakdown -->
+      <div class="sum-card">
+        <p class="sum-card-title">This shop</p>
+        <div class="bkdn-row"><p class="bkdn-lbl">Basket total</p><p class="bkdn-val">£43.15</p></div>
+        <div class="bkdn-row"><p class="bkdn-lbl">vs Tesco equivalent</p><p class="bkdn-val dim">£49.45</p></div>
+        <div class="bkdn-row"><p class="bkdn-lbl">You saved</p><p class="bkdn-val lime">£6.30 🎉</p></div>
+      </div>
+
+      <div class="stack" style="padding-top:4px">
+        <button class="btn btn-white" onclick="nav('s3')"><img src="images/icon-calendar.svg"> Plan next week</button>
+        <button class="btn btn-frosted-light">View full history</button>
+      </div>
+      <div class="safe-bottom"></div>
+    </div>
+  </div>
+
+</div><!-- #phone-shell -->
+<p id="device-label">Budgie · MVP Preview</p>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

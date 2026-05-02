@@ -1,0 +1,125 @@
+#next-prev-buttons .col-1.left.mobile-6-col {
+  grid-column: span 5;
+}
+#next-prev-buttons .col-2.right.mobile-6-col {
+  grid-column: span 5;
+}
+.cont {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+.seven-five > .col-1 {
+  grid-column:span 7;
+}
+.seven-five > .col-2 {
+  grid-column:span 5;
+}
+.six-six > .col-1 {
+  grid-column:span 6;
+}
+.four-column > .col-1{
+  grid-column: span 3;
+}
+.four-column > .col-2{
+  grid-column: span 3;
+}
+.four-column > .col-3{
+  grid-column: span 3;
+}
+.four-column > .col-4{
+  grid-column: span 3;
+}
+.six-six > .col-2 {
+  grid-column:span 6;
+}
+.four-four-four > .col-1{
+  grid-column: span 4;
+}
+.four-four-four > .col-2{
+  grid-column: span 4;
+}
+.four-four-four > .col-3{
+  grid-column: span 4;
+}
+.four-eight > .col-1 {
+  grid-column: span 4;
+}
+.four-eight > .col-2 {
+  grid-column: span 8;
+}
+.eight-four > .col-1 {
+  grid-column: span 8;
+}
+.eight-four > .col-2 {
+  grid-column: span 4;
+}
+.twelve > .col-1 {
+  grid-column: span 12;
+}
+.twelve {
+  grid-column: span 12;
+}
+@media screen and (max-width: 767px) {
+  .seven-five > .col-1 {
+    grid-column: span 12;
+  }
+  .four-four-four > .col-1 {
+    grid-column: span 12;
+  }
+  .four-four-four > .col-2 {
+    grid-column: span 12;
+  }
+  .four-four-four > .col-3 {
+    grid-column: span 12;
+  }
+  .four-column > .col-1 {
+    grid-column: span 12;
+  }
+  .four-column > .col-2 {
+    grid-column: span 12;
+  }
+  .four-column > .col-3 {
+    grid-column: span 12;
+  }
+  .four-column > .col-4 {
+    grid-column: span 12;
+  }
+  .eight-four > .col-1 {
+    grid-column: span 12;
+  }
+  .eight-four > .col-2 {
+    grid-column: span 12;
+  }
+  .four-eight > .col-1 {
+    grid-column: span 12;
+  }
+  .four-eight > .col-2 {
+    grid-column: span 12;
+  }
+  .six-six > .col-1 {
+    grid-column: span 12;
+  }
+  .six-six > .col-2 {
+    grid-column: span 12;
+  }
+  .col-1.left.mobile-6-col {
+    grid-column: span 6;
+  }
+  .col-2.right.mobile-6-col {
+    grid-column: span 6;
+  }
+  #next-prev-buttons .col-1.left.mobile-6-col {
+    grid-column: span 5;
+  }
+  #next-prev-buttons .col-2.right.mobile-6-col {
+    grid-column: span 5;
+  }
+
+  .flip-mobile > .col-1 {
+    grid-row: 2;
+  }
+  .flip-mobile > .col-2 {
+    grid-row: 1;
+  }
+}

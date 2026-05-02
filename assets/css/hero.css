@@ -1,0 +1,202 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  min-height: 450px;
+}
+
+
+.hero-image {
+  flex: 1;
+  padding: 20px;
+}
+
+.hero img {
+  max-width: 100%;
+  height: auto;
+}
+ #hero-section {
+    position: absolute;
+    width: 100%;
+    min-height: 450px; /* Ensures the hero is never smaller than 567px */
+    height: 40vh; /* Adjust as needed */
+    overflow: hidden;
+    z-index:0;
+    opacity: 0;
+    animation: fadeInHero 1s ease-out forwards;
+}
+
+@keyframes fadeInHero {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#hero-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 30%, #fbfbfb 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero {
+    position: relative;
+    z-index: 2;
+    color: black;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding:20px;
+    min-height: 420px;
+}
+
+h1.my-name{
+    font-family: 'Outfit', sans-serif;
+    font-size: 42px;
+    line-height: 130%;
+    margin-bottom: 0;
+    color: #0C0C0C;
+    margin-top: 35px;
+    font-weight: 500;
+}
+body.dark-mode .blurb {
+    color: var(--dark-text);
+}
+.blurb {
+  font-size: 18px;
+  color: var(--light-text);
+}
+h2.title{
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    color: #0C0C0C;
+    font-weight: 300;
+}
+.logo-header {
+    display: flex;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  .hero-text {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .feather.feather-arrow-down {
+    width: 35px;
+    display: block;
+    margin: 10px auto;
+  }
+  .feather-arrow-down {
+    animation: pulsate 1s infinite;
+  }
+ 
+
+
+@keyframes waveUp {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Make hero dots darker */
+.dh-dots rect {
+    fill: #bdbdbd; /* Changed from a lighter gray to a darker gray */
+    animation: waveUp 0.6s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.dh-dots rect:nth-child(1) { animation-delay: 0s; }
+.dh-dots rect:nth-child(2) { animation-delay: 0.1s; }
+.dh-dots rect:nth-child(3) { animation-delay: 0.2s; }
+.dh-dots rect:nth-child(4) { animation-delay: 0.3s; }
+.dh-dots rect:nth-child(5) { animation-delay: 0.4s; }
+.dh-dots rect:nth-child(6) { animation-delay: 0.5s; }
+.dh-dots rect:nth-child(7) { animation-delay: 0.6s; }
+.dh-dots rect:nth-child(8) { animation-delay: 0.7s; }
+.dh-dots rect:nth-child(9) { animation-delay: 0.8s; }
+.dh-dots rect:nth-child(10) { animation-delay: 0.9s; }
+.dh-dots rect:nth-child(11) { animation-delay: 1s; }
+.dh-dots rect:nth-child(12) { animation-delay: 1.1s; }
+.dh-dots rect:nth-child(13) { animation-delay: 1.2s; }
+.dh-dots rect:nth-child(14) { animation-delay: 1.3s; }
+.dh-dots rect:nth-child(15) { animation-delay: 1.4s; }
+.dh-dots rect:nth-child(16) { animation-delay: 1.5s; }
+.dh-dots rect:nth-child(17) { animation-delay: 1.6s; }
+.dh-dots rect:nth-child(18) { animation-delay: 1.7s; }
+
+@keyframes popUp {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.hero-logo rect {
+    animation: popUp 0.6s ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+/* Stagger the animations for each rectangle */
+.hero-logo rect:nth-child(1) { animation-delay: 0s; }
+.hero-logo rect:nth-child(2) { animation-delay: 0.05s; }
+.hero-logo rect:nth-child(3) { animation-delay: 0.1s; }
+.hero-logo rect:nth-child(4) { animation-delay: 0.15s; }
+.hero-logo rect:nth-child(5) { animation-delay: 0.2s; }
+.hero-logo rect:nth-child(6) { animation-delay: 0.25s; }
+.hero-logo rect:nth-child(7) { animation-delay: 0.3s; }
+.hero-logo rect:nth-child(8) { animation-delay: 0.35s; }
+.hero-logo rect:nth-child(9) { animation-delay: 0.4s; }
+.hero-logo rect:nth-child(10) { animation-delay: 0.45s; }
+.hero-logo rect:nth-child(11) { animation-delay: 0.5s; }
+.hero-logo rect:nth-child(12) { animation-delay: 0.55s; }
+.hero-logo rect:nth-child(13) { animation-delay: 0.6s; }
+.hero-logo rect:nth-child(14) { animation-delay: 0.65s; }
+.hero-logo rect:nth-child(15) { animation-delay: 0.7s; }
+.hero-logo rect:nth-child(16) { animation-delay: 0.75s; }
+.hero-logo rect:nth-child(17) { animation-delay: 0.8s; }
+.hero-logo rect:nth-child(18) { animation-delay: 0.85s; }
+
+/* Add a class to trigger the animation */
+.animate-logo {
+    animation-play-state: running;
+}

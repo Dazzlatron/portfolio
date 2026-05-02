@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funds Campaign</title>
+    <!-- Critical dark mode CSS - loads first, dark by default -->
+    <style>
+      :root {
+        --dark-bg: #121212;
+        --dark-text: #fbfbfb;
+        --dark-secondary: #1e1e1e;
+        --dark-accent: #FF1515;
+        --dark-border: #616161;
+        --dark-hover: #2a2a2a;
+        --light-text: #121212;
+        --light-dark-border: #424242;
+        --light-bg: #fbfbfb;
+        --light-border: #d1d1d1;
+        --red-accent: #FF1515;
+        --light-darker-border: #121212;
+      }
+      /* Dark mode by default */
+      body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+      }
+    
+   
+    </style>
+    <!-- Set dark mode immediately, before DOM loads -->
+    <script>
+      (function() {
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme !== 'light') {
+          document.documentElement.classList.add('dark-mode-ready');
+          if (document.body) {
+            document.body.classList.add('dark-mode');
+          } else {
+            var observer = new MutationObserver(function(mutations) {
+              if (document.body) {
+                document.body.classList.add('dark-mode');
+                observer.disconnect();
+              }
+            });
+            observer.observe(document.documentElement, { childList: true });
+          }
+        }
+      })();
+    </script>
+    <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
+
+    <!--FAVICONS-->
+    <link rel="icon" href="../assets/images/dh-logo-favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../assets/images/dh-logo-favicon-48.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/images/dh-logo-favicon-48.png">
+    <link rel="icon" href="../assets/images/dh-favicon.ico" type="image/x-icon">
+
+<link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
+    <!-- CSS files - load synchronously to prevent FOUC -->
+    <link rel="stylesheet" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/assets/css/dark-mode.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+
+    <link rel="stylesheet" href="/assets/css/hero.css">
+    <link rel="stylesheet" href="/assets/css/parallax.css">
+    <link rel="stylesheet" href="/assets/css/project-tiles.css">
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets/css/swiper-style.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/device-styles.css">
+    <link rel="stylesheet" href="/assets/css/product-slider.css">
+    <link rel="stylesheet" href="/assets/css/tabs.css">
+    <link rel="stylesheet" href="/assets/css/grid-column-layout.css">
+    <link rel="stylesheet" href="/assets/css/image-styles.css">
+    <link rel="stylesheet" href="/assets/css/cursor-effects.css">
+    <!-- Show content once CSS is loaded - runs immediately -->
+    <script>
+      (function() {
+        function checkStylesheets() {
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var allLoaded = true;
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            // Check if stylesheet is loaded by trying to access its rules
+            try {
+              if (sheet.sheet && sheet.sheet.cssRules && sheet.sheet.cssRules.length > 0) {
+                // Stylesheet is loaded
+                continue;
+              } else if (sheet.sheet) {
+                // Sheet exists but might not be fully loaded yet
+                allLoaded = false;
+                break;
+              } else {
+                // Sheet not loaded yet
+                allLoaded = false;
+                break;
+              }
+            } catch(e) {
+              // Cross-origin or not loaded yet
+              allLoaded = false;
+              break;
+            }
+          }
+          
+          if (allLoaded && stylesheets.length > 0) {
+            // All stylesheets loaded, show content
+            requestAnimationFrame(function() {
+              document.documentElement.classList.add('css-loaded');
+            });
+            return true;
+          }
+          return false;
+        }
+        
+        function showContent() {
+          document.documentElement.classList.add('css-loaded');
+        }
+        
+        // Check immediately
+        if (!checkStylesheets()) {
+          // If not all loaded, check on load events
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var loadedCount = 0;
+          var totalSheets = stylesheets.length;
+          
+          function onSheetLoad() {
+            loadedCount++;
+            if (loadedCount >= totalSheets) {
+              requestAnimationFrame(function() {
+                requestAnimationFrame(showContent);
+              });
+            }
+          }
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            var isLoaded = false;
+            try { isLoaded = sheet.sheet && sheet.sheet.cssRules; } catch (e) { isLoaded = true; }
+            if (isLoaded) {
+              loadedCount++;
+            } else {
+              sheet.addEventListener('load', onSheetLoad);
+              sheet.addEventListener('error', onSheetLoad);
+            }
+          }
+          
+          if (loadedCount >= totalSheets) {
+            requestAnimationFrame(function() {
+              requestAnimationFrame(showContent);
+            });
+          }
+        }
+        
+        // Fallback: show after delay
+        setTimeout(showContent, 200);
+      })();
+    </script>
+    <script defer src="../assets/js/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    
+    <script defer src="../assets/js/sticky-scroll.js"></script>
+    <script defer src="../assets/js/mobile-swipe.js"></script>
+ 
+<style>
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #hero-section {
+    
+    width: 95%;
+  }
+}
+  .anchor {
+  position: relative;
+  top: -60px;
+}
+  
+  /* Make Home arrow point the other way */
+  .nav-item a[href="index.html"] .arrow-svg {
+    transform: rotate(135deg);
+  }
+  
+  /* Rotate Project arrow 45 degrees when submenu is open */
+  .project-nav:hover > a .arrow-svg {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+  @media screen and (min-width:1200px) {
+    .main-content {
+    padding: 0 2rem;
+    margin-top: 3.2rem;
+
+  }
+  }
+  @media screen and (min-width: 1200px) and (max-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .main-content {
+    padding: 1rem 2rem;
+    margin-top: 20px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #hero-section {
+    height: 55vh;}
+  }
+
+</style>
+</head>
+<body>
+  <audio id="hoverSound" preload="auto">
+    <source src="../assets/sounds/notification-1-269296.mp3" type="audio/mpeg">
+  </audio>
+  
+  <!-- Scroll sound -->
+  <audio id="scrollSound" preload="auto">
+    <source src="../assets/sounds/startup-sound-variation-3-315895.mp3" type="audio/mpeg">
+  </audio>
+
+   <!--Navigation Web component start-->
+ <navigation-component 
+ home-link="../#projects" 
+ asset-path="../assets">
+</navigation-component>
+<!--Navigation Web component start-->
+
+<section id="hero-section" class="hero ">
+  <canvas id="dotCanvas" width="1960" height="490"></canvas>
+  <div class="hero">
+ 
+     
+  </div>
+</section>
+<main id="funds-campaign" class="project-main">
+  <div class="center-content">
+    <div class="main-content">
+      <span id="project-overview" class="anchor"></span>
+      <section class="project-overview parallax" data-speed="0.3">
+      
+        <div class="cont heading-cont">
+          <div class="twelve col-1">  
+          <h1 class="section-header-34 ">
+            Funds Information | Digital Campaign<span class="rdot">.</span>        </h1>
+  
+  <div class="spacer-1rem"></div>
+  <!--PROJECT SHOWCASE LINK-->
+  <a target="_blank" href="https://www.costar.com/fund-information/owners-investors" target="_blank">
+  <div class="cont project-showcase-2 funds-project-showcase"></div>
+</a>
+  <!--PROJECT SHOWCASE LINK END-->
+  <div class="spacer-1rem hide-on-mobile"></div>
+</div>
+        
+</div>
+<div class="cont four-eight flip-mobile">
+    <div class="col-1">
+       <h2 class="section-header">My Roles<span class="rdot">:</span></h2>
+       <p class="biriyani-light description margin-btm-25" >Concept, design, development</p>
+       <div class="spacer-1-3rem"></div>
+       
+
+
+       <div class="spacer-1-3rem"></div>
+       <h2 class="section-header">Tools<span class="rdot">:</span></h2>
+       <div class="tools-container">
+        <img src="../assets/images/figma.svg" class="tool-icon">
+        <img src="../assets/images/photoshop-logo.svg" class="tool-icon"> 
+        <img src="../assets/images/vs-code-logo.svg" class="tool-icon">
+        
+       </div>
+    </div>
+    <div class="col-2 project-links">
+       <h2 class="section-header">Project Overview<span class="rdot">:</span></h2>
+       <p class="project-p biriyani-light description margin-btm-25" >I led a multi-channel campaign to launch CoStar’s new Funds Information feature, which links commercial real estate funds to their underlying assets. Using display ads, email, and responsive landing pages, we highlighted how the tool helps funds assess performance, spot risks, and uncover opportunities — taking audiences smoothly from awareness to conversion. It went on to be our top-performing campaign of 2024.
+<br><br>
+        <strong>For the concept</strong> we wanted a high-tech feel for the design while showing a human connection with our product.
+           </p>
+</div>
+</div>
+<div class="spacer-1rem"></div>
+<div class="cont tabs-cont">
+  <div class="twelve col-1">
+      <div class="tab-container">
+          <div class="highlight"></div>
+          <div class="tab active" data-index="0"><i><svg class="tabs-icon"  viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 2V17H28V2H4ZM30 19H2V2C2 0.895431 2.89543 4.83192e-08 4 0H28L28.2041 0.0107422C29.2128 0.113005 30 0.96435 30 2V19Z" fill="black"/>
+            <path d="M31.9902 18.3838C31.9043 19.2311 31.2311 19.9043 30.3838 19.9902L30.2002 20H1.7998C0.805847 19.9999 0.000105578 19.1942 0 18.2002C0 17.5789 0.4721 17.0674 1.07715 17.0059L1.2002 17H30.7998C31.4625 17 32 17.5375 32 18.2002L31.9902 18.3838Z" />
+            </svg></i><p>Landing pages</p></div>
+          <div class="tab" data-index="1"><i><svg class="tabs-icon"  viewBox="0 0 28 20"  xmlns="http://www.w3.org/2000/svg">
+            <path d="M26 18V20H2V18H26ZM26 2H2V20C0.96435 20 0.113005 19.2128 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H26L26.2041 0.0107422C27.2128 0.113005 28 0.96435 28 2V18L27.9893 18.2041C27.8938 19.1457 27.1457 19.8938 26.2041 19.9893L26 20V2Z" />
+            <path d="M13.5488 10.0303C13.9347 10.3769 14.5216 10.371 14.9004 10.0166L25.3164 0.269531L26.6836 1.73047L16.2676 11.4775C15.1314 12.5407 13.3706 12.5583 12.2129 11.5186L1.33203 1.74414L2.66797 0.255859L13.5488 10.0303Z" />
+            </svg></i><p>Email </p></div>
+          <div class="tab" data-index="2"><i><svg class="tabs-icon"  viewBox="0 0 27 21"  xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18V20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20V18C14.4183 18 18 14.4183 18 10Z"/>
+            <path d="M17.6405 14.4893C17.9227 14.0145 18.5359 13.8585 19.0107 14.1406L26.0107 18.3008C26.4854 18.5829 26.6414 19.1962 26.3593 19.6709C26.0771 20.1457 25.4639 20.3017 24.9892 20.0195L17.9892 15.8594C17.5144 15.5772 17.3584 14.964 17.6405 14.4893Z"/>
+            </svg></i><p>Digital ads</p></div>
+        </div>
+      <!--TAB 1 - Landing pages-->
+        <div id="content-0" class="tab-content active">
+        <div class="cont eight-four">
+          <!--Column 1--->
+          <div class="col-1">
+            <div class="left-icon-text" data-index="0"><i><svg class="project-icon"  viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 2V17H28V2H4ZM30 19H2V2C2 0.895431 2.89543 4.83192e-08 4 0H28L28.2041 0.0107422C29.2128 0.113005 30 0.96435 30 2V19Z" fill="black"/>
+              <path d="M31.9902 18.3838C31.9043 19.2311 31.2311 19.9043 30.3838 19.9902L30.2002 20H1.7998C0.805847 19.9999 0.000105578 19.1942 0 18.2002C0 17.5789 0.4721 17.0674 1.07715 17.0059L1.2002 17H30.7998C31.4625 17 32 17.5375 32 18.2002L31.9902 18.3838Z" />
+              </svg></i><p>Desktop experience</p></div>
+              <img src="../assets/images/funds-desktop-experience.png" class="desktop-screenshot">
+
+          </div>
+          <!--Column 2--->
+          <div class="col-2">
+            <div class="left-icon-text" data-index="0"><i><svg class="project-icon" viewBox="0 0 14 20"  xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 18V20H2V18H12ZM12 2H2V20L1.7959 19.9893C0.854346 19.8938 0.1062 19.1457 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H12C13.1046 0 14 0.895431 14 2V18L13.9893 18.2041C13.8938 19.1457 13.1457 19.8938 12.2041 19.9893L12 20V2Z" />
+              <path d="M8 16C8 16.5523 7.55228 17 7 17C6.44772 17 6 16.5523 6 16C6 15.4477 6.44772 15 7 15C7.55228 15 8 15.4477 8 16Z"/>
+              </svg></i><p>Mobile experience</p></div>
+            <img src="../assets/images/funds-mobile-experience.png" class="mobile-screenshot">
+          </div>
+        </div>
+        </div>
+      
+        <div id="content-1" class="tab-content">
+          <div class="cont four-column">
+            <!--Column 1--->
+            <div class="col-1 no-padding">
+              <div class="left-icon-text" data-index="0"><i><svg class="project-icon"  viewBox="0 0 28 20"  xmlns="http://www.w3.org/2000/svg">
+                <path d="M26 18V20H2V18H26ZM26 2H2V20C0.96435 20 0.113005 19.2128 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H26L26.2041 0.0107422C27.2128 0.113005 28 0.96435 28 2V18L27.9893 18.2041C27.8938 19.1457 27.1457 19.8938 26.2041 19.9893L26 20V2Z" />
+                <path d="M13.5488 10.0303C13.9347 10.3769 14.5216 10.371 14.9004 10.0166L25.3164 0.269531L26.6836 1.73047L16.2676 11.4775C15.1314 12.5407 13.3706 12.5583 12.2129 11.5186L1.33203 1.74414L2.66797 0.255859L13.5488 10.0303Z" />
+                </svg></i><p>Email one</p></div>
+                <img src="../assets/images/funds-email-1.png" class="desktop-screenshot">
+
+            </div>
+            <!--Column 2--->
+            <div class="col-2 no-padding">
+              <div class="left-icon-text" data-index="0"><i><svg class="project-icon"  viewBox="0 0 28 20"  xmlns="http://www.w3.org/2000/svg">
+                <path d="M26 18V20H2V18H26ZM26 2H2V20C0.96435 20 0.113005 19.2128 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H26L26.2041 0.0107422C27.2128 0.113005 28 0.96435 28 2V18L27.9893 18.2041C27.8938 19.1457 27.1457 19.8938 26.2041 19.9893L26 20V2Z" />
+                <path d="M13.5488 10.0303C13.9347 10.3769 14.5216 10.371 14.9004 10.0166L25.3164 0.269531L26.6836 1.73047L16.2676 11.4775C15.1314 12.5407 13.3706 12.5583 12.2129 11.5186L1.33203 1.74414L2.66797 0.255859L13.5488 10.0303Z" />
+                </svg></i><p>Email two</p></div>
+              <img src="../assets/images/funds-email-2.png" class="mobile-screenshot">
+            </div>
+<!--Column 3-->
+            <div class="col-3 no-padding">
+              <div class="left-icon-text" data-index="0"><i><svg class="project-icon"  viewBox="0 0 28 20"  xmlns="http://www.w3.org/2000/svg">
+                <path d="M26 18V20H2V18H26ZM26 2H2V20C0.96435 20 0.113005 19.2128 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H26L26.2041 0.0107422C27.2128 0.113005 28 0.96435 28 2V18L27.9893 18.2041C27.8938 19.1457 27.1457 19.8938 26.2041 19.9893L26 20V2Z" />
+                <path d="M13.5488 10.0303C13.9347 10.3769 14.5216 10.371 14.9004 10.0166L25.3164 0.269531L26.6836 1.73047L16.2676 11.4775C15.1314 12.5407 13.3706 12.5583 12.2129 11.5186L1.33203 1.74414L2.66797 0.255859L13.5488 10.0303Z" />
+                </svg></i><p>Email three</p></div>
+              <img src="../assets/images/funds-email-3.png" class="mobile-screenshot">
+            </div>
+            <div class="col-4 no-padding">
+              <div class="left-icon-text" data-index="0"><i><svg class="project-icon"  viewBox="0 0 28 20"  xmlns="http://www.w3.org/2000/svg">
+                <path d="M26 18V20H2V18H26ZM26 2H2V20C0.96435 20 0.113005 19.2128 0.0107422 18.2041L0 18V2C2.57706e-07 0.895431 0.895431 4.83192e-08 2 0H26L26.2041 0.0107422C27.2128 0.113005 28 0.96435 28 2V18L27.9893 18.2041C27.8938 19.1457 27.1457 19.8938 26.2041 19.9893L26 20V2Z" />
+                <path d="M13.5488 10.0303C13.9347 10.3769 14.5216 10.371 14.9004 10.0166L25.3164 0.269531L26.6836 1.73047L16.2676 11.4775C15.1314 12.5407 13.3706 12.5583 12.2129 11.5186L1.33203 1.74414L2.66797 0.255859L13.5488 10.0303Z" />
+                </svg></i><p>Email four</p></div>
+              <img src="../assets/images/funds-email-4.png" class="mobile-screenshot">
+            </div>
+          </div>
+        </div>
+      
+        <div id="content-2" class="tab-content">
+          <div class="cont four-four-four">
+            <!--Column 1--->
+            <div class="col-1 no-padding">
+              <div class="left-icon-text" data-index="0"><i><svg class="project-icon" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M26 12.2352C26 11.0797 25.535 10.4297 24.999 10.0438C24.6861 9.81855 24.332 9.67456 24 9.58869V14.8817C24.3321 14.7958 24.6861 14.6519 24.999 14.4266C25.5351 14.0406 26 13.3907 26 12.2352ZM4.49805 23.1776L4.5 23.2069V23.2352C4.5 23.5609 4.58299 24.0472 4.7998 24.4237C4.99513 24.7627 5.27205 24.9852 5.75 24.9852C6.22795 24.9852 6.50487 24.7627 6.7002 24.4237C6.91254 24.055 6.99565 23.5811 6.99902 23.2557L6.55566 17.4852H4.06055L4.49805 23.1776ZM1.5 14.7352C1.5 15.4731 2.11464 15.9852 2.75 15.9852H8.5V6.98518H3.25C2.50317 6.98518 2.08451 7.29621 1.83496 7.60725C1.70264 7.77223 1.61277 7.9448 1.55762 8.08576C1.50801 8.21259 1.50078 8.27513 1.5 8.26643V14.7352ZM22.5 1.75178C22.4999 1.57236 22.3163 1.4516 22.1514 1.52229L9.9873 6.73518H10V16.2557L22.1445 21.8953C22.3102 21.9722 22.4998 21.8513 22.5 21.6688V1.75178ZM24 8.05549C24.5928 8.15941 25.2708 8.39127 25.876 8.82698C26.7981 9.49102 27.5 10.591 27.5 12.2352C27.5 13.8796 26.7983 14.9803 25.876 15.6444C25.2709 16.08 24.5928 16.3119 24 16.4158V8.05549ZM10 5.48518H8.5C7.67157 5.48518 7 6.15675 7 6.98518V16.9852C7 17.8136 7.67157 18.4852 8.5 18.4852H10V5.48518ZM22.5 0.235176C23.3284 0.235176 24 0.906747 24 1.73518V21.7352C24 22.5636 23.3284 23.2352 22.5 23.2352C22.3321 23.2352 22.1693 23.1809 22.037 23.0804L8.5 16.9852H8.5V5.48518H8.5L22.037 0.389806C22.1693 0.289295 22.3321 0.235176 22.5 0.235176ZM9.5 7.48518C9.5 7.20804 9.72386 6.98518 10 6.98518C10.2761 6.98518 10.5 7.20804 10.5 7.48518V15.9852C10.5 16.2623 10.2761 16.4852 10 16.4852C9.72386 16.4852 9.5 16.2623 9.5 15.9852V7.48518Z" fill="#A6A6A6"/>
+                </svg></i><p>Ad one</p></div>
+                <img src="../assets/images/funds-Ad-1.png" class="desktop-screenshot">
+
+            </div>
+            <!--Column 2--->
+            <div class="col-2 no-padding">
+              <div class="left-icon-text" data-index="0"><i><svg class="project-icon" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M26 12.2352C26 11.0797 25.535 10.4297 24.999 10.0438C24.6861 9.81855 24.332 9.67456 24 9.58869V14.8817C24.3321 14.7958 24.6861 14.6519 24.999 14.4266C25.5351 14.0406 26 13.3907 26 12.2352ZM4.49805 23.1776L4.5 23.2069V23.2352C4.5 23.5609 4.58299 24.0472 4.7998 24.4237C4.99513 24.7627 5.27205 24.9852 5.75 24.9852C6.22795 24.9852 6.50487 24.7627 6.7002 24.4237C6.91254 24.055 6.99565 23.5811 6.99902 23.2557L6.55566 17.4852H4.06055L4.49805 23.1776ZM1.5 14.7352C1.5 15.4731 2.11464 15.9852 2.75 15.9852H8.5V6.98518H3.25C2.50317 6.98518 2.08451 7.29621 1.83496 7.60725C1.70264 7.77223 1.61277 7.9448 1.55762 8.08576C1.50801 8.21259 1.50078 8.27513 1.5 8.26643V14.7352ZM22.5 1.75178C22.4999 1.57236 22.3163 1.4516 22.1514 1.52229L9.9873 6.73518H10V16.2557L22.1445 21.8953C22.3102 21.9722 22.4998 21.8513 22.5 21.6688V1.75178ZM24 8.05549C24.5928 8.15941 25.2708 8.39127 25.876 8.82698C26.7981 9.49102 27.5 10.591 27.5 12.2352C27.5 13.8796 26.7983 14.9803 25.876 15.6444C25.2709 16.08 24.5928 16.3119 24 16.4158V8.05549ZM10 5.48518H8.5C7.67157 5.48518 7 6.15675 7 6.98518V16.9852C7 17.8136 7.67157 18.4852 8.5 18.4852H10V5.48518ZM22.5 0.235176C23.3284 0.235176 24 0.906747 24 1.73518V21.7352C24 22.5636 23.3284 23.2352 22.5 23.2352C22.3321 23.2352 22.1693 23.1809 22.037 23.0804L8.5 16.9852H8.5V5.48518H8.5L22.037 0.389806C22.1693 0.289295 22.3321 0.235176 22.5 0.235176ZM9.5 7.48518C9.5 7.20804 9.72386 6.98518 10 6.98518C10.2761 6.98518 10.5 7.20804 10.5 7.48518V15.9852C10.5 16.2623 10.2761 16.4852 10 16.4852C9.72386 16.4852 9.5 16.2623 9.5 15.9852V7.48518Z" fill="#A6A6A6"/>
+                </svg></i><p>Ad two</p></div>
+              <img src="../assets/images/funds-Ad-2.png" class="mobile-screenshot">
+            </div>
+<!--Column 3-->
+            <div class="col-3 no-padding">
+              <div class="left-icon-text" data-index="0"><i><svg class="project-icon" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M26 12.2352C26 11.0797 25.535 10.4297 24.999 10.0438C24.6861 9.81855 24.332 9.67456 24 9.58869V14.8817C24.3321 14.7958 24.6861 14.6519 24.999 14.4266C25.5351 14.0406 26 13.3907 26 12.2352ZM4.49805 23.1776L4.5 23.2069V23.2352C4.5 23.5609 4.58299 24.0472 4.7998 24.4237C4.99513 24.7627 5.27205 24.9852 5.75 24.9852C6.22795 24.9852 6.50487 24.7627 6.7002 24.4237C6.91254 24.055 6.99565 23.5811 6.99902 23.2557L6.55566 17.4852H4.06055L4.49805 23.1776ZM1.5 14.7352C1.5 15.4731 2.11464 15.9852 2.75 15.9852H8.5V6.98518H3.25C2.50317 6.98518 2.08451 7.29621 1.83496 7.60725C1.70264 7.77223 1.61277 7.9448 1.55762 8.08576C1.50801 8.21259 1.50078 8.27513 1.5 8.26643V14.7352ZM22.5 1.75178C22.4999 1.57236 22.3163 1.4516 22.1514 1.52229L9.9873 6.73518H10V16.2557L22.1445 21.8953C22.3102 21.9722 22.4998 21.8513 22.5 21.6688V1.75178ZM24 8.05549C24.5928 8.15941 25.2708 8.39127 25.876 8.82698C26.7981 9.49102 27.5 10.591 27.5 12.2352C27.5 13.8796 26.7983 14.9803 25.876 15.6444C25.2709 16.08 24.5928 16.3119 24 16.4158V8.05549ZM10 5.48518H8.5C7.67157 5.48518 7 6.15675 7 6.98518V16.9852C7 17.8136 7.67157 18.4852 8.5 18.4852H10V5.48518ZM22.5 0.235176C23.3284 0.235176 24 0.906747 24 1.73518V21.7352C24 22.5636 23.3284 23.2352 22.5 23.2352C22.3321 23.2352 22.1693 23.1809 22.037 23.0804L8.5 16.9852H8.5V5.48518H8.5L22.037 0.389806C22.1693 0.289295 22.3321 0.235176 22.5 0.235176ZM9.5 7.48518C9.5 7.20804 9.72386 6.98518 10 6.98518C10.2761 6.98518 10.5 7.20804 10.5 7.48518V15.9852C10.5 16.2623 10.2761 16.4852 10 16.4852C9.72386 16.4852 9.5 16.2623 9.5 15.9852V7.48518Z" fill="#A6A6A6"/>
+                </svg></i><p>Ad three</p></div>
+              <img src="../assets/images/funds-Ad-3.png" class="mobile-screenshot">
+            </div>
+           
+          </div>
+        </div>
+  </div>
+ 
+</div>
+<span id="contact" class="anchor position-unset"></span>
+</section>
+<!--NEXT & PREVIOUS BUTTONS START-->
+<!--SPACER-->
+<div class="spacer-6rem"></div>
+<!--SPACER-->
+<div id="next-prev-buttons" class="cont next-prev six-six six-six-mob parallax" data-speed="0.3">
+  <span id="contact" class="anchor"></span>
+  <div class="col-1 left mobile-6-col">
+    <div class="previous">
+      <a href="/pages/budgie" id="backButton">
+      <svg  width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.00029 8.5H17.5566" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8.36455 14.864L2.00059 8.5L8.36455 2.13604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Back
+    </a></div>
+  </div>
+  <div class="col-2 right mobile-6-col">
+    <div class="previous"><a href="/pages/form-optimisation">Next
+      <svg class="arrow-right" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.5563 8.5L1 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10.1921 2.13604L16.556 8.5L10.1921 14.864" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </a></div>
+  </div>
+</div>
+<!--SPACER-->
+<div class="spacer-4rem"></div>
+<!--SPACER-->
+<!--NEXT & PREVIOUS BUTTONS END-->
+<contact-section></contact-section>
+
+      </div>
+      
+      </section>
+      
+    </div>
+  </div>
+</main>
+
+
+<div id="footer-bg"></div>
+
+
+<!--<img class="side-image" src="../assets/images/0-1.svg"/>-->
+
+
+
+<!-- Load scripts in correct order -->
+
+<script src="../assets/js/ScrollMagic.min.js" defer></script>
+<script src="../assets/js/animation.gsap.min.js" defer></script>
+    <!-- <script src="../assets/js/debug.addIndicators.min.js" defer></script> -->
+<script src="../assets/js/consolidated-parallax.js" defer></script>
+<script src="../assets/js/dots-background.js" defer></script>
+<script src="../assets/js/nav-appear.js" defer></script>
+<script src="../assets/js/theme-switch.js" defer></script>
+<script src="../assets/js/dark-mode-images.js" defer></script>
+<script src="../assets/js/logo-wave.js" defer></script>
+<script src="../assets/js/top-logo.js" defer></script>
+<!-- Swiper JS -->
+<script src="../assets/js/swiper-bundle.min.js" defer></script>
+<script src="../assets/js/swiper-script.js" defer></script>
+
+
+
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.getElementById('top-nav');
+  const topElement = document.querySelector('.top');
+  
+  // Show nav and top immediately on page load
+  nav.classList.add('nav-visible');
+  if (topElement) topElement.classList.add('top-visible');
+});
+  </script>
+ <script>
+  function initMap() {
+    var mapDiv = document.getElementById("map");
+    if (!mapDiv) return;
+    const london = { lat: 51.5074, lng: -0.1278 };
+
+    const map = new google.maps.Map(mapDiv, {
+      zoom: 15,
+      center: london,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+      styles: [
+        { featureType: "all", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
+        { featureType: "all", elementType: "labels.text.fill", stylers: [{ color: "#444444" }] },
+        { featureType: "all", elementType: "labels.text.stroke", stylers: [{ color: "#ffffff" }] },
+        { featureType: "landscape", elementType: "all", stylers: [{ color: "#f2f2f2" }] },
+        { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] },
+        { featureType: "road", elementType: "all", stylers: [{ saturation: -100 }, { lightness: 45 }] },
+        { featureType: "transit", elementType: "all", stylers: [{ visibility: "off" }] },
+        { featureType: "water", elementType: "all", stylers: [{ color: "#d3d3d3" }, { visibility: "on" }] }
+      ]
+    });
+
+    new google.maps.Marker({
+      position: london,
+      map: map,
+      title: "London"
+    });
+  }
+</script>
+
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHH4qPPTzoAu1qKM2GRi-lSgl_CICuQh4&callback=initMap">
+</script>
+<script src="../assets/js/top-nav.js" defer></script>
+<script src="../assets/js/generic-nav.js" defer></script>
+
+<!-- Mobile dropdown script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const overviewLink = document.querySelector('.overview-link');
+  const submenu = document.getElementById('mobile-submenu');
+  
+  // Function to close submenu
+  function closeSubmenu() {
+    overviewLink.classList.remove('active');
+    submenu.classList.remove('open');
+    submenu.style.maxHeight = '0';
+    submenu.style.opacity = '0';
+    submenu.style.overflow = 'hidden';
+    submenu.style.padding = '0';
+    submenu.style.marginBottom = '0';
+    
+    // Reset arrow rotation
+    const arrow = overviewLink.querySelector('.nav-arrow');
+    if (arrow) {
+      arrow.style.transform = 'rotate(0deg)';
+    }
+  }
+  
+  if (overviewLink && submenu) {
+    // Toggle submenu on overview link click
+    overviewLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Toggle active state for click
+      overviewLink.classList.toggle('active');
+      submenu.classList.toggle('open');
+      
+      // Directly control the submenu visibility with JavaScript
+      if (submenu.classList.contains('open')) {
+        submenu.style.maxHeight = '1000px';
+        submenu.style.opacity = '1';
+        submenu.style.overflow = 'visible';
+        submenu.style.padding = '10px 0';
+        submenu.style.marginBottom = '10px';
+      } else {
+        submenu.style.maxHeight = '0';
+        submenu.style.opacity = '0';
+        submenu.style.overflow = 'hidden';
+        submenu.style.padding = '0';
+        submenu.style.marginBottom = '0';
+      }
+      
+      // Directly control arrow rotation with JavaScript
+      const arrow = overviewLink.querySelector('.nav-arrow');
+      if (arrow) {
+        if (submenu.classList.contains('open')) {
+          arrow.style.transform = 'rotate(45deg)';
+        } else {
+          arrow.style.transform = 'rotate(0deg)';
+        }
+      }
+    });
+    
+    // Close submenu when clicking on submenu links
+    const submenuLinks = submenu.querySelectorAll('a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        closeSubmenu();
+      });
+    });
+    
+    // Close submenu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!overviewLink.contains(e.target) && !submenu.contains(e.target)) {
+        if (submenu.classList.contains('open')) {
+          closeSubmenu();
+        }
+      }
+    });
+  }
+});
+</script>
+<script src="../assets/js/zoomable-image.js" defer></script>
+<script>
+   const hoverAudio = document.getElementById('hoverSound');
+  const scrollAudio = document.getElementById('scrollSound');
+
+  var hoverTarget = document.getElementById('hoverTarget');
+  if (hoverTarget && hoverAudio) {
+    hoverTarget.addEventListener('mouseenter', () => {
+      hoverAudio.currentTime = 0;
+      hoverAudio.play().catch(() => {});
+    });
+  }
+
+  function playScrollSound() {
+    if (scrollAudio) scrollAudio.play().catch(() => {});
+    window.removeEventListener('scroll', playScrollSound);
+  }
+
+  window.addEventListener('scroll', playScrollSound);
+</script>
+<!--READ MORE JS -->
+<script>
+ document.querySelectorAll('.read-more-wrapper').forEach(function(wrapper) {
+  const button = wrapper.querySelector('.read-more-btn');
+  const paragraph = wrapper.querySelector('.full-paragraph');
+
+  // Expand paragraph
+  button.addEventListener('click', function () {
+    paragraph.classList.add('expanded');
+    paragraph.style.height = paragraph.scrollHeight + 'px';
+    button.style.display = 'none';
+  });
+
+  // Collapse paragraph
+  paragraph.addEventListener('click', function () {
+    paragraph.style.height = '0px';
+    paragraph.classList.remove('expanded');
+    button.style.display = 'inline';
+  });
+
+  // Optional: clear inline style after transition ends (cleaner for re-opening)
+  paragraph.addEventListener('transitionend', function () {
+    if (!paragraph.classList.contains('expanded')) {
+      paragraph.style.height = '';
+    }
+  });
+});
+
+</script>
+
+<script src="../assets/js/product-slider.js" defer></script>
+<script src="../assets/js/contact.js" defer></script>
+<script src="../assets/js/navigation.js"></script>
+<script src="../assets/js/tabs.js" defer></script>
+<script src="../assets/js/cursor-effects.js"> </script>
+<div class="cursor">
+  <div class="cursor-core"></div>
+  <div class="cursor-ring"></div>
+</div>
+</body>
+</html>

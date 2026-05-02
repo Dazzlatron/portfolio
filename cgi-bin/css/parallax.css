@@ -1,0 +1,38 @@
+.spacer {
+    height: 0; /* Adds space for scrolling */
+   margin: 0;
+  }
+  
+  .parallax {
+    opacity: 0; /* Start fully hidden */
+    transform: translateY(150px); /* Start below */
+    margin: 20px auto;
+    border-radius: 10px;
+    will-change: transform, opacity;
+  }
+  
+  
+.project {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+
+
+.column {
+    flex: 1;
+}
+
+
+
+
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .hero {
+        flex-direction: row;
+        text-align: left;
+    }
+}

@@ -1,0 +1,28 @@
+<svg width="201" height="166" viewBox="0 0 201 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <style>
+    @media (prefers-color-scheme: dark) {
+      .modeFill { fill: #fbfbfb; }
+    }
+    @media (prefers-color-scheme: light) {
+      .modeFill { fill: #121212; }
+    }
+  </style>
+<rect y="103.683" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="69.2734" y="103.683" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="69.2734" y="34.561" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="103.906" y="103.683" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="103.906" y="34.561" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="173.184" y="103.683" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="173.184" y="34.561" width="27" height="27" rx="4" class="modeFill"/>
+<rect y="138.243" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="69.2734" y="138.243" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="69.2734" y="69.1216" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="138.547" y="69.1216" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="34.6328" y="138.243" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="34.6328" y="69.1216" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="103.906" y="138.243" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="103.906" y="69.1216" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="173.184" y="138.243" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="173.184" y="69.1216" width="27" height="27" rx="4" class="modeFill"/>
+<rect x="34.6328" width="27" height="27" rx="4" fill="#FF1515"/>
+</svg>

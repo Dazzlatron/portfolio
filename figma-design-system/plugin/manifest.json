@@ -1,0 +1,7 @@
+{
+  "name": "Daryn DS Builder",
+  "id": "daryn-portfolio-ds-builder",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html"
+}

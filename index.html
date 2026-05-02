@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Daryn Higginson | UX Designer & Front-End Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Daryn Higginson — UX designer and front-end developer based in London. Case studies in product design, user research, interaction design, and web development.">
+    <meta name="keywords" content="UX designer, UI designer, front-end developer, product designer, web designer, interaction design, user experience, user research, design portfolio, London designer, UX portfolio, responsive web design, Figma, design systems">
+    <meta name="author" content="Daryn Higginson">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://darynhigginson.com/">
+
+    <!-- Open Graph / Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darynhigginson.com/">
+    <meta property="og:title" content="Daryn Higginson | UX Designer & Front-End Developer">
+    <meta property="og:description" content="Portfolio of Daryn Higginson — UX designer and front-end developer based in London. Case studies in product design, user research, and web development.">
+    <meta property="og:image" content="https://darynhigginson.com/assets/images/og-preview.png">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Daryn Higginson | UX Designer & Front-End Developer">
+    <meta name="twitter:description" content="Portfolio of Daryn Higginson — UX designer and front-end developer based in London.">
+    <meta name="twitter:image" content="https://darynhigginson.com/assets/images/og-preview.png">
+    <!-- Critical dark mode CSS - loads first, dark by default -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+       
+      :root {
+        --dark-bg: #121212;
+        --dark-text: #fbfbfb;
+        --dark-secondary: #1e1e1e;
+        --dark-accent: #FF1515;
+        --dark-border: #616161;
+        --dark-hover: #2a2a2a;
+        --light-text: #121212;
+        --light-dark-border: #424242;
+        --light-bg: #fbfbfb;
+        --light-border: #d1d1d1;
+        --red-accent: #FF1515;
+        --light-darker-border: #121212;
+      }
+      /* Dark mode by default */
+      body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+      }
+      /* Prevent FOUC */
+      html { visibility: hidden !important; }
+      html.css-loaded { visibility: visible !important; }
+      @media only screen 
+   and (min-width: 768px) 
+   and (max-width: 1180px) {
+       main {
+      width: 100%;
+  margin: auto;
+    } }
+    </style>
+    <!-- Set dark mode immediately, before DOM loads -->
+    <script>
+      (function() {
+        // Check for saved preference, default to dark if none
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme !== 'light') {
+          // Apply dark mode immediately
+          document.documentElement.classList.add('dark-mode-ready');
+          // Will be applied to body once it exists
+          if (document.body) {
+            document.body.classList.add('dark-mode');
+          } else {
+            // Wait for body to exist
+            var observer = new MutationObserver(function(mutations) {
+              if (document.body) {
+                document.body.classList.add('dark-mode');
+                observer.disconnect();
+              }
+            });
+            observer.observe(document.documentElement, { childList: true });
+          }
+        }
+      })();
+    </script>
+    <script src=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.min.js "></script>
+<!--FAVICONS-->
+    <link rel="icon" href="assets/images/dh-logo-favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/images/dh-logo-favicon-48.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/images/dh-logo-favicon-48.png">
+    <link rel="icon" href="assets/images/dh-favicon.ico" type="image/x-icon">
+
+<link href=" https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css " rel="stylesheet">
+    <!-- CSS files - load synchronously to prevent FOUC -->
+    <link rel="stylesheet" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/assets/css/dark-mode.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+
+    <link rel="stylesheet" href="/assets/css/hero.css">
+    <link rel="stylesheet" href="/assets/css/parallax.css">
+    <link rel="stylesheet" href="/assets/css/project-tiles.css">
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets/css/swiper-style.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/device-styles.css">
+    <link rel="stylesheet" href="/assets/css/grid-column-layout.css">
+    <link rel="stylesheet" href="/assets/css/image-styles.css">
+    <link rel="stylesheet" href="/assets/css/cursor-effects.css">
+    <link rel="stylesheet" href="/assets/css/skills-section.css">
+    <link rel="stylesheet" href="/assets/css/testimonial-slider.css">
+    <!-- Show content once CSS is loaded - runs immediately -->
+    <script>
+      (function() {
+        function checkStylesheets() {
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var allLoaded = true;
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            // Check if stylesheet is loaded by trying to access its rules
+            try {
+              if (sheet.sheet && sheet.sheet.cssRules && sheet.sheet.cssRules.length > 0) {
+                // Stylesheet is loaded
+                continue;
+              } else if (sheet.sheet) {
+                // Sheet exists but might not be fully loaded yet
+                allLoaded = false;
+                break;
+              } else {
+                // Sheet not loaded yet
+                allLoaded = false;
+                break;
+              }
+            } catch(e) {
+              // Cross-origin or not loaded yet
+              allLoaded = false;
+              break;
+            }
+          }
+          
+          if (allLoaded && stylesheets.length > 0) {
+            // All stylesheets loaded, show content
+            requestAnimationFrame(function() {
+              document.documentElement.classList.add('css-loaded');
+            });
+            return true;
+          }
+          return false;
+        }
+        
+        function showContent() {
+          document.documentElement.classList.add('css-loaded');
+        }
+        
+        // Check immediately
+        if (!checkStylesheets()) {
+          // If not all loaded, check on load events
+          var stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+          var loadedCount = 0;
+          var totalSheets = stylesheets.length;
+          
+          function onSheetLoad() {
+            loadedCount++;
+            if (loadedCount >= totalSheets) {
+              requestAnimationFrame(function() {
+                requestAnimationFrame(showContent);
+              });
+            }
+          }
+          
+          for (var i = 0; i < stylesheets.length; i++) {
+            var sheet = stylesheets[i];
+            var isLoaded = false;
+            try {
+              isLoaded = !!(sheet.sheet && sheet.sheet.cssRules);
+            } catch(e) {
+              // Cross-origin stylesheet (e.g. Google Fonts) — treat as loaded
+              isLoaded = true;
+            }
+            if (isLoaded) {
+              loadedCount++;
+            } else {
+              sheet.addEventListener('load', onSheetLoad);
+              sheet.addEventListener('error', onSheetLoad);
+            }
+          }
+          
+          if (loadedCount >= totalSheets) {
+            requestAnimationFrame(function() {
+              requestAnimationFrame(showContent);
+            });
+          }
+        }
+        
+        // Fallback: show after delay
+        setTimeout(showContent, 200);
+      })();
+    </script>
+    
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script src="assets/js/logo-animation-aa.js"></script>
+    <script src="assets/js/sticky-scroll.js"></script>
+  </script>
+<style>
+   @media only screen 
+   and (min-width: 768px) 
+   and (max-width: 1180px) {
+    
+    .phil-row {
+  margin: 0 -2rem;
+}
+    #hero-section {
+      top:40px;
+      height:40vh;
+      min-height: unset;
+    }
+   }
+  @media (max-width: 768px) {
+     .main-content {
+    padding: 10px;
+    margin-top: 0;
+  }
+    #mobile-tablet-header {
+  padding: 0 10px;
+}
+    #hero-section {
+      top:40px;
+      
+    }
+  }
+  #hero-section {
+    position: relative !important;
+
+  }
+  .center-content{
+    margin-top:0;
+  }
+  /* Prevent FOUC - hide content until CSS loads */
+  html:not(.css-loaded) body {
+    visibility: hidden;
+  }
+</style>
+<script>
+  // Show content once CSS is loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Wait a tick to ensure CSS is applied
+    setTimeout(function() {
+      document.documentElement.classList.add('css-loaded');
+    }, 0);
+  });
+</script>
+</head>
+<body style="cursor: none !important;">
+  <audio id="hoverSound" preload="auto">
+    <source src="assets/sounds/notification-1-269296.mp3" type="audio/mpeg">
+  </audio>
+  
+
+
+  <header id="mobile-tablet-header" class="header hidden">
+    <div class="nav-wrapper">
+      <div class="logo">
+        <img class="top-nav-logo" src="assets/images/Logo-animation_rollover_05.25.gif" alt="Logo">
+      </div>
+      
+      
+      <!-- Horizontal navigation for tablet (768-1180px) -->
+      <ul class="nav-links-tablet">
+        <li class="top-nav-drop">
+          <a class="overview-link" href="#projects">
+            <span class="nav-text">Projects</span>
+          
+          </a>
+          
+        </li>
+        <li><a href="#about-me">About me</a></li>
+        <li><a href="#contact">Contact</a></li>
+        
+      </ul>
+      
+      <nav class="main-nav">
+        <div class="menu-btn" id="menu-btn">
+          <div class="menu-btn__burger"></div>
+        </div> <!-- Hamburger -->
+        <div class="theme-switch" title="Toggle dark mode">
+          <div class="toggle-switch">
+            <div class="toggle-ball"></div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Mobile navigation moved outside header to fix stacking context -->
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about-me">About me</a></li>
+    <li><a href="#contact" >Contact</a></li>
+  </ul>
+
+<section id="hero-section" class="hero">
+    <canvas id="dotCanvas"></canvas>
+    <div class="hero">
+    <div class="logo-header" data-speed="0.3">
+        <div id="hoverTarget" class="logo-box hover-target">
+            <svg id="logo-wave" width="200" height="166" viewBox="0 0 200 166" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible; cursor: pointer;">
+				<style>
+				  rect {
+					transform-origin: center;
+				  }
+			  
+				  @keyframes pop {
+					0%, 100% { transform: scale(1); }
+					50% { transform: scale(1.25); }
+				  }
+				</style>
+			  
+				<!-- Your rects here -->
+				<rect y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="69.1289" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="69.1289" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="103.691" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="103.691" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="172.824" y="103.694" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="172.824" y="34.5647" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="69.1289" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="69.1289" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="138.258" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="34.5625" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="34.5625" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="103.691" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="103.691" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="172.824" y="138.259" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="172.824" y="69.1294" width="26.7597" height="26.7597" rx="4" fill="black"/>
+				<rect x="34.5625" width="26.7597" height="26.7597" rx="4" fill="#FF1515"/>
+			  </svg>
+        </div>
+        <div class="hero-text">
+<h1 class="my-name">
+    Daryn Higginson
+</h1>
+<h2 class="title">
+    Design Engineer
+</h2>
+
+        </div>
+       
+    </div>
+        <div class="blurb-container"><p class="blurb">Designing, building, and shipping digital experiences end to end.</p></div>
+    </div>
+</section>
+
+<div class="scroll">
+    <div class="black-arrow">
+      <span id="projects" class="fly-in-element trigger"></span>
+      <a href="#projects">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#0c0c0c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down">
+          <g>
+            
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </g>
+      </svg>
+    </a>
+    </div>
+</div>
+<aside class="side-nav">
+  <nav id="top-nav">
+    <div class="nav-style">
+      
+        <img class="top-logo visible" src="assets/images/Logo-animation_rollover_05.25.gif">
+      
+        <ul>
+            
+            <li class="nav-item"><a href="#projects"><span class="nav-text">&nbsp;Projects&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+            <li class="nav-item"><a href="#about-me"><span class="nav-text">&nbsp;About&nbsp;me&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+            <li class="nav-item"><a href="#contact" ><span class="nav-text">&nbsp;Contact&nbsp;</span><span class="nav-arrow"><svg class="arrow-svg" width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12L1 1" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/><path d="M12 3V12H3" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round"/></svg></span></a></li>
+        
+        </ul>
+        <div class="theme-switch" title="Toggle dark mode">
+          <div class="toggle-switch">
+            <div class="toggle-ball"></div>
+          </div>
+        </div>
+    </div>
+   
+</nav>
+<div class="top">
+  <img class="to-top-icon" src="assets/images/to-top.svg">
+</div>
+</aside>
+<main data-barba="container" data-barba-namespace="index">
+<div class="center-content">
+  <main class="main-content">
+
+    <!--Projects section web component  start-->
+    <projects-section></projects-section>
+    <!--Projects section web component  end-->
+
+  <section class="about-me">
+    
+    <div class="spacer-8rem"></div>
+    
+    <span id="about-me" class="anchor"></span>
+    <div class="heading row parallax">
+      
+      <div class="spacer-6rem"></div>
+      
+      <h2 class="section-header-28">A little about me<span class="rdot">.</span></h2>
+      <div class="spacer-2rem"></div>
+    </div>
+   
+    <div class="grid-wrapper parallax">
+      <div class="row-1 sequence about-me-row" data-speed="0.1">
+       
+         <div class="col col-about-2">
+      
+          <img class="profile-pic-wrap hide-on-desktop" src="assets/images/Profile-pic.png" loading="lazy">
+          <p class="biriyani-light description">I'm Daryn, a Design Engineer with a decade of experience in web design and development, and a year specialising in UX. I work across the full process: research, strategy, design, and build, creating web experiences that are as considered under the hood as they look on screen.
+            <br><br>
+            I enjoy creating, collaborating, and learning, whether that's exploring new design trends, experimenting with AI tooling, or diving into something completely unrelated.
+Outside of work you'll find me making music, practicing jiu-jitsu, cooking, gardening, or getting lost in a good film or podcast.
+             </p>
+             
+         </div>  
+      </div>
+      <div class=" parallax">
+      <div class="heading row ">
+        <div class="spacer-6rem"></div>
+        <h3 class="small-header center-txt">MY PHILOSOPHY</h3>
+        <h2 class="section-header-28 center-txt">Where Design and Function Meet<span class="rdot">.</span></h2>
+        <div class="spacer-6rem"></div>
+      </div>
+      
+      <div class="row row-2 phil-row">
+       
+        <div class="col phil-col">
+          <div class="phil-box creativity"><img class="phil-icon creativity-icon" alt="creativity" src="assets/images/creativity-icon.svg" loading="lazy"/>
+          <h3 class="section-header">Creativity</h3>
+          <p class="biriyani-light description"> Creativity is at the heart of what I do—it helps me solve problems, design, and stay inspired. It's even behind the music I listen to while I work. Imagine a world without art or&nbsp;expression!</p>
+        </div>
+      </div>
+        <div class="col fixed phil-col"><img class="plus-icon pne" alt="plus" src="assets/images/red-plus-28.svg" loading="lazy"></div>
+        <div class="col phil-col">
+          <div class="phil-box technology"><img class="phil-icon technology-icon" alt="technology" src="assets/images/technology-icon.svg" loading="lazy"/>
+            <h3 class="section-header">Technology</h3>
+            <p class="biriyani-light description">With technology we can turn ideas into reality, push the boundaries of communication, and solve real-world problems. We can also create intuitive and functional&nbsp;applications. </p>
+          </div>
+        </div>
+        <div class="col fixed phil-col"><img class="equals-icon pne" alt="equals" src="assets/images/red-equal.svg" loading="lazy"></div>
+        <div class="col phil-col">
+          <div class="phil-box magic"><img class="phil-icon magic-icon" alt="magic" src="assets/images/magic-icon.svg" loading="lazy"/>
+            <h3 class="section-header">Magic</h3>
+            <p class="biriyani-light description">By blending creativity with technology, you spark innovation and create magic. That's why it's important to keep learning and stay curious about&nbsp;both.</p>
+          </div>
+        </div>
+      </div>
+      </div>
+ <!--Skills & tools section start-->
+      <div class=" parallax">
+        <div class="technologies">
+       
+       <div class="cont twelve">
+           <div class="col-1">
+            <div class="heading row ">
+              <div class="spacer-1-5rem"></div>
+
+             <h2 class="section-header-28">Skills & tools I use<span class="rdot">.</span></h2>
+             <p class="biriyani-light description margin-btm-25">Combining UX strategy, interface design, and front-end development to create fast, accessible, user-centred digital&nbsp;experiences.</p>
+             <div class="spacer-1rem"></div>
+           </div>
+
+               <div class="skills-grid">
+                 <div class="skill-card">User Research</div>
+                 <div class="skill-card">UX Strategy</div>
+                 <div class="skill-card">Web Development</div>
+                 <div class="skill-card">Prototyping</div>
+                 <div class="skill-card">Usability Testing</div>
+                 <div class="skill-card">Design Systems</div>
+                 <div class="skill-card">Performance Optimisation</div>
+                 <div class="skill-card">Accessibility & Usability</div>
+               </div>
+
+               <div class="skills-divider"></div>
+
+               <div class="skills-two-col">
+                 <div class="category-card">
+                   <p class="skills-header">TECHNOLOGIES</p>
+                   <div class="spacer-1rem"></div>
+                   <div class="skills-grid">
+                     <div class="skill-card">HTML5</div>
+                     <div class="skill-card">CSS3</div>
+                     <div class="skill-card">JavaScript</div>
+                     <div class="skill-card">Tailwind CSS</div>
+                     <div class="skill-card">React</div>
+                     <div class="skill-card">Git / GitHub</div>
+                     <div class="skill-card">Vite</div>
+                   </div>
+                 </div>
+
+                 <div class="category-card">
+                   <p class="skills-header">DESIGN TOOLS</p>
+                   <div class="spacer-1rem"></div>
+                   <div class="skills-grid">
+                     <div class="skill-card">Figma</div>
+                     <div class="skill-card">Miro</div>
+                     <div class="skill-card">Maze</div>
+                     <div class="skill-card">Drupal / Site Studio</div>
+                     <div class="skill-card">Optimizely</div>
+                   </div>
+                 </div>
+
+                 <div class="category-card category-card--ai">
+                   <p class="skills-header">AI & AGENTIC TOOLS</p>
+                   <div class="spacer-1rem"></div>
+                   <div class="skills-grid">
+                     <div class="skill-card skill-card--ai">Claude Code</div>
+                     <div class="skill-card skill-card--ai">MCP Integrations</div>
+                     <div class="skill-card skill-card--ai">AI-Assisted Prototyping</div>
+                     <div class="skill-card skill-card--ai">Prompt Engineering</div>
+                   </div>
+                 </div>
+               </div>
+               </div>
+       </div>
+       </div>
+       
+       </div>
+       <!--Skills & tools section end-->
+  </div>
+  </section>
+  <section class="quote-section parallax">
+  <div class="heading row">
+    <div class="spacer-3rem hide-on-ipad hide-on-mobile"></div>
+    <h3 class="small-header txt-center">TESTIMONIALS</h3>
+    <h2 class="section-header-28 txt-center">What my colleagues have to say about me<span class="rdot">.</span></h2>
+  </div>
+  <div class="spacer-3rem"></div>
+ 
+    <div class="swipe-container">
+     
+      <div class="testimonial mySwiper">
+      <div class="testi-content swiper-wrapper">
+        <div class="slide swiper-slide">
+
+          <div class="quote-outline">
+          <img src="assets/images/quotation-2.svg" alt="quote" class="quote-icon" loading="lazy">
+          
+          <p>
+            Working with Daryn over the last six years has been a&nbsp;joy.
+<br><br>
+            His expert insights help shape smarter, more effective solutions, and his collaborative approach ensures that processes are always smooth and&nbsp;efficient.
+            <br><br>
+            Thanks to Daryn's dedication and skill, we continue delivering high-quality, high-performing campaigns, against aggressive targets for performance and speed to&nbsp;market.
+            <br><br>
+            I highly recommend Daryn for any business looking for a reliable web development&nbsp;partner.
+            
+          </p>
+          <div class="quotee-container">
+            <div class="photo">
+            <img src="assets/images/david-hamilton.jpg" alt="" class="image" loading="lazy" />
+          </div>
+            <div class="details">
+              <span class="name">David Hamilton</span>
+              <span class="title">Marketing Director,<br> CoStar</span>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="slide swiper-slide">
+
+          <div class="quote-outline">
+          <img src="assets/images/quotation-2.svg" alt="quote" class="quote-icon" loading="lazy">
+          
+          <p>
+            Working with Daryn has been a consistently energizing experience. What stands out most is his eagerness to learn, contribute, and grow—he approaches every project with genuine enthusiasm and a can-do spirit that lifts the whole team.
+<br><br>
+            Even when faced with unfamiliar challenges, Daryn doesn’t hesitate to dive in, ask thoughtful questions, and push himself to find solutions. His willingness to collaborate, take feedback, and iterate quickly makes him a reliable and adaptable teammate.
+<br><br>
+            Daryn’s proactive mindset and steady commitment have helped us move projects forward with momentum and positivity. I truly appreciate his attitude and work ethic, and I’d recommend him to any team looking for someone who brings heart, hustle, and a growth mindset to their work.
+            
+            
+            
+          </p>
+          <div class="quotee-container">
+            <div class="photo">
+            <img src="assets/images/suji-hong.jpeg" alt="" class="image" loading="lazy" />
+          </div>
+            <div class="details">
+              <span class="name">Suji Hong</span>
+              <span class="title">Web Development Manager,<br> CoStar Group</span>
+            </div>
+          </div>
+          </div>
+        </div>
+        
+        
+      </div>
+      <div class="swiper-button-next nav-btn"></div>
+      <div class="swiper-button-prev nav-btn"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+  
+</section>
+<span id="contact" class="anchor"></span>
+  <div class="spacer-6rem"></div>
+  
+  <contact-section></contact-section>
+
+  </main>
+</div>
+</main>
+
+
+<div id="footer-bg"></div>
+<div class="cursor">
+  <div class="cursor-core"></div>
+  <div class="cursor-ring"></div>
+</div>
+
+<!--<img class="side-image" src="assets/images/0-1.svg"/>-->
+
+
+
+<!-- Load scripts in correct order -->
+
+
+<script src="assets/js/ScrollMagic.min.js" defer></script>
+<script src="assets/js/animation.gsap.min.js" defer></script>
+    <!-- <script src="assets/js/debug.addIndicators.min.js" defer></script> -->
+<script src="assets/js/consolidated-parallax.js" defer></script>
+<script src="assets/js/dots-background.js" defer></script>
+<script src="assets/js/nav-appear.js" defer></script>
+<script src="assets/js/theme-switch.js" defer></script>
+<script src="assets/js/dark-mode-images.js" defer></script>
+<script src="assets/js/logo-wave.js" defer></script>
+<script src="assets/js/top-logo.js" defer></script>
+
+<!-- Mobile dropdown script removed - handled by top-nav.js -->
+  
+
+  
+  <!-- Swiper JS -->
+<script src="assets/js/swiper-bundle.min.js" defer></script>
+<script src="assets/js/swiper-script.js" defer></script>
+
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.getElementById('top-nav');
+  const topElement = document.querySelector('.top');
+  const hero = document.querySelector('.hero');
+  
+  // If no hero exists, show nav and top immediately
+  if (!hero) {
+    nav.classList.add('nav-visible');
+    if (topElement) topElement.classList.add('top-visible');
+    return;
+  }
+
+  // Create intersection observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        // Hero is out of view - show nav and top
+        nav.classList.add('nav-visible');
+        if (topElement) topElement.classList.add('top-visible');
+      } else {
+        // Hero is in view - hide nav and top
+        nav.classList.remove('nav-visible');
+        if (topElement) topElement.classList.remove('top-visible');
+      }
+    });
+  }, {threshold: 0.15});
+
+  // Observe the hero section
+  observer.observe(hero);
+  
+  // Fallback for older browsers
+  window.addEventListener('scroll', function() {
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    if (window.scrollY > heroBottom) {
+      nav.classList.add('nav-visible');
+      if (topElement) topElement.classList.add('top-visible');
+    } else {
+      nav.classList.remove('nav-visible');
+      if (topElement) topElement.classList.remove('top-visible');
+    }
+  });
+});
+  </script>
+ <script>
+  function initMap() {
+    const london = { lat: 51.46, lng: -0.04 };
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: london,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+      styles: [
+        { featureType: "all", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
+        { featureType: "all", elementType: "labels.text.fill", stylers: [{ color: "#444444" }] },
+        { featureType: "all", elementType: "labels.text.stroke", stylers: [{ color: "#ffffff" }] },
+        { featureType: "landscape", elementType: "all", stylers: [{ color: "#f2f2f2" }] },
+        { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] },
+        { featureType: "road", elementType: "all", stylers: [{ saturation: -100 }, { lightness: 45 }] },
+        { featureType: "transit", elementType: "all", stylers: [{ visibility: "off" }] },
+        { featureType: "water", elementType: "all", stylers: [{ color: "#d3d3d3" }, { visibility: "on" }] }
+      ]
+    });
+
+    new google.maps.Marker({
+      position: london,
+      map: map,
+      title: "London"
+    });
+  }
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHH4qPPTzoAu1qKM2GRi-lSgl_CICuQh4&callback=initMap&loading=async"></script>
+<script src="assets/js/top-nav.js" defer></script>
+<script>
+  var hoverAudio = document.getElementById('hoverSound');
+  var scrollAudio = document.getElementById('scrollSound');
+  var hoverTarget = document.getElementById('hoverTarget');
+
+  if (hoverTarget && hoverAudio) {
+    hoverTarget.addEventListener('mouseenter', function() {
+      hoverAudio.currentTime = 0;
+      hoverAudio.play().catch(function() {});
+    });
+  }
+
+  if (scrollAudio) {
+    function playScrollSound() {
+      scrollAudio.play().catch(function() {});
+      window.removeEventListener('scroll', playScrollSound);
+    }
+    window.addEventListener('scroll', playScrollSound);
+  }
+</script>
+<!--READ MORE JS -->
+<script src="assets/js/cursor-effects.js"> </script>
+<script src="assets/js/links.js" defer></script>
+<script src="assets/js/projects-section.js" defer></script>
+<script src="assets/js/contact.js" defer></script>
+</body>
+</html>
